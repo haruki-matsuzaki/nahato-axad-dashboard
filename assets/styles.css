@@ -85,13 +85,32 @@ body.auth-locked .login-screen {
   text-align: center;
 }
 
-.login-brand h1 {
-  margin: 0;
+.login-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.login-logo-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 36% 78%, #ffb000 0 16%, transparent 17%),
+    linear-gradient(135deg, #ff4a00 0%, #ff6500 58%, #ff3b00 100%);
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.24);
+}
+
+.login-logo-text {
   color: #f0f4f7;
   font-size: 34px;
   line-height: 1;
   font-weight: 700;
-  letter-spacing: 0;
 }
 
 .login-brand p {
@@ -1636,7 +1655,7 @@ body.theme-light .login-screen {
   background: #f4f5f7;
 }
 
-body.theme-light .login-brand h1 {
+body.theme-light .login-logo-text {
   color: #20262d;
 }
 
