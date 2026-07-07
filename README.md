@@ -11,13 +11,28 @@
 
 ## 初期スコープ
 
-- GitHub Pagesで公開
+- Cloudflare Pagesで公開し、Cloudflare Accessで `@shibuya-ad.com` のGoogleアカウントのみ閲覧許可
 - ホーム / マイページのみ
 - CP検索なし
 - 操作系なし
 - 表示指標は売上、粗利、消化、CV、ROAS、CPA
 - 反映済み期間は `data/index.json` の月一覧を参照
 - 毎日 9:00 / 18:00 JST にGoogle Sheets APIから取り込み
+
+## 公開・認証
+
+本番公開はCloudflare Pagesを使います。GitHub PagesはCloudflare Accessを迂回できる直URLになるため使いません。
+
+Cloudflare側の設定:
+
+1. Cloudflare PagesでこのGitHubリポジトリを接続する
+2. Build commandは空、Output directoryは `/` にする
+3. Cloudflare AccessでPagesの公開URLを対象にしたApplicationを作成する
+4. 認証プロバイダにGoogleを設定する
+5. Allow policyで `@shibuya-ad.com` のメールドメインのみ許可する
+6. GitHub Settings > Pagesで既存のGitHub Pages公開を停止する
+
+アプリ内のログイン前画面はUIとして残しています。本当の閲覧制限はCloudflare Accessで行います。
 
 ## データ更新
 
