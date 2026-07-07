@@ -540,7 +540,16 @@ select {
   border-bottom: 1px solid #29333d;
 }
 
+.profile-menu-name {
+  color: #e8eef5;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
 .profile-menu-email {
+  margin-top: 4px;
   color: #e8eef5;
   font-size: 12px;
   line-height: 1.3;
@@ -1622,6 +1631,7 @@ body.theme-light .profile-menu-item {
 }
 
 body.theme-light .profile-menu-email,
+body.theme-light .profile-menu-name,
 body.theme-light .profile-menu-item:hover,
 body.theme-light .profile-menu-item.active {
   color: #202a36;
