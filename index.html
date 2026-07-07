@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles.css?v=20260707-46">
+    <link rel="stylesheet" href="assets/styles.css?v=20260707-47">
   </head>
   <body class="auth-locked">
     <section class="login-screen" id="loginScreen" aria-label="ログイン">
@@ -111,17 +111,43 @@
           </div>
           <div class="topbar-actions">
             <button class="theme-toggle" id="themeToggle" type="button" aria-label="ライトモードに切り替え" title="ライトモードに切り替え"></button>
-            <div class="profile-chip">
-              <span class="avatar">ナ</span>
-              <span class="profile-text">
-                <span class="profile-name">ナハトシート</span>
-                <span class="profile-role">社内AXAD</span>
-              </span>
-              <span class="profile-caret" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <path d="m7 10 5 5 5-5" />
-                </svg>
-              </span>
+            <div class="profile-menu-wrap">
+              <button class="profile-chip" id="profileMenuButton" type="button" aria-haspopup="true" aria-expanded="false">
+                <span class="avatar">ナ</span>
+                <span class="profile-text">
+                  <span class="profile-name">ナハトシート</span>
+                  <span class="profile-role">ad_staff</span>
+                </span>
+                <span class="profile-caret" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="m7 10 5 5 5-5" />
+                  </svg>
+                </span>
+              </button>
+              <div class="profile-menu" id="profileMenu" hidden>
+                <div class="profile-menu-head">
+                  <div class="profile-menu-email">matsuzaki@axis-company.jp</div>
+                  <div class="profile-menu-role">ad_staff</div>
+                </div>
+                <button class="profile-menu-item" type="button">
+                  <span class="profile-menu-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false"><path d="M4 7.5h3l1.4-2h7.2l1.4 2h3v11H4Z" /><path d="M12 10.3a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Z" /><path d="M18.5 5v4" /><path d="M16.5 7h4" /></svg>
+                  </span>
+                  <span>プロフィール写真を変更</span>
+                </button>
+                <button class="profile-menu-item active" type="button">
+                  <span class="profile-menu-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" /><path d="M15.5 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" /><path d="M3.5 19.5a5 5 0 0 1 10 0" /><path d="M13.5 18.5a4.1 4.1 0 0 1 7 1" /></svg>
+                  </span>
+                  <span>ログイン中のユーザー一覧</span>
+                </button>
+                <button class="profile-menu-item danger" id="logoutButton" type="button">
+                  <span class="profile-menu-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false"><path d="M10 6H5v12h5" /><path d="M14 8l4 4-4 4" /><path d="M8 12h10" /></svg>
+                  </span>
+                  <span>ログアウト</span>
+                </button>
+              </div>
             </div>
           </div>
         </header>
@@ -289,6 +315,6 @@
       </main>
     </div>
 
-    <script type="module" src="assets/app.js?v=20260707-52"></script>
+    <script type="module" src="assets/app.js?v=20260707-53"></script>
   </body>
 </html>

@@ -56,6 +56,9 @@ const els = {
   sortSales: document.querySelector("#sortSales"),
   menuToggle: document.querySelector("#menuToggle"),
   themeToggle: document.querySelector("#themeToggle"),
+  profileMenuButton: document.querySelector("#profileMenuButton"),
+  profileMenu: document.querySelector("#profileMenu"),
+  logoutButton: document.querySelector("#logoutButton"),
 };
 
 const themeStorageKey = "nacht-axad-theme";
@@ -193,6 +196,26 @@ function bindEvents() {
     queueScrollProxyUpdate();
   });
 
+  els.profileMenuButton?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleProfileMenu();
+  });
+
+  els.profileMenu?.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+
+  document.addEventListener("click", closeProfileMenu);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeProfileMenu();
+  });
+
+  els.logoutButton?.addEventListener("click", () => {
+    localStorage.removeItem(authStorageKey);
+    closeProfileMenu();
+    document.body.classList.add("auth-locked");
+  });
+
   const initialHash = location.hash.replace("#", "");
   if (initialHash === "overallBusiness") {
     state.view = "overall";
@@ -209,6 +232,21 @@ function initTheme() {
 function initAuthGate() {
   const authenticated = localStorage.getItem(authStorageKey) === "ok";
   document.body.classList.toggle("auth-locked", !authenticated);
+}
+
+function toggleProfileMenu() {
+  const shouldOpen = els.profileMenu?.hidden !== false;
+  setProfileMenuOpen(shouldOpen);
+}
+
+function closeProfileMenu() {
+  setProfileMenuOpen(false);
+}
+
+function setProfileMenuOpen(open) {
+  if (!els.profileMenu || !els.profileMenuButton) return;
+  els.profileMenu.hidden = !open;
+  els.profileMenuButton.setAttribute("aria-expanded", String(open));
 }
 
 function applyTheme(theme, persist) {
