@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles.css?v=20260707-49">
+    <link rel="stylesheet" href="assets/styles.css?v=20260707-50">
   </head>
   <body class="auth-locked">
     <section class="login-screen" id="loginScreen" aria-label="ログイン">
@@ -23,7 +23,12 @@
         <div class="login-card">
           <h2>ログイン</h2>
           <button class="google-login-button" id="loginButton" type="button">
-            <span class="google-mark" aria-hidden="true">G</span>
+            <svg class="google-mark" viewBox="0 0 18 18" focusable="false" aria-hidden="true">
+              <path fill="#4285f4" d="M17.6 9.2c0-.6-.1-1.1-.2-1.6H9v3h4.8c-.2 1.1-.8 2-1.7 2.6v2.1h2.7c1.7-1.5 2.8-3.7 2.8-6.1Z" />
+              <path fill="#34a853" d="M9 18c2.4 0 4.4-.8 5.9-2.2l-2.7-2.1c-.8.5-1.8.8-3.1.8-2.3 0-4.3-1.6-5-3.7H1.2V13c1.5 3 4.4 5 7.8 5Z" />
+              <path fill="#fbbc05" d="M4 10.7c-.2-.5-.3-1.1-.3-1.7s.1-1.2.3-1.7V5.1H1.2C.5 6.3.1 7.6.1 9s.4 2.7 1.1 3.9l2.8-2.2Z" />
+              <path fill="#ea4335" d="M9 3.6c1.3 0 2.5.5 3.4 1.3l2.5-2.5C13.4.9 11.4 0 9 0 5.6 0 2.7 2 1.2 5.1L4 7.3c.7-2.1 2.7-3.7 5-3.7Z" />
+            </svg>
             <span>Googleでログイン</span>
           </button>
           <p class="login-note">

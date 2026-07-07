@@ -157,12 +157,10 @@ body.auth-locked .login-screen {
 }
 
 .google-mark {
-  display: inline-grid;
-  place-items: center;
   width: 18px;
   height: 18px;
-  color: #4285f4;
-  font-weight: 700;
+  flex: 0 0 auto;
+  display: block;
 }
 
 .login-note {
