@@ -1,0 +1,35 @@
+name: Update Nacht AXAD data
+
+on:
+  schedule:
+    - cron: "0 0,9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Fetch Google Sheets data
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          SPREADSHEET_ID: 1zMzWe0dg3dOrhRWJ6X7a6vIRhrLh9TYTKV9bzcXuefY
+          SHEET_NAME: ◆案件媒体別日次_全体
+          TOTAL_SHEET_NAME: ◆案件別日次_全体_固定用
+          SHEET_RANGE: A1:ZZ3000
+          TARGET_MONTH: "2026-06"
+        run: node scripts/update-data.mjs
+
+      - name: Commit updated data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update Nacht AXAD data"
+          file_pattern: "data/*.json"

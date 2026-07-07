@@ -1,0 +1,14 @@
+{
+  "name": "nacht-axad-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update:data": "node scripts/update-data.mjs",
+    "test:parser": "node scripts/update-data.mjs --fixture scripts/fixtures/nacht-sample-values.json --month 2026-06 --out /tmp/nacht-test-2026-06.json --index /tmp/nacht-test-index.json",
+    "start": "python3 -m http.server 4173"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
