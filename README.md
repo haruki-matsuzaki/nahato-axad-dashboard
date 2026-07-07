@@ -26,7 +26,7 @@
 Cloudflare側の設定:
 
 1. Cloudflare PagesでこのGitHubリポジトリを接続する
-2. Build commandは空、Output directoryは `/` にする
+2. Build commandは `exit 0`、Output directoryは `.` にする
 3. Cloudflare AccessでPagesの公開URLを対象にしたApplicationを作成する
 4. 認証プロバイダにGoogleを設定する
 5. Allow policyで `@shibuya-ad.com` のメールドメインのみ許可する
