@@ -15,6 +15,9 @@ const state = {
 
 const els = {
   sidebarUpdated: document.querySelector("#sidebarUpdated"),
+  loginScreen: document.querySelector("#loginScreen"),
+  loginButton: document.querySelector("#loginButton"),
+  loginThemeToggle: document.querySelector("#loginThemeToggle"),
   dateLabel: document.querySelector("#dateLabel"),
   timeLabel: document.querySelector("#timeLabel"),
   weatherLabel: document.querySelector("#weatherLabel"),
@@ -56,6 +59,7 @@ const els = {
 };
 
 const themeStorageKey = "nacht-axad-theme";
+const authStorageKey = "nacht-axad-auth";
 
 const metricDefinitions = [
   { key: "sales", label: "売上", icon: "¥", format: formatYen },
@@ -97,6 +101,7 @@ init();
 async function init() {
   bindEvents();
   initTheme();
+  initAuthGate();
   startClock();
   fetchTokyoWeather();
   window.setInterval(fetchTokyoWeather, 10 * 60 * 1000);
@@ -178,6 +183,16 @@ function bindEvents() {
     applyTheme(state.theme === "light" ? "dark" : "light", true);
   });
 
+  els.loginThemeToggle?.addEventListener("click", () => {
+    applyTheme(state.theme === "light" ? "dark" : "light", true);
+  });
+
+  els.loginButton?.addEventListener("click", () => {
+    localStorage.setItem(authStorageKey, "ok");
+    document.body.classList.remove("auth-locked");
+    queueScrollProxyUpdate();
+  });
+
   const initialHash = location.hash.replace("#", "");
   if (initialHash === "overallBusiness") {
     state.view = "overall";
@@ -191,16 +206,23 @@ function initTheme() {
   applyTheme(savedTheme === "light" ? "light" : "dark", false);
 }
 
+function initAuthGate() {
+  const authenticated = localStorage.getItem(authStorageKey) === "ok";
+  document.body.classList.toggle("auth-locked", !authenticated);
+}
+
 function applyTheme(theme, persist) {
   state.theme = theme;
   document.body.classList.toggle("theme-light", theme === "light");
   document.body.dataset.theme = theme;
-  if (els.themeToggle) {
-    const nextLabel = theme === "light" ? "ダークモードに切り替え" : "ライトモードに切り替え";
-    els.themeToggle.innerHTML = theme === "light" ? iconMoon() : iconSun();
-    els.themeToggle.setAttribute("aria-label", nextLabel);
-    els.themeToggle.setAttribute("title", nextLabel);
-  }
+  const nextLabel = theme === "light" ? "ダークモードに切り替え" : "ライトモードに切り替え";
+  const nextIcon = theme === "light" ? iconMoon() : iconSun();
+  [els.themeToggle, els.loginThemeToggle].forEach((button) => {
+    if (!button) return;
+    button.innerHTML = nextIcon;
+    button.setAttribute("aria-label", nextLabel);
+    button.setAttribute("title", nextLabel);
+  });
   if (persist) {
     localStorage.setItem(themeStorageKey, theme);
   }

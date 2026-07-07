@@ -52,6 +52,119 @@ body.theme-light {
   --shadow: 0 1px 2px rgba(32, 42, 54, 0.08);
 }
 
+body.auth-locked {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+body.auth-locked .app-shell {
+  display: none;
+}
+
+body.auth-locked .login-screen {
+  display: grid;
+}
+
+.login-screen {
+  display: none;
+  min-height: 100vh;
+  place-items: center;
+  padding: 32px 20px;
+  color: #e8eef4;
+  background: #101215;
+}
+
+.login-shell {
+  display: grid;
+  justify-items: center;
+  width: min(100%, 410px);
+  gap: 30px;
+}
+
+.login-brand {
+  text-align: center;
+}
+
+.login-brand h1 {
+  margin: 0;
+  color: #f0f4f7;
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.login-brand p {
+  margin: 14px 0 0;
+  color: #91a0ad;
+  font-size: 14px;
+}
+
+.login-card {
+  width: 100%;
+  padding: 28px 30px 30px;
+  text-align: center;
+  background: #171d24;
+  border: 1px solid #27313d;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+}
+
+.login-card h2 {
+  margin: 0 0 26px;
+  color: #f0f4f7;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.google-login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 46px;
+  color: #25303a;
+  background: #ffffff;
+  border: 1px solid #d9e0e7;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.google-login-button:hover {
+  background: #f8fafc;
+  border-color: #c8d2dc;
+}
+
+.google-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  color: #4285f4;
+  font-weight: 700;
+}
+
+.login-note {
+  margin: 20px 0 0;
+  color: #91a0ad;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.login-footer {
+  color: #7d8a96;
+  font-size: 12px;
+}
+
+.login-theme-toggle {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+}
+
 button,
 input,
 select {
@@ -89,9 +202,12 @@ select {
   width: 34px;
   height: 34px;
   border-radius: 8px;
-  background: linear-gradient(135deg, var(--cyan), var(--green));
-  color: #071013;
+  background:
+    radial-gradient(circle at 36% 78%, #ffb000 0 16%, transparent 17%),
+    linear-gradient(135deg, #ff4a00 0%, #ff6500 58%, #ff3b00 100%);
+  color: #050505;
   font-weight: 700;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.24);
 }
 
 .brand-title {
@@ -1374,6 +1490,31 @@ body.theme-light .notice {
   color: #6b5200;
   background: rgba(217, 184, 76, 0.16);
   border-color: rgba(217, 184, 76, 0.38);
+}
+
+body.theme-light .login-screen {
+  color: #222a32;
+  background: #f4f5f7;
+}
+
+body.theme-light .login-brand h1 {
+  color: #20262d;
+}
+
+body.theme-light .login-brand p,
+body.theme-light .login-note,
+body.theme-light .login-footer {
+  color: #788591;
+}
+
+body.theme-light .login-card {
+  background: #ffffff;
+  border-color: #dbe1e7;
+  box-shadow: 0 12px 22px rgba(29, 38, 48, 0.16);
+}
+
+body.theme-light .login-card h2 {
+  color: #20262d;
 }
 
 body.theme-light .axad-metric-value {
