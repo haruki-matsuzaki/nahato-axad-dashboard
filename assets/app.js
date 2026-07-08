@@ -655,18 +655,26 @@ async function loadMonth(monthId) {
 async function fetchJson(path) {
   const response = await fetchLocalJson(path);
   if (!response.ok) {
+    if (shouldReloadForAccessResponse(response)) reloadOnceForAccessSession();
     throw new Error(`${path}: ${response.status}`);
+  }
+  if (!isJsonResponse(response)) {
+    if (shouldReloadForAccessResponse(response)) reloadOnceForAccessSession();
+    throw new Error(`${path}: JSON response expected`);
   }
   return response.json();
 }
 
 async function fetchOptionalJson(path) {
-  const response = await fetchLocalJson(path);
-  if (response.status === 404) return null;
-  if (!response.ok) {
-    throw new Error(`${path}: ${response.status}`);
+  try {
+    const response = await fetchLocalJson(path);
+    if (response.status === 404) return null;
+    if (!response.ok || !isJsonResponse(response)) return null;
+    return response.json();
+  } catch (error) {
+    console.warn(error);
+    return null;
   }
-  return response.json();
 }
 
 async function fetchLocalJson(path) {
@@ -688,6 +696,16 @@ function localJsonFetchOptions() {
       Accept: "application/json",
     },
   };
+}
+
+function isJsonResponse(response) {
+  return (response.headers.get("content-type") || "").toLowerCase().includes("application/json");
+}
+
+function shouldReloadForAccessResponse(response) {
+  if (response.redirected || response.status === 401 || response.status === 403) return true;
+  const contentType = (response.headers.get("content-type") || "").toLowerCase();
+  return response.ok && contentType.includes("text/html");
 }
 
 function reloadOnceForAccessSession() {

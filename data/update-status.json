@@ -1,0 +1,25 @@
+{
+  "generatedAt": null,
+  "daily": {
+    "status": "ok",
+    "checkedAt": null,
+    "month": null,
+    "reason": null,
+    "message": null,
+    "type": "daily"
+  },
+  "monthly": {
+    "status": "ok",
+    "checkedAt": null,
+    "month": null,
+    "reason": null,
+    "message": null,
+    "type": "monthly"
+  },
+  "lastRun": {
+    "checkedAt": null,
+    "failed": false,
+    "skippedReason": null,
+    "fatalError": null
+  }
+}
