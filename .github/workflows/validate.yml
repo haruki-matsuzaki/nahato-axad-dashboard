@@ -1,0 +1,34 @@
+name: Validate Nacht AXAD static data
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate JavaScript syntax
+        run: |
+          node --check assets/app.js
+          node --check functions/api/active-users.js
+
+      - name: Validate parser fixture
+        run: npm run test:parser
+
+      - name: Validate schedule logic
+        run: npm run test:schedule
+
+      - name: Validate static data files
+        run: npm run test:data

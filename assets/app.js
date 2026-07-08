@@ -16,6 +16,7 @@ const state = {
     name: "松﨑陽紀",
     email: "matsuzaki@axis-company.jp",
   },
+  dataLoadWarning: "",
   activeUsers: [],
   activeUsersError: "",
   presenceHeartbeatTimer: null,
@@ -89,6 +90,56 @@ const fallbackUser = {
   name: "松﨑陽紀",
   email: "matsuzaki@axis-company.jp",
 };
+const embeddedIndex = {
+  defaultMonth: "2026-07",
+  months: [
+    { id: "2022-11", label: "2022年11月", path: "data/2022-11.json" },
+    { id: "2022-12", label: "2022年12月", path: "data/2022-12.json" },
+    { id: "2023-01", label: "2023年1月", path: "data/2023-01.json" },
+    { id: "2023-02", label: "2023年2月", path: "data/2023-02.json" },
+    { id: "2023-03", label: "2023年3月", path: "data/2023-03.json" },
+    { id: "2023-04", label: "2023年4月", path: "data/2023-04.json" },
+    { id: "2023-05", label: "2023年5月", path: "data/2023-05.json" },
+    { id: "2023-06", label: "2023年6月", path: "data/2023-06.json" },
+    { id: "2023-07", label: "2023年7月", path: "data/2023-07.json" },
+    { id: "2023-08", label: "2023年8月", path: "data/2023-08.json" },
+    { id: "2023-09", label: "2023年9月", path: "data/2023-09.json" },
+    { id: "2023-10", label: "2023年10月", path: "data/2023-10.json" },
+    { id: "2023-11", label: "2023年11月", path: "data/2023-11.json" },
+    { id: "2023-12", label: "2023年12月", path: "data/2023-12.json" },
+    { id: "2024-01", label: "2024年1月", path: "data/2024-01.json" },
+    { id: "2024-02", label: "2024年2月", path: "data/2024-02.json" },
+    { id: "2024-03", label: "2024年3月", path: "data/2024-03.json" },
+    { id: "2024-04", label: "2024年4月", path: "data/2024-04.json" },
+    { id: "2024-05", label: "2024年5月", path: "data/2024-05.json" },
+    { id: "2024-06", label: "2024年6月", path: "data/2024-06.json" },
+    { id: "2024-07", label: "2024年7月", path: "data/2024-07.json" },
+    { id: "2024-08", label: "2024年8月", path: "data/2024-08.json" },
+    { id: "2024-09", label: "2024年9月", path: "data/2024-09.json" },
+    { id: "2024-10", label: "2024年10月", path: "data/2024-10.json" },
+    { id: "2024-11", label: "2024年11月", path: "data/2024-11.json" },
+    { id: "2024-12", label: "2024年12月", path: "data/2024-12.json" },
+    { id: "2025-01", label: "2025年1月", path: "data/2025-01.json" },
+    { id: "2025-02", label: "2025年2月", path: "data/2025-02.json" },
+    { id: "2025-03", label: "2025年3月", path: "data/2025-03.json" },
+    { id: "2025-04", label: "2025年4月", path: "data/2025-04.json" },
+    { id: "2025-05", label: "2025年5月", path: "data/2025-05.json" },
+    { id: "2025-06", label: "2025年6月", path: "data/2025-06.json" },
+    { id: "2025-07", label: "2025年7月", path: "data/2025-07.json" },
+    { id: "2025-08", label: "2025年8月", path: "data/2025-08.json" },
+    { id: "2025-09", label: "2025年9月", path: "data/2025-09.json" },
+    { id: "2025-10", label: "2025年10月", path: "data/2025-10.json" },
+    { id: "2025-11", label: "2025年11月", path: "data/2025-11.json" },
+    { id: "2025-12", label: "2025年12月", path: "data/2025-12.json" },
+    { id: "2026-01", label: "2026年1月", path: "data/2026-01.json" },
+    { id: "2026-02", label: "2026年2月", path: "data/2026-02.json" },
+    { id: "2026-03", label: "2026年3月", path: "data/2026-03.json" },
+    { id: "2026-04", label: "2026年4月", path: "data/2026-04.json" },
+    { id: "2026-05", label: "2026年5月", path: "data/2026-05.json" },
+    { id: "2026-06", label: "2026年6月", path: "data/2026-06.json" },
+    { id: "2026-07", label: "2026年7月", path: "data/2026-07.json" },
+  ],
+};
 
 const metricDefinitions = [
   { key: "sales", label: "売上", icon: "¥", format: formatYen },
@@ -138,12 +189,13 @@ async function init() {
   window.setInterval(fetchTokyoWeather, 10 * 60 * 1000);
 
   try {
-    state.index = await fetchJson("data/index.json");
+    state.index = await loadIndex();
     state.updateStatus = await fetchOptionalJson("data/update-status.json");
     populateMonthSelect();
     await loadMonth(state.index.defaultMonth || state.index.months?.[0]?.id);
   } catch (error) {
-    showNotice("データを読み込めませんでした");
+    state.dataLoadWarning = `データを読み込めませんでした: ${dataErrorMessage(error)}`;
+    showNotice(state.dataLoadWarning);
     renderEmpty();
     console.error(error);
   }
@@ -634,22 +686,114 @@ async function fetchTokyoWeather() {
   updateClock();
 }
 
+async function loadIndex() {
+  try {
+    return normalizeIndex(await fetchJson("data/index.json"));
+  } catch (error) {
+    console.warn(error);
+    state.dataLoadWarning = `月一覧の取得に失敗したため予備一覧を使用しています: ${dataErrorMessage(error)}`;
+    return cloneData(embeddedIndex);
+  }
+}
+
 async function loadMonth(monthId) {
-  const month = state.index.months.find((item) => item.id === monthId) || state.index.months[0];
+  const month = findMonth(monthId);
   if (!month) {
-    showNotice("対象月がありません");
+    state.dataLoadWarning = "対象月がありません";
+    showNotice(state.dataLoadWarning);
     renderEmpty();
     return;
   }
 
-  state.data = await fetchJson(month.path);
-  state.overallSales = await fetchOptionalJson(`data/overall-sales-${month.id}.json`);
-  state.overallBusinessSales = await fetchOptionalJson(`data/overall-business-sales-${month.id}.json`);
+  const requestedMonth = month;
+  const indexWarning = state.dataLoadWarning.startsWith("月一覧") ? state.dataLoadWarning : "";
+  let loaded;
+  try {
+    loaded = await fetchMonthBundle(requestedMonth);
+    state.dataLoadWarning = indexWarning;
+  } catch (error) {
+    console.error(error);
+    loaded = await loadFallbackMonth(requestedMonth, error);
+  }
+  if (!loaded) return;
+
+  state.data = loaded.data;
+  state.overallSales = loaded.overallSales;
+  state.overallBusinessSales = loaded.overallBusinessSales;
   state.expandedBusinessUnits = new Set();
-  els.monthSelect.value = month.id;
+  els.monthSelect.value = loaded.month.id;
   syncFilters();
   setView(state.view);
   render();
+}
+
+async function loadFallbackMonth(requestedMonth, originalError) {
+  const fallbackMonths = fallbackMonthCandidates(requestedMonth);
+  for (const month of fallbackMonths) {
+    try {
+      const loaded = await fetchMonthBundle(month);
+      state.dataLoadWarning = `${requestedMonth.label}の読み込みに失敗したため、${month.label}を表示しています: ${dataErrorMessage(originalError)}`;
+      return loaded;
+    } catch (error) {
+      console.warn(error);
+    }
+  }
+
+  state.dataLoadWarning = `データを読み込めませんでした: ${dataErrorMessage(originalError)}`;
+  showNotice(state.dataLoadWarning);
+  renderEmpty();
+  return null;
+}
+
+async function fetchMonthBundle(month) {
+  const data = await fetchJson(month.path);
+  validateMonthData(data, month);
+  const overallSales = await fetchOptionalJson(`data/overall-sales-${month.id}.json`);
+  const overallBusinessSales = await fetchOptionalJson(`data/overall-business-sales-${month.id}.json`);
+  return {
+    month,
+    data,
+    overallSales,
+    overallBusinessSales,
+  };
+}
+
+function findMonth(monthId) {
+  return state.index?.months?.find((item) => item.id === monthId) || state.index?.months?.[0] || null;
+}
+
+function fallbackMonthCandidates(requestedMonth) {
+  const months = state.index?.months || [];
+  const index = months.findIndex((item) => item.id === requestedMonth.id);
+  if (index < 0) return months.slice().reverse();
+  return [...months.slice(0, index).reverse(), ...months.slice(index + 1).reverse()];
+}
+
+function normalizeIndex(index) {
+  const months = Array.isArray(index?.months)
+    ? index.months
+        .map((month) => ({
+          id: normalizeText(month?.id),
+          label: normalizeText(month?.label),
+          path: normalizeText(month?.path),
+        }))
+        .filter((month) => month.id && month.label && month.path)
+    : [];
+  if (!months.length) throw new Error("data/index.json has no valid months");
+  const defaultMonth = months.some((month) => month.id === index?.defaultMonth)
+    ? index.defaultMonth
+    : months[months.length - 1].id;
+  return { ...index, defaultMonth, months };
+}
+
+function validateMonthData(data, month) {
+  if (!data || typeof data !== "object") throw new Error(`${month.path}: invalid data`);
+  if (!Array.isArray(data.records)) throw new Error(`${month.path}: records is missing`);
+  for (const record of data.records.slice(0, 20)) {
+    if (!normalizeText(record?.date) || !normalizeText(record?.project)) {
+      throw new Error(`${month.path}: invalid record shape`);
+    }
+  }
 }
 
 async function fetchJson(path) {
@@ -824,6 +968,8 @@ function renderSource() {
 
   if (source.mode === "sample") {
     showNotice("サンプルデータ表示中");
+  } else if (state.dataLoadWarning) {
+    showNotice(state.dataLoadWarning);
   } else {
     hideNotice();
   }
@@ -1978,6 +2124,14 @@ function valueTone(value) {
 
 function localeSort(a, b) {
   return String(a).localeCompare(String(b), "ja");
+}
+
+function dataErrorMessage(error) {
+  return normalizeText(error?.message || error).slice(0, 160) || "unknown error";
+}
+
+function cloneData(value) {
+  return JSON.parse(JSON.stringify(value));
 }
 
 function escapeHtml(value) {
