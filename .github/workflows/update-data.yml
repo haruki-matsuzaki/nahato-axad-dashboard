@@ -48,11 +48,14 @@ jobs:
         timeout-minutes: 20
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+          GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
           CHATWORK_ANALYSIS_ROOM_ID: ${{ secrets.CHATWORK_ANALYSIS_ROOM_ID }}
           MASTER_SPREADSHEET_ID: 1Xk-p_-6Np-e5keqOy5fcgmU-TF28H5dU7UeEYDUX_7k
           MASTER_SHEET_ID: "2127655846"
-          SHEET_NAME: ◆案件媒体別日次_全体
+          SHEET_NAME: ◆案件/媒体別日次_全体
           TOTAL_SHEET_NAME: ◆案件別日次_全体_固定用
           SHEET_RANGE: A1:ZZ3000
           UPDATE_MODE: ${{ github.event.inputs.mode || 'scheduled' }}

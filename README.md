@@ -3,7 +3,7 @@
 ナハト売上シートを、AXAD風の読み取り専用ダッシュボードとして表示する静的サイトです。
 
 - 案件全体: `◆案件別日次_全体_固定用`
-- 媒体別展開: `◆案件媒体別日次_全体`
+- 媒体別展開: `◆案件/媒体別日次_全体`
 
 ## 確認アカウント
 
@@ -54,11 +54,33 @@ GitHub Actionsで `scripts/update-month-from-sources.mjs` を実行します。
 
 必要なGitHub Secret:
 
-- `GOOGLE_SERVICE_ACCOUNT_JSON`
+- `GOOGLE_OAUTH_CLIENT_ID`
+- `GOOGLE_OAUTH_CLIENT_SECRET`
+- `GOOGLE_OAUTH_REFRESH_TOKEN`
+- `GOOGLE_SERVICE_ACCOUNT_JSON` 任意。シート側でサービスアカウントに閲覧権限を付与できる場合のフォールバックです
 - `CHATWORK_API_TOKEN` 任意。Chatwork補助参照を使う場合だけ設定します
 - `CHATWORK_ANALYSIS_ROOM_ID` 任意。「【分析】運用データ共有」のroom_idです
 
-Google CloudのサービスアカウントJSONをそのまま入れます。シート側では、そのサービスアカウントの `client_email` に閲覧権限を付与してください。
+通常は `pino.ad.kanri@shibuya-ad.com` のOAuth Refresh TokenでGoogle Sheets APIを読み込みます。
+対象ナハトシートをサービスアカウントに共有できない場合でも、pinoアカウントがブラウザで閲覧できるシートであればAPI取得できます。
+
+OAuth Refresh Tokenの作成:
+
+1. Google Cloud ConsoleでOAuthクライアントを作成する
+   - 種類: デスクトップアプリ、またはリダイレクトURIに `http://127.0.0.1:8765/oauth2callback` を許可したWebアプリ
+   - スコープ: `https://www.googleapis.com/auth/spreadsheets.readonly`
+2. 下記をローカルで実行する
+
+```bash
+GOOGLE_OAUTH_CLIENT_ID="..." \
+GOOGLE_OAUTH_CLIENT_SECRET="..." \
+node scripts/create-google-oauth-token.mjs
+```
+
+3. 表示されたURLを `pino.ad.kanri@shibuya-ad.com` のChromeプロファイルで開いて許可する
+4. ターミナルに表示された `GOOGLE_OAUTH_REFRESH_TOKEN` をGitHub Secretsに登録する
+
+`GOOGLE_OAUTH_*` がすべて設定されている場合はOAuthを優先します。未設定の場合のみ、従来通り `GOOGLE_SERVICE_ACCOUNT_JSON` を使います。
 
 管理シート:
 

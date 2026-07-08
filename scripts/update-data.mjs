@@ -1,10 +1,10 @@
-import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { getGoogleAccessToken } from "./google-auth.mjs";
 
 const DEFAULT_SPREADSHEET_ID = "1zMzWe0dg3dOrhRWJ6X7a6vIRhrLh9TYTKV9bzcXuefY";
-const DEFAULT_SHEET_NAME = "◆案件媒体別日次_全体";
+const DEFAULT_SHEET_NAME = "◆案件/媒体別日次_全体";
 const DEFAULT_TOTAL_SHEET_NAME = "◆案件別日次_全体_固定用";
 const DEFAULT_RANGE = "A1:ZZ3000";
 const DEFAULT_MONTH = "2026-06";
@@ -205,7 +205,7 @@ function canonicalMetricLabel(value) {
 }
 
 async function fetchSheetValues(config) {
-  const accessToken = await getAccessToken();
+  const accessToken = await getGoogleAccessToken({ fetchWithTimeout });
   const range = `${quoteSheetName(config.sheetName)}!${config.sheetRange}`;
   const url = new URL(
     `https://sheets.googleapis.com/v4/spreadsheets/${config.spreadsheetId}/values/${encodeURIComponent(range)}`,
@@ -227,38 +227,6 @@ async function fetchSheetValues(config) {
   return payload.values || [];
 }
 
-async function getAccessToken() {
-  const credentials = readServiceAccount();
-  const now = Math.floor(Date.now() / 1000);
-  const header = { alg: "RS256", typ: "JWT" };
-  const claim = {
-    iss: credentials.client_email,
-    scope: "https://www.googleapis.com/auth/spreadsheets.readonly",
-    aud: "https://oauth2.googleapis.com/token",
-    exp: now + 3600,
-    iat: now,
-  };
-  const unsigned = `${base64Url(JSON.stringify(header))}.${base64Url(JSON.stringify(claim))}`;
-  const signature = crypto.createSign("RSA-SHA256").update(unsigned).sign(credentials.private_key);
-  const assertion = `${unsigned}.${base64Url(signature)}`;
-
-  const response = await fetchWithTimeout("https://oauth2.googleapis.com/token", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
-      assertion,
-    }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Google OAuth ${response.status}: ${await response.text()}`);
-  }
-
-  const payload = await response.json();
-  return payload.access_token;
-}
-
 async function fetchWithTimeout(url, options = {}) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
@@ -275,22 +243,6 @@ async function fetchWithTimeout(url, options = {}) {
   } finally {
     clearTimeout(timeout);
   }
-}
-
-function readServiceAccount() {
-  if (process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
-    const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
-    return JSON.parse(raw);
-  }
-
-  if (process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
-    return {
-      client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY.replaceAll("\\n", "\n"),
-    };
-  }
-
-  throw new Error("GOOGLE_SERVICE_ACCOUNT_JSON or GOOGLE_CLIENT_EMAIL/GOOGLE_PRIVATE_KEY is required");
 }
 
 async function writeIndex(indexPath, parsed, defaultMonth) {
@@ -387,11 +339,6 @@ function canonicalMedia(value) {
 
 function quoteSheetName(sheetName) {
   return `'${sheetName.replaceAll("'", "''")}'`;
-}
-
-function base64Url(input) {
-  const buffer = Buffer.isBuffer(input) ? input : Buffer.from(input);
-  return buffer.toString("base64").replaceAll("+", "-").replaceAll("/", "_").replaceAll("=", "");
 }
 
 function localeSort(a, b) {
