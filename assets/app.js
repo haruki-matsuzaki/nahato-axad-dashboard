@@ -1,6 +1,7 @@
 const state = {
   index: null,
   data: null,
+  updateStatus: null,
   overallSales: null,
   overallBusinessSales: null,
   view: "home",
@@ -25,6 +26,7 @@ const els = {
   dateLabel: document.querySelector("#dateLabel"),
   timeLabel: document.querySelector("#timeLabel"),
   weatherLabel: document.querySelector("#weatherLabel"),
+  updateAlerts: document.querySelector("#updateAlerts"),
   sourceLabel: document.querySelector("#sourceLabel"),
   pageTitle: document.querySelector("#pageTitle"),
   notice: document.querySelector("#notice"),
@@ -128,6 +130,7 @@ async function init() {
 
   try {
     state.index = await fetchJson("data/index.json");
+    state.updateStatus = await fetchOptionalJson("data/update-status.json");
     populateMonthSelect();
     await loadMonth(state.index.defaultMonth || state.index.months?.[0]?.id);
   } catch (error) {
@@ -560,6 +563,7 @@ function setView(view) {
     link.classList.toggle("active", link.dataset.view === state.view);
   });
   renderSource();
+  renderUpdateAlerts();
   queueScrollProxyUpdate();
 }
 
@@ -569,6 +573,7 @@ function render() {
   const totals = aggregate(baseRecords);
 
   renderSource();
+  renderUpdateAlerts();
   renderKpis(totals);
   renderChart(baseRecords);
   renderMediaBreakdown(records);
@@ -577,6 +582,19 @@ function render() {
   renderDetailTable(records);
   renderOverallSales();
   renderOverallBusinessSales();
+}
+
+function renderUpdateAlerts() {
+  if (!els.updateAlerts) return;
+  const alerts = [];
+  if (state.updateStatus?.daily?.status === "error") {
+    alerts.push("⚠️日次更新エラー");
+  }
+  if (state.updateStatus?.monthly?.status === "error") {
+    alerts.push("⚠️月初更新エラー");
+  }
+  els.updateAlerts.hidden = alerts.length === 0;
+  els.updateAlerts.innerHTML = alerts.map((alert) => `<span class="update-alert-badge">${escapeHtml(alert)}</span>`).join("");
 }
 
 function renderSource() {

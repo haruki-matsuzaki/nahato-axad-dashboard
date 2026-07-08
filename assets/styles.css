@@ -768,6 +768,34 @@ body.modal-open {
   margin-bottom: 18px;
 }
 
+.update-alerts {
+  display: flex;
+  flex: 1 1 320px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 34px;
+  margin-top: 24px;
+}
+
+.update-alerts[hidden] {
+  display: none;
+}
+
+.update-alert-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 14px;
+  color: #ffb8b8;
+  background: rgba(255, 77, 79, 0.12);
+  border: 1px solid rgba(255, 77, 79, 0.38);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -1800,6 +1828,12 @@ body.theme-light .profile-menu-item.danger {
   color: #d93025;
 }
 
+body.theme-light .update-alert-badge {
+  color: #c22727;
+  background: rgba(216, 93, 103, 0.1);
+  border-color: rgba(216, 93, 103, 0.32);
+}
+
 body.theme-light .profile-modal {
   background: rgba(20, 29, 40, 0.38);
 }
@@ -2097,6 +2131,12 @@ body.theme-light .overall-layout-table td.business-metric-cell {
 
   .page-head {
     display: grid;
+  }
+
+  .update-alerts {
+    justify-content: flex-start;
+    min-height: auto;
+    margin-top: 0;
   }
 
   .filter-row {

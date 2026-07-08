@@ -28,18 +28,43 @@ const options = {
   totalSheetName: args.totalSheetName || process.env.TOTAL_SHEET_NAME || DEFAULT_TOTAL_SHEET_NAME,
   sheetRange: args.range || process.env.SHEET_RANGE || DEFAULT_SHEET_RANGE,
   indexPath: args.index || process.env.INDEX_FILE || "data/index.json",
+  statusPath: args.status || process.env.UPDATE_STATUS_FILE || "data/update-status.json",
   sourceManifestPath: args.sourceManifest || process.env.SOURCE_MANIFEST || "data/sheet-sources.json",
   chatworkRoomId: args.chatworkRoomId || process.env.CHATWORK_ANALYSIS_ROOM_ID || process.env.CHATWORK_ROOM_ID_ANALYSIS || "",
   githubEventSchedule: process.env.GITHUB_EVENT_SCHEDULE || "",
 };
 
-await main();
+const plan = buildUpdatePlan(options);
+try {
+  const result = await main(plan);
+  if (!options.dryRun) {
+    await writeUpdateStatus(options.statusPath, result);
+  }
+  console.log(JSON.stringify({ updated: result.results, skipped: result.skippedReason || null }, null, 2));
+  if (result.failed) {
+    process.exitCode = 1;
+  }
+} catch (error) {
+  if (!options.dryRun) {
+    await writeUpdateStatus(options.statusPath, {
+      plan,
+      results: [],
+      failed: true,
+      fatalError: errorToPayload(error),
+    });
+  }
+  console.error(error);
+  process.exitCode = 1;
+}
 
-async function main() {
-  const plan = buildUpdatePlan(options);
+async function main(plan) {
   if (!plan.targets.length) {
-    console.log(JSON.stringify({ skipped: true, reason: plan.reason }, null, 2));
-    return;
+    return {
+      plan,
+      results: [],
+      failed: false,
+      skippedReason: plan.reason,
+    };
   }
 
   const sourceCatalog = options.spreadsheetId
@@ -52,18 +77,19 @@ async function main() {
 
   const defaultMonth = await resolveDefaultMonth(options.indexPath, plan.targets.map((target) => target.month));
   const results = [];
+  let failed = false;
 
   for (const target of dedupeTargets(plan.targets)) {
     const source = selectSourceForMonth(sourceCatalog.sources, target.month);
     if (!source) {
       const message = `No Nacht sheet source found for ${target.month}. Check the master sheet or Chatwork source.`;
-      if (target.required) {
-        throw new Error(message);
-      }
+      if (target.required) failed = true;
       results.push({
         month: target.month,
         reason: target.reason,
-        skipped: true,
+        status: "error",
+        statusTypes: statusTypesForTarget(target, options),
+        required: Boolean(target.required),
         message,
       });
       continue;
@@ -73,6 +99,8 @@ async function main() {
       results.push({
         month: target.month,
         reason: target.reason,
+        status: "ok",
+        statusTypes: statusTypesForTarget(target, options),
         spreadsheetId: source.spreadsheetId,
         title: source.title || "",
         dryRun: true,
@@ -80,23 +108,127 @@ async function main() {
       continue;
     }
 
-    await runUpdateData({
-      month: target.month,
-      spreadsheetId: source.spreadsheetId,
-      defaultMonth,
-      sourceMode: source.sourceType || "discovered",
-      options,
-    });
-    results.push({
-      month: target.month,
-      reason: target.reason,
-      spreadsheetId: source.spreadsheetId,
-      title: source.title || "",
-      dryRun: false,
-    });
+    try {
+      await runUpdateData({
+        month: target.month,
+        spreadsheetId: source.spreadsheetId,
+        defaultMonth,
+        sourceMode: source.sourceType || "discovered",
+        options,
+      });
+      results.push({
+        month: target.month,
+        reason: target.reason,
+        status: "ok",
+        statusTypes: statusTypesForTarget(target, options),
+        spreadsheetId: source.spreadsheetId,
+        title: source.title || "",
+        dryRun: false,
+      });
+    } catch (error) {
+      failed = true;
+      results.push({
+        month: target.month,
+        reason: target.reason,
+        status: "error",
+        statusTypes: statusTypesForTarget(target, options),
+        required: true,
+        spreadsheetId: source.spreadsheetId,
+        title: source.title || "",
+        message: error.message,
+      });
+    }
   }
 
-  console.log(JSON.stringify({ updated: results }, null, 2));
+  return {
+    plan,
+    results,
+    failed,
+  };
+}
+
+async function writeUpdateStatus(statusPath, result) {
+  const now = new Date().toISOString();
+  const existing = await readExistingStatus(statusPath);
+  const next = {
+    generatedAt: now,
+    daily: existing.daily || emptyUpdateStatus("daily"),
+    monthly: existing.monthly || emptyUpdateStatus("monthly"),
+    lastRun: {
+      checkedAt: now,
+      failed: Boolean(result.failed),
+      skippedReason: result.skippedReason || null,
+      fatalError: result.fatalError || null,
+    },
+  };
+
+  const statusItems = result.fatalError
+    ? dedupeTargets(result.plan?.targets || []).map((target) => ({
+        month: target.month,
+        reason: target.reason,
+        status: "error",
+        statusTypes: statusTypesForTarget(target, options),
+        required: Boolean(target.required),
+        message: result.fatalError.message,
+      }))
+    : result.results || [];
+
+  for (const item of statusItems) {
+    const status = item.status === "error" ? "error" : "ok";
+    for (const type of item.statusTypes || statusTypesForReason(item.reason, options)) {
+      next[type] = {
+        status,
+        checkedAt: now,
+        month: item.month || null,
+        reason: item.reason || null,
+        message: status === "error" ? item.message || "Update failed" : null,
+      };
+    }
+  }
+
+  await writeJson(statusPath, next);
+}
+
+async function readExistingStatus(statusPath) {
+  try {
+    return JSON.parse(await fs.readFile(statusPath, "utf8"));
+  } catch {
+    return {};
+  }
+}
+
+function emptyUpdateStatus(type) {
+  return {
+    status: "ok",
+    checkedAt: null,
+    month: null,
+    reason: null,
+    message: null,
+    type,
+  };
+}
+
+function statusTypesForTarget(target, options) {
+  return statusTypesForReason(target?.reason, options);
+}
+
+function statusTypesForReason(reason, options) {
+  const text = String(reason || "");
+  const types = [];
+  if (text.includes("daily")) types.push("daily");
+  if (text.includes("monthly")) types.push("monthly");
+  if (text.includes("requested_month")) {
+    types.push(options.mode === "monthly" ? "monthly" : "daily");
+  }
+  if (!types.length) types.push(options.mode === "monthly" ? "monthly" : "daily");
+  return [...new Set(types)];
+}
+
+function errorToPayload(error) {
+  return {
+    name: error?.name || "Error",
+    message: error?.message || String(error),
+  };
 }
 
 function buildUpdatePlan(options) {
