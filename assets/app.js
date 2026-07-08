@@ -89,6 +89,12 @@ const accessIdentityEndpoint = "/cdn-cgi/access/get-identity";
 const activeUsersEndpoint = "/api/active-users";
 const presenceHeartbeatMs = 30 * 1000;
 const activeUsersRefreshMs = 10 * 1000;
+const updateAlertGraceMs = 20 * 60 * 1000;
+const dailyUpdateScheduleJst = [
+  { hour: 12, minute: 0 },
+  { hour: 15, minute: 0 },
+  { hour: 18, minute: 0 },
+];
 const fallbackUser = {
   name: "松﨑陽紀",
   email: "matsuzaki@axis-company.jp",
@@ -644,6 +650,7 @@ function updateClock() {
   els.dateLabel.textContent = clock.date;
   els.timeLabel.textContent = `${clock.time} JST`;
   els.weatherLabel.textContent = state.weatherLabel;
+  renderUpdateAlerts();
 }
 
 function formatTokyoClock(date) {
@@ -937,15 +944,47 @@ function render() {
 
 function renderUpdateAlerts() {
   if (!els.updateAlerts) return;
-  const alerts = [];
-  if (state.updateStatus?.daily?.status === "error") {
-    alerts.push("⚠️日次更新エラー");
+  const alerts = new Set();
+  if (state.updateStatus?.daily?.status === "error" || isDailyUpdateStale()) {
+    alerts.add("⚠️日次更新エラー");
   }
   if (state.updateStatus?.monthly?.status === "error") {
-    alerts.push("⚠️月初更新エラー");
+    alerts.add("⚠️月初更新エラー");
   }
-  els.updateAlerts.hidden = alerts.length === 0;
-  els.updateAlerts.innerHTML = alerts.map((alert) => `<span class="update-alert-badge">${escapeHtml(alert)}</span>`).join("");
+  const alertList = [...alerts];
+  els.updateAlerts.hidden = alertList.length === 0;
+  els.updateAlerts.innerHTML = alertList
+    .map((alert) => `<span class="update-alert-badge">${escapeHtml(alert)}</span>`)
+    .join("");
+}
+
+function isDailyUpdateStale(date = new Date()) {
+  const expectedRunAt = latestExpectedDailyRunAt(date);
+  if (!expectedRunAt) return false;
+  const checkedAt = latestTimestamp(
+    state.updateStatus?.daily?.checkedAt,
+    state.updateStatus?.lastRun?.checkedAt,
+  );
+  return !checkedAt || checkedAt < expectedRunAt;
+}
+
+function latestExpectedDailyRunAt(date) {
+  const cutoff = date.getTime() - updateAlertGraceMs;
+  const today = tokyoDateParts(date);
+  const yesterday = tokyoDateParts(new Date(date.getTime() - 24 * 60 * 60 * 1000));
+  const candidates = [yesterday, today]
+    .flatMap((parts) =>
+      dailyUpdateScheduleJst.map((schedule) => jstDateTimeToUtcMs(parts, schedule.hour, schedule.minute)),
+    )
+    .filter((time) => time <= cutoff);
+  return candidates.length ? Math.max(...candidates) : null;
+}
+
+function latestTimestamp(...values) {
+  const timestamps = values
+    .map((value) => Date.parse(value || ""))
+    .filter((value) => Number.isFinite(value));
+  return timestamps.length ? Math.max(...timestamps) : null;
 }
 
 function renderSource() {
@@ -2111,6 +2150,11 @@ function formatDateLabel(date) {
 }
 
 function formatTokyoDateInput(date) {
+  const parts = tokyoDateParts(date);
+  return `${parts.year}-${String(parts.month).padStart(2, "0")}-${String(parts.day).padStart(2, "0")}`;
+}
+
+function tokyoDateParts(date) {
   const parts = new Intl.DateTimeFormat("ja-JP", {
     timeZone: "Asia/Tokyo",
     year: "numeric",
@@ -2123,7 +2167,15 @@ function formatTokyoDateInput(date) {
       return acc;
     }, {});
 
-  return `${parts.year}-${parts.month}-${parts.day}`;
+  return {
+    year: Number(parts.year),
+    month: Number(parts.month),
+    day: Number(parts.day),
+  };
+}
+
+function jstDateTimeToUtcMs(parts, hour, minute) {
+  return Date.UTC(parts.year, parts.month - 1, parts.day, hour - 9, minute, 0, 0);
 }
 
 function toNumber(value) {
