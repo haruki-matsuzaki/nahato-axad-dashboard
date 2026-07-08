@@ -856,6 +856,17 @@ p {
   line-height: 1;
 }
 
+.filter-action {
+  display: flex;
+  flex: 0 0 100%;
+  justify-content: flex-end;
+  margin-top: -2px;
+}
+
+.filter-action[hidden] {
+  display: none;
+}
+
 .control {
   position: relative;
   display: block;
@@ -1104,6 +1115,13 @@ p {
   color: #071016;
   background: var(--cyan);
   border-color: var(--cyan);
+}
+
+.tcb-sort-button {
+  width: 220px;
+  height: 34px;
+  justify-content: center;
+  border-radius: 10px;
 }
 
 .daily-chart {
@@ -2165,6 +2183,14 @@ body.theme-light .overall-layout-table td.business-metric-cell {
 
   .field {
     min-width: 0;
+  }
+
+  .filter-action {
+    grid-column: 1 / -1;
+  }
+
+  .tcb-sort-button {
+    width: 100%;
   }
 
   .control input,

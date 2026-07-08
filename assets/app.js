@@ -10,6 +10,7 @@ const state = {
   expandedProjects: new Set(),
   expandedBusinessUnits: new Set(),
   showBusinessDetailColumns: false,
+  tcbOnly: false,
   theme: "dark",
   weatherLabel: "東京 --℃ / --",
   user: {
@@ -41,6 +42,8 @@ const els = {
   endDate: document.querySelector("#endDate"),
   projectSelect: document.querySelector("#projectSelect"),
   mediaSelect: document.querySelector("#mediaSelect"),
+  tcbFilterField: document.querySelector("#tcbFilterField"),
+  tcbOnlyButton: document.querySelector("#tcbOnlyButton"),
   homeView: document.querySelector("#homeView"),
   mypageView: document.querySelector("#mypageView"),
   overallView: document.querySelector("#overallView"),
@@ -216,6 +219,14 @@ function bindEvents() {
   els.monthSelect.addEventListener("change", () => loadMonth(els.monthSelect.value));
   [els.startDate, els.endDate, els.projectSelect, els.mediaSelect].forEach((el) => {
     el.addEventListener("change", render);
+  });
+  els.tcbOnlyButton?.addEventListener("click", () => {
+    state.tcbOnly = !state.tcbOnly;
+    if (state.tcbOnly && els.projectSelect) {
+      els.projectSelect.value = "all";
+    }
+    updateTcbFilterButton();
+    render();
   });
 
   els.sortGross?.addEventListener("click", () => {
@@ -898,6 +909,7 @@ function setView(view) {
   els.mypageView.classList.toggle("active", state.view === "mypage");
   els.overallView.classList.toggle("active", state.view === "overall");
   els.kpiGrid.hidden = state.view !== "home";
+  updateTcbFilterButton();
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.classList.toggle("active", link.dataset.view === state.view);
   });
@@ -1996,8 +2008,21 @@ function getFilteredRecords() {
     if (end && record.date > end) return false;
     if (project !== "all" && record.project !== project) return false;
     if (media !== "all" && record.media !== media) return false;
+    if (state.view === "mypage" && state.tcbOnly && !isTcbProject(record.project)) return false;
     return true;
   });
+}
+
+function updateTcbFilterButton() {
+  if (!els.tcbFilterField || !els.tcbOnlyButton) return;
+  const visible = state.view === "mypage";
+  els.tcbFilterField.hidden = !visible;
+  els.tcbOnlyButton.classList.toggle("active", state.tcbOnly);
+  els.tcbOnlyButton.setAttribute("aria-pressed", String(state.tcbOnly));
+}
+
+function isTcbProject(project) {
+  return normalizeText(project).includes("東京中央美容外科");
 }
 
 function selectBaseRecords(records) {
