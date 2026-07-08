@@ -1214,6 +1214,11 @@ p {
   background: #182029;
 }
 
+.media-value-row .sheet-metric-name {
+  padding-left: 42px;
+  text-align: left;
+}
+
 .media-head-row .sheet-name-cell {
   padding-left: 24px;
   background: #151b22;
