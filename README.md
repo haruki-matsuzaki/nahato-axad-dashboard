@@ -17,7 +17,8 @@
 - 操作系なし
 - 表示指標は売上、粗利、消化、CV、ROAS、CPA
 - 反映済み期間は `data/index.json` の月一覧を参照
-- 毎日 9:00 / 18:00 JST にGoogle Sheets APIから取り込み
+- 毎日 12:00 / 15:00 / 18:00 JST にGoogle Sheets APIから取り込み
+- 月初は毎月1日、土日祝日の場合は翌平日、15:00 JST に新しい対象月を追加
 
 ## 公開・認証
 
@@ -36,18 +37,49 @@ Cloudflare側の設定:
 
 ## データ更新
 
-GitHub Actionsで `scripts/update-data.mjs` を実行します。
+GitHub Actionsで `scripts/update-month-from-sources.mjs` を実行します。
+
+自動化の方針:
+
+- 正の参照元は `ナハト売上表` の管理シートです
+- Chatwork「【分析】運用データ共有」のtoall周知は補助参照です
+- 日次更新は前日が属する月のナハトシート全体を再取得します
+- 月初更新は当月のナハトシートを検出し、サイト上の月選択に `20XX年XX月` を追加します
+- ブラウザ操作は自動化に使わず、Google Sheets API / Chatwork APIで取得します
 
 必要なGitHub Secret:
 
 - `GOOGLE_SERVICE_ACCOUNT_JSON`
+- `CHATWORK_API_TOKEN` 任意。Chatwork補助参照を使う場合だけ設定します
+- `CHATWORK_ANALYSIS_ROOM_ID` 任意。「【分析】運用データ共有」のroom_idです
 
 Google CloudのサービスアカウントJSONをそのまま入れます。シート側では、そのサービスアカウントの `client_email` に閲覧権限を付与してください。
+
+管理シート:
+
+- Spreadsheet ID: `1Xk-p_-6Np-e5keqOy5fcgmU-TF28H5dU7UeEYDUX_7k`
+- gid: `2127655846`
+
+スケジュール:
+
+- `0 3 * * *`: 12:00 JST
+- `0 6 * * *`: 15:00 JST。日次更新に加えて、月初営業日なら当月タブを追加
+- `0 9 * * *`: 18:00 JST
+
+手動実行:
+
+- `mode=daily`: 前日が属する月を更新
+- `mode=monthly`: 当月を追加・更新
+- `mode=all`: 日次更新と月初更新を両方実行
+- `month=YYYY-MM`: 指定月だけ更新
+- `spreadsheet_id`: 指定したナハトシートIDを直接更新
+- `force_monthly=true`: 月初営業日判定を無視してmonthly/allを実行
 
 ## ローカル確認
 
 ```bash
 npm run test:parser
+npm run test:schedule
 npm start
 ```
 

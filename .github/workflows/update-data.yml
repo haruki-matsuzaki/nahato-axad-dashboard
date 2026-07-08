@@ -2,8 +2,27 @@ name: Update Nacht AXAD data
 
 on:
   schedule:
-    - cron: "0 0,9 * * *"
+    - cron: "0 3 * * *"
+    - cron: "0 6 * * *"
+    - cron: "0 9 * * *"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "scheduled / daily / monthly / all"
+        required: false
+        default: "daily"
+      month:
+        description: "任意: YYYY-MM。指定するとその月だけ更新"
+        required: false
+        default: ""
+      spreadsheet_id:
+        description: "任意: 対象ナハトシートID。指定時は管理シート検索を省略"
+        required: false
+        default: ""
+      force_monthly:
+        description: "manual monthly/all用: 月初営業日判定を無視して実行"
+        required: false
+        default: "true"
 
 permissions:
   contents: write
@@ -21,12 +40,19 @@ jobs:
       - name: Fetch Google Sheets data
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-          SPREADSHEET_ID: 1zMzWe0dg3dOrhRWJ6X7a6vIRhrLh9TYTKV9bzcXuefY
+          CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
+          CHATWORK_ANALYSIS_ROOM_ID: ${{ secrets.CHATWORK_ANALYSIS_ROOM_ID }}
+          MASTER_SPREADSHEET_ID: 1Xk-p_-6Np-e5keqOy5fcgmU-TF28H5dU7UeEYDUX_7k
+          MASTER_SHEET_ID: "2127655846"
           SHEET_NAME: ◆案件媒体別日次_全体
           TOTAL_SHEET_NAME: ◆案件別日次_全体_固定用
           SHEET_RANGE: A1:ZZ3000
-          TARGET_MONTH: "2026-06"
-        run: node scripts/update-data.mjs
+          UPDATE_MODE: ${{ github.event.inputs.mode || 'scheduled' }}
+          TARGET_MONTH: ${{ github.event.inputs.month }}
+          SPREADSHEET_ID: ${{ github.event.inputs.spreadsheet_id }}
+          FORCE_MONTHLY: ${{ github.event.inputs.force_monthly || 'false' }}
+          GITHUB_EVENT_SCHEDULE: ${{ github.event.schedule }}
+        run: node scripts/update-month-from-sources.mjs
 
       - name: Commit updated data
         uses: stefanzweifel/git-auto-commit-action@v5

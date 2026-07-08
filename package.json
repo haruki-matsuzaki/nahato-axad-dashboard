@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "update:data": "node scripts/update-data.mjs",
+    "update:auto": "node scripts/update-month-from-sources.mjs",
     "test:parser": "node scripts/update-data.mjs --fixture scripts/fixtures/nacht-sample-values.json --month 2026-06 --out /tmp/nacht-test-2026-06.json --index /tmp/nacht-test-index.json",
+    "test:schedule": "node scripts/update-month-from-sources.mjs --mode monthly --dryRun --force --month 2026-08 --spreadsheetId test-spreadsheet-id",
     "start": "python3 -m http.server 4173"
   },
   "engines": {
