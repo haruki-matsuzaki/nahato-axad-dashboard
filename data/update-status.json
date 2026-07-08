@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-08T04:15:45.851Z",
+  "generatedAt": "2026-07-08T05:56:49.576Z",
   "daily": {
     "status": "error",
-    "checkedAt": "2026-07-08T04:15:45.851Z",
+    "checkedAt": "2026-07-08T05:56:49.576Z",
     "month": "2026-07",
     "reason": "daily_previous_day",
     "message": "update-data.mjs failed for 2026-07 with exit code 1"
@@ -16,7 +16,7 @@
     "type": "monthly"
   },
   "lastRun": {
-    "checkedAt": "2026-07-08T04:15:45.851Z",
+    "checkedAt": "2026-07-08T05:56:49.576Z",
     "failed": true,
     "skippedReason": null,
     "fatalError": null
