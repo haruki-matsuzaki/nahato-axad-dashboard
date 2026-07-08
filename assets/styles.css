@@ -2175,22 +2175,53 @@ body.theme-light .overall-layout-table td.business-metric-cell {
   }
 
   .filter-row {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    justify-content: stretch;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: end;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    gap: 8px;
+    padding-bottom: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
   }
 
   .field {
+    flex: 0 0 auto;
     min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  .field:nth-of-type(1) .control select,
+  .field:nth-of-type(5) .control select {
+    min-width: 128px;
+  }
+
+  .field:nth-of-type(2) .control input,
+  .field:nth-of-type(3) .control input {
+    min-width: 142px;
+  }
+
+  .field:nth-of-type(4) .control-wide select {
+    min-width: 206px;
   }
 
   .filter-action {
-    grid-column: 1 / -1;
+    flex: 0 0 auto;
+    align-self: end;
+    justify-content: flex-start;
+    margin-top: 0;
+    padding-top: 16px;
+    scroll-snap-align: start;
   }
 
   .tcb-sort-button {
-    width: 100%;
+    width: 150px;
   }
 
   .control input,
@@ -2253,7 +2284,8 @@ body.theme-light .overall-layout-table td.business-metric-cell {
   }
 
   .filter-row {
-    grid-template-columns: 1fr;
+    margin-right: -10px;
+    padding-right: 10px;
   }
 
   .login-shell {
