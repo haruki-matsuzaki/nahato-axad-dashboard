@@ -12,6 +12,7 @@ const DEFAULT_TOTAL_SHEET_NAME = "◆案件別日次_全体_固定用";
 const DEFAULT_SHEET_RANGE = "A1:ZZ3000";
 const JST_TIME_ZONE = "Asia/Tokyo";
 const MONTHLY_SCHEDULE_CRONS = new Set(["0 6 * * *", "7 6 * * *"]);
+const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 45_000);
 
 const args = parseArgs(process.argv.slice(2));
 const options = {
@@ -383,7 +384,7 @@ async function discoverFromChatwork(options, warnings) {
   const url = new URL(`https://api.chatwork.com/v2/rooms/${options.chatworkRoomId}/messages`);
   url.searchParams.set("force", "1");
 
-  const response = await fetch(url, {
+  const response = await fetchWithTimeout(url, {
     headers: {
       "X-ChatWorkToken": token,
     },
@@ -440,7 +441,7 @@ async function fetchSpreadsheetMetadata(spreadsheetId, warnings = null) {
   const url = new URL(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}`);
   url.searchParams.set("fields", "properties.title,sheets.properties(sheetId,title)");
 
-  const response = await fetch(url, {
+  const response = await fetchWithTimeout(url, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
@@ -465,7 +466,7 @@ async function fetchSheetValues(spreadsheetId, sheetName, range) {
   url.searchParams.set("valueRenderOption", "FORMATTED_VALUE");
   url.searchParams.set("dateTimeRenderOption", "FORMATTED_STRING");
 
-  const response = await fetch(url, {
+  const response = await fetchWithTimeout(url, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
@@ -599,7 +600,7 @@ async function getAccessToken() {
   const signature = crypto.createSign("RSA-SHA256").update(unsigned).sign(credentials.private_key);
   const assertion = `${unsigned}.${base64Url(signature)}`;
 
-  const response = await fetch("https://oauth2.googleapis.com/token", {
+  const response = await fetchWithTimeout("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
@@ -614,6 +615,24 @@ async function getAccessToken() {
 
   const payload = await response.json();
   return payload.access_token;
+}
+
+async function fetchWithTimeout(url, options = {}) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  try {
+    return await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+  } catch (error) {
+    if (error?.name === "AbortError") {
+      throw new Error(`Fetch timed out after ${FETCH_TIMEOUT_MS}ms: ${String(url)}`);
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function readServiceAccount() {
