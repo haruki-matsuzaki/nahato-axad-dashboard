@@ -92,8 +92,11 @@ const activeUsersRefreshMs = 10 * 1000;
 const updateAlertGraceMs = 20 * 60 * 1000;
 const dailyUpdateScheduleJst = [
   { hour: 12, minute: 0 },
+  { hour: 12, minute: 7 },
   { hour: 15, minute: 0 },
+  { hour: 15, minute: 7 },
   { hour: 18, minute: 0 },
+  { hour: 18, minute: 7 },
 ];
 const fallbackUser = {
   name: "松﨑陽紀",

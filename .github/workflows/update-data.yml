@@ -2,9 +2,14 @@ name: Update Nacht AXAD data
 
 on:
   schedule:
+    # Primary: 12:00 / 15:00 / 18:00 JST
     - cron: "0 3 * * *"
     - cron: "0 6 * * *"
     - cron: "0 9 * * *"
+    # Backup: GitHub Actions scheduled jobs can be delayed or dropped at :00.
+    - cron: "7 3 * * *"
+    - cron: "7 6 * * *"
+    - cron: "7 9 * * *"
   workflow_dispatch:
     inputs:
       mode:
