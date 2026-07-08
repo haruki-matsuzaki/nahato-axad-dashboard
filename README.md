@@ -31,9 +31,14 @@ Cloudflare側の設定:
 3. Cloudflare AccessでPagesの公開URLを対象にしたApplicationを作成する
 4. 認証プロバイダにGoogleを設定する
 5. Allow policyで `@shibuya-ad.com` のメールドメインのみ許可する
-6. GitHub Settings > Pagesで既存のGitHub Pages公開を停止する
+6. KV namespaceを作成し、PagesのFunctions bindingに `ACTIVE_USERS` という名前で紐付ける
+7. GitHub Settings > Pagesで既存のGitHub Pages公開を停止する
 
 アプリ内のログイン前画面はUIとして残しています。本当の閲覧制限はCloudflare Accessで行います。
+
+ログイン中ユーザー一覧はCloudflare Pages FunctionsとKVで管理します。各ブラウザが30秒ごとに
+`/api/active-users` へ最終アクセス時刻を送信し、直近5分以内にheartbeatがあったユーザーを
+オンラインとして表示します。
 
 ## データ更新
 

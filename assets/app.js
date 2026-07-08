@@ -16,6 +16,10 @@ const state = {
     name: "松﨑陽紀",
     email: "matsuzaki@axis-company.jp",
   },
+  activeUsers: [],
+  activeUsersError: "",
+  presenceHeartbeatTimer: null,
+  activeUsersRefreshTimer: null,
 };
 
 const els = {
@@ -77,6 +81,9 @@ const themeStorageKey = "nacht-axad-theme";
 const authStorageKey = "nacht-axad-auth";
 const avatarStoragePrefix = "nacht-axad-avatar:";
 const accessIdentityEndpoint = "/cdn-cgi/access/get-identity";
+const activeUsersEndpoint = "/api/active-users";
+const presenceHeartbeatMs = 30 * 1000;
+const activeUsersRefreshMs = 10 * 1000;
 const fallbackUser = {
   name: "松﨑陽紀",
   email: "matsuzaki@axis-company.jp",
@@ -122,8 +129,9 @@ init();
 async function init() {
   bindEvents();
   initTheme();
-  initAuthGate();
+  const authenticated = initAuthGate();
   await loadAuthenticatedUser();
+  if (authenticated) startPresenceHeartbeat();
   startClock();
   fetchTokyoWeather();
   window.setInterval(fetchTokyoWeather, 10 * 60 * 1000);
@@ -215,6 +223,7 @@ function bindEvents() {
     localStorage.setItem(authStorageKey, "ok");
     document.body.classList.remove("auth-locked");
     await loadAuthenticatedUser();
+    startPresenceHeartbeat();
     queueScrollProxyUpdate();
   });
 
@@ -241,6 +250,7 @@ function bindEvents() {
       state.user = { ...(state.user || fallbackUser), avatar };
       localStorage.setItem(avatarStorageKeyForUser(state.user), avatar);
       renderUserProfile();
+      sendActiveUsersHeartbeat({ silent: true });
     } catch (error) {
       showNotice("画像を読み込めませんでした");
       console.error(error);
@@ -265,10 +275,17 @@ function bindEvents() {
     }
   });
 
-  els.logoutButton?.addEventListener("click", () => {
+  els.logoutButton?.addEventListener("click", async () => {
+    stopPresenceHeartbeat();
+    await unregisterActiveUser();
     localStorage.removeItem(authStorageKey);
     closeProfileMenu();
+    closeActiveUsersModal();
     document.body.classList.add("auth-locked");
+  });
+
+  window.addEventListener("pagehide", () => {
+    sendActiveUsersOfflineBeacon();
   });
 
   const initialHash = location.hash.replace("#", "");
@@ -287,6 +304,7 @@ function initTheme() {
 function initAuthGate() {
   const authenticated = localStorage.getItem(authStorageKey) === "ok";
   document.body.classList.toggle("auth-locked", !authenticated);
+  return authenticated;
 }
 
 async function loadAuthenticatedUser() {
@@ -359,34 +377,174 @@ function renderUserProfile() {
 
 function openActiveUsersModal() {
   if (!els.activeUsersModal || !els.activeUsersList) return;
-  renderActiveUsersList();
+  renderActiveUsersList({ loading: true });
   els.activeUsersModal.hidden = false;
   document.body.classList.add("modal-open");
+  fetchActiveUsersList({ silent: false });
+  window.clearInterval(state.activeUsersRefreshTimer);
+  state.activeUsersRefreshTimer = window.setInterval(() => {
+    fetchActiveUsersList({ silent: true });
+  }, activeUsersRefreshMs);
 }
 
 function closeActiveUsersModal() {
   if (!els.activeUsersModal) return;
   els.activeUsersModal.hidden = true;
   document.body.classList.remove("modal-open");
+  window.clearInterval(state.activeUsersRefreshTimer);
+  state.activeUsersRefreshTimer = null;
 }
 
-function renderActiveUsersList() {
+function renderActiveUsersList(options = {}) {
+  if (!els.activeUsersList) return;
+
+  if (options.loading) {
+    els.activeUsersList.innerHTML = `<div class="active-users-state">読み込み中</div>`;
+    return;
+  }
+
+  if (state.activeUsersError) {
+    els.activeUsersList.innerHTML = `<div class="active-users-state">${escapeHtml(state.activeUsersError)}</div>`;
+    return;
+  }
+
+  const users = state.activeUsers.length ? state.activeUsers : [state.user || fallbackUser];
+  els.activeUsersList.innerHTML = users
+    .map((user) => {
+      const name = normalizeText(user.name) || emailName(user.email) || fallbackUser.name;
+      const email = normalizeText(user.email);
+      const avatar = normalizeText(user.avatar);
+      return `
+        <div class="active-user-row">
+          <span class="active-user-avatar ${avatar ? "has-image" : ""}">
+            ${avatar ? `<img src="${escapeAttribute(avatar)}" alt="">` : escapeHtml(avatarInitial(name || email))}
+          </span>
+          <span class="active-user-main">
+            <span class="active-user-name">${escapeHtml(name)}</span>
+            ${email ? `<span class="active-user-email">${escapeHtml(email)}</span>` : ""}
+          </span>
+          <span class="active-user-status">オンライン</span>
+        </div>
+      `;
+    })
+    .join("");
+}
+
+function startPresenceHeartbeat() {
+  stopPresenceHeartbeat();
+  sendActiveUsersHeartbeat({ silent: true });
+  state.presenceHeartbeatTimer = window.setInterval(() => {
+    sendActiveUsersHeartbeat({ silent: true });
+  }, presenceHeartbeatMs);
+}
+
+function stopPresenceHeartbeat() {
+  window.clearInterval(state.presenceHeartbeatTimer);
+  state.presenceHeartbeatTimer = null;
+}
+
+async function sendActiveUsersHeartbeat({ silent } = {}) {
+  if (!isAppAuthenticated()) return;
+  try {
+    const result = await requestActiveUsers("POST", { user: activeUserPayload() });
+    updateActiveUsersState(result.users || []);
+  } catch (error) {
+    if (!silent) {
+      state.activeUsersError = activeUsersErrorMessage(error);
+      renderActiveUsersList();
+    }
+  }
+}
+
+async function fetchActiveUsersList({ silent } = {}) {
+  try {
+    const result = await requestActiveUsers("GET");
+    updateActiveUsersState(result.users || []);
+  } catch (error) {
+    if (!silent) {
+      state.activeUsersError = activeUsersErrorMessage(error);
+      renderActiveUsersList();
+    }
+  }
+}
+
+async function unregisterActiveUser() {
+  try {
+    await requestActiveUsers("DELETE");
+  } catch {
+    // Stale sessions are removed by KV TTL, so logout does not need to block.
+  }
+}
+
+async function requestActiveUsers(method, body) {
+  const options = {
+    method,
+    cache: "no-store",
+    credentials: "same-origin",
+    headers: {
+      Accept: "application/json",
+    },
+  };
+  if (body) {
+    options.headers["Content-Type"] = "application/json";
+    options.body = JSON.stringify(body);
+  }
+  const response = await fetch(activeUsersEndpoint, options);
+  if (!response.ok) {
+    const error = new Error(`Active users API ${response.status}`);
+    error.status = response.status;
+    throw error;
+  }
+  return response.json();
+}
+
+function updateActiveUsersState(users) {
+  state.activeUsers = Array.isArray(users) ? users.map(normalizeActiveUser).filter(Boolean) : [];
+  state.activeUsersError = "";
+  if (els.activeUsersModal?.hidden === false) {
+    renderActiveUsersList();
+  }
+}
+
+function normalizeActiveUser(user) {
+  const email = normalizeText(user?.email);
+  const name = normalizeText(user?.name) || emailName(email);
+  if (!email && !name) return null;
+  return {
+    name,
+    email,
+    avatar: normalizeText(user?.avatar),
+    lastSeen: Number(user?.lastSeen) || 0,
+  };
+}
+
+function activeUserPayload() {
   const user = state.user || fallbackUser;
-  const name = normalizeText(user.name) || fallbackUser.name;
-  const email = normalizeText(user.email);
-  const avatar = normalizeText(user.avatar);
-  els.activeUsersList.innerHTML = `
-    <div class="active-user-row">
-      <span class="active-user-avatar ${avatar ? "has-image" : ""}">
-        ${avatar ? `<img src="${escapeAttribute(avatar)}" alt="">` : escapeHtml(avatarInitial(name || email))}
-      </span>
-      <span class="active-user-main">
-        <span class="active-user-name">${escapeHtml(name)}</span>
-        ${email ? `<span class="active-user-email">${escapeHtml(email)}</span>` : ""}
-      </span>
-      <span class="active-user-status">オンライン</span>
-    </div>
-  `;
+  return {
+    name: normalizeText(user.name) || fallbackUser.name,
+    email: normalizeText(user.email),
+    avatar: normalizeText(user.avatar),
+  };
+}
+
+function sendActiveUsersOfflineBeacon() {
+  if (!isAppAuthenticated() || !navigator.sendBeacon) return;
+  const body = JSON.stringify({
+    action: "offline",
+    user: activeUserPayload(),
+  });
+  navigator.sendBeacon(activeUsersEndpoint, new Blob([body], { type: "application/json" }));
+}
+
+function activeUsersErrorMessage(error) {
+  if (error?.status === 503) {
+    return "リアルタイム一覧を使うにはCloudflare KVのACTIVE_USERS bindingが必要です";
+  }
+  return "ログイン中ユーザーを読み込めませんでした";
+}
+
+function isAppAuthenticated() {
+  return localStorage.getItem(authStorageKey) === "ok";
 }
 
 function toggleProfileMenu() {

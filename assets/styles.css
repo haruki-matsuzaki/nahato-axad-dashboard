@@ -694,6 +694,13 @@ body.modal-open {
   padding: 8px;
 }
 
+.active-users-state {
+  padding: 18px 14px;
+  color: #98a6b3;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 .active-user-row {
   display: grid;
   grid-template-columns: 36px minmax(0, 1fr) auto;
@@ -1871,6 +1878,10 @@ body.theme-light .active-user-status {
   color: #16805b;
   background: rgba(35, 168, 121, 0.1);
   border-color: rgba(35, 168, 121, 0.2);
+}
+
+body.theme-light .active-users-state {
+  color: #627181;
 }
 
 body.theme-light .notice {
