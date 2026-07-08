@@ -144,12 +144,6 @@
                   </span>
                   <span>プロフィール写真を変更</span>
                 </button>
-                <button class="profile-menu-item active" id="activeUsersButton" type="button">
-                  <span class="profile-menu-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" /><path d="M15.5 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" /><path d="M3.5 19.5a5 5 0 0 1 10 0" /><path d="M13.5 18.5a4.1 4.1 0 0 1 7 1" /></svg>
-                  </span>
-                  <span>ログイン中のユーザー一覧</span>
-                </button>
                 <button class="profile-menu-item danger" id="logoutButton" type="button">
                   <span class="profile-menu-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" focusable="false"><path d="M10 6H5v12h5" /><path d="M14 8l4 4-4 4" /><path d="M8 12h10" /></svg>
@@ -326,21 +320,6 @@
       </main>
     </div>
 
-    <div class="profile-modal" id="activeUsersModal" hidden role="dialog" aria-modal="true" aria-labelledby="activeUsersTitle">
-      <div class="profile-modal-card">
-        <div class="profile-modal-head">
-          <h2 id="activeUsersTitle">ログイン中のユーザー一覧</h2>
-          <button class="profile-modal-close" id="activeUsersClose" type="button" aria-label="閉じる">
-            <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-              <path d="M6 6l12 12" />
-              <path d="M18 6 6 18" />
-            </svg>
-          </button>
-        </div>
-        <div class="active-users-list" id="activeUsersList"></div>
-      </div>
-    </div>
-
-    <script type="module" src="assets/app.js?v=20260708-09"></script>
+    <script type="module" src="assets/app.js?v=20260708-10"></script>
   </body>
 </html>

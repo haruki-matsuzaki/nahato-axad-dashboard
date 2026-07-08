@@ -1277,6 +1277,7 @@ p {
 
 .data-table,
 .sheet-table {
+  --media-indent: 42px;
   width: 100%;
   min-width: 920px;
   border-collapse: collapse;
@@ -1392,12 +1393,13 @@ p {
 }
 
 .media-value-row .sheet-metric-name {
-  padding-left: 42px;
+  padding-left: calc(var(--media-indent) + 16px);
   text-align: left;
+  background: linear-gradient(to right, #151b22 0, #151b22 var(--media-indent), #182029 var(--media-indent), #182029 100%);
 }
 
 .media-head-row .sheet-name-cell {
-  padding-left: 24px;
+  padding-left: var(--media-indent);
   background: #151b22;
 }
 
@@ -1990,6 +1992,10 @@ body.theme-light .media-value-row .sheet-metric-name {
 body.theme-light .media-head-row .sheet-name-cell,
 body.theme-light .media-value-row .sheet-metric-name {
   background: #eef3f8;
+}
+
+body.theme-light .media-value-row .sheet-metric-name {
+  background: linear-gradient(to right, #ffffff 0, #ffffff var(--media-indent), #eef3f8 var(--media-indent), #eef3f8 100%);
 }
 
 body.theme-light .sheet-spacer-row td {

@@ -181,9 +181,8 @@ init();
 async function init() {
   bindEvents();
   initTheme();
-  const authenticated = initAuthGate();
+  initAuthGate();
   await loadAuthenticatedUser();
-  if (authenticated) startPresenceHeartbeat();
   startClock();
   fetchTokyoWeather();
   window.setInterval(fetchTokyoWeather, 10 * 60 * 1000);
@@ -276,7 +275,6 @@ function bindEvents() {
     localStorage.setItem(authStorageKey, "ok");
     document.body.classList.remove("auth-locked");
     await loadAuthenticatedUser();
-    startPresenceHeartbeat();
     queueScrollProxyUpdate();
   });
 
@@ -303,7 +301,6 @@ function bindEvents() {
       state.user = { ...(state.user || fallbackUser), avatar };
       localStorage.setItem(avatarStorageKeyForUser(state.user), avatar);
       renderUserProfile();
-      sendActiveUsersHeartbeat({ silent: true });
     } catch (error) {
       showNotice("画像を読み込めませんでした");
       console.error(error);
@@ -329,16 +326,10 @@ function bindEvents() {
   });
 
   els.logoutButton?.addEventListener("click", async () => {
-    stopPresenceHeartbeat();
-    await unregisterActiveUser();
     localStorage.removeItem(authStorageKey);
     closeProfileMenu();
     closeActiveUsersModal();
     document.body.classList.add("auth-locked");
-  });
-
-  window.addEventListener("pagehide", () => {
-    sendActiveUsersOfflineBeacon();
   });
 
   const initialHash = location.hash.replace("#", "");
