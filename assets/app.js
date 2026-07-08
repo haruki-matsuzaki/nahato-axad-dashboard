@@ -80,6 +80,7 @@ const els = {
 const themeStorageKey = "nacht-axad-theme";
 const authStorageKey = "nacht-axad-auth";
 const avatarStoragePrefix = "nacht-axad-avatar:";
+const accessReloadStorageKey = "nacht-axad-access-reload-attempted";
 const accessIdentityEndpoint = "/cdn-cgi/access/get-identity";
 const activeUsersEndpoint = "/api/active-users";
 const presenceHeartbeatMs = 30 * 1000;
@@ -652,7 +653,7 @@ async function loadMonth(monthId) {
 }
 
 async function fetchJson(path) {
-  const response = await fetch(path, { cache: "no-store" });
+  const response = await fetchLocalJson(path);
   if (!response.ok) {
     throw new Error(`${path}: ${response.status}`);
   }
@@ -660,12 +661,39 @@ async function fetchJson(path) {
 }
 
 async function fetchOptionalJson(path) {
-  const response = await fetch(path, { cache: "no-store" });
+  const response = await fetchLocalJson(path);
   if (response.status === 404) return null;
   if (!response.ok) {
     throw new Error(`${path}: ${response.status}`);
   }
   return response.json();
+}
+
+async function fetchLocalJson(path) {
+  try {
+    const response = await fetch(path, localJsonFetchOptions());
+    if (response.ok) sessionStorage.removeItem(accessReloadStorageKey);
+    return response;
+  } catch (error) {
+    reloadOnceForAccessSession();
+    throw error;
+  }
+}
+
+function localJsonFetchOptions() {
+  return {
+    cache: "no-store",
+    credentials: "same-origin",
+    headers: {
+      Accept: "application/json",
+    },
+  };
+}
+
+function reloadOnceForAccessSession() {
+  if (sessionStorage.getItem(accessReloadStorageKey) === "1") return;
+  sessionStorage.setItem(accessReloadStorageKey, "1");
+  window.location.reload();
 }
 
 function populateMonthSelect() {
