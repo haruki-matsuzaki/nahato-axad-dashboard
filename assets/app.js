@@ -62,11 +62,18 @@ const els = {
   themeToggle: document.querySelector("#themeToggle"),
   profileMenuButton: document.querySelector("#profileMenuButton"),
   profileMenu: document.querySelector("#profileMenu"),
+  profilePhotoButton: document.querySelector("#profilePhotoButton"),
+  profilePhotoInput: document.querySelector("#profilePhotoInput"),
+  activeUsersButton: document.querySelector("#activeUsersButton"),
+  activeUsersModal: document.querySelector("#activeUsersModal"),
+  activeUsersClose: document.querySelector("#activeUsersClose"),
+  activeUsersList: document.querySelector("#activeUsersList"),
   logoutButton: document.querySelector("#logoutButton"),
 };
 
 const themeStorageKey = "nacht-axad-theme";
 const authStorageKey = "nacht-axad-auth";
+const avatarStoragePrefix = "nacht-axad-avatar:";
 const accessIdentityEndpoint = "/cdn-cgi/access/get-identity";
 const fallbackUser = {
   name: "松﨑陽紀",
@@ -217,9 +224,42 @@ function bindEvents() {
     event.stopPropagation();
   });
 
+  els.profilePhotoButton?.addEventListener("click", () => {
+    closeProfileMenu();
+    els.profilePhotoInput?.click();
+  });
+
+  els.profilePhotoInput?.addEventListener("change", async () => {
+    const file = els.profilePhotoInput.files?.[0];
+    els.profilePhotoInput.value = "";
+    if (!file) return;
+    try {
+      const avatar = await imageFileToAvatar(file);
+      state.user = { ...(state.user || fallbackUser), avatar };
+      localStorage.setItem(avatarStorageKeyForUser(state.user), avatar);
+      renderUserProfile();
+    } catch (error) {
+      showNotice("画像を読み込めませんでした");
+      console.error(error);
+    }
+  });
+
+  els.activeUsersButton?.addEventListener("click", () => {
+    closeProfileMenu();
+    openActiveUsersModal();
+  });
+
+  els.activeUsersClose?.addEventListener("click", closeActiveUsersModal);
+  els.activeUsersModal?.addEventListener("click", (event) => {
+    if (event.target === els.activeUsersModal) closeActiveUsersModal();
+  });
+
   document.addEventListener("click", closeProfileMenu);
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeProfileMenu();
+    if (event.key === "Escape") {
+      closeProfileMenu();
+      closeActiveUsersModal();
+    }
   });
 
   els.logoutButton?.addEventListener("click", () => {
@@ -249,6 +289,7 @@ function initAuthGate() {
 async function loadAuthenticatedUser() {
   const identity = await fetchAccessIdentity();
   state.user = normalizeAccessUser(identity) || fallbackUser;
+  state.user.avatar = localStorage.getItem(avatarStorageKeyForUser(state.user)) || "";
   renderUserProfile();
 }
 
@@ -305,8 +346,44 @@ function renderUserProfile() {
     element.hidden = !email;
   });
   document.querySelectorAll(".avatar").forEach((element) => {
-    element.textContent = avatarInitial(name || email);
+    const avatar = normalizeText(user.avatar);
+    element.classList.toggle("has-image", Boolean(avatar));
+    element.innerHTML = avatar
+      ? `<img src="${escapeAttribute(avatar)}" alt="">`
+      : escapeHtml(avatarInitial(name || email));
   });
+}
+
+function openActiveUsersModal() {
+  if (!els.activeUsersModal || !els.activeUsersList) return;
+  renderActiveUsersList();
+  els.activeUsersModal.hidden = false;
+  document.body.classList.add("modal-open");
+}
+
+function closeActiveUsersModal() {
+  if (!els.activeUsersModal) return;
+  els.activeUsersModal.hidden = true;
+  document.body.classList.remove("modal-open");
+}
+
+function renderActiveUsersList() {
+  const user = state.user || fallbackUser;
+  const name = normalizeText(user.name) || fallbackUser.name;
+  const email = normalizeText(user.email);
+  const avatar = normalizeText(user.avatar);
+  els.activeUsersList.innerHTML = `
+    <div class="active-user-row">
+      <span class="active-user-avatar ${avatar ? "has-image" : ""}">
+        ${avatar ? `<img src="${escapeAttribute(avatar)}" alt="">` : escapeHtml(avatarInitial(name || email))}
+      </span>
+      <span class="active-user-main">
+        <span class="active-user-name">${escapeHtml(name)}</span>
+        ${email ? `<span class="active-user-email">${escapeHtml(email)}</span>` : ""}
+      </span>
+      <span class="active-user-status">オンライン</span>
+    </div>
+  `;
 }
 
 function toggleProfileMenu() {
@@ -1374,6 +1451,46 @@ function avatarInitial(value) {
   const text = normalizeText(value);
   const first = Array.from(text).find((char) => /\S/.test(char));
   return first ? first.toUpperCase() : Array.from(fallbackUser.name)[0];
+}
+
+function avatarStorageKeyForUser(user) {
+  const id = normalizeText(user?.email || user?.name || fallbackUser.email || fallbackUser.name).toLowerCase();
+  return `${avatarStoragePrefix}${id}`;
+}
+
+async function imageFileToAvatar(file) {
+  if (!file.type.startsWith("image/")) throw new Error("Unsupported profile image file");
+  const dataUrl = await readFileAsDataUrl(file);
+  const image = await loadImage(dataUrl);
+  const size = 96;
+  const sourceSize = Math.min(image.naturalWidth || image.width, image.naturalHeight || image.height);
+  const sourceX = ((image.naturalWidth || image.width) - sourceSize) / 2;
+  const sourceY = ((image.naturalHeight || image.height) - sourceSize) / 2;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const context = canvas.getContext("2d");
+  if (!context) throw new Error("Canvas is not available");
+  context.drawImage(image, sourceX, sourceY, sourceSize, sourceSize, 0, 0, size, size);
+  return canvas.toDataURL("image/png");
+}
+
+function readFileAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => resolve(String(reader.result || "")));
+    reader.addEventListener("error", () => reject(reader.error || new Error("Failed to read file")));
+    reader.readAsDataURL(file);
+  });
+}
+
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.addEventListener("load", () => resolve(image));
+    image.addEventListener("error", () => reject(new Error("Failed to load image")));
+    image.src = src;
+  });
 }
 
 function columnIndexFromAddress(address) {

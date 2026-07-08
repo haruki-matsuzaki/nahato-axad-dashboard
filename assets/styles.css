@@ -463,6 +463,19 @@ select {
   border-radius: 50%;
 }
 
+.avatar.has-image {
+  overflow: hidden;
+  background: transparent;
+}
+
+.avatar img,
+.active-user-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .profile-chip {
   display: inline-flex;
   align-items: center;
@@ -553,12 +566,6 @@ select {
   white-space: nowrap;
 }
 
-.profile-menu-role {
-  margin-top: 4px;
-  color: #9aa7b4;
-  font-size: 11px;
-}
-
 .profile-menu-item {
   display: flex;
   align-items: center;
@@ -610,6 +617,141 @@ select {
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.profile-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(8, 12, 16, 0.66);
+}
+
+.profile-modal[hidden] {
+  display: none;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.profile-modal-card {
+  width: min(100%, 420px);
+  overflow: hidden;
+  color: #dce6ee;
+  background: #1a2028;
+  border: 1px solid #2b3540;
+  border-radius: 8px;
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.42);
+}
+
+.profile-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 54px;
+  padding: 0 16px;
+  border-bottom: 1px solid #29333d;
+}
+
+.profile-modal-head h2 {
+  margin: 0;
+  color: #e8eef5;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.profile-modal-close {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: #9aa7b4;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile-modal-close:hover {
+  color: #e8eef5;
+  background: #25303a;
+}
+
+.profile-modal-close svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.active-users-list {
+  padding: 8px;
+}
+
+.active-user-row {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.active-user-avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+  color: #081016;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--cyan);
+  border-radius: 50%;
+}
+
+.active-user-main {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.active-user-name,
+.active-user-email {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.active-user-name {
+  color: #e8eef5;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.active-user-email {
+  color: #98a6b3;
+  font-size: 12px;
+}
+
+.active-user-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 8px;
+  color: #7ee4b7;
+  background: rgba(53, 201, 141, 0.12);
+  border: 1px solid rgba(53, 201, 141, 0.22);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .content {
@@ -1645,10 +1787,6 @@ body.theme-light .profile-menu-item.active {
   color: #202a36;
 }
 
-body.theme-light .profile-menu-role {
-  color: #738294;
-}
-
 body.theme-light .profile-menu-item {
   color: #526170;
 }
@@ -1660,6 +1798,45 @@ body.theme-light .profile-menu-item.active {
 
 body.theme-light .profile-menu-item.danger {
   color: #d93025;
+}
+
+body.theme-light .profile-modal {
+  background: rgba(20, 29, 40, 0.38);
+}
+
+body.theme-light .profile-modal-card {
+  color: #26313d;
+  background: #ffffff;
+  border-color: #d8e1ea;
+  box-shadow: 0 24px 54px rgba(32, 42, 54, 0.2);
+}
+
+body.theme-light .profile-modal-head {
+  border-color: #e3e9ef;
+}
+
+body.theme-light .profile-modal-head h2,
+body.theme-light .active-user-name {
+  color: #202a36;
+}
+
+body.theme-light .profile-modal-close {
+  color: #738294;
+}
+
+body.theme-light .profile-modal-close:hover {
+  color: #202a36;
+  background: #edf4fa;
+}
+
+body.theme-light .active-user-email {
+  color: #627181;
+}
+
+body.theme-light .active-user-status {
+  color: #16805b;
+  background: rgba(35, 168, 121, 0.1);
+  border-color: rgba(35, 168, 121, 0.2);
 }
 
 body.theme-light .notice {
