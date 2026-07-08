@@ -2120,22 +2120,56 @@ body.theme-light .overall-layout-table td.business-metric-cell {
 
   .sidebar {
     position: fixed;
-    z-index: 30;
-    width: 244px;
-    transform: translateX(-100%);
-    transition: transform 160ms ease;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+    width: 100%;
+    height: calc(64px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+    background: rgba(15, 26, 36, 0.96);
+    border-top: 1px solid #263241;
+    border-right: 0;
+    backdrop-filter: blur(14px);
   }
 
-  body.sidebar-open .sidebar {
-    transform: translateX(0);
+  .brand,
+  .sidebar-status,
+  .sidebar-footer {
+    display: none;
+  }
+
+  .side-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+    height: 100%;
+    padding: 6px 8px;
+  }
+
+  .nav-link {
+    display: grid;
+    grid-template-rows: 22px 16px;
+    place-items: center;
+    gap: 2px;
+    height: 52px;
+    padding: 4px 2px;
+    border-radius: 10px;
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
   }
 
   .icon-button {
-    display: grid;
+    display: none;
   }
 
   .content {
-    padding: 22px 14px 34px;
+    padding: 22px 14px calc(88px + env(safe-area-inset-bottom));
   }
 
   .topbar {
@@ -2158,6 +2192,7 @@ body.theme-light .overall-layout-table td.business-metric-cell {
   .clock-label {
     height: 28px;
     align-items: center;
+    gap: 5px;
   }
 
   .weather-pill {
@@ -2258,8 +2293,19 @@ body.theme-light .overall-layout-table td.business-metric-cell {
     grid-template-columns: 1fr;
   }
 
+  .kpi-card {
+    min-height: 66px;
+    padding: 10px;
+  }
+
+  .kpi-value {
+    margin-top: 9px;
+    font-size: 17px;
+  }
+
   .axad-metric-row {
     grid-template-columns: minmax(120px, 1fr) minmax(132px, 0.8fr);
+    min-height: 32px;
   }
 
   .axad-metric-label,
@@ -2267,20 +2313,105 @@ body.theme-light .overall-layout-table td.business-metric-cell {
     padding: 0 10px;
     font-size: 12px;
   }
+
+  .data-table,
+  .sheet-table {
+    --media-indent: 30px;
+    min-width: 780px;
+    font-size: 12px;
+  }
+
+  .data-table th,
+  .data-table td,
+  .sheet-table th,
+  .sheet-table td {
+    height: 27px;
+    padding: 0 8px;
+  }
+
+  .sheet-table td {
+    min-width: 92px;
+  }
+
+  .sheet-name-cell,
+  .sheet-metric-name {
+    width: 168px;
+    min-width: 168px;
+    max-width: 190px;
+  }
+
+  .sheet-total-head,
+  .sheet-value-row td:nth-child(2),
+  .project-value-row td:nth-child(2),
+  .media-value-row td:nth-child(2) {
+    width: 112px;
+    min-width: 112px;
+  }
+
+  .sheet-total-head,
+  .project-value-row td:nth-child(2),
+  .media-value-row td:nth-child(2) {
+    left: 168px;
+  }
+
+  .media-value-row .sheet-metric-name {
+    padding-left: calc(var(--media-indent) + 10px);
+  }
+
+  .media-head-row .sheet-name-cell {
+    padding-left: var(--media-indent);
+  }
 }
 
 @media (max-width: 540px) {
   .topbar {
-    padding: 8px 10px;
+    min-height: 42px;
+    padding: 7px 10px;
+  }
+
+  .topbar-left {
+    gap: 6px;
+  }
+
+  .topbar-actions {
+    gap: 6px;
+  }
+
+  .theme-toggle {
+    width: 26px;
+    height: 26px;
+  }
+
+  .clock-label {
+    height: 24px;
+    gap: 4px;
+    font-size: 11px;
+  }
+
+  .clock-time {
+    font-size: 0;
+  }
+
+  .clock-time::before {
+    content: attr(data-compact);
+    font-size: 11px;
+  }
+
+  .weather-pill {
+    order: 0;
+    max-width: 104px;
+    height: 18px;
+    padding: 0 7px;
+    font-size: 0;
+  }
+
+  #weatherLabel::before {
+    content: attr(data-compact);
+    font-size: 11px;
   }
 
   .profile-text {
     display: none;
-  }
-
-  .weather-pill {
-    order: 3;
-    max-width: calc(100vw - 20px);
   }
 
   .filter-row {
@@ -2300,7 +2431,34 @@ body.theme-light .overall-layout-table td.business-metric-cell {
     font-size: 30px;
   }
 
-  .kpi-grid,
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .axad-summary,
+  .kpi-secondary {
+    grid-column: 1 / -1;
+  }
+
+  .kpi-secondary {
+    display: contents;
+  }
+
+  .kpi-card {
+    min-height: 60px;
+    padding: 9px;
+  }
+
+  .kpi-label {
+    font-size: 11px;
+  }
+
+  .kpi-value {
+    margin-top: 8px;
+    font-size: 16px;
+  }
+
   .summary-grid {
     grid-template-columns: 1fr;
   }
@@ -2320,13 +2478,22 @@ body.theme-light .overall-layout-table td.business-metric-cell {
 
   .sheet-name-cell,
   .sheet-metric-name {
-    width: 176px;
-    min-width: 176px;
+    width: 152px;
+    min-width: 152px;
+    max-width: 168px;
+  }
+
+  .sheet-total-head,
+  .sheet-value-row td:nth-child(2),
+  .project-value-row td:nth-child(2),
+  .media-value-row td:nth-child(2) {
+    width: 104px;
+    min-width: 104px;
   }
 
   .sheet-total-head,
   .project-value-row td:nth-child(2),
   .media-value-row td:nth-child(2) {
-    left: 176px;
+    left: 152px;
   }
 }

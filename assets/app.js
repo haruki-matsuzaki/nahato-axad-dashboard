@@ -652,7 +652,9 @@ function updateClock() {
   const clock = formatTokyoClock(new Date());
   els.dateLabel.textContent = clock.date;
   els.timeLabel.textContent = `${clock.time} JST`;
+  els.timeLabel.dataset.compact = `${clock.shortTime} JST`;
   els.weatherLabel.textContent = state.weatherLabel;
+  els.weatherLabel.dataset.compact = compactWeatherLabel(state.weatherLabel);
   renderUpdateAlerts();
 }
 
@@ -676,7 +678,14 @@ function formatTokyoClock(date) {
   return {
     date: `${parts.month}/${parts.day}(${parts.weekday})`,
     time: `${parts.hour}:${parts.minute}:${parts.second}`,
+    shortTime: `${parts.hour}:${parts.minute}`,
   };
+}
+
+function compactWeatherLabel(label) {
+  return normalizeText(label)
+    .replace(/^東京\s*/, "")
+    .replace(/\s*\/\s*/g, " / ");
 }
 
 async function fetchTokyoWeather() {
