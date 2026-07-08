@@ -1,12 +1,11 @@
 {
-  "generatedAt": null,
+  "generatedAt": "2026-07-08T04:15:45.851Z",
   "daily": {
-    "status": "ok",
-    "checkedAt": null,
-    "month": null,
-    "reason": null,
-    "message": null,
-    "type": "daily"
+    "status": "error",
+    "checkedAt": "2026-07-08T04:15:45.851Z",
+    "month": "2026-07",
+    "reason": "daily_previous_day",
+    "message": "update-data.mjs failed for 2026-07 with exit code 1"
   },
   "monthly": {
     "status": "ok",
@@ -17,8 +16,8 @@
     "type": "monthly"
   },
   "lastRun": {
-    "checkedAt": null,
-    "failed": false,
+    "checkedAt": "2026-07-08T04:15:45.851Z",
+    "failed": true,
     "skippedReason": null,
     "fatalError": null
   }
