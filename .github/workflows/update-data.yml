@@ -59,7 +59,32 @@ jobs:
           SPREADSHEET_ID: ${{ github.event.inputs.spreadsheet_id }}
           FORCE_MONTHLY: ${{ github.event.inputs.force_monthly || 'false' }}
           GITHUB_EVENT_SCHEDULE: ${{ github.event.schedule }}
-        run: node scripts/update-month-from-sources.mjs
+        run: |
+          set +e
+          max_attempts=3
+          attempt=1
+          status=1
+
+          while [ "$attempt" -le "$max_attempts" ]; do
+            echo "Fetch attempt ${attempt}/${max_attempts}"
+            node scripts/update-month-from-sources.mjs
+            status=$?
+
+            if [ "$status" -eq 0 ]; then
+              echo "Fetch succeeded on attempt ${attempt}/${max_attempts}"
+              exit 0
+            fi
+
+            if [ "$attempt" -lt "$max_attempts" ]; then
+              echo "Fetch failed on attempt ${attempt}/${max_attempts}. Retrying in 5 minutes."
+              sleep 300
+            fi
+
+            attempt=$((attempt + 1))
+          done
+
+          echo "Fetch failed after ${max_attempts} attempts."
+          exit "$status"
 
       - name: Validate static data
         id: validate-data

@@ -11,7 +11,7 @@ const DEFAULT_SHEET_NAME = "◆案件媒体別日次_全体";
 const DEFAULT_TOTAL_SHEET_NAME = "◆案件別日次_全体_固定用";
 const DEFAULT_SHEET_RANGE = "A1:ZZ3000";
 const JST_TIME_ZONE = "Asia/Tokyo";
-const MONTHLY_SCHEDULE_CRON = "0 6 * * *";
+const MONTHLY_SCHEDULE_CRONS = new Set(["0 6 * * *", "7 6 * * *"]);
 
 const args = parseArgs(process.argv.slice(2));
 const options = {
@@ -283,7 +283,7 @@ function buildUpdatePlan(options) {
 }
 
 function isMonthlySchedule(options) {
-  if (options.githubEventSchedule) return options.githubEventSchedule === MONTHLY_SCHEDULE_CRON;
+  if (options.githubEventSchedule) return MONTHLY_SCHEDULE_CRONS.has(options.githubEventSchedule);
   return getJstHour(options.runDate) === 15;
 }
 
