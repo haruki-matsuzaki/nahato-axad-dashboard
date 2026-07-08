@@ -128,6 +128,7 @@ function bindEvents() {
       event.preventDefault();
       setView(link.dataset.view);
       history.replaceState(null, "", `#${link.dataset.view}`);
+      if (state.data) render();
       document.body.classList.remove("sidebar-open");
     });
   });
@@ -403,7 +404,7 @@ function setView(view) {
   els.homeView.classList.toggle("active", state.view === "home");
   els.mypageView.classList.toggle("active", state.view === "mypage");
   els.overallView.classList.toggle("active", state.view === "overall");
-  els.kpiGrid.hidden = state.view === "overall";
+  els.kpiGrid.hidden = state.view !== "home";
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.classList.toggle("active", link.dataset.view === state.view);
   });
@@ -456,7 +457,7 @@ function renderSource() {
 }
 
 function renderKpis(totals) {
-  if (state.view === "overall") {
+  if (state.view !== "home") {
     els.kpiGrid.hidden = true;
     els.kpiGrid.innerHTML = "";
     return;
@@ -1338,7 +1339,9 @@ function renderProjectBlock(project, projectRecords, dates) {
 }
 
 function renderMediaBlock(media, records, dates) {
-  const mediaLabel = `<span class="media-label ${mediaClassName(media)}">${escapeHtml(media)}</span>`;
+  const mediaColor = mediaRankColorForName(media);
+  const mediaStyle = mediaColor ? ` style="${escapeAttribute(`--media-color:${mediaColor}`)}"` : "";
+  const mediaLabel = `<span class="media-label ${mediaClassName(media)}"${mediaStyle}>${escapeHtml(media)}</span>`;
   return renderSheetBlock({
     records,
     dates,
@@ -1414,6 +1417,8 @@ function mediaRankColorForName(media) {
 
 function normalizeMediaName(media) {
   const value = String(media || "").trim().toUpperCase();
+  if (value === "FACEBOOK" || value === "META") return "FB";
+  if (value === "YOUTUBE") return "YT";
   if (value === "LAP") return "LINE";
   return value;
 }

@@ -97,12 +97,11 @@ body.auth-locked .login-screen {
   place-items: center;
   width: 42px;
   height: 42px;
-  color: #ffffff;
   background:
     radial-gradient(circle at 36% 78%, #ffb000 0 16%, transparent 17%),
     linear-gradient(135deg, #ff4a00 0%, #ff6500 58%, #ff3b00 100%);
   border-radius: 10px;
-  font-weight: 700;
+  overflow: hidden;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -222,9 +221,17 @@ select {
   background:
     radial-gradient(circle at 36% 78%, #ffb000 0 16%, transparent 17%),
     linear-gradient(135deg, #ff4a00 0%, #ff6500 58%, #ff3b00 100%);
-  color: #ffffff;
-  font-weight: 700;
+  overflow: hidden;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.24);
+}
+
+.login-logo-mark img,
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
 }
 
 .brand-title {
@@ -1215,6 +1222,11 @@ p {
   background: #182029;
 }
 
+.media-head-row .sheet-name-cell {
+  padding-left: 24px;
+  background: #151b22;
+}
+
 .sheet-spacer-row td {
   height: 12px;
   padding: 0;
@@ -1512,36 +1524,38 @@ p {
 .media-label {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   height: 32px;
   color: #071016;
+  padding: 0 10px 0 14px;
   font-size: 12px;
   font-weight: 700;
+  border-left: 3px solid rgba(0, 0, 0, 0.22);
 }
 
 .media-fb {
-  background: #aac1f0;
+  background: var(--media-color, #77a5e8);
 }
 
 .media-yt {
-  background: #de9d9b;
+  background: var(--media-color, #d67e7b);
 }
 
 .media-tiktok {
-  background: #cea8bc;
+  background: var(--media-color, #bf7fa2);
 }
 
 .media-pangle {
-  background: #f2cda2;
+  background: var(--media-color, #e8b06d);
 }
 
 .media-x {
-  background: #a9c3c8;
+  background: var(--media-color, #7eacb3);
 }
 
 .media-line {
-  background: #bdd6ac;
+  background: var(--media-color, #8fbd7a);
 }
 
 .media-other {
@@ -1882,16 +1896,45 @@ body.theme-light .overall-layout-table td.business-metric-cell {
     padding: 22px 14px 34px;
   }
 
+  .topbar {
+    height: auto;
+    min-height: 48px;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 14px;
+  }
+
+  .topbar-left {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .topbar-actions {
+    margin-left: auto;
+  }
+
+  .clock-label {
+    height: 28px;
+    align-items: center;
+  }
+
+  .weather-pill {
+    max-width: calc(100vw - 120px);
+  }
+
   .page-head {
     display: grid;
   }
 
   .filter-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: stretch;
+    width: 100%;
   }
 
   .field {
-    flex: 1 1 140px;
+    min-width: 0;
   }
 
   .control input,
@@ -1901,6 +1944,27 @@ body.theme-light .overall-layout-table td.business-metric-cell {
 
   .control-wide select {
     min-width: 120px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .daily-chart {
+    grid-auto-columns: minmax(60px, 76px);
+    min-height: 280px;
+    padding: 18px 12px 12px;
+  }
+
+  .bar-item {
+    grid-template-rows: 22px 206px 18px;
+    min-width: 60px;
+    height: 258px;
+  }
+
+  .panel-head {
+    min-height: 58px;
+    padding: 12px;
   }
 
   .kpi-grid {
@@ -1920,15 +1984,61 @@ body.theme-light .overall-layout-table td.business-metric-cell {
 
 @media (max-width: 540px) {
   .topbar {
-    padding: 0 12px;
+    padding: 8px 10px;
   }
 
   .profile-text {
     display: none;
   }
 
+  .weather-pill {
+    order: 3;
+    max-width: calc(100vw - 20px);
+  }
+
+  .filter-row {
+    grid-template-columns: 1fr;
+  }
+
+  .login-shell {
+    gap: 24px;
+  }
+
+  .login-card {
+    padding: 24px 18px 26px;
+  }
+
+  .login-logo-text {
+    font-size: 30px;
+  }
+
   .kpi-grid,
   .summary-grid {
     grid-template-columns: 1fr;
+  }
+
+  .rank-row {
+    grid-template-columns: 24px minmax(0, 1fr);
+  }
+
+  .rank-value {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .rank-track {
+    grid-column: 2;
+  }
+
+  .sheet-name-cell,
+  .sheet-metric-name {
+    width: 176px;
+    min-width: 176px;
+  }
+
+  .sheet-total-head,
+  .project-value-row td:nth-child(2),
+  .media-value-row td:nth-child(2) {
+    left: 176px;
   }
 }
