@@ -11,6 +11,10 @@ const state = {
   showBusinessDetailColumns: false,
   theme: "dark",
   weatherLabel: "東京 --℃ / --",
+  user: {
+    name: "松﨑陽紀",
+    email: "matsuzaki@axis-company.jp",
+  },
 };
 
 const els = {
@@ -63,6 +67,11 @@ const els = {
 
 const themeStorageKey = "nacht-axad-theme";
 const authStorageKey = "nacht-axad-auth";
+const accessIdentityEndpoint = "/cdn-cgi/access/get-identity";
+const fallbackUser = {
+  name: "松﨑陽紀",
+  email: "matsuzaki@axis-company.jp",
+};
 
 const metricDefinitions = [
   { key: "sales", label: "売上", icon: "¥", format: formatYen },
@@ -105,6 +114,7 @@ async function init() {
   bindEvents();
   initTheme();
   initAuthGate();
+  await loadAuthenticatedUser();
   startClock();
   fetchTokyoWeather();
   window.setInterval(fetchTokyoWeather, 10 * 60 * 1000);
@@ -191,9 +201,10 @@ function bindEvents() {
     applyTheme(state.theme === "light" ? "dark" : "light", true);
   });
 
-  els.loginButton?.addEventListener("click", () => {
+  els.loginButton?.addEventListener("click", async () => {
     localStorage.setItem(authStorageKey, "ok");
     document.body.classList.remove("auth-locked");
+    await loadAuthenticatedUser();
     queueScrollProxyUpdate();
   });
 
@@ -233,6 +244,69 @@ function initTheme() {
 function initAuthGate() {
   const authenticated = localStorage.getItem(authStorageKey) === "ok";
   document.body.classList.toggle("auth-locked", !authenticated);
+}
+
+async function loadAuthenticatedUser() {
+  const identity = await fetchAccessIdentity();
+  state.user = normalizeAccessUser(identity) || fallbackUser;
+  renderUserProfile();
+}
+
+async function fetchAccessIdentity() {
+  try {
+    const response = await fetch(accessIdentityEndpoint, {
+      cache: "no-store",
+      credentials: "same-origin",
+      headers: {
+        Accept: "application/json",
+      },
+    });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
+  }
+}
+
+function normalizeAccessUser(identity) {
+  if (!identity || typeof identity !== "object") return null;
+  const name = normalizeText(
+    identity.name ||
+      identity.display_name ||
+      identity.user?.name ||
+      identity.user?.display_name ||
+      identity.claims?.name ||
+      identity.idp?.claims?.name,
+  );
+  const email = normalizeText(
+    identity.email ||
+      identity.user?.email ||
+      identity.claims?.email ||
+      identity.idp?.claims?.email ||
+      identity.user_email,
+  );
+  if (!name && !email) return null;
+  return {
+    name: name || emailName(email),
+    email,
+  };
+}
+
+function renderUserProfile() {
+  const user = state.user || fallbackUser;
+  const name = normalizeText(user.name) || fallbackUser.name;
+  const email = normalizeText(user.email);
+  document.querySelectorAll(".profile-name, .profile-menu-name").forEach((element) => {
+    element.textContent = name;
+    element.setAttribute("title", name);
+  });
+  document.querySelectorAll(".profile-menu-email").forEach((element) => {
+    element.textContent = email || "";
+    element.hidden = !email;
+  });
+  document.querySelectorAll(".avatar").forEach((element) => {
+    element.textContent = avatarInitial(name || email);
+  });
 }
 
 function toggleProfileMenu() {
@@ -1289,6 +1363,17 @@ function brightOverallLabelColor(color) {
 
 function normalizeText(value) {
   return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function emailName(email) {
+  const localPart = normalizeText(email).split("@")[0] || "";
+  return localPart || fallbackUser.name;
+}
+
+function avatarInitial(value) {
+  const text = normalizeText(value);
+  const first = Array.from(text).find((char) => /\S/.test(char));
+  return first ? first.toUpperCase() : Array.from(fallbackUser.name)[0];
 }
 
 function columnIndexFromAddress(address) {
