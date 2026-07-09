@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T06:10:14.289Z",
+  "generatedAt": "2026-07-09T06:29:19.358Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -736,7 +736,7 @@
     {
       "type": "total_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 29,
+      "count": 35,
       "examples": [
         {
           "project": "イエウール",
@@ -815,8 +815,8 @@
           "date": "2026-07-04",
           "metric": "sales",
           "expected": 104000,
-          "actual": 52000,
-          "diff": -52000
+          "actual": 65000,
+          "diff": -39000
         },
         {
           "project": "トライのオンライン個別指導塾",
@@ -881,7 +881,7 @@
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 36,
+      "count": 46,
       "examples": [
         {
           "project": "イエウール",
@@ -999,7 +999,7 @@
       "count": 1,
       "examples": [
         {
-          "index": 94,
+          "index": 106,
           "project": "DMM 生成AI CAMP",
           "media": "全体",
           "date": "2026-07-18"
@@ -2622,7 +2622,7 @@
         {
           "type": "total_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 29,
+          "count": 35,
           "examples": [
             {
               "project": "イエウール",
@@ -2701,8 +2701,8 @@
               "date": "2026-07-04",
               "metric": "sales",
               "expected": 104000,
-              "actual": 52000,
-              "diff": -52000
+              "actual": 65000,
+              "diff": -39000
             },
             {
               "project": "トライのオンライン個別指導塾",
@@ -2767,7 +2767,7 @@
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 36,
+          "count": 46,
           "examples": [
             {
               "project": "イエウール",
@@ -2885,7 +2885,7 @@
           "count": 1,
           "examples": [
             {
-              "index": 94,
+              "index": 106,
               "project": "DMM 生成AI CAMP",
               "media": "全体",
               "date": "2026-07-18"
@@ -2896,10 +2896,10 @@
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
-        "totalValueMismatches": 29,
+        "totalValueMismatches": 35,
         "missingMediaDates": 7,
-        "mediaValueMismatches": 36,
-        "previousDayRecords": 2,
+        "mediaValueMismatches": 46,
+        "previousDayRecords": 57,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 1,

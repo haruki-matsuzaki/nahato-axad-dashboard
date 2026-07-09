@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T08:47:01.149Z",
+  "generatedAt": "2026-07-09T06:29:17.696Z",
   "masterSpreadsheetId": "1Xk-p_-6Np-e5keqOy5fcgmU-TF28H5dU7UeEYDUX_7k",
   "masterSheetId": "2127655846",
   "chatworkRoomId": null,
@@ -13,7 +13,7 @@
       "sourceLabel": "ナハト売上表!63:6",
       "rowIndex": 62,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2022-02",
@@ -24,7 +24,7 @@
       "sourceLabel": "ナハト売上表!64:6",
       "rowIndex": 63,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2022-03",
@@ -35,7 +35,7 @@
       "sourceLabel": "ナハト売上表!65:6",
       "rowIndex": 64,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2022-04",
@@ -46,7 +46,7 @@
       "sourceLabel": "ナハト売上表!66:6",
       "rowIndex": 65,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2022-05",
@@ -57,7 +57,7 @@
       "sourceLabel": "ナハト売上表!67:6",
       "rowIndex": 66,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2022-06",
@@ -68,7 +68,7 @@
       "sourceLabel": "ナハト売上表!68:6",
       "rowIndex": 67,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2022-07",
@@ -79,7 +79,7 @@
       "sourceLabel": "ナハト売上表!69:6",
       "rowIndex": 68,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2022-08",
@@ -90,7 +90,7 @@
       "sourceLabel": "ナハト売上表!70:6",
       "rowIndex": 69,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2022-09",
@@ -101,547 +101,503 @@
       "sourceLabel": "ナハト売上表!71:6",
       "rowIndex": 70,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2022-10",
       "spreadsheetId": "1vzbXSrbl3_CMNSzxs0G-slPeoVEDJVQyRsnt11o3W6E",
-      "title": "",
+      "title": "アド総合売上管理表2022_10月",
       "context": "2022年 10月 https://docs.google.com/spreadsheets/d/1vzbXSrbl3_CMNSzxs0G-slPeoVEDJVQyRsnt11o3W6E/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!72:6",
       "rowIndex": 71,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2022-11",
       "spreadsheetId": "1piy5XtcH7m30W96uQVYrmEgrVkrpOPWUn5vRvM36gqw",
-      "title": "",
+      "title": "アド総合売上管理表2022_11月",
       "context": "2022年 11月 https://docs.google.com/spreadsheets/d/1piy5XtcH7m30W96uQVYrmEgrVkrpOPWUn5vRvM36gqw/edit",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!73:6",
       "rowIndex": 72,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2022-12",
       "spreadsheetId": "1p_pQfHJGm2SXg0j7iDR98mu_wvIsO5zEj7E25XGtIn8",
-      "title": "",
+      "title": "AD_総合売上管理表2022_12月",
       "context": "2022年 12月 https://docs.google.com/spreadsheets/d/1p_pQfHJGm2SXg0j7iDR98mu_wvIsO5zEj7E25XGtIn8/edit#gid=469332082[/info",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!74:6",
       "rowIndex": 73,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-01",
       "spreadsheetId": "1xxyOMnvy7mj8HZlTMviTcwIe7W0VwZRy8CahwujIUFg",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年1月",
       "context": "2023年 1月 https://docs.google.com/spreadsheets/d/1xxyOMnvy7mj8HZlTMviTcwIe7W0VwZRy8CahwujIUFg/edit",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!49:6",
       "rowIndex": 48,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-02",
       "spreadsheetId": "12LeHOeBZ5F-aXHL5eGGZRkg-sMOQjTqmP-TdXiNXHpw",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年2月",
       "context": "2023年 2月 https://docs.google.com/spreadsheets/d/12LeHOeBZ5F-aXHL5eGGZRkg-sMOQjTqmP-TdXiNXHpw/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!50:6",
       "rowIndex": 49,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-03",
       "spreadsheetId": "1PIMNyedcoYDy6dR6SG8gL-ryofINZfA7QqsQZswBix4",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年3月",
       "context": "2023年 3月 https://docs.google.com/spreadsheets/d/1PIMNyedcoYDy6dR6SG8gL-ryofINZfA7QqsQZswBix4/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!51:6",
       "rowIndex": 50,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-04",
       "spreadsheetId": "1hxWlSjghoTWoCH6XeGmJ4U3PhBcep6VCoRpqLdcGhiA",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年4月",
       "context": "2023年 4月 https://docs.google.com/spreadsheets/d/1hxWlSjghoTWoCH6XeGmJ4U3PhBcep6VCoRpqLdcGhiA/edit",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!52:6",
       "rowIndex": 51,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-05",
       "spreadsheetId": "1-_T3kRnvrXzK3egUHpx9pD3Ux37n5BaQ91zptLLpspE",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年5月",
       "context": "2023年 5月 https://docs.google.com/spreadsheets/d/1-_T3kRnvrXzK3egUHpx9pD3Ux37n5BaQ91zptLLpspE/edit",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!53:6",
       "rowIndex": 52,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-06",
       "spreadsheetId": "1hfbaq3La84_LOE_8f9wWPU8zwPOgeKoFlKfyUIZ9exg",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年6月",
       "context": "2023年 6月 https://docs.google.com/spreadsheets/d/1hfbaq3La84_LOE_8f9wWPU8zwPOgeKoFlKfyUIZ9exg/edit?ouid=114762394764957165089&usp=sheets_home&ths=true",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!54:6",
       "rowIndex": 53,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-07",
       "spreadsheetId": "14KYuhur_aS20zWuJeQTsXJNmyLb3A19MkS3-JJe2NM8",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年7月",
       "context": "2023年 7月 https://docs.google.com/spreadsheets/d/14KYuhur_aS20zWuJeQTsXJNmyLb3A19MkS3-JJe2NM8/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!55:6",
       "rowIndex": 54,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-08",
       "spreadsheetId": "15t4fDQvEjiLFtkFjiyHn2NKzrsGWQJ3VQZtTbSVeoVU",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年8月",
       "context": "2023年 8月 https://docs.google.com/spreadsheets/d/15t4fDQvEjiLFtkFjiyHn2NKzrsGWQJ3VQZtTbSVeoVU/edit?ouid=114762394764957165089&usp=sheets_home&ths=true",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!56:6",
       "rowIndex": 55,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-09",
       "spreadsheetId": "1vHJh7FJWUn6-zvM5OiSQdMcyRK7xaraX04564yyMS4k",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年9月",
       "context": "2023年 9月 https://docs.google.com/spreadsheets/d/1vHJh7FJWUn6-zvM5OiSQdMcyRK7xaraX04564yyMS4k/edit",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!57:6",
       "rowIndex": 56,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-10",
       "spreadsheetId": "1lno3lvjir3Qg25Aje36xzBckU4dU4pKdGe9mCQoFm-E",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年10月",
       "context": "2023年 10月 https://docs.google.com/spreadsheets/d/1lno3lvjir3Qg25Aje36xzBckU4dU4pKdGe9mCQoFm-E/edit",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!58:6",
       "rowIndex": 57,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-11",
       "spreadsheetId": "1UY0YYZ9EpCmMP_QHmVoO5cHT4OxvJDMm3PS6ZYEwWgo",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年11月",
       "context": "2023年 11月 https://docs.google.com/spreadsheets/d/1UY0YYZ9EpCmMP_QHmVoO5cHT4OxvJDMm3PS6ZYEwWgo/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!59:6",
       "rowIndex": 58,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2023-12",
       "spreadsheetId": "1wLA1y19KrzaXc-NxsN5eEbpbE1ZqoGUJASCNYwRVp3Y",
-      "title": "",
+      "title": "AD_総合売上管理表_2023年12月",
       "context": "2023年 12月 https://docs.google.com/spreadsheets/d/1wLA1y19KrzaXc-NxsN5eEbpbE1ZqoGUJASCNYwRVp3Y/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!60:6",
       "rowIndex": 59,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.061Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-01",
       "spreadsheetId": "16aLRtHK8JGNbyeoidCrOMI0CetZkMX8JcjrWKd8H4IE",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年01月",
       "context": "2024年 1月 https://docs.google.com/spreadsheets/d/16aLRtHK8JGNbyeoidCrOMI0CetZkMX8JcjrWKd8H4IE/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!35:6",
       "rowIndex": 34,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-02",
       "spreadsheetId": "1C7X0XOx3oe2pTl_lMsy7zOfxk26oMT3V4MvVdthi9-Q",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年02月",
       "context": "2024年 2月 https://docs.google.com/spreadsheets/d/1C7X0XOx3oe2pTl_lMsy7zOfxk26oMT3V4MvVdthi9-Q/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!36:6",
       "rowIndex": 35,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-03",
       "spreadsheetId": "1EQG9n5y9EdrpKl-KAHFqMjIP-fAKcpzErPEkFsUd6W0",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年03月 ",
       "context": "2024年 3月 https://docs.google.com/spreadsheets/d/1EQG9n5y9EdrpKl-KAHFqMjIP-fAKcpzErPEkFsUd6W0/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!37:6",
       "rowIndex": 36,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-04",
       "spreadsheetId": "1oACtLY16HNFQjgm1as0Q28YTwBk2YOhG3ObFoYFiseg",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年04月",
       "context": "2024年 4月 https://docs.google.com/spreadsheets/d/1oACtLY16HNFQjgm1as0Q28YTwBk2YOhG3ObFoYFiseg/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!38:6",
       "rowIndex": 37,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-05",
       "spreadsheetId": "1rw-4F9tdokonqi0BC0wLxcUkhkEdS2Gqs5agAGEWZ2g",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年05月",
       "context": "2024年 5月 https://docs.google.com/spreadsheets/d/1rw-4F9tdokonqi0BC0wLxcUkhkEdS2Gqs5agAGEWZ2g/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!39:6",
       "rowIndex": 38,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-06",
       "spreadsheetId": "1Rc7lSjexjQn9HPfHL6bPCU1tJQOMtI3qfXFeYRRJc2U",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年06月",
       "context": "2024年 6月 https://docs.google.com/spreadsheets/d/1Rc7lSjexjQn9HPfHL6bPCU1tJQOMtI3qfXFeYRRJc2U/edit#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!40:6",
       "rowIndex": 39,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-07",
       "spreadsheetId": "1IYCk934ehANx-Kb7cOH1jTfxCjBxT3c5g-kFgsv5xBc",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年07月",
       "context": "2024年 7月 https://docs.google.com/spreadsheets/d/1IYCk934ehANx-Kb7cOH1jTfxCjBxT3c5g-kFgsv5xBc/edit?gid=469332082#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!41:6",
       "rowIndex": 40,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-08",
       "spreadsheetId": "1ToulhhWtUhjTDsq8ekFnim3aDb0TrxjaITKLN29Zzgw",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年08月",
       "context": "2024年 8月 https://docs.google.com/spreadsheets/d/1ToulhhWtUhjTDsq8ekFnim3aDb0TrxjaITKLN29Zzgw/edit?gid=469332082#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!42:6",
       "rowIndex": 41,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-09",
       "spreadsheetId": "1T5Qw2-8K7kVtfNMPdPo03PgjuUQNBfIDEsAIYQX1WNk",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年09月",
       "context": "2024年 9月 https://docs.google.com/spreadsheets/d/1T5Qw2-8K7kVtfNMPdPo03PgjuUQNBfIDEsAIYQX1WNk/edit?gid=469332082#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!43:6",
       "rowIndex": 42,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-10",
       "spreadsheetId": "1e1EQwMvBcU14Xcv57ozooSCQbIWFjEhpfQ6jguhEhIQ",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年10月",
       "context": "2024年 10月 https://docs.google.com/spreadsheets/d/1e1EQwMvBcU14Xcv57ozooSCQbIWFjEhpfQ6jguhEhIQ/edit?gid=469332082#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!44:6",
       "rowIndex": 43,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-11",
       "spreadsheetId": "1r71xEgxIw4B1oJL0BAenW2fbZodloqoS3LluWFHPm_U",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年11月",
       "context": "2024年 11月 https://docs.google.com/spreadsheets/d/1r71xEgxIw4B1oJL0BAenW2fbZodloqoS3LluWFHPm_U/edit?gid=469332082#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!45:6",
       "rowIndex": 44,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2024-12",
       "spreadsheetId": "1nTI3iFAcVqNDjYHOLd3rW9M83yhA9jG6H6h-8JSnLh4",
-      "title": "",
+      "title": "AD_総合売上管理表_2024年12月",
       "context": "2024年 12月 https://docs.google.com/spreadsheets/d/1nTI3iFAcVqNDjYHOLd3rW9M83yhA9jG6H6h-8JSnLh4/edit?gid=469332082#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!46:6",
       "rowIndex": 45,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2025-01",
       "spreadsheetId": "1DlM7LzAWGv3BuGvpOLVp4005O9G90i631in2p5Rh-wQ",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年01月",
       "context": "2025年 1月 https://docs.google.com/spreadsheets/d/1DlM7LzAWGv3BuGvpOLVp4005O9G90i631in2p5Rh-wQ/edit?gid=469332082#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!21:6",
       "rowIndex": 20,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.278Z"
     },
     {
       "month": "2025-02",
       "spreadsheetId": "1kUYcBjq5Xk3d5daHX62xVPEJ3f2Vqz3zdpObnVaojw4",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年02月",
       "context": "2025年 2月 https://docs.google.com/spreadsheets/d/1kUYcBjq5Xk3d5daHX62xVPEJ3f2Vqz3zdpObnVaojw4/edit?gid=469332082#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!22:6",
       "rowIndex": 21,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.278Z"
     },
     {
       "month": "2025-03",
       "spreadsheetId": "18dUGoOTa9IPe48q63m-pUtA1lXtpkLXZlWRP3sBREdg",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年03月",
       "context": "2025年 3月 https://docs.google.com/spreadsheets/d/18dUGoOTa9IPe48q63m-pUtA1lXtpkLXZlWRP3sBREdg/edit?gid=469332082#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!23:6",
       "rowIndex": 22,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.278Z"
     },
     {
       "month": "2025-04",
       "spreadsheetId": "1iDlwYATnDrm4Tvk75z6fSSZFqp29-i0uFB0nUalQcMU",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年04月",
       "context": "2025年 4月 https://docs.google.com/spreadsheets/d/1iDlwYATnDrm4Tvk75z6fSSZFqp29-i0uFB0nUalQcMU/edit?gid=469332082#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!24:6",
       "rowIndex": 23,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2025-05",
       "spreadsheetId": "1-ISLhG5fesiq7sibI-CpAP2hpTOlEUSa3q-KWouaMTY",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年05月",
       "context": "2025年 5月 https://docs.google.com/spreadsheets/d/1-ISLhG5fesiq7sibI-CpAP2hpTOlEUSa3q-KWouaMTY/edit",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!25:6",
       "rowIndex": 24,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2025-06",
       "spreadsheetId": "1TwcI5KMMISIU71B_JzHgZgYW9z2QF3_s6H2f-PEjWIU",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年06月",
       "context": "2025年 6月 https://docs.google.com/spreadsheets/d/1TwcI5KMMISIU71B_JzHgZgYW9z2QF3_s6H2f-PEjWIU/edit?gid=469332082#gid=469332082",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!26:6",
       "rowIndex": 25,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2025-07",
       "spreadsheetId": "1kaZlnWIhpxQm0QfTZQuwJJ1P1--FAoGq4GAFplemNTY",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年07月",
       "context": "2025年 7月 https://docs.google.com/spreadsheets/d/1kaZlnWIhpxQm0QfTZQuwJJ1P1--FAoGq4GAFplemNTY/edit?gid=144232491#gid=144232491",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!27:6",
       "rowIndex": 26,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2025-08",
       "spreadsheetId": "1LC2uLKXtKXAoy4wFeRQMG_FGx7q1rIh7ZxBOOuKiEek",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年08月",
       "context": "2025年 8月 https://docs.google.com/spreadsheets/d/1LC2uLKXtKXAoy4wFeRQMG_FGx7q1rIh7ZxBOOuKiEek/edit?gid=144232491#gid=144232491",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!28:6",
       "rowIndex": 27,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2025-09",
       "spreadsheetId": "1eMIjLfGC9xuyBKFozwfQ_veTdBqc-o5shYBhE9D2xUQ",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年09月",
       "context": "2025年 9月 https://docs.google.com/spreadsheets/d/1eMIjLfGC9xuyBKFozwfQ_veTdBqc-o5shYBhE9D2xUQ/edit?gid=144232491#gid=144232491",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!29:6",
       "rowIndex": 28,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2025-10",
       "spreadsheetId": "1CbUSzIbFuOTfxUzQl78w16m3Ai4Mo47GmN6AlNVOb5Y",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年10月",
       "context": "2025年 10月 https://docs.google.com/spreadsheets/d/1CbUSzIbFuOTfxUzQl78w16m3Ai4Mo47GmN6AlNVOb5Y/edit?gid=144232491#gid=144232491",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!30:6",
       "rowIndex": 29,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2025-11",
       "spreadsheetId": "1R0mcuF4PUP2K7PeQARePloHXir-4vY72_amptacbJXs",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年11月",
       "context": "2025年 11月 https://docs.google.com/spreadsheets/d/1R0mcuF4PUP2K7PeQARePloHXir-4vY72_amptacbJXs/edit?gid=144232491#gid=144232491",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!31:6",
       "rowIndex": 30,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2025-12",
       "spreadsheetId": "12QK4APf7NJvazhqDQuoex9CsZwhICZcgp3mhT4_aIGE",
-      "title": "",
+      "title": "AD_総合売上管理表_2025年12月",
       "context": "2025年 12月 https://docs.google.com/spreadsheets/d/12QK4APf7NJvazhqDQuoex9CsZwhICZcgp3mhT4_aIGE/edit?gid=348395639#gid=348395639",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!32:6",
       "rowIndex": 31,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.279Z"
     },
     {
       "month": "2026-01",
       "spreadsheetId": "1gfLXvB18kAPCSzmnEQCJOguZpldzRkcMTMLSJi8DTQk",
-      "title": "",
+      "title": "AD_総合売上管理表_2026年01月",
       "context": "2026年 1月 https://docs.google.com/spreadsheets/d/1gfLXvB18kAPCSzmnEQCJOguZpldzRkcMTMLSJi8DTQk/edit?gid=890885099#gid=890885099",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!8:6",
       "rowIndex": 7,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.278Z"
     },
     {
       "month": "2026-02",
       "spreadsheetId": "1MmLFKMx1Aysq2XYUQzTa6cgVdyhi-avySvREMH2XJPU",
-      "title": "",
+      "title": "AD_総合売上管理表_2026年02月",
       "context": "2026年 2月 https://docs.google.com/spreadsheets/d/1MmLFKMx1Aysq2XYUQzTa6cgVdyhi-avySvREMH2XJPU/edit?gid=0#gid=0",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!9:6",
       "rowIndex": 8,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.278Z"
     },
     {
       "month": "2026-03",
       "spreadsheetId": "1hW8mtcEWEmXIQ_KjG8QmKbuTjPeXe2qMrM9PLshwVPU",
-      "title": "",
+      "title": "AD_総合売上管理表_2026年03月",
       "context": "2026年 3月 https://docs.google.com/spreadsheets/d/1hW8mtcEWEmXIQ_KjG8QmKbuTjPeXe2qMrM9PLshwVPU/edit?gid=0#gid=0",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!10:6",
       "rowIndex": 9,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.278Z"
     },
     {
       "month": "2026-06",
       "spreadsheetId": "1-ST2fpoGiAx6FfgDL57GFYN44vpPUU8gMTrm6yjb6y8",
-      "title": "",
+      "title": "AXISアド総合売上管理表_2026年6月",
       "context": "2026年 6月 https://docs.google.com/spreadsheets/d/1-ST2fpoGiAx6FfgDL57GFYN44vpPUU8gMTrm6yjb6y8/edit?gid=17593403#gid=17593403",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!13:6",
       "rowIndex": 12,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.278Z"
     },
     {
       "month": "2026-07",
       "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
-      "title": "",
+      "title": "AD_総合売上管理表_2026年07月",
       "context": "2026年 7月 https://docs.google.com/spreadsheets/d/1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ/edit?gid=345224239#gid=345224239",
       "sourceType": "master_sheet",
       "sourceLabel": "ナハト売上表!14:6",
       "rowIndex": 13,
       "colIndex": 5,
-      "discoveredAt": "2026-07-08T08:46:35.060Z"
+      "discoveredAt": "2026-07-09T06:28:00.278Z"
     }
   ],
   "warnings": [
     "Chatwork discovery skipped because CHATWORK_API_TOKEN or CHATWORK_ANALYSIS_ROOM_ID is not set",
-    "Google Sheets metadata 1gfLXvB18kAPCSzmnEQCJOguZpldzRkcMTMLSJi8DTQk failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1MmLFKMx1Aysq2XYUQzTa6cgVdyhi-avySvREMH2XJPU failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1hW8mtcEWEmXIQ_KjG8QmKbuTjPeXe2qMrM9PLshwVPU failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1-ST2fpoGiAx6FfgDL57GFYN44vpPUU8gMTrm6yjb6y8 failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1DlM7LzAWGv3BuGvpOLVp4005O9G90i631in2p5Rh-wQ failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1kUYcBjq5Xk3d5daHX62xVPEJ3f2Vqz3zdpObnVaojw4 failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 18dUGoOTa9IPe48q63m-pUtA1lXtpkLXZlWRP3sBREdg failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1iDlwYATnDrm4Tvk75z6fSSZFqp29-i0uFB0nUalQcMU failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1-ISLhG5fesiq7sibI-CpAP2hpTOlEUSa3q-KWouaMTY failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1TwcI5KMMISIU71B_JzHgZgYW9z2QF3_s6H2f-PEjWIU failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1kaZlnWIhpxQm0QfTZQuwJJ1P1--FAoGq4GAFplemNTY failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1LC2uLKXtKXAoy4wFeRQMG_FGx7q1rIh7ZxBOOuKiEek failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1eMIjLfGC9xuyBKFozwfQ_veTdBqc-o5shYBhE9D2xUQ failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1CbUSzIbFuOTfxUzQl78w16m3Ai4Mo47GmN6AlNVOb5Y failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1R0mcuF4PUP2K7PeQARePloHXir-4vY72_amptacbJXs failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 12QK4APf7NJvazhqDQuoex9CsZwhICZcgp3mhT4_aIGE failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 16aLRtHK8JGNbyeoidCrOMI0CetZkMX8JcjrWKd8H4IE failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1C7X0XOx3oe2pTl_lMsy7zOfxk26oMT3V4MvVdthi9-Q failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1EQG9n5y9EdrpKl-KAHFqMjIP-fAKcpzErPEkFsUd6W0 failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1oACtLY16HNFQjgm1as0Q28YTwBk2YOhG3ObFoYFiseg failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1rw-4F9tdokonqi0BC0wLxcUkhkEdS2Gqs5agAGEWZ2g failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1Rc7lSjexjQn9HPfHL6bPCU1tJQOMtI3qfXFeYRRJc2U failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1IYCk934ehANx-Kb7cOH1jTfxCjBxT3c5g-kFgsv5xBc failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1ToulhhWtUhjTDsq8ekFnim3aDb0TrxjaITKLN29Zzgw failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1T5Qw2-8K7kVtfNMPdPo03PgjuUQNBfIDEsAIYQX1WNk failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1e1EQwMvBcU14Xcv57ozooSCQbIWFjEhpfQ6jguhEhIQ failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1r71xEgxIw4B1oJL0BAenW2fbZodloqoS3LluWFHPm_U failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1nTI3iFAcVqNDjYHOLd3rW9M83yhA9jG6H6h-8JSnLh4 failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1xxyOMnvy7mj8HZlTMviTcwIe7W0VwZRy8CahwujIUFg failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 12LeHOeBZ5F-aXHL5eGGZRkg-sMOQjTqmP-TdXiNXHpw failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1PIMNyedcoYDy6dR6SG8gL-ryofINZfA7QqsQZswBix4 failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1hxWlSjghoTWoCH6XeGmJ4U3PhBcep6VCoRpqLdcGhiA failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1-_T3kRnvrXzK3egUHpx9pD3Ux37n5BaQ91zptLLpspE failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1hfbaq3La84_LOE_8f9wWPU8zwPOgeKoFlKfyUIZ9exg failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 14KYuhur_aS20zWuJeQTsXJNmyLb3A19MkS3-JJe2NM8 failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 15t4fDQvEjiLFtkFjiyHn2NKzrsGWQJ3VQZtTbSVeoVU failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1vHJh7FJWUn6-zvM5OiSQdMcyRK7xaraX04564yyMS4k failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1lno3lvjir3Qg25Aje36xzBckU4dU4pKdGe9mCQoFm-E failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1UY0YYZ9EpCmMP_QHmVoO5cHT4OxvJDMm3PS6ZYEwWgo failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1wLA1y19KrzaXc-NxsN5eEbpbE1ZqoGUJASCNYwRVp3Y failed: 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:302868962431'.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"RATE_LIMIT_EXCEEDED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"quota_unit\": \"1/min/{project}/{user}\",\n          \"quota_metric\": \"sheets.googleapis.com/read_requests\",\n          \"quota_location\": \"global\",\n          \"consumer\": \"projects/302868962431\",\n          \"quota_limit_value\": \"60\",\n          \"quota_limit\": \"ReadRequestsPerMinutePerUser\",\n          \"service\": \"sheets.googleapis.com\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Request a higher quota limit.\",\n            \"url\": \"https://cloud.google.com/docs/quotas/help/request_increase\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
     "Google Sheets metadata 1BKxKuHFiESAUkae4UBrtlKNQbxCFmPznO14qRPb7V-I failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
     "Google Sheets metadata 1yA1kiS0n9Xvv7icWavdZwKR5dVZsHb1zpD5PQXlqgpk failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1f32ARy_d4A8HCaeNvjXF2RX-YECBv6sHSeI_e-fyxH4 failed: 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:302868962431'.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"RATE_LIMIT_EXCEEDED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"quota_location\": \"global\",\n          \"consumer\": \"projects/302868962431\",\n          \"quota_metric\": \"sheets.googleapis.com/read_requests\",\n          \"quota_unit\": \"1/min/{project}/{user}\",\n          \"quota_limit_value\": \"60\",\n          \"service\": \"sheets.googleapis.com\",\n          \"quota_limit\": \"ReadRequestsPerMinutePerUser\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Request a higher quota limit.\",\n            \"url\": \"https://cloud.google.com/docs/quotas/help/request_increase\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
-    "Google Sheets metadata 181bA_43A4RFGmjVXeY5E9vFETRp52kVMkwVxuhNRvZI failed: 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:302868962431'.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"RATE_LIMIT_EXCEEDED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"service\": \"sheets.googleapis.com\",\n          \"quota_metric\": \"sheets.googleapis.com/read_requests\",\n          \"consumer\": \"projects/302868962431\",\n          \"quota_limit_value\": \"60\",\n          \"quota_limit\": \"ReadRequestsPerMinutePerUser\",\n          \"quota_location\": \"global\",\n          \"quota_unit\": \"1/min/{project}/{user}\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Request a higher quota limit.\",\n            \"url\": \"https://cloud.google.com/docs/quotas/help/request_increase\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
+    "Google Sheets metadata 1f32ARy_d4A8HCaeNvjXF2RX-YECBv6sHSeI_e-fyxH4 failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
+    "Google Sheets metadata 181bA_43A4RFGmjVXeY5E9vFETRp52kVMkwVxuhNRvZI failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
     "Google Sheets metadata 1Rium7zlzeMXT0EfosgC2Pzsg3fJ5n6L0UKqgjqcovcA failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1yT5z7cW5l3t4gMZnAVFHy8rel2FRBcC9Pnqyvqx8x_A failed: 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:302868962431'.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"RATE_LIMIT_EXCEEDED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"quota_unit\": \"1/min/{project}/{user}\",\n          \"consumer\": \"projects/302868962431\",\n          \"quota_location\": \"global\",\n          \"quota_limit\": \"ReadRequestsPerMinutePerUser\",\n          \"service\": \"sheets.googleapis.com\",\n          \"quota_metric\": \"sheets.googleapis.com/read_requests\",\n          \"quota_limit_value\": \"60\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Request a higher quota limit.\",\n            \"url\": \"https://cloud.google.com/docs/quotas/help/request_increase\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
-    "Google Sheets metadata 13fShjJ2cAMVgGg7Fx7oLxpH-2_vo5iHT34P0kogRTfA failed: 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:302868962431'.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"RATE_LIMIT_EXCEEDED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"quota_location\": \"global\",\n          \"consumer\": \"projects/302868962431\",\n          \"service\": \"sheets.googleapis.com\",\n          \"quota_limit\": \"ReadRequestsPerMinutePerUser\",\n          \"quota_metric\": \"sheets.googleapis.com/read_requests\",\n          \"quota_limit_value\": \"60\",\n          \"quota_unit\": \"1/min/{project}/{user}\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Request a higher quota limit.\",\n            \"url\": \"https://cloud.google.com/docs/quotas/help/request_increase\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
-    "Google Sheets metadata 1K93P6W66BzKdhzHeqolI8fM933-8Tf7i2kYYn2OqwtE failed: 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:302868962431'.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"RATE_LIMIT_EXCEEDED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"quota_unit\": \"1/min/{project}/{user}\",\n          \"consumer\": \"projects/302868962431\",\n          \"service\": \"sheets.googleapis.com\",\n          \"quota_metric\": \"sheets.googleapis.com/read_requests\",\n          \"quota_location\": \"global\",\n          \"quota_limit\": \"ReadRequestsPerMinutePerUser\",\n          \"quota_limit_value\": \"60\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Request a higher quota limit.\",\n            \"url\": \"https://cloud.google.com/docs/quotas/help/request_increase\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
-    "Google Sheets metadata 1Y4Gkb0UnfZHKDm9UU5xkmL6Ra2ZwOBmNBQv-qbqKtxA failed: 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:302868962431'.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"RATE_LIMIT_EXCEEDED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"quota_metric\": \"sheets.googleapis.com/read_requests\",\n          \"quota_unit\": \"1/min/{project}/{user}\",\n          \"quota_limit_value\": \"60\",\n          \"quota_location\": \"global\",\n          \"consumer\": \"projects/302868962431\",\n          \"service\": \"sheets.googleapis.com\",\n          \"quota_limit\": \"ReadRequestsPerMinutePerUser\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Request a higher quota limit.\",\n            \"url\": \"https://cloud.google.com/docs/quotas/help/request_increase\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
-    "Google Sheets metadata 1vzbXSrbl3_CMNSzxs0G-slPeoVEDJVQyRsnt11o3W6E failed: 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:302868962431'.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"RATE_LIMIT_EXCEEDED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"service\": \"sheets.googleapis.com\",\n          \"quota_limit_value\": \"60\",\n          \"quota_unit\": \"1/min/{project}/{user}\",\n          \"quota_location\": \"global\",\n          \"consumer\": \"projects/302868962431\",\n          \"quota_metric\": \"sheets.googleapis.com/read_requests\",\n          \"quota_limit\": \"ReadRequestsPerMinutePerUser\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Request a higher quota limit.\",\n            \"url\": \"https://cloud.google.com/docs/quotas/help/request_increase\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
-    "Google Sheets metadata 1piy5XtcH7m30W96uQVYrmEgrVkrpOPWUn5vRvM36gqw failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
-    "Google Sheets metadata 1p_pQfHJGm2SXg0j7iDR98mu_wvIsO5zEj7E25XGtIn8 failed: 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:302868962431'.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"RATE_LIMIT_EXCEEDED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"quota_limit_value\": \"60\",\n          \"service\": \"sheets.googleapis.com\",\n          \"quota_location\": \"global\",\n          \"quota_metric\": \"sheets.googleapis.com/read_requests\",\n          \"quota_limit\": \"ReadRequestsPerMinutePerUser\",\n          \"quota_unit\": \"1/min/{project}/{user}\",\n          \"consumer\": \"projects/302868962431\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Request a higher quota limit.\",\n            \"url\": \"https://cloud.google.com/docs/quotas/help/request_increase\"\n          }\n        ]\n      }\n    ]\n  }\n}\n"
+    "Google Sheets metadata 1yT5z7cW5l3t4gMZnAVFHy8rel2FRBcC9Pnqyvqx8x_A failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
+    "Google Sheets metadata 13fShjJ2cAMVgGg7Fx7oLxpH-2_vo5iHT34P0kogRTfA failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
+    "Google Sheets metadata 1K93P6W66BzKdhzHeqolI8fM933-8Tf7i2kYYn2OqwtE failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n",
+    "Google Sheets metadata 1Y4Gkb0UnfZHKDm9UU5xkmL6Ra2ZwOBmNBQv-qbqKtxA failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
   ]
 }
