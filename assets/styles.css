@@ -54,6 +54,7 @@ body.theme-light {
 
 body.auth-locked {
   min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
 }
 
@@ -68,6 +69,7 @@ body.auth-locked .login-screen {
 .login-screen {
   display: none;
   min-height: 100vh;
+  min-height: 100svh;
   place-items: center;
   padding: 32px 20px;
   color: #e8eef4;
@@ -191,12 +193,14 @@ select {
   display: grid;
   grid-template-columns: 244px minmax(0, 1fr);
   min-height: 100vh;
+  min-height: 100svh;
 }
 
 .sidebar {
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100svh;
   display: flex;
   flex-direction: column;
   background: #0f1a24;
@@ -1056,6 +1060,14 @@ p {
 
 .view.active {
   display: block;
+}
+
+.main,
+.content,
+.view,
+.dashboard-grid,
+.panel {
+  min-width: 0;
 }
 
 .dashboard-grid {
