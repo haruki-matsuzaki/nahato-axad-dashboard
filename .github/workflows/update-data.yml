@@ -29,6 +29,10 @@ on:
         required: false
         default: "true"
 
+concurrency:
+  group: nacht-axad-data-update
+  cancel-in-progress: false
+
 permissions:
   contents: write
 

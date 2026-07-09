@@ -52,6 +52,9 @@ async function refreshOAuthAccessToken(credentials, fetchWithTimeout, scope) {
   }
 
   const payload = await response.json();
+  if (!payload?.access_token) {
+    throw new Error("Google OAuth refresh succeeded but access_token was missing");
+  }
   return payload.access_token;
 }
 
@@ -100,6 +103,9 @@ async function getServiceAccountAccessToken(credentials, fetchWithTimeout, scope
   }
 
   const payload = await response.json();
+  if (!payload?.access_token) {
+    throw new Error("Google service account OAuth succeeded but access_token was missing");
+  }
   return payload.access_token;
 }
 

@@ -194,11 +194,22 @@ init();
 async function init() {
   bindEvents();
   initTheme();
-  initAuthGate();
-  await loadAuthenticatedUser();
+  const authenticated = initAuthGate();
   startClock();
   fetchTokyoWeather();
   window.setInterval(fetchTokyoWeather, 10 * 60 * 1000);
+
+  if (!authenticated) return;
+  const userReady = await loadAuthenticatedUser();
+  if (!userReady) return;
+  await loadAppData();
+}
+
+async function loadAppData() {
+  if (state.index && state.data) {
+    render();
+    return;
+  }
 
   try {
     state.index = await loadIndex();
@@ -294,8 +305,9 @@ function bindEvents() {
 
   els.loginButton?.addEventListener("click", async () => {
     localStorage.setItem(authStorageKey, "ok");
-    document.body.classList.remove("auth-locked");
-    await loadAuthenticatedUser();
+    const userReady = await loadAuthenticatedUser();
+    if (!userReady) return;
+    await loadAppData();
     queueScrollProxyUpdate();
   });
 
@@ -375,17 +387,17 @@ function initAuthGate() {
 async function loadAuthenticatedUser() {
   const identity = await fetchAccessIdentity();
   const user = normalizeAccessUser(identity);
+  if (!user && requiresAccessIdentity()) {
+    return lockAuthGate("Google認証情報を取得できませんでした。再ログインしてください");
+  }
   if (user?.email && !isAllowedLoginEmail(user.email)) {
-    localStorage.removeItem(authStorageKey);
-    document.body.classList.add("auth-locked");
-    state.user = fallbackUser;
-    showNotice("許可されたGoogleアカウントでログインしてください");
-    renderUserProfile();
-    return;
+    return lockAuthGate("許可されたGoogleアカウントでログインしてください");
   }
   state.user = user || fallbackUser;
   state.user.avatar = localStorage.getItem(avatarStorageKeyForUser(state.user)) || "";
+  document.body.classList.remove("auth-locked");
   renderUserProfile();
+  return true;
 }
 
 async function fetchAccessIdentity() {
@@ -431,6 +443,21 @@ function normalizeAccessUser(identity) {
 function isAllowedLoginEmail(email) {
   const normalized = normalizeText(email).toLowerCase();
   return allowedLoginDomains.some((domain) => normalized.endsWith(domain));
+}
+
+function requiresAccessIdentity() {
+  const host = normalizeText(location.hostname).toLowerCase();
+  if (!host || location.protocol === "file:") return false;
+  return !["localhost", "127.0.0.1", "::1", "[::1]"].includes(host);
+}
+
+function lockAuthGate(message) {
+  localStorage.removeItem(authStorageKey);
+  document.body.classList.add("auth-locked");
+  state.user = fallbackUser;
+  showNotice(message);
+  renderUserProfile();
+  return false;
 }
 
 function renderUserProfile() {
