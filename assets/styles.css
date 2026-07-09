@@ -1122,11 +1122,18 @@ p {
   border-radius: 8px;
 }
 
-.small-button.active,
-.small-button:hover {
+.small-button.active {
   color: #071016;
   background: var(--cyan);
   border-color: var(--cyan);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .small-button:hover {
+    color: #071016;
+    background: var(--cyan);
+    border-color: var(--cyan);
+  }
 }
 
 .tcb-sort-button {
@@ -1826,9 +1833,14 @@ body.theme-light .brand-mark,
 body.theme-light .avatar,
 body.theme-light .eyebrow,
 body.theme-light .small-button.active,
-body.theme-light .small-button:hover,
 body.theme-light .theme-toggle:hover {
   color: #071016;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.theme-light .small-button:hover {
+    color: #071016;
+  }
 }
 
 body.theme-light .brand-mark {
