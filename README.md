@@ -11,7 +11,7 @@
 
 ## 初期スコープ
 
-- Cloudflare Pagesで公開し、Cloudflare Accessで `@shibuya-ad.com` のGoogleアカウントのみ閲覧許可
+- Cloudflare Pagesで公開し、Cloudflare Accessで `@shibuya-ad.com` / `@axis-company.jp` のGoogleアカウントのみ閲覧許可
 - ホーム / マイページのみ
 - CP検索なし
 - 操作系なし
@@ -30,7 +30,7 @@ Cloudflare側の設定:
 2. Build commandは `exit 0`、Output directoryは `.` にする
 3. Cloudflare AccessでPagesの公開URLを対象にしたApplicationを作成する
 4. 認証プロバイダにGoogleを設定する
-5. Allow policyで `@shibuya-ad.com` のメールドメインのみ許可する
+5. Allow policyで `@shibuya-ad.com` / `@axis-company.jp` のメールドメインのみ許可する
 6. KV namespaceを作成し、PagesのFunctions bindingに `ACTIVE_USERS` という名前で紐付ける
 7. GitHub Settings > Pagesで既存のGitHub Pages公開を停止する
 
