@@ -182,6 +182,7 @@ async function writeUpdateStatus(statusPath, result) {
     generatedAt: now,
     daily: existing.daily || emptyUpdateStatus("daily"),
     monthly: existing.monthly || emptyUpdateStatus("monthly"),
+    overallSales: existing.overallSales || emptyUpdateStatus("overallSales"),
     lastRun: {
       checkedAt: now,
       failed: Boolean(result.failed),
@@ -210,6 +211,15 @@ async function writeUpdateStatus(statusPath, result) {
         month: item.month || null,
         reason: item.reason || null,
         message: status === "error" ? item.message || "Update failed" : null,
+      };
+    }
+    if (item.overallSalesSync) {
+      next.overallSales = {
+        status: item.overallSalesSync.status === "warning" ? "error" : "ok",
+        checkedAt: now,
+        month: item.month || null,
+        reason: item.reason || null,
+        message: item.overallSalesSync.status === "warning" ? item.overallSalesSync.message || "Overall sales sync failed" : null,
       };
     }
   }
@@ -249,6 +259,7 @@ async function enrichLogResult(item) {
     spreadsheetId: item.spreadsheetId || null,
     title: item.title || "",
     message: item.message || null,
+    overallSalesSync: item.overallSalesSync || null,
     data: monthSummary,
   };
 }

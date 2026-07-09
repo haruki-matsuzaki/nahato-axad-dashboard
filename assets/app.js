@@ -1007,6 +1007,9 @@ function renderUpdateAlerts() {
   if (state.updateStatus?.monthly?.status === "error") {
     alerts.add("⚠️月初更新エラー");
   }
+  if (state.updateStatus?.overallSales?.status === "error") {
+    alerts.add("⚠️全体売上表更新エラー");
+  }
   if (state.dataQualityStatus?.status === "error") {
     alerts.add("⚠️データ整合性エラー");
   }
