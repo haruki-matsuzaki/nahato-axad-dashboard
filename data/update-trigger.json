@@ -1,7 +1,7 @@
 {
-  "triggeredAt": "2026-07-09T06:30:00.000Z",
-  "expectedRunAtJst": "2026-07-09 15:00",
-  "reason": "schedule_missing",
-  "analysis": "No scheduled GitHub Actions run was created for the 2026-07-09 15:00 JST update window by the monitor check.",
+  "triggeredAt": "2026-07-09T07:46:35.000Z",
+  "expectedRunAtJst": "2026-07-09 16:46",
+  "reason": "manual_overall_sales_resync",
+  "analysis": "Manual data update trigger to refresh overall sales top rows after the app detected stale overall sales data.",
   "source": "codex_manual_countermeasure"
 }
