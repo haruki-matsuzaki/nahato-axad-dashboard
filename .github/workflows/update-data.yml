@@ -48,6 +48,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Sync checkout to latest main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git fetch origin main
+          git checkout main
+          git pull --ff-only origin main
+
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
@@ -116,10 +123,38 @@ jobs:
 
       - name: Commit updated data
         if: steps.validate-data.outcome == 'success'
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Update Nacht AXAD data"
-          file_pattern: "data/*.json"
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin main
+          git rebase --autostash origin/main
+          git add data/*.json
+
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Update Nacht AXAD data"
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            if [ "$attempt" -lt 3 ]; then
+              echo "Push failed on attempt ${attempt}/3. Rebasing latest main and retrying."
+              git fetch origin main
+              git rebase origin/main
+              sleep 5
+            fi
+          done
+
+          echo "Failed to push updated data after 3 attempts."
+          exit 1
 
       - name: Fail when update failed
         if: steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure'

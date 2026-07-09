@@ -1,7 +1,7 @@
 {
-  "triggeredAt": "2026-07-09T07:46:35.000Z",
-  "expectedRunAtJst": "2026-07-09 16:46",
-  "reason": "manual_overall_sales_resync",
-  "analysis": "Manual data update trigger to refresh overall sales top rows after the app detected stale overall sales data.",
+  "triggeredAt": "2026-07-09T07:53:16.000Z",
+  "expectedRunAtJst": "2026-07-09 16:53",
+  "reason": "manual_overall_sales_resync_after_commit_fix",
+  "analysis": "Manual data update trigger after adding a rebase-and-retry commit path for generated data updates.",
   "source": "codex_manual_countermeasure"
 }
