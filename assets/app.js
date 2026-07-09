@@ -14,8 +14,8 @@ const state = {
   theme: "dark",
   weatherLabel: "東京 --℃ / --",
   user: {
-    name: "松﨑陽紀",
-    email: "matsuzaki@axis-company.jp",
+    name: "ログインユーザー",
+    email: "",
   },
   dataLoadWarning: "",
   activeUsers: [],
@@ -86,6 +86,7 @@ const authStorageKey = "nacht-axad-auth";
 const avatarStoragePrefix = "nacht-axad-avatar:";
 const accessReloadStorageKey = "nacht-axad-access-reload-attempted";
 const accessIdentityEndpoint = "/cdn-cgi/access/get-identity";
+const allowedLoginDomains = ["@shibuya-ad.com", "@axis-company.jp"];
 const activeUsersEndpoint = "/api/active-users";
 const presenceHeartbeatMs = 30 * 1000;
 const activeUsersRefreshMs = 10 * 1000;
@@ -99,8 +100,8 @@ const dailyUpdateScheduleJst = [
   { hour: 18, minute: 7 },
 ];
 const fallbackUser = {
-  name: "松﨑陽紀",
-  email: "matsuzaki@axis-company.jp",
+  name: "ログインユーザー",
+  email: "",
 };
 const embeddedIndex = {
   defaultMonth: "2026-07",
@@ -373,7 +374,16 @@ function initAuthGate() {
 
 async function loadAuthenticatedUser() {
   const identity = await fetchAccessIdentity();
-  state.user = normalizeAccessUser(identity) || fallbackUser;
+  const user = normalizeAccessUser(identity);
+  if (user?.email && !isAllowedLoginEmail(user.email)) {
+    localStorage.removeItem(authStorageKey);
+    document.body.classList.add("auth-locked");
+    state.user = fallbackUser;
+    showNotice("許可されたGoogleアカウントでログインしてください");
+    renderUserProfile();
+    return;
+  }
+  state.user = user || fallbackUser;
   state.user.avatar = localStorage.getItem(avatarStorageKeyForUser(state.user)) || "";
   renderUserProfile();
 }
@@ -416,6 +426,11 @@ function normalizeAccessUser(identity) {
     name: name || emailName(email),
     email,
   };
+}
+
+function isAllowedLoginEmail(email) {
+  const normalized = normalizeText(email).toLowerCase();
+  return allowedLoginDomains.some((domain) => normalized.endsWith(domain));
 }
 
 function renderUserProfile() {
