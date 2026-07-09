@@ -1,6 +1,42 @@
 {
-  "generatedAt": "2026-07-09T09:48:05.570Z",
+  "generatedAt": "2026-07-09T09:55:51.405Z",
   "entries": [
+    {
+      "checkedAt": "2026-07-09T09:55:51.405Z",
+      "failed": false,
+      "skippedReason": null,
+      "fatalError": null,
+      "targets": [
+        {
+          "month": "2026-07",
+          "reason": "daily_previous_day",
+          "required": true
+        }
+      ],
+      "results": [
+        {
+          "month": "2026-07",
+          "reason": "daily_previous_day",
+          "status": "ok",
+          "required": false,
+          "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+          "title": "AD_総合売上管理表_2026年07月",
+          "message": null,
+          "overallSalesSync": {
+            "status": "ok",
+            "out": "data/overall-sales-2026-07.json",
+            "rows": 6,
+            "updatedCells": 263
+          },
+          "data": {
+            "records": 453,
+            "projects": 17,
+            "media": 8,
+            "generatedAt": "2026-07-09T09:55:50.915Z"
+          }
+        }
+      ]
+    },
     {
       "checkedAt": "2026-07-09T09:48:05.570Z",
       "failed": false,
