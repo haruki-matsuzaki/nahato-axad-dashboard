@@ -1,6 +1,9 @@
 name: Update Nacht AXAD data
 
 on:
+  push:
+    paths:
+      - "data/update-trigger.json"
   schedule:
     # Primary: 12:00 / 15:00 / 18:00 JST
     - cron: "0 3 * * *"
