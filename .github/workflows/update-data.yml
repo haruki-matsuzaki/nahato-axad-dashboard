@@ -98,6 +98,10 @@ jobs:
         if: steps.fetch-data.outcome == 'success'
         run: node scripts/backfill-records-from-business-sales.mjs
 
+      - name: Check data quality
+        if: steps.fetch-data.outcome == 'success'
+        run: node scripts/check-data-quality.mjs --writeStatus data/data-quality-status.json
+
       - name: Validate static data
         id: validate-data
         if: always()

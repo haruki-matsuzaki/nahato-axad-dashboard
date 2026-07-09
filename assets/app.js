@@ -2,6 +2,7 @@ const state = {
   index: null,
   data: null,
   updateStatus: null,
+  dataQualityStatus: null,
   overallSales: null,
   overallBusinessSales: null,
   view: "home",
@@ -214,6 +215,7 @@ async function loadAppData() {
   try {
     state.index = await loadIndex();
     state.updateStatus = await fetchOptionalJson("data/update-status.json");
+    state.dataQualityStatus = await fetchOptionalJson("data/data-quality-status.json");
     populateMonthSelect();
     await loadMonth(state.index.defaultMonth || state.index.months?.[0]?.id);
   } catch (error) {
@@ -1004,6 +1006,11 @@ function renderUpdateAlerts() {
   }
   if (state.updateStatus?.monthly?.status === "error") {
     alerts.add("⚠️月初更新エラー");
+  }
+  if (state.dataQualityStatus?.status === "error") {
+    alerts.add("⚠️データ整合性エラー");
+  } else if (state.dataQualityStatus?.status === "warning") {
+    alerts.add("⚠️データ品質警告");
   }
   const alertList = [...alerts];
   els.updateAlerts.hidden = alertList.length === 0;

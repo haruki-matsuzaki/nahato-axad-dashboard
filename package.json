@@ -7,12 +7,14 @@
     "update:data": "node scripts/update-data.mjs",
     "update:auto": "node scripts/update-month-from-sources.mjs",
     "backfill:business": "node scripts/backfill-records-from-business-sales.mjs",
+    "quality:data": "node scripts/check-data-quality.mjs --writeStatus data/data-quality-status.json",
     "oauth:token": "node scripts/create-google-oauth-token.mjs",
     "test:parser": "node scripts/update-data.mjs --fixture scripts/fixtures/nacht-sample-values.json --month 2026-06 --out /tmp/nacht-test-2026-06.json --index /tmp/nacht-test-index.json",
     "test:media-only-project": "node scripts/test-media-only-project.mjs",
     "test:schedule": "node scripts/update-month-from-sources.mjs --mode monthly --dryRun --force --month 2026-08 --spreadsheetId test-spreadsheet-id",
     "test:data": "node scripts/validate-static-data.mjs",
-    "test": "npm run test:parser && npm run test:media-only-project && npm run test:schedule && npm run test:data",
+    "test:data-quality": "node scripts/check-data-quality.mjs --writeStatus /tmp/nacht-data-quality-status.json --failOnError",
+    "test": "npm run test:parser && npm run test:media-only-project && npm run test:schedule && npm run test:data && npm run test:data-quality",
     "start": "python3 -m http.server 4173"
   },
   "engines": {

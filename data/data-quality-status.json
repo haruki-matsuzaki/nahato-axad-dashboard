@@ -1,0 +1,2438 @@
+{
+  "generatedAt": "2026-07-09T03:07:51.468Z",
+  "status": "warning",
+  "qualityStartMonth": "2026-02",
+  "summary": {
+    "checkedMonths": 45,
+    "monthsWithErrors": 0,
+    "monthsWithWarnings": 5,
+    "errorCount": 0,
+    "warningCount": 12
+  },
+  "errors": [],
+  "warnings": [
+    {
+      "type": "total_value_mismatch",
+      "message": "2026-02: business sales value differs from detail data",
+      "count": 8,
+      "examples": [
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-02-21",
+          "metric": "grossProfit",
+          "expected": -80133,
+          "actual": -160266,
+          "diff": -80133
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-02-22",
+          "metric": "grossProfit",
+          "expected": -84293,
+          "actual": -168586,
+          "diff": -84293
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-02-23",
+          "metric": "grossProfit",
+          "expected": -92985,
+          "actual": -185970,
+          "diff": -92985
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-02-24",
+          "metric": "grossProfit",
+          "expected": -21124,
+          "actual": -42248,
+          "diff": -21124
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-02-26",
+          "metric": "grossProfit",
+          "expected": -33266,
+          "actual": -66532,
+          "diff": -33266
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-02-27",
+          "metric": "grossProfit",
+          "expected": -13214,
+          "actual": -26428,
+          "diff": -13214
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-02-28",
+          "metric": "grossProfit",
+          "expected": -39281,
+          "actual": -78562,
+          "diff": -39281
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-02-25",
+          "metric": "grossProfit",
+          "expected": -20412,
+          "actual": -40824,
+          "diff": -20412
+        }
+      ]
+    },
+    {
+      "type": "missing_media_date",
+      "message": "2026-02: expected business sales key missing from detail data",
+      "count": 82,
+      "examples": [
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "TikTok",
+          "date": "2026-02-21"
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "TikTok",
+          "date": "2026-02-22"
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "TikTok",
+          "date": "2026-02-23"
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "TikTok",
+          "date": "2026-02-24"
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "TikTok",
+          "date": "2026-02-26"
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "TikTok",
+          "date": "2026-02-27"
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "TikTok",
+          "date": "2026-02-28"
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "FB",
+          "date": "2026-02-21"
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "FB",
+          "date": "2026-02-22"
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "FB",
+          "date": "2026-02-23"
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "FB",
+          "date": "2026-02-25"
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "FB",
+          "date": "2026-02-26"
+        }
+      ]
+    },
+    {
+      "type": "media_value_mismatch",
+      "message": "2026-02: business sales value differs from detail data",
+      "count": 1,
+      "examples": [
+        {
+          "project": "カドナビ",
+          "media": "TikTok",
+          "date": "2026-02-04",
+          "metric": "cv",
+          "expected": 7,
+          "actual": 49,
+          "diff": 42
+        }
+      ]
+    },
+    {
+      "type": "total_value_mismatch",
+      "message": "2026-03: business sales value differs from detail data",
+      "count": 11,
+      "examples": [
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-03-01",
+          "metric": "sales",
+          "expected": 55000,
+          "actual": 110000,
+          "diff": 55000
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-03-04",
+          "metric": "sales",
+          "expected": 103000,
+          "actual": 206000,
+          "diff": 103000
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-03-02",
+          "metric": "grossProfit",
+          "expected": -22457,
+          "actual": -44914,
+          "diff": -22457
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-03-03",
+          "metric": "grossProfit",
+          "expected": -12406,
+          "actual": -24812,
+          "diff": -12406
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-03-20",
+          "metric": "sales",
+          "expected": 96000,
+          "actual": 192000,
+          "diff": 96000
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-03-21",
+          "metric": "sales",
+          "expected": 48000,
+          "actual": 96000,
+          "diff": 48000
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-03-22",
+          "metric": "grossProfit",
+          "expected": -37208,
+          "actual": -74416,
+          "diff": -37208
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-03-23",
+          "metric": "grossProfit",
+          "expected": -2326,
+          "actual": -4652,
+          "diff": -2326
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-03-07",
+          "metric": "grossProfit",
+          "expected": -20059,
+          "actual": -40118,
+          "diff": -20059
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-03-11",
+          "metric": "grossProfit",
+          "expected": -15503,
+          "actual": -31006,
+          "diff": -15503
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "date": "2026-03-12",
+          "metric": "grossProfit",
+          "expected": -31168,
+          "actual": -62336,
+          "diff": -31168
+        }
+      ]
+    },
+    {
+      "type": "missing_media_date",
+      "message": "2026-03: expected business sales key missing from detail data",
+      "count": 161,
+      "examples": [
+        {
+          "project": "ラココ",
+          "media": "TikTok",
+          "date": "2026-03-04"
+        },
+        {
+          "project": "ラココ",
+          "media": "TikTok",
+          "date": "2026-03-05"
+        },
+        {
+          "project": "ラココ",
+          "media": "FB",
+          "date": "2026-03-04"
+        },
+        {
+          "project": "ラココ",
+          "media": "FB",
+          "date": "2026-03-14"
+        },
+        {
+          "project": "ラココ",
+          "media": "FB",
+          "date": "2026-03-01"
+        },
+        {
+          "project": "ラココ",
+          "media": "FB",
+          "date": "2026-03-05"
+        },
+        {
+          "project": "ラココ",
+          "media": "FB",
+          "date": "2026-03-06"
+        },
+        {
+          "project": "ラココ",
+          "media": "FB",
+          "date": "2026-03-07"
+        },
+        {
+          "project": "ラココ",
+          "media": "FB",
+          "date": "2026-03-15"
+        },
+        {
+          "project": "エミナルクリニック",
+          "media": "FB",
+          "date": "2026-03-05"
+        },
+        {
+          "project": "エミナルクリニック",
+          "media": "FB",
+          "date": "2026-03-06"
+        },
+        {
+          "project": "エミナルクリニック",
+          "media": "FB",
+          "date": "2026-03-09"
+        }
+      ]
+    },
+    {
+      "type": "media_value_mismatch",
+      "message": "2026-03: business sales value differs from detail data",
+      "count": 14,
+      "examples": [
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2026-03-01",
+          "metric": "sales",
+          "expected": 29348,
+          "actual": 0,
+          "diff": -29348
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2026-03-02",
+          "metric": "sales",
+          "expected": 29348,
+          "actual": 0,
+          "diff": -29348
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2026-03-06",
+          "metric": "sales",
+          "expected": 29348,
+          "actual": 0,
+          "diff": -29348
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2026-03-12",
+          "metric": "sales",
+          "expected": 88044,
+          "actual": 0,
+          "diff": -88044
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2026-03-14",
+          "metric": "sales",
+          "expected": 58696,
+          "actual": 0,
+          "diff": -58696
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2026-03-27",
+          "metric": "sales",
+          "expected": 58696,
+          "actual": 0,
+          "diff": -58696
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2026-03-28",
+          "metric": "sales",
+          "expected": 58696,
+          "actual": 0,
+          "diff": -58696
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2026-03-29",
+          "metric": "sales",
+          "expected": 29348,
+          "actual": 0,
+          "diff": -29348
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2026-03-30",
+          "metric": "sales",
+          "expected": 29348,
+          "actual": 0,
+          "diff": -29348
+        },
+        {
+          "project": "メンズクリア",
+          "media": "TikTok",
+          "date": "2026-03-05",
+          "metric": "sales",
+          "expected": 32900,
+          "actual": 0,
+          "diff": -32900
+        },
+        {
+          "project": "メンズクリア",
+          "media": "TikTok",
+          "date": "2026-03-08",
+          "metric": "sales",
+          "expected": 32900,
+          "actual": 0,
+          "diff": -32900
+        },
+        {
+          "project": "メンズクリア",
+          "media": "TikTok",
+          "date": "2026-03-01",
+          "metric": "sales",
+          "expected": 34632,
+          "actual": 0,
+          "diff": -34632
+        }
+      ]
+    },
+    {
+      "type": "missing_media_date",
+      "message": "2026-04: expected business sales key missing from detail data",
+      "count": 18,
+      "examples": [
+        {
+          "project": "WE SMILE",
+          "media": "FB",
+          "date": "2026-04-18"
+        },
+        {
+          "project": "WE SMILE",
+          "media": "FB",
+          "date": "2026-04-19"
+        },
+        {
+          "project": "セルトレ一括査定",
+          "media": "FB",
+          "date": "2026-04-10"
+        },
+        {
+          "project": "セルトレ一括査定",
+          "media": "FB",
+          "date": "2026-04-11"
+        },
+        {
+          "project": "セルトレ一括査定",
+          "media": "FB",
+          "date": "2026-04-14"
+        },
+        {
+          "project": "セルトレ一括査定",
+          "media": "FB",
+          "date": "2026-04-15"
+        },
+        {
+          "project": "セルトレ一括査定",
+          "media": "TikTok",
+          "date": "2026-04-11"
+        },
+        {
+          "project": "セルトレ一括査定",
+          "media": "TikTok",
+          "date": "2026-04-12"
+        },
+        {
+          "project": "セルトレ一括査定",
+          "media": "TikTok",
+          "date": "2026-04-13"
+        },
+        {
+          "project": "セルトレ一括査定",
+          "media": "TikTok",
+          "date": "2026-04-14"
+        },
+        {
+          "project": "セルトレ一括査定",
+          "media": "TikTok",
+          "date": "2026-04-15"
+        },
+        {
+          "project": "セルトレ一括査定",
+          "media": "TikTok",
+          "date": "2026-04-16"
+        }
+      ]
+    },
+    {
+      "type": "missing_media_date",
+      "message": "2026-06: expected business sales key missing from detail data",
+      "count": 8,
+      "examples": [
+        {
+          "project": "東京中央美容外科(ニキビ-L)",
+          "media": "FB",
+          "date": "2026-06-26"
+        },
+        {
+          "project": "東京中央美容外科(ニキビ-L)",
+          "media": "FB",
+          "date": "2026-06-20"
+        },
+        {
+          "project": "東京中央美容外科(ニキビ-L)",
+          "media": "FB",
+          "date": "2026-06-21"
+        },
+        {
+          "project": "東京中央美容外科(ニキビ-L)",
+          "media": "FB",
+          "date": "2026-06-22"
+        },
+        {
+          "project": "東京中央美容外科(ニキビ-L)",
+          "media": "FB",
+          "date": "2026-06-23"
+        },
+        {
+          "project": "東京中央美容外科(ニキビ-L)",
+          "media": "FB",
+          "date": "2026-06-27"
+        },
+        {
+          "project": "東京中央美容外科(糸リフト)",
+          "media": "FB",
+          "date": "2026-06-27"
+        },
+        {
+          "project": "東京中央美容外科(糸リフト)",
+          "media": "FB",
+          "date": "2026-06-30"
+        }
+      ]
+    },
+    {
+      "type": "media_value_mismatch",
+      "message": "2026-06: business sales value differs from detail data",
+      "count": 4,
+      "examples": [
+        {
+          "project": "DIO医療ダイエットクリニック",
+          "media": "FB",
+          "date": "2026-06-27",
+          "metric": "grossProfit",
+          "expected": 261641,
+          "actual": 329563,
+          "diff": 67922
+        },
+        {
+          "project": "DIO医療ダイエットクリニック",
+          "media": "FB",
+          "date": "2026-06-28",
+          "metric": "sales",
+          "expected": 1587120,
+          "actual": 1317120,
+          "diff": -270000
+        },
+        {
+          "project": "DIO医療ダイエットクリニック",
+          "media": "FB",
+          "date": "2026-06-29",
+          "metric": "sales",
+          "expected": 1214760,
+          "actual": 1052760,
+          "diff": -162000
+        },
+        {
+          "project": "DIO医療ダイエットクリニック",
+          "media": "FB",
+          "date": "2026-06-30",
+          "metric": "sales",
+          "expected": 772200,
+          "actual": 502200,
+          "diff": -270000
+        }
+      ]
+    },
+    {
+      "type": "total_value_mismatch",
+      "message": "2026-07: business sales value differs from detail data",
+      "count": 29,
+      "examples": [
+        {
+          "project": "イエウール",
+          "date": "2026-07-01",
+          "metric": "sales",
+          "expected": 1880000,
+          "actual": 770000,
+          "diff": -1110000
+        },
+        {
+          "project": "イエウール",
+          "date": "2026-07-02",
+          "metric": "sales",
+          "expected": 2800000,
+          "actual": 1070000,
+          "diff": -1730000
+        },
+        {
+          "project": "イエウール",
+          "date": "2026-07-03",
+          "metric": "sales",
+          "expected": 1540000,
+          "actual": 620000,
+          "diff": -920000
+        },
+        {
+          "project": "イエウール",
+          "date": "2026-07-04",
+          "metric": "sales",
+          "expected": 4350000,
+          "actual": 1460000,
+          "diff": -2890000
+        },
+        {
+          "project": "イエウール",
+          "date": "2026-07-05",
+          "metric": "sales",
+          "expected": 4090000,
+          "actual": 1350000,
+          "diff": -2740000
+        },
+        {
+          "project": "イエウール",
+          "date": "2026-07-06",
+          "metric": "sales",
+          "expected": 1900000,
+          "actual": 650000,
+          "diff": -1250000
+        },
+        {
+          "project": "トライのオンライン個別指導塾",
+          "date": "2026-07-01",
+          "metric": "sales",
+          "expected": 78000,
+          "actual": 39000,
+          "diff": -39000
+        },
+        {
+          "project": "トライのオンライン個別指導塾",
+          "date": "2026-07-02",
+          "metric": "sales",
+          "expected": 130000,
+          "actual": 65000,
+          "diff": -65000
+        },
+        {
+          "project": "トライのオンライン個別指導塾",
+          "date": "2026-07-03",
+          "metric": "sales",
+          "expected": 130000,
+          "actual": 65000,
+          "diff": -65000
+        },
+        {
+          "project": "トライのオンライン個別指導塾",
+          "date": "2026-07-04",
+          "metric": "sales",
+          "expected": 104000,
+          "actual": 52000,
+          "diff": -52000
+        },
+        {
+          "project": "トライのオンライン個別指導塾",
+          "date": "2026-07-05",
+          "metric": "sales",
+          "expected": 130000,
+          "actual": 65000,
+          "diff": -65000
+        },
+        {
+          "project": "トライのオンライン個別指導塾",
+          "date": "2026-07-06",
+          "metric": "sales",
+          "expected": 26000,
+          "actual": 13000,
+          "diff": -13000
+        }
+      ]
+    },
+    {
+      "type": "missing_media_date",
+      "message": "2026-07: expected business sales key missing from detail data",
+      "count": 7,
+      "examples": [
+        {
+          "project": "イエウール",
+          "media": "TikTok",
+          "date": "2026-07-06"
+        },
+        {
+          "project": "イエウール",
+          "media": "TikTok",
+          "date": "2026-07-04"
+        },
+        {
+          "project": "イエウール",
+          "media": "TikTok",
+          "date": "2026-07-05"
+        },
+        {
+          "project": "イエウール",
+          "media": "YDA",
+          "date": "2026-07-03"
+        },
+        {
+          "project": "イエウール",
+          "media": "YDA",
+          "date": "2026-07-04"
+        },
+        {
+          "project": "イエウール",
+          "media": "YDA",
+          "date": "2026-07-05"
+        },
+        {
+          "project": "イエウール",
+          "media": "YDA",
+          "date": "2026-07-06"
+        }
+      ]
+    },
+    {
+      "type": "media_value_mismatch",
+      "message": "2026-07: business sales value differs from detail data",
+      "count": 36,
+      "examples": [
+        {
+          "project": "イエウール",
+          "media": "YT",
+          "date": "2026-07-01",
+          "metric": "sales",
+          "expected": 660000,
+          "actual": 330000,
+          "diff": -330000
+        },
+        {
+          "project": "イエウール",
+          "media": "YT",
+          "date": "2026-07-02",
+          "metric": "sales",
+          "expected": 620000,
+          "actual": 310000,
+          "diff": -310000
+        },
+        {
+          "project": "イエウール",
+          "media": "YT",
+          "date": "2026-07-03",
+          "metric": "sales",
+          "expected": 440000,
+          "actual": 220000,
+          "diff": -220000
+        },
+        {
+          "project": "イエウール",
+          "media": "YT",
+          "date": "2026-07-04",
+          "metric": "sales",
+          "expected": 1500000,
+          "actual": 750000,
+          "diff": -750000
+        },
+        {
+          "project": "イエウール",
+          "media": "YT",
+          "date": "2026-07-05",
+          "metric": "sales",
+          "expected": 820000,
+          "actual": 420000,
+          "diff": -400000
+        },
+        {
+          "project": "イエウール",
+          "media": "YT",
+          "date": "2026-07-06",
+          "metric": "sales",
+          "expected": 280000,
+          "actual": 140000,
+          "diff": -140000
+        },
+        {
+          "project": "イエウール",
+          "media": "FB",
+          "date": "2026-07-01",
+          "metric": "sales",
+          "expected": 1000000,
+          "actual": 330000,
+          "diff": -670000
+        },
+        {
+          "project": "イエウール",
+          "media": "FB",
+          "date": "2026-07-02",
+          "metric": "sales",
+          "expected": 1980000,
+          "actual": 660000,
+          "diff": -1320000
+        },
+        {
+          "project": "イエウール",
+          "media": "FB",
+          "date": "2026-07-03",
+          "metric": "sales",
+          "expected": 880000,
+          "actual": 290000,
+          "diff": -590000
+        },
+        {
+          "project": "イエウール",
+          "media": "FB",
+          "date": "2026-07-04",
+          "metric": "sales",
+          "expected": 2670000,
+          "actual": 620000,
+          "diff": -2050000
+        },
+        {
+          "project": "イエウール",
+          "media": "FB",
+          "date": "2026-07-05",
+          "metric": "sales",
+          "expected": 2970000,
+          "actual": 780000,
+          "diff": -2190000
+        },
+        {
+          "project": "イエウール",
+          "media": "FB",
+          "date": "2026-07-06",
+          "metric": "sales",
+          "expected": 1360000,
+          "actual": 380000,
+          "diff": -980000
+        }
+      ]
+    }
+  ],
+  "months": [
+    {
+      "month": "2022-11",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2022-12",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-01",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-02",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-03",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-04",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-05",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-06",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-07",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-08",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-09",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-10",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-11",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2023-12",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-01",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-02",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-03",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-04",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-05",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-06",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-07",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-08",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-09",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-10",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-11",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2024-12",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-01",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-02",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-03",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-04",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-05",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-06",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-07",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-08",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-09",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-10",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-11",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2025-12",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2026-01",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2026-02",
+      "status": "warning",
+      "errors": [],
+      "warnings": [
+        {
+          "type": "total_value_mismatch",
+          "message": "2026-02: business sales value differs from detail data",
+          "count": 8,
+          "examples": [
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-02-21",
+              "metric": "grossProfit",
+              "expected": -80133,
+              "actual": -160266,
+              "diff": -80133
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-02-22",
+              "metric": "grossProfit",
+              "expected": -84293,
+              "actual": -168586,
+              "diff": -84293
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-02-23",
+              "metric": "grossProfit",
+              "expected": -92985,
+              "actual": -185970,
+              "diff": -92985
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-02-24",
+              "metric": "grossProfit",
+              "expected": -21124,
+              "actual": -42248,
+              "diff": -21124
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-02-26",
+              "metric": "grossProfit",
+              "expected": -33266,
+              "actual": -66532,
+              "diff": -33266
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-02-27",
+              "metric": "grossProfit",
+              "expected": -13214,
+              "actual": -26428,
+              "diff": -13214
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-02-28",
+              "metric": "grossProfit",
+              "expected": -39281,
+              "actual": -78562,
+              "diff": -39281
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-02-25",
+              "metric": "grossProfit",
+              "expected": -20412,
+              "actual": -40824,
+              "diff": -20412
+            }
+          ]
+        },
+        {
+          "type": "missing_media_date",
+          "message": "2026-02: expected business sales key missing from detail data",
+          "count": 82,
+          "examples": [
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "TikTok",
+              "date": "2026-02-21"
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "TikTok",
+              "date": "2026-02-22"
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "TikTok",
+              "date": "2026-02-23"
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "TikTok",
+              "date": "2026-02-24"
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "TikTok",
+              "date": "2026-02-26"
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "TikTok",
+              "date": "2026-02-27"
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "TikTok",
+              "date": "2026-02-28"
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "FB",
+              "date": "2026-02-21"
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "FB",
+              "date": "2026-02-22"
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "FB",
+              "date": "2026-02-23"
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "FB",
+              "date": "2026-02-25"
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "FB",
+              "date": "2026-02-26"
+            }
+          ]
+        },
+        {
+          "type": "media_value_mismatch",
+          "message": "2026-02: business sales value differs from detail data",
+          "count": 1,
+          "examples": [
+            {
+              "project": "カドナビ",
+              "media": "TikTok",
+              "date": "2026-02-04",
+              "metric": "cv",
+              "expected": 7,
+              "actual": 49,
+              "diff": 42
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 8,
+        "missingMediaDates": 82,
+        "mediaValueMismatches": 1,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2026-03",
+      "status": "warning",
+      "errors": [],
+      "warnings": [
+        {
+          "type": "total_value_mismatch",
+          "message": "2026-03: business sales value differs from detail data",
+          "count": 11,
+          "examples": [
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-03-01",
+              "metric": "sales",
+              "expected": 55000,
+              "actual": 110000,
+              "diff": 55000
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-03-04",
+              "metric": "sales",
+              "expected": 103000,
+              "actual": 206000,
+              "diff": 103000
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-03-02",
+              "metric": "grossProfit",
+              "expected": -22457,
+              "actual": -44914,
+              "diff": -22457
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-03-03",
+              "metric": "grossProfit",
+              "expected": -12406,
+              "actual": -24812,
+              "diff": -12406
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-03-20",
+              "metric": "sales",
+              "expected": 96000,
+              "actual": 192000,
+              "diff": 96000
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-03-21",
+              "metric": "sales",
+              "expected": 48000,
+              "actual": 96000,
+              "diff": 48000
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-03-22",
+              "metric": "grossProfit",
+              "expected": -37208,
+              "actual": -74416,
+              "diff": -37208
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-03-23",
+              "metric": "grossProfit",
+              "expected": -2326,
+              "actual": -4652,
+              "diff": -2326
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-03-07",
+              "metric": "grossProfit",
+              "expected": -20059,
+              "actual": -40118,
+              "diff": -20059
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-03-11",
+              "metric": "grossProfit",
+              "expected": -15503,
+              "actual": -31006,
+              "diff": -15503
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "date": "2026-03-12",
+              "metric": "grossProfit",
+              "expected": -31168,
+              "actual": -62336,
+              "diff": -31168
+            }
+          ]
+        },
+        {
+          "type": "missing_media_date",
+          "message": "2026-03: expected business sales key missing from detail data",
+          "count": 161,
+          "examples": [
+            {
+              "project": "ラココ",
+              "media": "TikTok",
+              "date": "2026-03-04"
+            },
+            {
+              "project": "ラココ",
+              "media": "TikTok",
+              "date": "2026-03-05"
+            },
+            {
+              "project": "ラココ",
+              "media": "FB",
+              "date": "2026-03-04"
+            },
+            {
+              "project": "ラココ",
+              "media": "FB",
+              "date": "2026-03-14"
+            },
+            {
+              "project": "ラココ",
+              "media": "FB",
+              "date": "2026-03-01"
+            },
+            {
+              "project": "ラココ",
+              "media": "FB",
+              "date": "2026-03-05"
+            },
+            {
+              "project": "ラココ",
+              "media": "FB",
+              "date": "2026-03-06"
+            },
+            {
+              "project": "ラココ",
+              "media": "FB",
+              "date": "2026-03-07"
+            },
+            {
+              "project": "ラココ",
+              "media": "FB",
+              "date": "2026-03-15"
+            },
+            {
+              "project": "エミナルクリニック",
+              "media": "FB",
+              "date": "2026-03-05"
+            },
+            {
+              "project": "エミナルクリニック",
+              "media": "FB",
+              "date": "2026-03-06"
+            },
+            {
+              "project": "エミナルクリニック",
+              "media": "FB",
+              "date": "2026-03-09"
+            }
+          ]
+        },
+        {
+          "type": "media_value_mismatch",
+          "message": "2026-03: business sales value differs from detail data",
+          "count": 14,
+          "examples": [
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2026-03-01",
+              "metric": "sales",
+              "expected": 29348,
+              "actual": 0,
+              "diff": -29348
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2026-03-02",
+              "metric": "sales",
+              "expected": 29348,
+              "actual": 0,
+              "diff": -29348
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2026-03-06",
+              "metric": "sales",
+              "expected": 29348,
+              "actual": 0,
+              "diff": -29348
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2026-03-12",
+              "metric": "sales",
+              "expected": 88044,
+              "actual": 0,
+              "diff": -88044
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2026-03-14",
+              "metric": "sales",
+              "expected": 58696,
+              "actual": 0,
+              "diff": -58696
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2026-03-27",
+              "metric": "sales",
+              "expected": 58696,
+              "actual": 0,
+              "diff": -58696
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2026-03-28",
+              "metric": "sales",
+              "expected": 58696,
+              "actual": 0,
+              "diff": -58696
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2026-03-29",
+              "metric": "sales",
+              "expected": 29348,
+              "actual": 0,
+              "diff": -29348
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2026-03-30",
+              "metric": "sales",
+              "expected": 29348,
+              "actual": 0,
+              "diff": -29348
+            },
+            {
+              "project": "メンズクリア",
+              "media": "TikTok",
+              "date": "2026-03-05",
+              "metric": "sales",
+              "expected": 32900,
+              "actual": 0,
+              "diff": -32900
+            },
+            {
+              "project": "メンズクリア",
+              "media": "TikTok",
+              "date": "2026-03-08",
+              "metric": "sales",
+              "expected": 32900,
+              "actual": 0,
+              "diff": -32900
+            },
+            {
+              "project": "メンズクリア",
+              "media": "TikTok",
+              "date": "2026-03-01",
+              "metric": "sales",
+              "expected": 34632,
+              "actual": 0,
+              "diff": -34632
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 11,
+        "missingMediaDates": 161,
+        "mediaValueMismatches": 14,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2026-04",
+      "status": "warning",
+      "errors": [],
+      "warnings": [
+        {
+          "type": "missing_media_date",
+          "message": "2026-04: expected business sales key missing from detail data",
+          "count": 18,
+          "examples": [
+            {
+              "project": "WE SMILE",
+              "media": "FB",
+              "date": "2026-04-18"
+            },
+            {
+              "project": "WE SMILE",
+              "media": "FB",
+              "date": "2026-04-19"
+            },
+            {
+              "project": "セルトレ一括査定",
+              "media": "FB",
+              "date": "2026-04-10"
+            },
+            {
+              "project": "セルトレ一括査定",
+              "media": "FB",
+              "date": "2026-04-11"
+            },
+            {
+              "project": "セルトレ一括査定",
+              "media": "FB",
+              "date": "2026-04-14"
+            },
+            {
+              "project": "セルトレ一括査定",
+              "media": "FB",
+              "date": "2026-04-15"
+            },
+            {
+              "project": "セルトレ一括査定",
+              "media": "TikTok",
+              "date": "2026-04-11"
+            },
+            {
+              "project": "セルトレ一括査定",
+              "media": "TikTok",
+              "date": "2026-04-12"
+            },
+            {
+              "project": "セルトレ一括査定",
+              "media": "TikTok",
+              "date": "2026-04-13"
+            },
+            {
+              "project": "セルトレ一括査定",
+              "media": "TikTok",
+              "date": "2026-04-14"
+            },
+            {
+              "project": "セルトレ一括査定",
+              "media": "TikTok",
+              "date": "2026-04-15"
+            },
+            {
+              "project": "セルトレ一括査定",
+              "media": "TikTok",
+              "date": "2026-04-16"
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 18,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2026-05",
+      "status": "ok",
+      "errors": [],
+      "warnings": [],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 0,
+        "mediaValueMismatches": 0,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2026-06",
+      "status": "warning",
+      "errors": [],
+      "warnings": [
+        {
+          "type": "missing_media_date",
+          "message": "2026-06: expected business sales key missing from detail data",
+          "count": 8,
+          "examples": [
+            {
+              "project": "東京中央美容外科(ニキビ-L)",
+              "media": "FB",
+              "date": "2026-06-26"
+            },
+            {
+              "project": "東京中央美容外科(ニキビ-L)",
+              "media": "FB",
+              "date": "2026-06-20"
+            },
+            {
+              "project": "東京中央美容外科(ニキビ-L)",
+              "media": "FB",
+              "date": "2026-06-21"
+            },
+            {
+              "project": "東京中央美容外科(ニキビ-L)",
+              "media": "FB",
+              "date": "2026-06-22"
+            },
+            {
+              "project": "東京中央美容外科(ニキビ-L)",
+              "media": "FB",
+              "date": "2026-06-23"
+            },
+            {
+              "project": "東京中央美容外科(ニキビ-L)",
+              "media": "FB",
+              "date": "2026-06-27"
+            },
+            {
+              "project": "東京中央美容外科(糸リフト)",
+              "media": "FB",
+              "date": "2026-06-27"
+            },
+            {
+              "project": "東京中央美容外科(糸リフト)",
+              "media": "FB",
+              "date": "2026-06-30"
+            }
+          ]
+        },
+        {
+          "type": "media_value_mismatch",
+          "message": "2026-06: business sales value differs from detail data",
+          "count": 4,
+          "examples": [
+            {
+              "project": "DIO医療ダイエットクリニック",
+              "media": "FB",
+              "date": "2026-06-27",
+              "metric": "grossProfit",
+              "expected": 261641,
+              "actual": 329563,
+              "diff": 67922
+            },
+            {
+              "project": "DIO医療ダイエットクリニック",
+              "media": "FB",
+              "date": "2026-06-28",
+              "metric": "sales",
+              "expected": 1587120,
+              "actual": 1317120,
+              "diff": -270000
+            },
+            {
+              "project": "DIO医療ダイエットクリニック",
+              "media": "FB",
+              "date": "2026-06-29",
+              "metric": "sales",
+              "expected": 1214760,
+              "actual": 1052760,
+              "diff": -162000
+            },
+            {
+              "project": "DIO医療ダイエットクリニック",
+              "media": "FB",
+              "date": "2026-06-30",
+              "metric": "sales",
+              "expected": 772200,
+              "actual": 502200,
+              "diff": -270000
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 0,
+        "missingMediaDates": 8,
+        "mediaValueMismatches": 4,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    },
+    {
+      "month": "2026-07",
+      "status": "warning",
+      "errors": [],
+      "warnings": [
+        {
+          "type": "total_value_mismatch",
+          "message": "2026-07: business sales value differs from detail data",
+          "count": 29,
+          "examples": [
+            {
+              "project": "イエウール",
+              "date": "2026-07-01",
+              "metric": "sales",
+              "expected": 1880000,
+              "actual": 770000,
+              "diff": -1110000
+            },
+            {
+              "project": "イエウール",
+              "date": "2026-07-02",
+              "metric": "sales",
+              "expected": 2800000,
+              "actual": 1070000,
+              "diff": -1730000
+            },
+            {
+              "project": "イエウール",
+              "date": "2026-07-03",
+              "metric": "sales",
+              "expected": 1540000,
+              "actual": 620000,
+              "diff": -920000
+            },
+            {
+              "project": "イエウール",
+              "date": "2026-07-04",
+              "metric": "sales",
+              "expected": 4350000,
+              "actual": 1460000,
+              "diff": -2890000
+            },
+            {
+              "project": "イエウール",
+              "date": "2026-07-05",
+              "metric": "sales",
+              "expected": 4090000,
+              "actual": 1350000,
+              "diff": -2740000
+            },
+            {
+              "project": "イエウール",
+              "date": "2026-07-06",
+              "metric": "sales",
+              "expected": 1900000,
+              "actual": 650000,
+              "diff": -1250000
+            },
+            {
+              "project": "トライのオンライン個別指導塾",
+              "date": "2026-07-01",
+              "metric": "sales",
+              "expected": 78000,
+              "actual": 39000,
+              "diff": -39000
+            },
+            {
+              "project": "トライのオンライン個別指導塾",
+              "date": "2026-07-02",
+              "metric": "sales",
+              "expected": 130000,
+              "actual": 65000,
+              "diff": -65000
+            },
+            {
+              "project": "トライのオンライン個別指導塾",
+              "date": "2026-07-03",
+              "metric": "sales",
+              "expected": 130000,
+              "actual": 65000,
+              "diff": -65000
+            },
+            {
+              "project": "トライのオンライン個別指導塾",
+              "date": "2026-07-04",
+              "metric": "sales",
+              "expected": 104000,
+              "actual": 52000,
+              "diff": -52000
+            },
+            {
+              "project": "トライのオンライン個別指導塾",
+              "date": "2026-07-05",
+              "metric": "sales",
+              "expected": 130000,
+              "actual": 65000,
+              "diff": -65000
+            },
+            {
+              "project": "トライのオンライン個別指導塾",
+              "date": "2026-07-06",
+              "metric": "sales",
+              "expected": 26000,
+              "actual": 13000,
+              "diff": -13000
+            }
+          ]
+        },
+        {
+          "type": "missing_media_date",
+          "message": "2026-07: expected business sales key missing from detail data",
+          "count": 7,
+          "examples": [
+            {
+              "project": "イエウール",
+              "media": "TikTok",
+              "date": "2026-07-06"
+            },
+            {
+              "project": "イエウール",
+              "media": "TikTok",
+              "date": "2026-07-04"
+            },
+            {
+              "project": "イエウール",
+              "media": "TikTok",
+              "date": "2026-07-05"
+            },
+            {
+              "project": "イエウール",
+              "media": "YDA",
+              "date": "2026-07-03"
+            },
+            {
+              "project": "イエウール",
+              "media": "YDA",
+              "date": "2026-07-04"
+            },
+            {
+              "project": "イエウール",
+              "media": "YDA",
+              "date": "2026-07-05"
+            },
+            {
+              "project": "イエウール",
+              "media": "YDA",
+              "date": "2026-07-06"
+            }
+          ]
+        },
+        {
+          "type": "media_value_mismatch",
+          "message": "2026-07: business sales value differs from detail data",
+          "count": 36,
+          "examples": [
+            {
+              "project": "イエウール",
+              "media": "YT",
+              "date": "2026-07-01",
+              "metric": "sales",
+              "expected": 660000,
+              "actual": 330000,
+              "diff": -330000
+            },
+            {
+              "project": "イエウール",
+              "media": "YT",
+              "date": "2026-07-02",
+              "metric": "sales",
+              "expected": 620000,
+              "actual": 310000,
+              "diff": -310000
+            },
+            {
+              "project": "イエウール",
+              "media": "YT",
+              "date": "2026-07-03",
+              "metric": "sales",
+              "expected": 440000,
+              "actual": 220000,
+              "diff": -220000
+            },
+            {
+              "project": "イエウール",
+              "media": "YT",
+              "date": "2026-07-04",
+              "metric": "sales",
+              "expected": 1500000,
+              "actual": 750000,
+              "diff": -750000
+            },
+            {
+              "project": "イエウール",
+              "media": "YT",
+              "date": "2026-07-05",
+              "metric": "sales",
+              "expected": 820000,
+              "actual": 420000,
+              "diff": -400000
+            },
+            {
+              "project": "イエウール",
+              "media": "YT",
+              "date": "2026-07-06",
+              "metric": "sales",
+              "expected": 280000,
+              "actual": 140000,
+              "diff": -140000
+            },
+            {
+              "project": "イエウール",
+              "media": "FB",
+              "date": "2026-07-01",
+              "metric": "sales",
+              "expected": 1000000,
+              "actual": 330000,
+              "diff": -670000
+            },
+            {
+              "project": "イエウール",
+              "media": "FB",
+              "date": "2026-07-02",
+              "metric": "sales",
+              "expected": 1980000,
+              "actual": 660000,
+              "diff": -1320000
+            },
+            {
+              "project": "イエウール",
+              "media": "FB",
+              "date": "2026-07-03",
+              "metric": "sales",
+              "expected": 880000,
+              "actual": 290000,
+              "diff": -590000
+            },
+            {
+              "project": "イエウール",
+              "media": "FB",
+              "date": "2026-07-04",
+              "metric": "sales",
+              "expected": 2670000,
+              "actual": 620000,
+              "diff": -2050000
+            },
+            {
+              "project": "イエウール",
+              "media": "FB",
+              "date": "2026-07-05",
+              "metric": "sales",
+              "expected": 2970000,
+              "actual": 780000,
+              "diff": -2190000
+            },
+            {
+              "project": "イエウール",
+              "media": "FB",
+              "date": "2026-07-06",
+              "metric": "sales",
+              "expected": 1360000,
+              "actual": 380000,
+              "diff": -980000
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "missingProjects": 0,
+        "missingProjectDates": 0,
+        "totalValueMismatches": 29,
+        "missingMediaDates": 7,
+        "mediaValueMismatches": 36,
+        "previousMissingProjects": 0,
+        "previousRecordDrop": 0,
+        "previousProjectDrop": 0
+      }
+    }
+  ]
+}
