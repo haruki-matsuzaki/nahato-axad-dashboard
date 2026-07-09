@@ -24,15 +24,23 @@
     "ストラッシュ",
     "チキンゴルフ",
     "ナビクル車査定",
+    "ヌリカエ",
+    "バイセル",
     "ミュゼ",
     "メンズクリア",
     "メンズライフクリニック",
-    "弁護士法人オーガスタ"
+    "弁護士法人オーガスタ",
+    "弁護士法人ユア・エース"
   ],
   "media": [
+    "LAP",
+    "Pangle",
+    "TikTok",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 3 project(s) from overall business sales: ヌリカエ, バイセル, 弁護士法人ユア・エース"
+  ],
   "records": [
     {
       "date": "2024-03-01",
@@ -5134,6 +5142,270 @@
       "sales": 0,
       "grossProfit": -6997,
       "cost": 6997,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-09",
+      "project": "ヌリカエ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -3499,
+      "cost": 3499,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-09",
+      "project": "ヌリカエ",
+      "media": "Pangle",
+      "sales": 0,
+      "grossProfit": -3499,
+      "cost": 3499,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-10",
+      "project": "ヌリカエ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -8229,
+      "cost": 8229,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-10",
+      "project": "ヌリカエ",
+      "media": "Pangle",
+      "sales": 0,
+      "grossProfit": -8229,
+      "cost": 8229,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-13",
+      "project": "ヌリカエ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -2950,
+      "cost": 2950,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-13",
+      "project": "ヌリカエ",
+      "media": "LAP",
+      "sales": 0,
+      "grossProfit": -2950,
+      "cost": 2950,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-14",
+      "project": "ヌリカエ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -8994,
+      "cost": 8994,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-14",
+      "project": "ヌリカエ",
+      "media": "LAP",
+      "sales": 0,
+      "grossProfit": -8994,
+      "cost": 8994,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-22",
+      "project": "弁護士法人ユア・エース",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -4408,
+      "cost": 4408,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-22",
+      "project": "弁護士法人ユア・エース",
+      "media": "TikTok",
+      "sales": 0,
+      "grossProfit": -4408,
+      "cost": 4408,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-23",
+      "project": "弁護士法人ユア・エース",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -27783,
+      "cost": 27783,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-23",
+      "project": "弁護士法人ユア・エース",
+      "media": "TikTok",
+      "sales": 0,
+      "grossProfit": -27783,
+      "cost": 27783,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-24",
+      "project": "弁護士法人ユア・エース",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -16354,
+      "cost": 16354,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-24",
+      "project": "弁護士法人ユア・エース",
+      "media": "TikTok",
+      "sales": 0,
+      "grossProfit": -16354,
+      "cost": 16354,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-25",
+      "project": "弁護士法人ユア・エース",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -1,
+      "cost": 1,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-25",
+      "project": "弁護士法人ユア・エース",
+      "media": "TikTok",
+      "sales": 0,
+      "grossProfit": -1,
+      "cost": 1,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-27",
+      "project": "弁護士法人ユア・エース",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -7662,
+      "cost": 7662,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-27",
+      "project": "弁護士法人ユア・エース",
+      "media": "TikTok",
+      "sales": 0,
+      "grossProfit": -7662,
+      "cost": 7662,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-30",
+      "project": "バイセル",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -30465,
+      "cost": 30465,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-30",
+      "project": "バイセル",
+      "media": "Pangle",
+      "sales": 0,
+      "grossProfit": -15888,
+      "cost": 15888,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-30",
+      "project": "バイセル",
+      "media": "TikTok",
+      "sales": 0,
+      "grossProfit": -14577,
+      "cost": 14577,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-31",
+      "project": "バイセル",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -30776,
+      "cost": 30776,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-31",
+      "project": "バイセル",
+      "media": "Pangle",
+      "sales": 0,
+      "grossProfit": -20216,
+      "cost": 20216,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-03-31",
+      "project": "バイセル",
+      "media": "TikTok",
+      "sales": 0,
+      "grossProfit": -10560,
+      "cost": 10560,
       "cv": 0,
       "roas": 0,
       "cpa": 0

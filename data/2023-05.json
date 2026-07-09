@@ -22,15 +22,19 @@
     "チキンゴルフ",
     "チキンジム",
     "ニューモ",
+    "パルフェットNAセラム",
     "ミュゼ",
     "ミラクリニック",
     "メンズクリア",
     "ラクビプレミアム"
   ],
   "media": [
+    "Pangle",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 1 project(s) from overall business sales: パルフェットNAセラム"
+  ],
   "records": [
     {
       "date": "2023-05-01",
@@ -4285,6 +4289,28 @@
       "sales": 0,
       "grossProfit": -15847,
       "cost": 15847,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-05-24",
+      "project": "パルフェットNAセラム",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -10400,
+      "cost": 10400,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-05-24",
+      "project": "パルフェットNAセラム",
+      "media": "Pangle",
+      "sales": 0,
+      "grossProfit": -10400,
+      "cost": 10400,
       "cv": 0,
       "roas": 0,
       "cpa": 0

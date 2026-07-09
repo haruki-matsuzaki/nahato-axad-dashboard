@@ -62,12 +62,16 @@ function parseNachtSheet(values, config, totalValues = null) {
     : totalValues
     ? parseBlockSheet(totalValues, config, { skipProjectRows: false, totalsOnly: true })
     : { records: [], warnings: [] };
-  const totalProjects = totalValues ? new Set(totalParsed.records.map((record) => record.project)) : null;
-  const mediaRecords = totalProjects
-    ? mediaParsed.records.filter((record) => totalProjects.has(record.project))
-    : mediaParsed.records;
-  const records = [...totalParsed.records, ...mediaRecords];
+  const mediaRecords = mediaParsed.records;
+  const synthesizedTotals = totalValues ? synthesizeMissingProjectTotals(totalParsed.records, mediaRecords) : [];
+  const records = [...totalParsed.records, ...synthesizedTotals, ...mediaRecords];
   const warnings = [...totalParsed.warnings, ...mediaParsed.warnings];
+  if (synthesizedTotals.length) {
+    const projects = [...new Set(synthesizedTotals.map((record) => record.project))].sort(localeSort);
+    warnings.push(
+      `Synthesized project totals from media rows for ${projects.length} project(s): ${projects.join(", ")}`,
+    );
+  }
   const projects = [...new Set(records.map((record) => record.project))].sort(localeSort);
   const media = [...new Set(records.map((record) => record.media))].sort(localeSort);
 
@@ -86,6 +90,50 @@ function parseNachtSheet(values, config, totalValues = null) {
     warnings,
     records,
   };
+}
+
+function synthesizeMissingProjectTotals(totalRecords, mediaRecords) {
+  const existingTotalKeys = new Set(
+    totalRecords
+      .filter((record) => record.media === "全体")
+      .map((record) => projectDateKey(record.project, record.date)),
+  );
+  const totals = new Map();
+
+  for (const record of mediaRecords) {
+    if (!record.project || !record.date || record.media === "全体") continue;
+    const key = projectDateKey(record.project, record.date);
+    if (existingTotalKeys.has(key)) continue;
+    const total = totals.get(key) || {
+      date: record.date,
+      project: record.project,
+      media: "全体",
+      sales: 0,
+      grossProfit: 0,
+      cost: 0,
+      cv: 0,
+      roas: 0,
+      cpa: 0,
+    };
+    total.sales += Number(record.sales) || 0;
+    total.grossProfit += Number(record.grossProfit) || 0;
+    total.cost += Number(record.cost) || 0;
+    total.cv += Number(record.cv) || 0;
+    totals.set(key, total);
+  }
+
+  return [...totals.values()]
+    .map((record) => ({
+      ...record,
+      roas: record.cost ? record.sales / record.cost : 0,
+      cpa: record.cv ? record.cost / record.cv : 0,
+    }))
+    .filter((record) => [record.sales, record.grossProfit, record.cost, record.cv].some((value) => value !== 0))
+    .sort((a, b) => a.project.localeCompare(b.project, "ja") || a.date.localeCompare(b.date));
+}
+
+function projectDateKey(project, date) {
+  return `${project}\u0000${date}`;
 }
 
 function parseBlockSheet(values, config, options) {

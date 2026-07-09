@@ -9,6 +9,7 @@
     "generatedAt": "2026-07-07T03:37:56.225Z"
   },
   "projects": [
+    "100GIRI GOLF",
     "AGALP",
     "DIO医療ダイエットクリニック",
     "DSクリニック",
@@ -34,9 +35,13 @@
     "レーザースキンクリニック"
   ],
   "media": [
+    "FB",
+    "LAP",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 1 project(s) from overall business sales: 100GIRI GOLF"
+  ],
   "records": [
     {
       "date": "2023-04-01",
@@ -4349,6 +4354,369 @@
       "cv": 1,
       "roas": 1.3240648791790797,
       "cpa": 6042
+    },
+    {
+      "date": "2023-04-08",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 240000,
+      "grossProfit": 44428,
+      "cost": 195572,
+      "cv": 8,
+      "roas": 1.227169533471049,
+      "cpa": 24446.5
+    },
+    {
+      "date": "2023-04-08",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 240000,
+      "grossProfit": 44428,
+      "cost": 195572,
+      "cv": 8,
+      "roas": 1.227169533471049,
+      "cpa": 24446.5
+    },
+    {
+      "date": "2023-04-09",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 540000,
+      "grossProfit": 314785,
+      "cost": 225215,
+      "cv": 18,
+      "roas": 2.3977088559820614,
+      "cpa": 12511.944444444445
+    },
+    {
+      "date": "2023-04-09",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 540000,
+      "grossProfit": 314785,
+      "cost": 225215,
+      "cv": 18,
+      "roas": 2.3977088559820614,
+      "cpa": 12511.944444444445
+    },
+    {
+      "date": "2023-04-10",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 450000,
+      "grossProfit": 228634,
+      "cost": 221366,
+      "cv": 15,
+      "roas": 2.0328325036365116,
+      "cpa": 14757.733333333334
+    },
+    {
+      "date": "2023-04-10",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 450000,
+      "grossProfit": 228634,
+      "cost": 221366,
+      "cv": 15,
+      "roas": 2.0328325036365116,
+      "cpa": 14757.733333333334
+    },
+    {
+      "date": "2023-04-11",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 600000,
+      "grossProfit": 213371,
+      "cost": 386629,
+      "cv": 20,
+      "roas": 1.5518753119915991,
+      "cpa": 19331.45
+    },
+    {
+      "date": "2023-04-11",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 600000,
+      "grossProfit": 213371,
+      "cost": 386629,
+      "cv": 20,
+      "roas": 1.5518753119915991,
+      "cpa": 19331.45
+    },
+    {
+      "date": "2023-04-12",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 690000,
+      "grossProfit": 275884,
+      "cost": 414116,
+      "cv": 23,
+      "roas": 1.6661998087492393,
+      "cpa": 18005.043478260868
+    },
+    {
+      "date": "2023-04-12",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 690000,
+      "grossProfit": 275884,
+      "cost": 414116,
+      "cv": 23,
+      "roas": 1.6661998087492393,
+      "cpa": 18005.043478260868
+    },
+    {
+      "date": "2023-04-13",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 270000,
+      "grossProfit": -69816,
+      "cost": 339816,
+      "cv": 9,
+      "roas": 0.7945476375450243,
+      "cpa": 37757.333333333336
+    },
+    {
+      "date": "2023-04-13",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 270000,
+      "grossProfit": -69816,
+      "cost": 339816,
+      "cv": 9,
+      "roas": 0.7945476375450243,
+      "cpa": 37757.333333333336
+    },
+    {
+      "date": "2023-04-14",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 570000,
+      "grossProfit": 138362,
+      "cost": 431638,
+      "cv": 19,
+      "roas": 1.3205510172876345,
+      "cpa": 22717.78947368421
+    },
+    {
+      "date": "2023-04-14",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 570000,
+      "grossProfit": 138362,
+      "cost": 431638,
+      "cv": 19,
+      "roas": 1.3205510172876345,
+      "cpa": 22717.78947368421
+    },
+    {
+      "date": "2023-04-15",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 780000,
+      "grossProfit": 292145,
+      "cost": 487855,
+      "cv": 26,
+      "roas": 1.598835719629808,
+      "cpa": 18763.653846153848
+    },
+    {
+      "date": "2023-04-15",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 780000,
+      "grossProfit": 292145,
+      "cost": 487855,
+      "cv": 26,
+      "roas": 1.598835719629808,
+      "cpa": 18763.653846153848
+    },
+    {
+      "date": "2023-04-16",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 300000,
+      "grossProfit": -49235,
+      "cost": 349235,
+      "cv": 10,
+      "roas": 0.8590204303692356,
+      "cpa": 34923.5
+    },
+    {
+      "date": "2023-04-16",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 300000,
+      "grossProfit": -34219,
+      "cost": 334219,
+      "cv": 10,
+      "roas": 0.8976150368470973,
+      "cpa": 33421.9
+    },
+    {
+      "date": "2023-04-16",
+      "project": "100GIRI GOLF",
+      "media": "LAP",
+      "sales": 0,
+      "grossProfit": -15016,
+      "cost": 15016,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-04-17",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 660000,
+      "grossProfit": 80479,
+      "cost": 579521,
+      "cv": 22,
+      "roas": 1.1388715853265023,
+      "cpa": 26341.863636363636
+    },
+    {
+      "date": "2023-04-17",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 660000,
+      "grossProfit": 104425,
+      "cost": 555575,
+      "cv": 22,
+      "roas": 1.187958421455249,
+      "cpa": 25253.409090909092
+    },
+    {
+      "date": "2023-04-17",
+      "project": "100GIRI GOLF",
+      "media": "LAP",
+      "sales": 0,
+      "grossProfit": -23946,
+      "cost": 23946,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-04-18",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 420000,
+      "grossProfit": 73729,
+      "cost": 346271,
+      "cv": 14,
+      "roas": 1.2129228263412184,
+      "cpa": 24733.64285714286
+    },
+    {
+      "date": "2023-04-18",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 420000,
+      "grossProfit": 95696,
+      "cost": 324304,
+      "cv": 14,
+      "roas": 1.295081158419261,
+      "cpa": 23164.571428571428
+    },
+    {
+      "date": "2023-04-18",
+      "project": "100GIRI GOLF",
+      "media": "LAP",
+      "sales": 0,
+      "grossProfit": -21967,
+      "cost": 21967,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-04-19",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 510000,
+      "grossProfit": 140816,
+      "cost": 369184,
+      "cv": 17,
+      "roas": 1.3814249804975296,
+      "cpa": 21716.70588235294
+    },
+    {
+      "date": "2023-04-19",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 510000,
+      "grossProfit": 140816,
+      "cost": 369184,
+      "cv": 17,
+      "roas": 1.3814249804975296,
+      "cpa": 21716.70588235294
+    },
+    {
+      "date": "2023-04-28",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 390000,
+      "grossProfit": 186744,
+      "cost": 203256,
+      "cv": 13,
+      "roas": 1.918762545755107,
+      "cpa": 15635.076923076924
+    },
+    {
+      "date": "2023-04-28",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 390000,
+      "grossProfit": 186744,
+      "cost": 203256,
+      "cv": 13,
+      "roas": 1.918762545755107,
+      "cpa": 15635.076923076924
+    },
+    {
+      "date": "2023-04-29",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 270000,
+      "grossProfit": 18357,
+      "cost": 251643,
+      "cv": 9,
+      "roas": 1.0729485819196243,
+      "cpa": 27960.333333333332
+    },
+    {
+      "date": "2023-04-29",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 270000,
+      "grossProfit": 18357,
+      "cost": 251643,
+      "cv": 9,
+      "roas": 1.0729485819196243,
+      "cpa": 27960.333333333332
+    },
+    {
+      "date": "2023-04-30",
+      "project": "100GIRI GOLF",
+      "media": "全体",
+      "sales": 150000,
+      "grossProfit": 16865,
+      "cost": 133135,
+      "cv": 5,
+      "roas": 1.1266759304465392,
+      "cpa": 26627
+    },
+    {
+      "date": "2023-04-30",
+      "project": "100GIRI GOLF",
+      "media": "FB",
+      "sales": 150000,
+      "grossProfit": 16865,
+      "cost": 133135,
+      "cv": 5,
+      "roas": 1.1266759304465392,
+      "cpa": 26627
     }
   ]
 }

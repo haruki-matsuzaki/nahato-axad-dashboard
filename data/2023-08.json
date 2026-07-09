@@ -22,12 +22,16 @@
     "チキンゴルフ",
     "ミュゼ",
     "ミラクリニック",
-    "メンズクリア"
+    "メンズクリア",
+    "メンズじぶんクリニック"
   ],
   "media": [
+    "FB",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 1 project(s) from overall business sales: メンズじぶんクリニック"
+  ],
   "records": [
     {
       "date": "2023-08-01",
@@ -4337,6 +4341,50 @@
       "sales": 0,
       "grossProfit": -22908,
       "cost": 22908,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-08-30",
+      "project": "メンズじぶんクリニック",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -24845,
+      "cost": 24845,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-08-30",
+      "project": "メンズじぶんクリニック",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -24845,
+      "cost": 24845,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-08-31",
+      "project": "メンズじぶんクリニック",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -14494,
+      "cost": 14494,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-08-31",
+      "project": "メンズじぶんクリニック",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -14494,
+      "cost": 14494,
       "cv": 0,
       "roas": 0,
       "cpa": 0

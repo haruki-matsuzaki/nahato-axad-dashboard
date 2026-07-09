@@ -14,14 +14,18 @@
     "ジェニークリニック",
     "ストラッシュ",
     "チキンゴルフ",
+    "ニューモ",
     "ミラクリニック",
     "メンズクリア",
     "ラココ"
   ],
   "media": [
+    "YT",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 1 project(s) from overall business sales: ニューモ"
+  ],
   "records": [
     {
       "date": "2023-03-01",
@@ -1944,6 +1948,182 @@
       "sales": 0,
       "grossProfit": -16939.9072,
       "cost": 16939.9072,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-13",
+      "project": "ニューモ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -4168.76,
+      "cost": 4168.76,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-13",
+      "project": "ニューモ",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -4168.76,
+      "cost": 4168.76,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-14",
+      "project": "ニューモ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -18624.01,
+      "cost": 18624.01,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-14",
+      "project": "ニューモ",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -18624.01,
+      "cost": 18624.01,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-15",
+      "project": "ニューモ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -13453.560000000001,
+      "cost": 13453.560000000001,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-15",
+      "project": "ニューモ",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -13453.560000000001,
+      "cost": 13453.560000000001,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-16",
+      "project": "ニューモ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -20297.64,
+      "cost": 20297.64,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-16",
+      "project": "ニューモ",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -20297.64,
+      "cost": 20297.64,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-17",
+      "project": "ニューモ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -25748.476899999994,
+      "cost": 25748.476899999994,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-17",
+      "project": "ニューモ",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -25748.476899999994,
+      "cost": 25748.476899999994,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-18",
+      "project": "ニューモ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -47290.2702,
+      "cost": 47290.2702,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-18",
+      "project": "ニューモ",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -47290.2702,
+      "cost": 47290.2702,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-19",
+      "project": "ニューモ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -22384.3989,
+      "cost": 22384.3989,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-19",
+      "project": "ニューモ",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -22384.3989,
+      "cost": 22384.3989,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-20",
+      "project": "ニューモ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -14584.8725,
+      "cost": 14584.8725,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-03-20",
+      "project": "ニューモ",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -14584.8725,
+      "cost": 14584.8725,
       "cv": 0,
       "roas": 0,
       "cpa": 0

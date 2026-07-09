@@ -29,6 +29,7 @@
     "ストラッシュ",
     "ストラッシュ採用",
     "チキンゴルフ",
+    "ナハト採用広告",
     "ナビクル車査定",
     "プルーストクリーム",
     "マネーライフカレッジ",
@@ -37,7 +38,8 @@
     "メンズクリア",
     "メンズライフクリニック",
     "渋谷法務総合事務所",
-    "弁護士法人ユア・エース"
+    "弁護士法人ユア・エース",
+    "鈴木司法書士事務所"
   ],
   "media": [
     "FB",
@@ -52,7 +54,8 @@
     "全体"
   ],
   "warnings": [
-    "Row 2844: missing metrics for めなり極/41"
+    "Row 2844: missing metrics for めなり極/41",
+    "Backfilled 2 project(s) from overall business sales: ナハト採用広告, 鈴木司法書士事務所"
   ],
   "records": [
     {
@@ -20940,6 +20943,72 @@
       "sales": 0,
       "grossProfit": -21302,
       "cost": 21302,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-08-01",
+      "project": "ナハト採用広告",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": 0,
+      "cost": 0,
+      "cv": 4,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-08-01",
+      "project": "ナハト採用広告",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": 0,
+      "cost": 0,
+      "cv": 4,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-08-28",
+      "project": "鈴木司法書士事務所",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -13763,
+      "cost": 13763,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-08-28",
+      "project": "鈴木司法書士事務所",
+      "media": "TikTok",
+      "sales": 0,
+      "grossProfit": -13763,
+      "cost": 13763,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-08-31",
+      "project": "ナハト採用広告",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -9978,
+      "cost": 9978,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-08-31",
+      "project": "ナハト採用広告",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -9978,
+      "cost": 9978,
       "cv": 0,
       "roas": 0,
       "cpa": 0

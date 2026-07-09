@@ -12,6 +12,7 @@
     "100GIRI GOLF",
     "AGAオンラインクリニック",
     "C3",
+    "Cleo'sアイセット",
     "DIO医療ダイエットクリニック",
     "Dr.MILS Clinic",
     "DSクリニック",
@@ -25,8 +26,12 @@
     "ストラッシュ",
     "チキンゴルフ",
     "チキンジム",
+    "チャップアップ",
     "ナビクル車査定",
+    "パーフェクトニードルプレミアム",
+    "パーフェクトボディプレミアム",
     "ヘルステック銀座",
+    "ベルミススリムレギンスcolor+",
     "みつ葉グループ_債務×LINE",
     "ミュゼ",
     "ミラクリニック",
@@ -39,9 +44,13 @@
     "恋肌"
   ],
   "media": [
+    "FB",
+    "Pangle",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 5 project(s) from overall business sales: Cleo'sアイセット, チャップアップ, パーフェクトニードルプレミアム, パーフェクトボディプレミアム, ベルミススリムレギンスcolor+"
+  ],
   "records": [
     {
       "date": "2022-12-01",
@@ -5509,6 +5518,358 @@
       "cv": 0,
       "roas": 0,
       "cpa": 0
+    },
+    {
+      "date": "2022-12-01",
+      "project": "パーフェクトボディプレミアム",
+      "media": "全体",
+      "sales": 13000,
+      "grossProfit": 11800,
+      "cost": 1200,
+      "cv": 1,
+      "roas": 10.833333333333334,
+      "cpa": 1200
+    },
+    {
+      "date": "2022-12-01",
+      "project": "パーフェクトボディプレミアム",
+      "media": "FB",
+      "sales": 13000,
+      "grossProfit": 11800,
+      "cost": 1200,
+      "cv": 1,
+      "roas": 10.833333333333334,
+      "cpa": 1200
+    },
+    {
+      "date": "2022-12-06",
+      "project": "パーフェクトボディプレミアム",
+      "media": "全体",
+      "sales": 13000,
+      "grossProfit": -21909,
+      "cost": 34909,
+      "cv": 1,
+      "roas": 0.3723968031166748,
+      "cpa": 34909
+    },
+    {
+      "date": "2022-12-06",
+      "project": "パーフェクトボディプレミアム",
+      "media": "FB",
+      "sales": 13000,
+      "grossProfit": -21909,
+      "cost": 34909,
+      "cv": 1,
+      "roas": 0.3723968031166748,
+      "cpa": 34909
+    },
+    {
+      "date": "2022-12-07",
+      "project": "パーフェクトボディプレミアム",
+      "media": "全体",
+      "sales": 26000,
+      "grossProfit": -8808,
+      "cost": 34808,
+      "cv": 2,
+      "roas": 0.7469547230521719,
+      "cpa": 17404
+    },
+    {
+      "date": "2022-12-07",
+      "project": "パーフェクトボディプレミアム",
+      "media": "FB",
+      "sales": 26000,
+      "grossProfit": -8808,
+      "cost": 34808,
+      "cv": 2,
+      "roas": 0.7469547230521719,
+      "cpa": 17404
+    },
+    {
+      "date": "2022-12-08",
+      "project": "パーフェクトボディプレミアム",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -4297,
+      "cost": 4297,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-08",
+      "project": "パーフェクトボディプレミアム",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -4297,
+      "cost": 4297,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-17",
+      "project": "Cleo'sアイセット",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -11568,
+      "cost": 11568,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-17",
+      "project": "Cleo'sアイセット",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -11568,
+      "cost": 11568,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-18",
+      "project": "Cleo'sアイセット",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -10918,
+      "cost": 10918,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-18",
+      "project": "Cleo'sアイセット",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -10918,
+      "cost": 10918,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-19",
+      "project": "Cleo'sアイセット",
+      "media": "全体",
+      "sales": 12000,
+      "grossProfit": 3028,
+      "cost": 8972,
+      "cv": 1,
+      "roas": 1.3374944271065536,
+      "cpa": 8972
+    },
+    {
+      "date": "2022-12-19",
+      "project": "Cleo'sアイセット",
+      "media": "FB",
+      "sales": 12000,
+      "grossProfit": 3028,
+      "cost": 8972,
+      "cv": 1,
+      "roas": 1.3374944271065536,
+      "cpa": 8972
+    },
+    {
+      "date": "2022-12-20",
+      "project": "Cleo'sアイセット",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -9849,
+      "cost": 9849,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-20",
+      "project": "Cleo'sアイセット",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -9849,
+      "cost": 9849,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-27",
+      "project": "ベルミススリムレギンスcolor+",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -11533,
+      "cost": 11533,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-27",
+      "project": "ベルミススリムレギンスcolor+",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -11533,
+      "cost": 11533,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-28",
+      "project": "ベルミススリムレギンスcolor+",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -11496,
+      "cost": 11496,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-28",
+      "project": "ベルミススリムレギンスcolor+",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -11496,
+      "cost": 11496,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-29",
+      "project": "パーフェクトニードルプレミアム",
+      "media": "全体",
+      "sales": 20000,
+      "grossProfit": -12984,
+      "cost": 32984,
+      "cv": 2,
+      "roas": 0.6063545961678389,
+      "cpa": 16492
+    },
+    {
+      "date": "2022-12-29",
+      "project": "パーフェクトニードルプレミアム",
+      "media": "Pangle",
+      "sales": 20000,
+      "grossProfit": -12984,
+      "cost": 32984,
+      "cv": 2,
+      "roas": 0.6063545961678389,
+      "cpa": 16492
+    },
+    {
+      "date": "2022-12-29",
+      "project": "ベルミススリムレギンスcolor+",
+      "media": "全体",
+      "sales": 7000,
+      "grossProfit": -4518,
+      "cost": 11518,
+      "cv": 1,
+      "roas": 0.6077444000694565,
+      "cpa": 11518
+    },
+    {
+      "date": "2022-12-29",
+      "project": "ベルミススリムレギンスcolor+",
+      "media": "FB",
+      "sales": 7000,
+      "grossProfit": -4518,
+      "cost": 11518,
+      "cv": 1,
+      "roas": 0.6077444000694565,
+      "cpa": 11518
+    },
+    {
+      "date": "2022-12-30",
+      "project": "チャップアップ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -34705,
+      "cost": 34705,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-30",
+      "project": "チャップアップ",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -34705,
+      "cost": 34705,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-12-30",
+      "project": "パーフェクトニードルプレミアム",
+      "media": "全体",
+      "sales": 20000,
+      "grossProfit": 1082,
+      "cost": 18918,
+      "cv": 2,
+      "roas": 1.057194206575748,
+      "cpa": 9459
+    },
+    {
+      "date": "2022-12-30",
+      "project": "パーフェクトニードルプレミアム",
+      "media": "Pangle",
+      "sales": 20000,
+      "grossProfit": 1082,
+      "cost": 18918,
+      "cv": 2,
+      "roas": 1.057194206575748,
+      "cpa": 9459
+    },
+    {
+      "date": "2022-12-31",
+      "project": "チャップアップ",
+      "media": "全体",
+      "sales": 19000,
+      "grossProfit": -12548,
+      "cost": 31548,
+      "cv": 1,
+      "roas": 0.602256878407506,
+      "cpa": 31548
+    },
+    {
+      "date": "2022-12-31",
+      "project": "チャップアップ",
+      "media": "FB",
+      "sales": 19000,
+      "grossProfit": -12548,
+      "cost": 31548,
+      "cv": 1,
+      "roas": 0.602256878407506,
+      "cpa": 31548
+    },
+    {
+      "date": "2022-12-31",
+      "project": "パーフェクトニードルプレミアム",
+      "media": "全体",
+      "sales": 30000,
+      "grossProfit": -37,
+      "cost": 30037,
+      "cv": 3,
+      "roas": 0.9987681859040517,
+      "cpa": 10012.333333333334
+    },
+    {
+      "date": "2022-12-31",
+      "project": "パーフェクトニードルプレミアム",
+      "media": "Pangle",
+      "sales": 30000,
+      "grossProfit": -37,
+      "cost": 30037,
+      "cv": 3,
+      "roas": 0.9987681859040517,
+      "cpa": 10012.333333333334
     }
   ]
 }

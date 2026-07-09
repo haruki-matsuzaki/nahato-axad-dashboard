@@ -94,6 +94,10 @@ jobs:
           echo "Fetch failed after ${max_attempts} attempts."
           exit "$status"
 
+      - name: Backfill media-only projects
+        if: steps.fetch-data.outcome == 'success'
+        run: node scripts/backfill-records-from-business-sales.mjs
+
       - name: Validate static data
         id: validate-data
         if: always()

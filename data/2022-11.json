@@ -12,12 +12,14 @@
     "100GIRI GOLF",
     "AGAオンラインクリニック",
     "C3",
+    "Cleo'sアイセット",
     "DIO医療ダイエットクリニック",
     "Dr.WANDEL",
     "DSクリニック",
     "FUSARIヘアファンデーション",
     "HELLATH CLINIC",
     "KUROクリームシャンプー",
+    "アルファクリニック",
     "エクササイズコーチ",
     "エミナルクリニック",
     "キャリドラ",
@@ -46,9 +48,12 @@
     "恋肌"
   ],
   "media": [
+    "FB",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 2 project(s) from overall business sales: Cleo'sアイセット, アルファクリニック"
+  ],
   "records": [
     {
       "date": "2022-11-01",
@@ -6440,6 +6445,270 @@
       "cv": 1,
       "roas": 0.5610360465659918,
       "cpa": 42778
+    },
+    {
+      "date": "2022-11-05",
+      "project": "アルファクリニック",
+      "media": "全体",
+      "sales": 25000,
+      "grossProfit": 1799,
+      "cost": 23201,
+      "cv": 2,
+      "roas": 1.0775397612171889,
+      "cpa": 11600.5
+    },
+    {
+      "date": "2022-11-05",
+      "project": "アルファクリニック",
+      "media": "FB",
+      "sales": 25000,
+      "grossProfit": 1799,
+      "cost": 23201,
+      "cv": 2,
+      "roas": 1.0775397612171889,
+      "cpa": 11600.5
+    },
+    {
+      "date": "2022-11-06",
+      "project": "アルファクリニック",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -21840,
+      "cost": 21840,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-11-06",
+      "project": "アルファクリニック",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -21840,
+      "cost": 21840,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-11-07",
+      "project": "アルファクリニック",
+      "media": "全体",
+      "sales": 37500,
+      "grossProfit": 16807,
+      "cost": 20693,
+      "cv": 3,
+      "roas": 1.8122070265307109,
+      "cpa": 6897.666666666667
+    },
+    {
+      "date": "2022-11-07",
+      "project": "アルファクリニック",
+      "media": "FB",
+      "sales": 37500,
+      "grossProfit": 16807,
+      "cost": 20693,
+      "cv": 3,
+      "roas": 1.8122070265307109,
+      "cpa": 6897.666666666667
+    },
+    {
+      "date": "2022-11-08",
+      "project": "アルファクリニック",
+      "media": "全体",
+      "sales": 12500,
+      "grossProfit": 1070,
+      "cost": 11430,
+      "cv": 1,
+      "roas": 1.0936132983377078,
+      "cpa": 11430
+    },
+    {
+      "date": "2022-11-08",
+      "project": "アルファクリニック",
+      "media": "FB",
+      "sales": 12500,
+      "grossProfit": 1070,
+      "cost": 11430,
+      "cv": 1,
+      "roas": 1.0936132983377078,
+      "cpa": 11430
+    },
+    {
+      "date": "2022-11-15",
+      "project": "アルファクリニック",
+      "media": "全体",
+      "sales": 50000,
+      "grossProfit": 26639,
+      "cost": 23361,
+      "cv": 4,
+      "roas": 2.1403193356448784,
+      "cpa": 5840.25
+    },
+    {
+      "date": "2022-11-15",
+      "project": "アルファクリニック",
+      "media": "FB",
+      "sales": 50000,
+      "grossProfit": 26639,
+      "cost": 23361,
+      "cv": 4,
+      "roas": 2.1403193356448784,
+      "cpa": 5840.25
+    },
+    {
+      "date": "2022-11-16",
+      "project": "Cleo'sアイセット",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -23108,
+      "cost": 23108,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-11-16",
+      "project": "Cleo'sアイセット",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -23108,
+      "cost": 23108,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-11-16",
+      "project": "アルファクリニック",
+      "media": "全体",
+      "sales": 75000,
+      "grossProfit": 51883,
+      "cost": 23117,
+      "cv": 6,
+      "roas": 3.244365618376087,
+      "cpa": 3852.8333333333335
+    },
+    {
+      "date": "2022-11-16",
+      "project": "アルファクリニック",
+      "media": "FB",
+      "sales": 75000,
+      "grossProfit": 51883,
+      "cost": 23117,
+      "cv": 6,
+      "roas": 3.244365618376087,
+      "cpa": 3852.8333333333335
+    },
+    {
+      "date": "2022-11-17",
+      "project": "Cleo'sアイセット",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -8791,
+      "cost": 8791,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-11-17",
+      "project": "Cleo'sアイセット",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -8791,
+      "cost": 8791,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-11-17",
+      "project": "アルファクリニック",
+      "media": "全体",
+      "sales": 50000,
+      "grossProfit": 25028,
+      "cost": 24972,
+      "cv": 4,
+      "roas": 2.0022425116130065,
+      "cpa": 6243
+    },
+    {
+      "date": "2022-11-17",
+      "project": "アルファクリニック",
+      "media": "FB",
+      "sales": 50000,
+      "grossProfit": 25028,
+      "cost": 24972,
+      "cv": 4,
+      "roas": 2.0022425116130065,
+      "cpa": 6243
+    },
+    {
+      "date": "2022-11-18",
+      "project": "Cleo'sアイセット",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -7638,
+      "cost": 7638,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-11-18",
+      "project": "Cleo'sアイセット",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -7638,
+      "cost": 7638,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-11-20",
+      "project": "Cleo'sアイセット",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -21958,
+      "cost": 21958,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-11-20",
+      "project": "Cleo'sアイセット",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -21958,
+      "cost": 21958,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-11-21",
+      "project": "Cleo'sアイセット",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -5959,
+      "cost": 5959,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2022-11-21",
+      "project": "Cleo'sアイセット",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -5959,
+      "cost": 5959,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
     }
   ]
 }

@@ -13,6 +13,7 @@
     "AGAスキンクリニックレディース",
     "DIO医療ダイエットクリニック",
     "DOPA!",
+    "LAVA",
     "MOTA車査定",
     "Spark Oripa",
     "Yunth生ビタミンC美容液",
@@ -30,9 +31,12 @@
     "リゼクリニック"
   ],
   "media": [
+    "FB",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 1 project(s) from overall business sales: LAVA"
+  ],
   "records": [
     {
       "date": "2024-02-01",
@@ -4936,6 +4940,28 @@
       "sales": 0,
       "grossProfit": -5193,
       "cost": 5193,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-02-02",
+      "project": "LAVA",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -27408,
+      "cost": 27408,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-02-02",
+      "project": "LAVA",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -27408,
+      "cost": 27408,
       "cv": 0,
       "roas": 0,
       "cpa": 0

@@ -98,7 +98,36 @@ async function validateMonth(month) {
   }
 
   await readOptionalJson(`data/overall-sales-${month.id}.json`);
-  await readOptionalJson(`data/overall-business-sales-${month.id}.json`);
+  const businessSales = await readOptionalJson(`data/overall-business-sales-${month.id}.json`);
+  if (businessSales) validateBusinessProjectCoverage(month, data, businessSales);
+}
+
+function validateBusinessProjectCoverage(month, data, businessSales) {
+  const columns = businessSales.columns || [];
+  const mediaIndex = columns.findIndex((column) => column.key === "media");
+  const projectIndex = columns.findIndex((column) => column.key === "officialName");
+  const metricIndex = columns.findIndex((column) => column.key === "metric");
+  const dateColumns = columns
+    .map((column, index) => ({ column, index }))
+    .filter(({ column }) => /^\d{4}-\d{2}-\d{2}$/.test(column.key));
+  if (mediaIndex < 0 || projectIndex < 0 || metricIndex < 0 || !dateColumns.length) return;
+
+  const expectedProjects = new Set();
+  for (const row of businessSales.rows || []) {
+    const values = row.values || [];
+    const project = normalize(values[projectIndex]);
+    const metric = canonicalMetricLabel(values[metricIndex]);
+    if (!project || !["売上", "粗利", "件数"].includes(metric)) continue;
+    if (dateColumns.some(({ index }) => finiteNumber(values[index]) !== 0)) {
+      expectedProjects.add(project);
+    }
+  }
+
+  const actualProjects = new Set((data.records || []).map((record) => normalize(record.project)));
+  const missing = [...expectedProjects].filter((project) => !actualProjects.has(project)).sort(localeSort);
+  if (missing.length) {
+    errors.push(`${month.path}: missing business sales project(s): ${missing.join(", ")}`);
+  }
 }
 
 async function readRequiredJson(filePath) {
@@ -114,9 +143,10 @@ async function readRequiredJson(filePath) {
 async function readOptionalJson(filePath) {
   try {
     const raw = await fs.readFile(path.join(root, filePath), "utf8");
-    JSON.parse(raw);
+    return JSON.parse(raw);
   } catch (error) {
     if (error.code !== "ENOENT") errors.push(`${filePath}: ${error.message}`);
+    return null;
   }
 }
 
@@ -133,3 +163,23 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+function canonicalMetricLabel(value) {
+  const label = normalize(value);
+  if (["粗利", "利鞘", "利益"].includes(label)) return "粗利";
+  if (label === "CV") return "件数";
+  return label;
+}
+
+function normalize(value) {
+  return String(value ?? "").replace(/\s+/g, " ").trim();
+}
+
+function localeSort(a, b) {
+  return String(a).localeCompare(b, "ja");
+}
+
+function finiteNumber(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : 0;
+}

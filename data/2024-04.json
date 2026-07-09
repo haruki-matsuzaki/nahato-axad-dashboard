@@ -22,6 +22,7 @@
     "エミナルクリニック",
     "カーブス",
     "ガイヘキプラス",
+    "ゴリラクリニック",
     "じぶんクリニック",
     "ストラッシュ",
     "チキンゴルフ",
@@ -34,9 +35,12 @@
     "弁護士法人ユア・エース"
   ],
   "media": [
+    "YT",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 1 project(s) from overall business sales: ゴリラクリニック"
+  ],
   "records": [
     {
       "date": "2024-04-01",
@@ -5776,6 +5780,160 @@
       "sales": 0,
       "grossProfit": -15,
       "cost": 15,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-16",
+      "project": "ゴリラクリニック",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -10005.21,
+      "cost": 10005.21,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-16",
+      "project": "ゴリラクリニック",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -10005.21,
+      "cost": 10005.21,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-17",
+      "project": "ゴリラクリニック",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -38093.44,
+      "cost": 38093.44,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-17",
+      "project": "ゴリラクリニック",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -38093.44,
+      "cost": 38093.44,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-18",
+      "project": "ゴリラクリニック",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -33936.39,
+      "cost": 33936.39,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-18",
+      "project": "ゴリラクリニック",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -33936.39,
+      "cost": 33936.39,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-19",
+      "project": "ゴリラクリニック",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -53673.58000000001,
+      "cost": 53673.58000000001,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-19",
+      "project": "ゴリラクリニック",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -53673.58000000001,
+      "cost": 53673.58000000001,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-20",
+      "project": "ゴリラクリニック",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -46054.56999999999,
+      "cost": 46054.56999999999,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-20",
+      "project": "ゴリラクリニック",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -46054.56999999999,
+      "cost": 46054.56999999999,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-21",
+      "project": "ゴリラクリニック",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -31510,
+      "cost": 31510,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-21",
+      "project": "ゴリラクリニック",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -31510,
+      "cost": 31510,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-22",
+      "project": "ゴリラクリニック",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -12.33,
+      "cost": 12.33,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-04-22",
+      "project": "ゴリラクリニック",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -12.33,
+      "cost": 12.33,
       "cv": 0,
       "roas": 0,
       "cpa": 0

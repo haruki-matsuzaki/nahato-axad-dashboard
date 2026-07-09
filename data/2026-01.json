@@ -35,6 +35,7 @@
     "ディオクリニック(通常導線)",
     "ナビクル車査定",
     "パーフェクトボディプレミアム",
+    "ピーチラック",
     "ベースフード",
     "メンズクリア",
     "東京中央美容外科(クマ取り-L)",
@@ -53,7 +54,9 @@
     "YtoL",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 1 project(s) from overall business sales: ピーチラック"
+  ],
   "records": [
     {
       "date": "2026-01-01",
@@ -27444,6 +27447,39 @@
       "cv": 24,
       "roas": 1.0426134844677324,
       "cpa": 12468.666666666666
+    },
+    {
+      "date": "2026-01-01",
+      "project": "ピーチラック",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -169,
+      "cost": 169,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2026-01-01",
+      "project": "ピーチラック",
+      "media": "YDA",
+      "sales": 0,
+      "grossProfit": -51,
+      "cost": 51,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2026-01-01",
+      "project": "ピーチラック",
+      "media": "YtoL",
+      "sales": 0,
+      "grossProfit": -118,
+      "cost": 118,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
     }
   ]
 }

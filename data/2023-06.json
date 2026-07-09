@@ -22,6 +22,7 @@
     "ストラッシュ",
     "スマイルライン",
     "チキンゴルフ",
+    "ニューモ",
     "プルーストクリーム",
     "ミュゼ",
     "ミラクリニック",
@@ -29,9 +30,12 @@
     "精の命"
   ],
   "media": [
+    "YT",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 1 project(s) from overall business sales: ニューモ"
+  ],
   "records": [
     {
       "date": "2023-06-01",
@@ -4066,6 +4070,28 @@
       "sales": 0,
       "grossProfit": -56214,
       "cost": 56214,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-06-01",
+      "project": "ニューモ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -4615.09,
+      "cost": 4615.09,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2023-06-01",
+      "project": "ニューモ",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -4615.09,
+      "cost": 4615.09,
       "cv": 0,
       "roas": 0,
       "cpa": 0

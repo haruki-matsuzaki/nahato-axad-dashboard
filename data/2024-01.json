@@ -23,14 +23,18 @@
     "ストラッシュ",
     "チキンゴルフ",
     "ナビクル車査定",
+    "ヌリカエ",
     "ミュゼ",
     "メンズクリア",
     "リゼクリニック"
   ],
   "media": [
+    "FB",
     "全体"
   ],
-  "warnings": [],
+  "warnings": [
+    "Backfilled 1 project(s) from overall business sales: ヌリカエ"
+  ],
   "records": [
     {
       "date": "2024-01-01",
@@ -4725,6 +4729,50 @@
       "sales": 0,
       "grossProfit": -12072,
       "cost": 12072,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-01-28",
+      "project": "ヌリカエ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -5231,
+      "cost": 5231,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-01-28",
+      "project": "ヌリカエ",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -5231,
+      "cost": 5231,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-01-29",
+      "project": "ヌリカエ",
+      "media": "全体",
+      "sales": 0,
+      "grossProfit": -4032,
+      "cost": 4032,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2024-01-29",
+      "project": "ヌリカエ",
+      "media": "FB",
+      "sales": 0,
+      "grossProfit": -4032,
+      "cost": 4032,
       "cv": 0,
       "roas": 0,
       "cpa": 0
