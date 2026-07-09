@@ -2247,6 +2247,7 @@ body.theme-light .overall-layout-table td.business-metric-cell {
     overflow-y: hidden;
     scroll-snap-type: x proximity;
     scrollbar-width: thin;
+    overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -2286,6 +2287,9 @@ body.theme-light .overall-layout-table td.business-metric-cell {
   .control input,
   .control select {
     width: 100%;
+    min-height: 36px;
+    font-size: 16px;
+    line-height: 1.2;
   }
 
   .control-wide select {

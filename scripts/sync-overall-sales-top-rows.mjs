@@ -35,8 +35,14 @@ export async function syncOverallSalesTopRows({
     range,
     fetchWithTimeout,
   });
+  if (!values.length) {
+    throw new Error(`${sheetName}!${range} returned no rows`);
+  }
   const startRow = startRowFromRange(range);
   const updatedCells = overlayFormattedValues(sheet, values, startRow);
+  if (!updatedCells) {
+    throw new Error(`${out} had no cells matching ${sheetName}!${range}`);
+  }
   sheet.source = {
     ...(sheet.source || {}),
     topRowsSyncedAt: new Date().toISOString(),

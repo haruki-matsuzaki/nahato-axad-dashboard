@@ -92,6 +92,7 @@ const activeUsersEndpoint = "/api/active-users";
 const presenceHeartbeatMs = 30 * 1000;
 const activeUsersRefreshMs = 10 * 1000;
 const updateAlertGraceMs = 20 * 60 * 1000;
+const overallSalesStaleToleranceMs = 10 * 60 * 1000;
 const dailyUpdateScheduleJst = [
   { hour: 12, minute: 0 },
   { hour: 12, minute: 7 },
@@ -306,7 +307,7 @@ function bindEvents() {
   });
 
   els.loginButton?.addEventListener("click", async () => {
-    localStorage.setItem(authStorageKey, "ok");
+    safeLocalSet(authStorageKey, "ok");
     const userReady = await loadAuthenticatedUser();
     if (!userReady) return;
     await loadAppData();
@@ -334,7 +335,7 @@ function bindEvents() {
     try {
       const avatar = await imageFileToAvatar(file);
       state.user = { ...(state.user || fallbackUser), avatar };
-      localStorage.setItem(avatarStorageKeyForUser(state.user), avatar);
+      safeLocalSet(avatarStorageKeyForUser(state.user), avatar);
       renderUserProfile();
     } catch (error) {
       showNotice("画像を読み込めませんでした");
@@ -361,7 +362,7 @@ function bindEvents() {
   });
 
   els.logoutButton?.addEventListener("click", async () => {
-    localStorage.removeItem(authStorageKey);
+    safeLocalRemove(authStorageKey);
     closeProfileMenu();
     closeActiveUsersModal();
     document.body.classList.add("auth-locked");
@@ -376,12 +377,12 @@ function bindEvents() {
 }
 
 function initTheme() {
-  const savedTheme = localStorage.getItem(themeStorageKey);
+  const savedTheme = safeLocalGet(themeStorageKey);
   applyTheme(savedTheme === "light" ? "light" : "dark", false);
 }
 
 function initAuthGate() {
-  const authenticated = localStorage.getItem(authStorageKey) === "ok";
+  const authenticated = safeLocalGet(authStorageKey) === "ok";
   document.body.classList.toggle("auth-locked", !authenticated);
   return authenticated;
 }
@@ -396,7 +397,7 @@ async function loadAuthenticatedUser() {
     return lockAuthGate("許可されたGoogleアカウントでログインしてください");
   }
   state.user = user || fallbackUser;
-  state.user.avatar = localStorage.getItem(avatarStorageKeyForUser(state.user)) || "";
+  state.user.avatar = safeLocalGet(avatarStorageKeyForUser(state.user)) || "";
   document.body.classList.remove("auth-locked");
   renderUserProfile();
   return true;
@@ -454,7 +455,7 @@ function requiresAccessIdentity() {
 }
 
 function lockAuthGate(message) {
-  localStorage.removeItem(authStorageKey);
+  safeLocalRemove(authStorageKey);
   document.body.classList.add("auth-locked");
   state.user = fallbackUser;
   showNotice(message);
@@ -652,7 +653,7 @@ function activeUsersErrorMessage(error) {
 }
 
 function isAppAuthenticated() {
-  return localStorage.getItem(authStorageKey) === "ok";
+  return safeLocalGet(authStorageKey) === "ok";
 }
 
 function toggleProfileMenu() {
@@ -683,7 +684,7 @@ function applyTheme(theme, persist) {
     button.setAttribute("title", nextLabel);
   });
   if (persist) {
-    localStorage.setItem(themeStorageKey, theme);
+    safeLocalSet(themeStorageKey, theme);
   }
 }
 
@@ -889,7 +890,7 @@ async function fetchOptionalJson(path) {
 async function fetchLocalJson(path) {
   try {
     const response = await fetch(path, localJsonFetchOptions());
-    if (response.ok) sessionStorage.removeItem(accessReloadStorageKey);
+    if (response.ok) safeSessionRemove(accessReloadStorageKey);
     return response;
   } catch (error) {
     reloadOnceForAccessSession();
@@ -918,8 +919,8 @@ function shouldReloadForAccessResponse(response) {
 }
 
 function reloadOnceForAccessSession() {
-  if (sessionStorage.getItem(accessReloadStorageKey) === "1") return;
-  sessionStorage.setItem(accessReloadStorageKey, "1");
+  if (safeSessionGet(accessReloadStorageKey) === "1") return;
+  safeSessionSet(accessReloadStorageKey, "1");
   window.location.reload();
 }
 
@@ -1007,7 +1008,7 @@ function renderUpdateAlerts() {
   if (state.updateStatus?.monthly?.status === "error") {
     alerts.add("⚠️月初更新エラー");
   }
-  if (state.updateStatus?.overallSales?.status === "error") {
+  if (state.updateStatus?.overallSales?.status === "error" || isOverallSalesUpdateStale()) {
     alerts.add("⚠️全体売上表更新エラー");
   }
   if (state.dataQualityStatus?.status === "error") {
@@ -1028,6 +1029,17 @@ function isDailyUpdateStale(date = new Date()) {
     state.updateStatus?.lastRun?.checkedAt,
   );
   return !checkedAt || checkedAt < expectedRunAt;
+}
+
+function isOverallSalesUpdateStale() {
+  if (!state.overallSales || !state.data) return false;
+  const dataGenerated = latestTimestamp(state.data?.source?.generatedAt);
+  const overallGenerated = latestTimestamp(
+    state.overallSales?.source?.topRowsSyncedAt,
+    state.overallSales?.source?.generatedAt,
+  );
+  if (!dataGenerated || !overallGenerated) return false;
+  return overallGenerated + overallSalesStaleToleranceMs < dataGenerated;
 }
 
 function latestExpectedDailyRunAt(date) {
@@ -2313,6 +2325,56 @@ function jstDateTimeToUtcMs(parts, hour, minute) {
 function toNumber(value) {
   const number = Number(value);
   return Number.isFinite(number) ? number : 0;
+}
+
+function safeLocalGet(key) {
+  return safeStorageGet(window.localStorage, key);
+}
+
+function safeLocalSet(key, value) {
+  return safeStorageSet(window.localStorage, key, value);
+}
+
+function safeLocalRemove(key) {
+  return safeStorageRemove(window.localStorage, key);
+}
+
+function safeSessionGet(key) {
+  return safeStorageGet(window.sessionStorage, key);
+}
+
+function safeSessionSet(key, value) {
+  return safeStorageSet(window.sessionStorage, key, value);
+}
+
+function safeSessionRemove(key) {
+  return safeStorageRemove(window.sessionStorage, key);
+}
+
+function safeStorageGet(storage, key) {
+  try {
+    return storage?.getItem(key) || "";
+  } catch {
+    return "";
+  }
+}
+
+function safeStorageSet(storage, key, value) {
+  try {
+    storage?.setItem(key, value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function safeStorageRemove(storage, key) {
+  try {
+    storage?.removeItem(key);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function valueTone(value) {
