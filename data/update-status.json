@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-08T11:20:47.328Z",
+  "generatedAt": "2026-07-09T01:21:08.690Z",
   "daily": {
-    "status": "error",
-    "checkedAt": "2026-07-08T11:20:47.328Z",
+    "status": "ok",
+    "checkedAt": "2026-07-09T01:21:08.690Z",
     "month": "2026-07",
-    "reason": "daily_previous_day",
-    "message": "Google OAuth refresh 400: {\n  \"error\": \"invalid_grant\",\n  \"error_description\": \"Bad Request\"\n}"
+    "reason": "requested_month",
+    "message": null
   },
   "monthly": {
     "status": "ok",
@@ -16,12 +16,9 @@
     "type": "monthly"
   },
   "lastRun": {
-    "checkedAt": "2026-07-08T11:20:47.328Z",
-    "failed": true,
+    "checkedAt": "2026-07-09T01:21:08.690Z",
+    "failed": false,
     "skippedReason": null,
-    "fatalError": {
-      "name": "Error",
-      "message": "Google OAuth refresh 400: {\n  \"error\": \"invalid_grant\",\n  \"error_description\": \"Bad Request\"\n}"
-    }
+    "fatalError": null
   }
 }
