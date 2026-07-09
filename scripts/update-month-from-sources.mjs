@@ -170,7 +170,7 @@ async function trySyncOverallSalesTopRows({ month, spreadsheetId }) {
       status: "warning",
       message: error.message,
     };
-    console.warn(`overall-sales top rows sync warning for ${month}: ${error.message}`);
+    console.warn(`overall-sales rows sync warning for ${month}: ${error.message}`);
     return result;
   }
 }

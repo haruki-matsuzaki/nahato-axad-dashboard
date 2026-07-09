@@ -1,7 +1,7 @@
 {
-  "triggeredAt": "2026-07-09T09:31:04.000Z",
-  "expectedRunAtJst": "2026-07-09 18:31",
-  "reason": "manual_daily_resync_after_stale_alert",
-  "analysis": "Manual data update trigger after suppressing stale daily alerts when same-day data already includes the previous day's rows.",
+  "triggeredAt": "2026-07-09T10:47:53.000Z",
+  "expectedRunAtJst": "2026-07-09 19:47",
+  "reason": "manual_overall_sales_full_range_resync",
+  "analysis": "Manual data update trigger after expanding overall sales sync from rows 3-8 to rows 3-55.",
   "source": "codex_manual_countermeasure"
 }

@@ -5,7 +5,7 @@ import { pathToFileURL } from "node:url";
 import { getGoogleAccessToken } from "./google-auth.mjs";
 
 const DEFAULT_SHEET_NAME = "◆全体売上表";
-const DEFAULT_RANGE = "A3:ZZ8";
+const DEFAULT_RANGE = "A3:ZZ55";
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 45_000);
 
 export async function syncOverallSalesTopRows({
@@ -43,9 +43,16 @@ export async function syncOverallSalesTopRows({
   if (!updatedCells) {
     throw new Error(`${out} had no cells matching ${sheetName}!${range}`);
   }
+  const syncedAt = new Date().toISOString();
   sheet.source = {
     ...(sheet.source || {}),
-    topRowsSyncedAt: new Date().toISOString(),
+    overallRowsSyncedAt: syncedAt,
+    overallRowsSource: {
+      spreadsheetId,
+      sheetName,
+      range,
+    },
+    topRowsSyncedAt: syncedAt,
     topRowsSource: {
       spreadsheetId,
       sheetName,
@@ -95,7 +102,7 @@ function overlayFormattedValues(sheet, values, startRow) {
     for (const cell of row.cells || []) {
       if (cell.skip || !cell.address) continue;
       const columnIndex = columnIndexFromAddress(cell.address);
-      if (!columnIndex || columnIndex > sourceRow.length) continue;
+      if (!columnIndex) continue;
       const text = String(sourceRow[columnIndex - 1] ?? "");
       cell.text = text;
       cell.value = parseFormattedValue(text);
@@ -185,7 +192,7 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     month: args.month || process.env.TARGET_MONTH,
     spreadsheetId: args.spreadsheetId || process.env.SPREADSHEET_ID,
     sheetName: args.sheetName || process.env.OVERALL_SALES_SHEET_NAME || DEFAULT_SHEET_NAME,
-    range: args.range || process.env.OVERALL_SALES_TOP_RANGE || DEFAULT_RANGE,
+    range: args.range || process.env.OVERALL_SALES_RANGE || process.env.OVERALL_SALES_TOP_RANGE || DEFAULT_RANGE,
     out: args.out,
   });
   console.log(JSON.stringify(result, null, 2));

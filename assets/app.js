@@ -1077,6 +1077,7 @@ function isOverallSalesUpdateStale() {
   if (!state.overallSales || !state.data) return false;
   const dataGenerated = latestTimestamp(state.data?.source?.generatedAt);
   const overallGenerated = latestTimestamp(
+    state.overallSales?.source?.overallRowsSyncedAt,
     state.overallSales?.source?.topRowsSyncedAt,
     state.overallSales?.source?.generatedAt,
   );
