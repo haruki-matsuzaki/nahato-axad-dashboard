@@ -126,13 +126,17 @@ async function main(plan) {
         month: target.month,
         spreadsheetId: source.spreadsheetId,
       });
+      const overallSalesFailed = overallSalesSync.status !== "ok";
+      if (overallSalesFailed) failed = true;
       results.push({
         month: target.month,
         reason: target.reason,
-        status: "ok",
+        status: overallSalesFailed ? "error" : "ok",
         statusTypes: statusTypesForTarget(target, options),
+        required: Boolean(target.required || overallSalesFailed),
         spreadsheetId: source.spreadsheetId,
         title: source.title || "",
+        message: overallSalesFailed ? overallSalesSync.message || overallSalesSync.reason || "Overall sales sync failed" : null,
         overallSalesSync,
         dryRun: false,
       });
@@ -214,12 +218,13 @@ async function writeUpdateStatus(statusPath, result) {
       };
     }
     if (item.overallSalesSync) {
+      const overallSalesFailed = item.overallSalesSync.status !== "ok";
       next.overallSales = {
-        status: item.overallSalesSync.status === "warning" ? "error" : "ok",
+        status: overallSalesFailed ? "error" : "ok",
         checkedAt: now,
         month: item.month || null,
         reason: item.reason || null,
-        message: item.overallSalesSync.status === "warning" ? item.overallSalesSync.message || "Overall sales sync failed" : null,
+        message: overallSalesFailed ? item.overallSalesSync.message || item.overallSalesSync.reason || "Overall sales sync failed" : null,
       };
     }
   }

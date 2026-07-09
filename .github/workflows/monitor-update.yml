@@ -1,0 +1,69 @@
+name: Monitor Nacht AXAD data update
+
+on:
+  schedule:
+    # 12:27 / 15:27 / 18:27 JST.
+    - cron: "27 3 * * *"
+    - cron: "27 6 * * *"
+    - cron: "27 9 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: nacht-axad-data-update-monitor
+  cancel-in-progress: false
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  monitor-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync checkout to latest main
+        run: |
+          git fetch origin main
+          git checkout main
+          git pull --ff-only origin main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Monitor scheduled update
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/monitor-update-schedule.mjs --apply
+
+      - name: Commit monitor trigger
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/update-trigger.json
+
+          if git diff --cached --quiet; then
+            echo "No monitor trigger changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Trigger missed Nacht AXAD update"
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            if [ "$attempt" -lt 3 ]; then
+              echo "Push failed on attempt ${attempt}/3. Rebasing latest main and retrying."
+              git fetch origin main
+              git rebase origin/main
+              sleep 5
+            fi
+          done
+
+          echo "Failed to push monitor trigger after 3 attempts."
+          exit 1

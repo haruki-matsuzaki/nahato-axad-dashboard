@@ -24,7 +24,7 @@ const relevantRuns = (runs.workflow_runs || []).filter((run) => {
 });
 
 const latestRun = relevantRuns[0] || null;
-const analysis = await analyzeRun(latestRun, monitor);
+const analysis = await analyzeRuns(relevantRuns, monitor);
 
 if (analysis.status === "ok") {
   console.log(JSON.stringify(analysis, null, 2));
@@ -46,31 +46,34 @@ if (apply) {
 
 console.log(JSON.stringify({ ...analysis, triggerWritten: apply, trigger }, null, 2));
 
-async function analyzeRun(run, monitor) {
+async function analyzeRuns(runs, monitor) {
+  const activeRun = runs.find((run) => ["queued", "in_progress", "waiting", "requested", "pending"].includes(run.status));
+  if (activeRun) {
+    return {
+      status: "ok",
+      reason: "run_active",
+      runUrl: activeRun.html_url,
+      message: `Update workflow is already ${activeRun.status}.`,
+    };
+  }
+
+  const successfulRun = runs.find((run) => run.conclusion === "success");
+  if (successfulRun) {
+    return {
+      status: "ok",
+      reason: "run_success",
+      runUrl: successfulRun.html_url,
+      message: "Update workflow completed successfully.",
+    };
+  }
+
+  const run = runs[0] || null;
   if (!run) {
     return {
       status: "needs_trigger",
       reason: "schedule_missing",
       expectedRunAtJst: monitor.expectedRunAtJst,
       message: `No scheduled, push, or manual update run was created after ${monitor.expectedRunAtJst} JST.`,
-    };
-  }
-
-  if (["queued", "in_progress", "waiting", "requested", "pending"].includes(run.status)) {
-    return {
-      status: "ok",
-      reason: "run_active",
-      runUrl: run.html_url,
-      message: `Update workflow is already ${run.status}.`,
-    };
-  }
-
-  if (run.conclusion === "success") {
-    return {
-      status: "ok",
-      reason: "run_success",
-      runUrl: run.html_url,
-      message: "Update workflow completed successfully.",
     };
   }
 
@@ -135,8 +138,11 @@ function buildMonitorWindow(date) {
 }
 
 async function fetchJson(url) {
+  const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  const headers = { Accept: "application/vnd.github+json" };
+  if (token) headers.Authorization = `Bearer ${token}`;
   const response = await fetch(url, {
-    headers: { Accept: "application/vnd.github+json" },
+    headers,
   });
   if (!response.ok) {
     throw new Error(`${url}: ${response.status} ${await response.text()}`);
