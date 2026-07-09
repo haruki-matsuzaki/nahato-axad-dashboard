@@ -2,6 +2,7 @@ const ACTIVE_USER_PREFIX = "active-user:";
 const ACTIVE_USER_TTL_SECONDS = 10 * 60;
 const ACTIVE_USER_WINDOW_MS = 5 * 60 * 1000;
 const MAX_USERS = 500;
+const ALLOWED_EMAIL_DOMAINS = ["@shibuya-ad.com", "@axis-company.jp"];
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -20,31 +21,30 @@ export async function onRequest(context) {
   }
 
   try {
+    const identity = readAccessIdentity(request);
+    if (!isAllowedEmail(identity.email)) {
+      return jsonResponse({ error: "Authenticated allowed user email is required" }, 401);
+    }
+
     if (request.method === "GET") {
       return jsonResponse({ users: await listActiveUsers(env) });
     }
 
     if (request.method === "POST") {
       const body = await readJson(request);
-      const identity = readAccessIdentity(request, body?.user);
-      if (!identity.email) {
-        return jsonResponse({ error: "Authenticated user email is required" }, 401);
-      }
+      const postIdentity = readAccessIdentity(request, body?.user);
 
       if (body?.action === "offline") {
-        await env.ACTIVE_USERS.delete(activeUserKey(identity.email));
+        await env.ACTIVE_USERS.delete(activeUserKey(postIdentity.email));
       } else {
-        await putActiveUser(env, identity, body?.user);
+        await putActiveUser(env, postIdentity, body?.user);
       }
 
       return jsonResponse({ users: await listActiveUsers(env) });
     }
 
     if (request.method === "DELETE") {
-      const identity = readAccessIdentity(request);
-      if (identity.email) {
-        await env.ACTIVE_USERS.delete(activeUserKey(identity.email));
-      }
+      await env.ACTIVE_USERS.delete(activeUserKey(identity.email));
       return jsonResponse({ ok: true });
     }
 
@@ -152,6 +152,11 @@ async function readJson(request) {
 
 function activeUserKey(email) {
   return `${ACTIVE_USER_PREFIX}${normalizeEmail(email)}`;
+}
+
+function isAllowedEmail(email) {
+  const normalized = normalizeEmail(email);
+  return ALLOWED_EMAIL_DOMAINS.some((domain) => normalized.endsWith(domain));
 }
 
 function normalizeText(value) {
