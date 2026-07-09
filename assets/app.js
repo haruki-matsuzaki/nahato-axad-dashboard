@@ -1140,10 +1140,7 @@ function renderChart(records) {
     });
   });
 
-  const daily = groupBy(records, "date").map(([date, items]) => ({
-    date,
-    ...aggregate(items),
-  }));
+  const daily = chartDailySeries(records);
   const metric = metricDefinitions.find((item) => item.key === state.chartMetric);
   const max = Math.max(...daily.map((item) => Math.abs(item[state.chartMetric] || 0)), 1);
 
@@ -1165,6 +1162,80 @@ function renderChart(records) {
       `;
     })
     .join("");
+}
+
+function chartDailySeries(records) {
+  const overallDaily = overallSalesDailySeries();
+  if (overallDaily.length && els.projectSelect.value === "all" && els.mediaSelect.value === "all") {
+    return overallDaily;
+  }
+
+  return groupBy(records, "date").map(([date, items]) => ({
+    date,
+    ...aggregate(items),
+  }));
+}
+
+function overallSalesDailySeries() {
+  const sheet = state.overallSales;
+  if (!sheet?.rows?.length || !sheet.month) return [];
+
+  const layout = overallLayoutConfig(sheet);
+  const metricRows = overallSalesMetricRows(sheet, layout);
+  if (!metricRows.sales || !metricRows.grossProfit || !metricRows.cost || !metricRows.roas) return [];
+
+  const start = els.startDate.value;
+  const end = els.endDate.value;
+  const dayCount = daysInMonth(sheet.month);
+  const daily = [];
+
+  for (let day = 1; day <= dayCount; day += 1) {
+    const date = `${sheet.month}-${String(day).padStart(2, "0")}`;
+    if (start && date < start) continue;
+    if (end && date > end) continue;
+
+    const column = layout.dataStartColumn + day;
+    daily.push({
+      date,
+      sales: overallNumericValue(overallCell(metricRows.sales, column)),
+      grossProfit: overallNumericValue(overallCell(metricRows.grossProfit, column)),
+      cost: overallNumericValue(overallCell(metricRows.cost, column)),
+      roas: overallNumericValue(overallCell(metricRows.roas, column), { ratio: true }),
+      cv: 0,
+      cpa: 0,
+    });
+  }
+
+  return daily;
+}
+
+function overallSalesMetricRows(sheet, layout) {
+  return range(3, 8).reduce((acc, rowIndex) => {
+    const row = overallRow(sheet, rowIndex);
+    const key = overallSalesMetricKey(overallCell(row, layout.metricColumn)?.text);
+    if (key) acc[key] = row;
+    return acc;
+  }, {});
+}
+
+function overallSalesMetricKey(label) {
+  const text = normalizeText(label);
+  if (text === "売上") return "sales";
+  if (text === "粗利" || text === "利鞘") return "grossProfit";
+  if (text === "消化金額") return "cost";
+  if (text === "ROAS") return "roas";
+  return "";
+}
+
+function overallNumericValue(cell, options = {}) {
+  const text = normalizeText(cell?.text ?? cell?.value);
+  if (options.ratio && text.includes("%")) {
+    const ratio = Number(text.replaceAll(",", "").replace("%", ""));
+    return Number.isFinite(ratio) ? ratio / 100 : 0;
+  }
+  if (typeof cell?.value === "number") return cell.value;
+  const number = Number(text.replaceAll(",", "").replace(/[¥%]/g, ""));
+  return Number.isFinite(number) ? number : 0;
 }
 
 function renderMediaBreakdown(records) {

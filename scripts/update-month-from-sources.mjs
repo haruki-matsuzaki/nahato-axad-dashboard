@@ -3,6 +3,7 @@ import path from "node:path";
 import process from "node:process";
 import { spawn } from "node:child_process";
 import { getGoogleAccessToken } from "./google-auth.mjs";
+import { syncOverallSalesTopRows } from "./sync-overall-sales-top-rows.mjs";
 
 const DEFAULT_MASTER_SPREADSHEET_ID = "1Xk-p_-6Np-e5keqOy5fcgmU-TF28H5dU7UeEYDUX_7k";
 const DEFAULT_MASTER_SHEET_ID = "2127655846";
@@ -121,6 +122,10 @@ async function main(plan) {
         sourceMode: source.sourceType || "discovered",
         options,
       });
+      const overallSalesSync = await trySyncOverallSalesTopRows({
+        month: target.month,
+        spreadsheetId: source.spreadsheetId,
+      });
       results.push({
         month: target.month,
         reason: target.reason,
@@ -128,6 +133,7 @@ async function main(plan) {
         statusTypes: statusTypesForTarget(target, options),
         spreadsheetId: source.spreadsheetId,
         title: source.title || "",
+        overallSalesSync,
         dryRun: false,
       });
     } catch (error) {
@@ -150,6 +156,23 @@ async function main(plan) {
     results,
     failed,
   };
+}
+
+async function trySyncOverallSalesTopRows({ month, spreadsheetId }) {
+  try {
+    return await syncOverallSalesTopRows({
+      month,
+      spreadsheetId,
+      fetchWithTimeout,
+    });
+  } catch (error) {
+    const result = {
+      status: "warning",
+      message: error.message,
+    };
+    console.warn(`overall-sales top rows sync warning for ${month}: ${error.message}`);
+    return result;
+  }
 }
 
 async function writeUpdateStatus(statusPath, result) {
