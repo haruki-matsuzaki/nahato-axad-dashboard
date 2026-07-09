@@ -96,10 +96,13 @@ const overallSalesStaleToleranceMs = 10 * 60 * 1000;
 const dailyUpdateScheduleJst = [
   { hour: 12, minute: 0 },
   { hour: 12, minute: 7 },
+  { hour: 12, minute: 17 },
   { hour: 15, minute: 0 },
   { hour: 15, minute: 7 },
+  { hour: 15, minute: 17 },
   { hour: 18, minute: 0 },
   { hour: 18, minute: 7 },
+  { hour: 18, minute: 17 },
 ];
 const fallbackUser = {
   name: "ログインユーザー",
@@ -1022,7 +1025,8 @@ function render() {
 function renderUpdateAlerts() {
   if (!els.updateAlerts) return;
   const alerts = new Set();
-  if (state.updateStatus?.daily?.status === "error" || isDailyUpdateStale()) {
+  const hasFreshDailyData = hasCurrentDailyDataThroughPreviousDay();
+  if ((state.updateStatus?.daily?.status === "error" || isDailyUpdateStale()) && !hasFreshDailyData) {
     alerts.add("⚠️日次更新エラー");
   }
   if (state.updateStatus?.monthly?.status === "error") {
@@ -1049,6 +1053,24 @@ function isDailyUpdateStale(date = new Date()) {
     state.updateStatus?.lastRun?.checkedAt,
   );
   return !checkedAt || checkedAt < expectedRunAt;
+}
+
+function hasCurrentDailyDataThroughPreviousDay(date = new Date()) {
+  const today = formatTokyoDateInput(date);
+  const previousDay = formatTokyoDateInput(new Date(date.getTime() - 24 * 60 * 60 * 1000));
+  const currentMonth = previousDay.slice(0, 7);
+  const dataMonth = state.data?.month || "";
+  const statusMonth = state.updateStatus?.daily?.month || "";
+  const generatedAt = latestTimestamp(
+    state.data?.source?.generatedAt,
+    state.updateStatus?.daily?.checkedAt,
+    state.updateStatus?.lastRun?.checkedAt,
+  );
+  const generatedDate = generatedAt ? formatTokyoDateInput(new Date(generatedAt)) : "";
+  const hasPreviousDayRows =
+    dataMonth === currentMonth && (state.data?.records || []).some((record) => record.date === previousDay);
+
+  return generatedDate === today && (statusMonth === currentMonth || hasPreviousDayRows) && hasPreviousDayRows;
 }
 
 function isOverallSalesUpdateStale() {
