@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-09T01:21:08.690Z",
+  "generatedAt": "2026-07-09T03:27:24.552Z",
   "daily": {
     "status": "ok",
-    "checkedAt": "2026-07-09T01:21:08.690Z",
+    "checkedAt": "2026-07-09T03:27:24.552Z",
     "month": "2026-07",
-    "reason": "requested_month",
+    "reason": "manual_status_refresh",
     "message": null
   },
   "monthly": {
@@ -16,7 +16,7 @@
     "type": "monthly"
   },
   "lastRun": {
-    "checkedAt": "2026-07-09T01:21:08.690Z",
+    "checkedAt": "2026-07-09T03:27:24.552Z",
     "failed": false,
     "skippedReason": null,
     "fatalError": null

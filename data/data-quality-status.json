@@ -1,16 +1,1141 @@
 {
-  "generatedAt": "2026-07-09T03:07:51.468Z",
-  "status": "warning",
+  "generatedAt": "2026-07-09T03:27:11.661Z",
+  "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
     "checkedMonths": 45,
     "monthsWithErrors": 0,
-    "monthsWithWarnings": 5,
+    "monthsWithWarnings": 20,
     "errorCount": 0,
-    "warningCount": 12
+    "warningCount": 30
   },
   "errors": [],
   "warnings": [
+    {
+      "type": "duplicate_record_key",
+      "message": "2022-11: duplicate project/media/date records found",
+      "count": 44,
+      "examples": [
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-01",
+          "count": 3
+        },
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-02",
+          "count": 3
+        },
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-03",
+          "count": 3
+        },
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-04",
+          "count": 3
+        },
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-05",
+          "count": 3
+        },
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-06",
+          "count": 3
+        },
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-07",
+          "count": 3
+        },
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-08",
+          "count": 3
+        },
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-09",
+          "count": 3
+        },
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-10",
+          "count": 3
+        },
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-11",
+          "count": 3
+        },
+        {
+          "project": "銀座カラー",
+          "media": "全体",
+          "date": "2022-11-12",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2022-12: duplicate project/media/date records found",
+      "count": 14,
+      "examples": [
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-01",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-02",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-09",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-10",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-15",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-16",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-21",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-22",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-23",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-24",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-25",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2022-12-26",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2023-01: duplicate project/media/date records found",
+      "count": 2,
+      "examples": [
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2023-01-05",
+          "count": 2
+        },
+        {
+          "project": "クリニックフォアFAGA",
+          "media": "全体",
+          "date": "2023-01-06",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-01: duplicate project/media/date records found",
+      "count": 173,
+      "examples": [
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-01",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-02",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-03",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-04",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-05",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-06",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-07",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-08",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-09",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-10",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-11",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "FB",
+          "date": "2025-01-12",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-02: duplicate project/media/date records found",
+      "count": 28,
+      "examples": [
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-01",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-02",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-03",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-04",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-05",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-06",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-07",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-08",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-09",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-10",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-11",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "全体",
+          "date": "2025-02-12",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-03: duplicate project/media/date records found",
+      "count": 222,
+      "examples": [
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-01",
+          "count": 2
+        },
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-02",
+          "count": 2
+        },
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-03",
+          "count": 2
+        },
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-04",
+          "count": 2
+        },
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-05",
+          "count": 2
+        },
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-06",
+          "count": 2
+        },
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-07",
+          "count": 2
+        },
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-08",
+          "count": 2
+        },
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-09",
+          "count": 2
+        },
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-10",
+          "count": 2
+        },
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-11",
+          "count": 2
+        },
+        {
+          "project": "カーブス",
+          "media": "全体",
+          "date": "2025-03-12",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-04: duplicate project/media/date records found",
+      "count": 221,
+      "examples": [
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-01",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-02",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-03",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-04",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-05",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-06",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-07",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-08",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-09",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-10",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-11",
+          "count": 2
+        },
+        {
+          "project": "LAVA",
+          "media": "FB",
+          "date": "2025-04-12",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-05: duplicate project/media/date records found",
+      "count": 175,
+      "examples": [
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-01",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-02",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-03",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-04",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-05",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-06",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-07",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-08",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-09",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-10",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-11",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-05-12",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-06: duplicate project/media/date records found",
+      "count": 139,
+      "examples": [
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-01",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-02",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-03",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-04",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-05",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-06",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-07",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-08",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-09",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-10",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-11",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-06-12",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-07: duplicate project/media/date records found",
+      "count": 31,
+      "examples": [
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-01",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-02",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-03",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-04",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-05",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-06",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-07",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-08",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-09",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-10",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-11",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-07-12",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-08: duplicate project/media/date records found",
+      "count": 31,
+      "examples": [
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-01",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-02",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-03",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-04",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-05",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-06",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-07",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-08",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-09",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-10",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-11",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-08-12",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-09: duplicate project/media/date records found",
+      "count": 30,
+      "examples": [
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-01",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-02",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-03",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-04",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-05",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-06",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-07",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-08",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-09",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-10",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-11",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-09-12",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-10: duplicate project/media/date records found",
+      "count": 31,
+      "examples": [
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-01",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-02",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-03",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-04",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-05",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-06",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-07",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-08",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-09",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-10",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-11",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-10-12",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-11: duplicate project/media/date records found",
+      "count": 30,
+      "examples": [
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-01",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-02",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-03",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-04",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-05",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-06",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-07",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-08",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-09",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-10",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-11",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-11-12",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2025-12: duplicate project/media/date records found",
+      "count": 31,
+      "examples": [
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-01",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-02",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-03",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-04",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-05",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-06",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-07",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-08",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-09",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-10",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-11",
+          "count": 2
+        },
+        {
+          "project": "メンズクリア",
+          "media": "全体",
+          "date": "2025-12-12",
+          "count": 2
+        }
+      ]
+    },
     {
       "type": "total_value_mismatch",
       "message": "2026-02: business sales value differs from detail data",
@@ -162,6 +1287,61 @@
           "expected": 7,
           "actual": 49,
           "diff": 42
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2026-02: duplicate project/media/date records found",
+      "count": 8,
+      "examples": [
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-02-21",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-02-22",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-02-23",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-02-24",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-02-25",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-02-26",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-02-27",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-02-28",
+          "count": 2
         }
       ]
     },
@@ -439,6 +1619,85 @@
           "expected": 34632,
           "actual": 0,
           "diff": -34632
+        }
+      ]
+    },
+    {
+      "type": "duplicate_record_key",
+      "message": "2026-03: duplicate project/media/date records found",
+      "count": 12,
+      "examples": [
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-01",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-02",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-03",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-04",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-07",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-11",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-12",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-20",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-21",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-22",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-23",
+          "count": 2
+        },
+        {
+          "project": "マウスピース矯正ローコスト",
+          "media": "全体",
+          "date": "2026-03-24",
+          "count": 2
         }
       ]
     },
@@ -858,20 +2117,117 @@
           "diff": -980000
         }
       ]
+    },
+    {
+      "type": "future_date",
+      "message": "2026-07: future-dated records found",
+      "count": 1,
+      "examples": [
+        {
+          "index": 94,
+          "project": "DMM 生成AI CAMP",
+          "media": "全体",
+          "date": "2026-07-18"
+        }
+      ]
     }
   ],
   "months": [
     {
       "month": "2022-11",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2022-11: duplicate project/media/date records found",
+          "count": 44,
+          "examples": [
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-01",
+              "count": 3
+            },
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-02",
+              "count": 3
+            },
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-03",
+              "count": 3
+            },
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-04",
+              "count": 3
+            },
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-05",
+              "count": 3
+            },
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-06",
+              "count": 3
+            },
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-07",
+              "count": 3
+            },
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-08",
+              "count": 3
+            },
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-09",
+              "count": 3
+            },
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-10",
+              "count": 3
+            },
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-11",
+              "count": 3
+            },
+            {
+              "project": "銀座カラー",
+              "media": "全体",
+              "date": "2022-11-12",
+              "count": 3
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 44,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -879,15 +2235,99 @@
     },
     {
       "month": "2022-12",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2022-12: duplicate project/media/date records found",
+          "count": 14,
+          "examples": [
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-01",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-02",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-09",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-10",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-15",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-16",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-21",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-22",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-23",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-24",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-25",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2022-12-26",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 14,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -895,15 +2335,39 @@
     },
     {
       "month": "2023-01",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2023-01: duplicate project/media/date records found",
+          "count": 2,
+          "examples": [
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2023-01-05",
+              "count": 2
+            },
+            {
+              "project": "クリニックフォアFAGA",
+              "media": "全体",
+              "date": "2023-01-06",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 2,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -920,6 +2384,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -936,6 +2404,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -952,6 +2424,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -968,6 +2444,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -984,6 +2464,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1000,6 +2484,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1016,6 +2504,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1032,6 +2524,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1048,6 +2544,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1064,6 +2564,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1080,6 +2584,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1096,6 +2604,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1112,6 +2624,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1128,6 +2644,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1144,6 +2664,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1160,6 +2684,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1176,6 +2704,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1192,6 +2724,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1208,6 +2744,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1224,6 +2764,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1240,6 +2784,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1256,6 +2804,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1272,6 +2824,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1279,15 +2835,99 @@
     },
     {
       "month": "2025-01",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-01: duplicate project/media/date records found",
+          "count": 173,
+          "examples": [
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-01",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-02",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-03",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-04",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-05",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-06",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-07",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-08",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-09",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-10",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-11",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "FB",
+              "date": "2025-01-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 173,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1295,15 +2935,99 @@
     },
     {
       "month": "2025-02",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-02: duplicate project/media/date records found",
+          "count": 28,
+          "examples": [
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-01",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-02",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-03",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-04",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-05",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-06",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-07",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-08",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-09",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-10",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-11",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "全体",
+              "date": "2025-02-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 28,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1311,15 +3035,99 @@
     },
     {
       "month": "2025-03",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-03: duplicate project/media/date records found",
+          "count": 222,
+          "examples": [
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-01",
+              "count": 2
+            },
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-02",
+              "count": 2
+            },
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-03",
+              "count": 2
+            },
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-04",
+              "count": 2
+            },
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-05",
+              "count": 2
+            },
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-06",
+              "count": 2
+            },
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-07",
+              "count": 2
+            },
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-08",
+              "count": 2
+            },
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-09",
+              "count": 2
+            },
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-10",
+              "count": 2
+            },
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-11",
+              "count": 2
+            },
+            {
+              "project": "カーブス",
+              "media": "全体",
+              "date": "2025-03-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 222,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1327,15 +3135,99 @@
     },
     {
       "month": "2025-04",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-04: duplicate project/media/date records found",
+          "count": 221,
+          "examples": [
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-01",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-02",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-03",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-04",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-05",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-06",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-07",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-08",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-09",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-10",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-11",
+              "count": 2
+            },
+            {
+              "project": "LAVA",
+              "media": "FB",
+              "date": "2025-04-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 221,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1343,15 +3235,99 @@
     },
     {
       "month": "2025-05",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-05: duplicate project/media/date records found",
+          "count": 175,
+          "examples": [
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-01",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-02",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-03",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-04",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-05",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-06",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-07",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-08",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-09",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-10",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-11",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-05-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 175,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1359,15 +3335,99 @@
     },
     {
       "month": "2025-06",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-06: duplicate project/media/date records found",
+          "count": 139,
+          "examples": [
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-01",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-02",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-03",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-04",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-05",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-06",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-07",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-08",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-09",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-10",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-11",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-06-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 139,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1375,15 +3435,99 @@
     },
     {
       "month": "2025-07",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-07: duplicate project/media/date records found",
+          "count": 31,
+          "examples": [
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-01",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-02",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-03",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-04",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-05",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-06",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-07",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-08",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-09",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-10",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-11",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-07-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 31,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1391,15 +3535,99 @@
     },
     {
       "month": "2025-08",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-08: duplicate project/media/date records found",
+          "count": 31,
+          "examples": [
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-01",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-02",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-03",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-04",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-05",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-06",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-07",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-08",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-09",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-10",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-11",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-08-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 31,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1407,15 +3635,99 @@
     },
     {
       "month": "2025-09",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-09: duplicate project/media/date records found",
+          "count": 30,
+          "examples": [
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-01",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-02",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-03",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-04",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-05",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-06",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-07",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-08",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-09",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-10",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-11",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-09-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 30,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1423,15 +3735,99 @@
     },
     {
       "month": "2025-10",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-10: duplicate project/media/date records found",
+          "count": 31,
+          "examples": [
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-01",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-02",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-03",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-04",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-05",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-06",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-07",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-08",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-09",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-10",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-11",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-10-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 31,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1439,15 +3835,99 @@
     },
     {
       "month": "2025-11",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-11: duplicate project/media/date records found",
+          "count": 30,
+          "examples": [
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-01",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-02",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-03",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-04",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-05",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-06",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-07",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-08",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-09",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-10",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-11",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-11-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 30,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1455,15 +3935,99 @@
     },
     {
       "month": "2025-12",
-      "status": "ok",
+      "status": "warning",
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "duplicate_record_key",
+          "message": "2025-12: duplicate project/media/date records found",
+          "count": 31,
+          "examples": [
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-01",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-02",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-03",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-04",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-05",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-06",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-07",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-08",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-09",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-10",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-11",
+              "count": 2
+            },
+            {
+              "project": "メンズクリア",
+              "media": "全体",
+              "date": "2025-12-12",
+              "count": 2
+            }
+          ]
+        }
+      ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 31,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1480,6 +4044,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1643,6 +4211,61 @@
               "diff": 42
             }
           ]
+        },
+        {
+          "type": "duplicate_record_key",
+          "message": "2026-02: duplicate project/media/date records found",
+          "count": 8,
+          "examples": [
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-02-21",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-02-22",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-02-23",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-02-24",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-02-25",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-02-26",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-02-27",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-02-28",
+              "count": 2
+            }
+          ]
         }
       ],
       "checks": {
@@ -1651,6 +4274,10 @@
         "totalValueMismatches": 8,
         "missingMediaDates": 82,
         "mediaValueMismatches": 1,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 8,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -1937,6 +4564,85 @@
               "diff": -34632
             }
           ]
+        },
+        {
+          "type": "duplicate_record_key",
+          "message": "2026-03: duplicate project/media/date records found",
+          "count": 12,
+          "examples": [
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-01",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-02",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-03",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-04",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-07",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-11",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-12",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-20",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-21",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-22",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-23",
+              "count": 2
+            },
+            {
+              "project": "マウスピース矯正ローコスト",
+              "media": "全体",
+              "date": "2026-03-24",
+              "count": 2
+            }
+          ]
         }
       ],
       "checks": {
@@ -1945,6 +4651,10 @@
         "totalValueMismatches": 11,
         "missingMediaDates": 161,
         "mediaValueMismatches": 14,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 12,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -2029,6 +4739,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 18,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -2045,6 +4759,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 0,
         "mediaValueMismatches": 0,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -2152,6 +4870,10 @@
         "totalValueMismatches": 0,
         "missingMediaDates": 8,
         "mediaValueMismatches": 4,
+        "previousDayRecords": 0,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0
@@ -2421,6 +5143,19 @@
               "diff": -980000
             }
           ]
+        },
+        {
+          "type": "future_date",
+          "message": "2026-07: future-dated records found",
+          "count": 1,
+          "examples": [
+            {
+              "index": 94,
+              "project": "DMM 生成AI CAMP",
+              "media": "全体",
+              "date": "2026-07-18"
+            }
+          ]
         }
       ],
       "checks": {
@@ -2429,6 +5164,10 @@
         "totalValueMismatches": 29,
         "missingMediaDates": 7,
         "mediaValueMismatches": 36,
+        "previousDayRecords": 2,
+        "duplicateRecordKeys": 0,
+        "outsideMonthDates": 0,
+        "futureDates": 1,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0

@@ -10,6 +10,12 @@ const allowDrops = toBoolean(args.allowDrops || process.env.DATA_QUALITY_ALLOW_D
 const failOnError = toBoolean(args.failOnError);
 const writeStatusPath = args.writeStatus || "";
 const maxItemsPerMonth = Number(args.maxItemsPerMonth || process.env.DATA_QUALITY_MAX_ITEMS || 12);
+const runDate = parseRunDate(args.runDate || process.env.RUN_DATE);
+const today = getJstDateParts(runDate);
+const todayYmd = formatYmd(today);
+const previousDay = addDays(today, -1);
+const previousDayYmd = formatYmd(previousDay);
+const previousDayMonth = monthId(previousDay);
 
 const index = await readJson("data/index.json");
 const report = {
@@ -41,10 +47,10 @@ for (const month of index.months || []) {
   report.warnings.push(...monthReport.warnings);
 }
 
+checkIndexFreshness(index, report);
+
 if (report.summary.errorCount) {
   report.status = "error";
-} else if (report.summary.warningCount) {
-  report.status = "warning";
 }
 
 if (writeStatusPath) {
@@ -83,6 +89,10 @@ async function checkMonth(month) {
       totalValueMismatches: 0,
       missingMediaDates: 0,
       mediaValueMismatches: 0,
+      previousDayRecords: 0,
+      duplicateRecordKeys: 0,
+      outsideMonthDates: 0,
+      futureDates: 0,
       previousMissingProjects: 0,
       previousRecordDrop: 0,
       previousProjectDrop: 0,
@@ -92,6 +102,8 @@ async function checkMonth(month) {
   if (business) {
     checkBusinessConsistency(month, data, business, monthReport);
   }
+  checkRecordIntegrity(month, data, monthReport);
+  checkPreviousDayPresence(month, data, monthReport);
   checkPreviousSnapshot(month, data, monthReport);
 
   if (monthReport.errors.length) {
@@ -152,6 +164,72 @@ function checkBusinessConsistency(month, data, business, monthReport) {
   });
 }
 
+function checkRecordIntegrity(month, data, monthReport) {
+  const duplicateKeys = new Map();
+  const outsideMonthDates = [];
+  const futureDates = [];
+
+  for (const [index, record] of (data.records || []).entries()) {
+    const key = `${normalize(record.project)}\u0000${canonicalMedia(record.media)}\u0000${record.date}`;
+    duplicateKeys.set(key, (duplicateKeys.get(key) || 0) + 1);
+
+    if (!isYmd(record.date)) continue;
+    if (!record.date.startsWith(`${month.id}-`)) {
+      outsideMonthDates.push({ index: index + 1, project: record.project, media: record.media, date: record.date });
+    } else if (record.date > todayYmd) {
+      futureDates.push({ index: index + 1, project: record.project, media: record.media, date: record.date });
+    }
+  }
+
+  const duplicates = [...duplicateKeys.entries()]
+    .filter(([, count]) => count > 1)
+    .map(([key, count]) => ({ ...formatIssueKey({ key }), count }));
+
+  if (duplicates.length) {
+    monthReport.checks.duplicateRecordKeys = duplicates.length;
+    pushIssue(monthReport.warnings, monthReport, {
+      type: "duplicate_record_key",
+      message: `${month.id}: duplicate project/media/date records found`,
+      count: duplicates.length,
+      examples: duplicates.slice(0, maxItemsPerMonth),
+    });
+  }
+
+  if (outsideMonthDates.length) {
+    monthReport.checks.outsideMonthDates = outsideMonthDates.length;
+    pushIssue(monthReport.errors, monthReport, {
+      type: "outside_month_date",
+      message: `${month.id}: record date is outside its month file`,
+      count: outsideMonthDates.length,
+      examples: outsideMonthDates.slice(0, maxItemsPerMonth),
+    });
+  }
+
+  if (futureDates.length) {
+    monthReport.checks.futureDates = futureDates.length;
+    pushIssue(monthReport.warnings, monthReport, {
+      type: "future_date",
+      message: `${month.id}: future-dated records found`,
+      count: futureDates.length,
+      examples: futureDates.slice(0, maxItemsPerMonth),
+    });
+  }
+}
+
+function checkPreviousDayPresence(month, data, monthReport) {
+  if (month.id !== previousDayMonth) return;
+  const records = (data.records || []).filter((record) => record.date === previousDayYmd);
+  const meaningfulRecords = records.filter(hasRecordValue);
+  monthReport.checks.previousDayRecords = meaningfulRecords.length;
+  if (!meaningfulRecords.length) {
+    pushIssue(monthReport.warnings, monthReport, {
+      type: "previous_day_missing",
+      message: `${month.id}: previous day data is not present`,
+      date: previousDayYmd,
+    });
+  }
+}
+
 function checkPreviousSnapshot(month, data, monthReport) {
   if (allowDrops) return;
   const previous = readGitHeadJson(month.path);
@@ -196,6 +274,35 @@ function checkPreviousSnapshot(month, data, monthReport) {
       current: currentProjectCount,
     });
   }
+}
+
+function checkIndexFreshness(index, report) {
+  const months = (index.months || []).map((month) => month.id).filter(Boolean).sort();
+  const latestMonth = months.at(-1);
+  if (latestMonth && index.defaultMonth !== latestMonth) {
+    pushGlobalWarning(report, {
+      type: "default_month_not_latest",
+      message: `defaultMonth is not the latest month in data/index.json`,
+      expected: latestMonth,
+      actual: index.defaultMonth || null,
+    });
+  }
+
+  const currentMonth = monthId(today);
+  if (latestMonth && latestMonth < currentMonth && today.day >= 2) {
+    pushGlobalWarning(report, {
+      type: "latest_month_missing",
+      message: `current month is not present in data/index.json`,
+      expectedAtLeast: currentMonth,
+      actual: latestMonth,
+    });
+  }
+}
+
+function pushGlobalWarning(report, issue) {
+  report.warnings.push(issue);
+  report.summary.warningCount += 1;
+  report.summary.monthsWithWarnings += 1;
 }
 
 function compareCoverage({
@@ -342,6 +449,10 @@ function projectTotals(records) {
   return totals;
 }
 
+function hasRecordValue(record) {
+  return ["sales", "grossProfit", "cost", "cv"].some((key) => finiteNumber(record?.[key]) !== 0);
+}
+
 function addMetric(map, key, metric, value) {
   const current = map.get(key) || emptyMetrics();
   current[metric] += value;
@@ -443,6 +554,11 @@ function readGitHeadJson(filePath) {
   }
 }
 
+function parseRunDate(value) {
+  const date = value ? new Date(value) : new Date();
+  return Number.isFinite(date.getTime()) ? date : new Date();
+}
+
 async function readJson(filePath) {
   return JSON.parse(await fs.readFile(resolvePath(filePath), "utf8"));
 }
@@ -485,6 +601,42 @@ function parseArgs(argv) {
 
 function toBoolean(value) {
   return ["1", "true", "yes", "on"].includes(String(value || "").toLowerCase());
+}
+
+function getJstDateParts(date) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const byType = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return {
+    year: Number(byType.year),
+    month: Number(byType.month),
+    day: Number(byType.day),
+  };
+}
+
+function addDays(parts, amount) {
+  const date = new Date(Date.UTC(parts.year, parts.month - 1, parts.day + amount));
+  return {
+    year: date.getUTCFullYear(),
+    month: date.getUTCMonth() + 1,
+    day: date.getUTCDate(),
+  };
+}
+
+function monthId(parts) {
+  return `${parts.year}-${String(parts.month).padStart(2, "0")}`;
+}
+
+function formatYmd(parts) {
+  return `${monthId(parts)}-${String(parts.day).padStart(2, "0")}`;
+}
+
+function isYmd(value) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(String(value || ""));
 }
 
 function normalize(value) {

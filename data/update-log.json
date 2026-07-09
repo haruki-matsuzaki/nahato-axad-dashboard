@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-07-09T03:27:24.552Z",
+  "entries": [
+    {
+      "checkedAt": "2026-07-09T03:27:24.552Z",
+      "failed": false,
+      "skippedReason": null,
+      "fatalError": null,
+      "targets": [
+        {
+          "month": "2026-07",
+          "reason": "manual_status_refresh",
+          "required": false
+        }
+      ],
+      "results": [
+        {
+          "month": "2026-07",
+          "reason": "manual_status_refresh",
+          "status": "ok",
+          "required": false,
+          "spreadsheetId": null,
+          "title": "",
+          "message": null,
+          "data": null
+        }
+      ]
+    }
+  ]
+}

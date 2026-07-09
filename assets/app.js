@@ -1009,8 +1009,6 @@ function renderUpdateAlerts() {
   }
   if (state.dataQualityStatus?.status === "error") {
     alerts.add("⚠️データ整合性エラー");
-  } else if (state.dataQualityStatus?.status === "warning") {
-    alerts.add("⚠️データ品質警告");
   }
   const alertList = [...alerts];
   els.updateAlerts.hidden = alertList.length === 0;
@@ -1033,10 +1031,9 @@ function latestExpectedDailyRunAt(date) {
   const cutoff = date.getTime() - updateAlertGraceMs;
   const today = tokyoDateParts(date);
   const yesterday = tokyoDateParts(new Date(date.getTime() - 24 * 60 * 60 * 1000));
+  const finalDailySchedule = dailyUpdateScheduleJst.at(-1);
   const candidates = [yesterday, today]
-    .flatMap((parts) =>
-      dailyUpdateScheduleJst.map((schedule) => jstDateTimeToUtcMs(parts, schedule.hour, schedule.minute)),
-    )
+    .map((parts) => jstDateTimeToUtcMs(parts, finalDailySchedule.hour, finalDailySchedule.minute))
     .filter((time) => time <= cutoff);
   return candidates.length ? Math.max(...candidates) : null;
 }

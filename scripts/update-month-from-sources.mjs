@@ -30,6 +30,7 @@ const options = {
   sheetRange: args.range || process.env.SHEET_RANGE || DEFAULT_SHEET_RANGE,
   indexPath: args.index || process.env.INDEX_FILE || "data/index.json",
   statusPath: args.status || process.env.UPDATE_STATUS_FILE || "data/update-status.json",
+  updateLogPath: args.updateLog || process.env.UPDATE_LOG_FILE || "data/update-log.json",
   sourceManifestPath: args.sourceManifest || process.env.SOURCE_MANIFEST || "data/sheet-sources.json",
   chatworkRoomId: args.chatworkRoomId || process.env.CHATWORK_ANALYSIS_ROOM_ID || process.env.CHATWORK_ROOM_ID_ANALYSIS || "",
   githubEventSchedule: process.env.GITHUB_EVENT_SCHEDULE || "",
@@ -40,6 +41,7 @@ try {
   const result = await main(plan);
   if (!options.dryRun) {
     await writeUpdateStatus(options.statusPath, result);
+    await writeUpdateLog(options.updateLogPath, result);
   }
   console.log(JSON.stringify({ updated: result.results, skipped: result.skippedReason || null }, null, 2));
   if (result.failed) {
@@ -47,12 +49,14 @@ try {
   }
 } catch (error) {
   if (!options.dryRun) {
-    await writeUpdateStatus(options.statusPath, {
+    const result = {
       plan,
       results: [],
       failed: true,
       fatalError: errorToPayload(error),
-    });
+    };
+    await writeUpdateStatus(options.statusPath, result);
+    await writeUpdateLog(options.updateLogPath, result);
   }
   console.error(error);
   process.exitCode = 1;
@@ -188,6 +192,64 @@ async function writeUpdateStatus(statusPath, result) {
   }
 
   await writeJson(statusPath, next);
+}
+
+async function writeUpdateLog(logPath, result) {
+  const now = new Date().toISOString();
+  const existing = await readExistingLog(logPath);
+  const entry = {
+    checkedAt: now,
+    failed: Boolean(result.failed),
+    skippedReason: result.skippedReason || null,
+    fatalError: result.fatalError || null,
+    targets: dedupeTargets(result.plan?.targets || []).map((target) => ({
+      month: target.month,
+      reason: target.reason,
+      required: Boolean(target.required),
+    })),
+    results: await Promise.all((result.results || []).map(enrichLogResult)),
+  };
+  const entries = [entry, ...(existing.entries || [])].slice(0, 100);
+  await writeJson(logPath, {
+    generatedAt: now,
+    entries,
+  });
+}
+
+async function enrichLogResult(item) {
+  const monthSummary = item.month ? await summarizeMonthData(`data/${item.month}.json`) : null;
+  return {
+    month: item.month || null,
+    reason: item.reason || null,
+    status: item.status || null,
+    required: Boolean(item.required),
+    spreadsheetId: item.spreadsheetId || null,
+    title: item.title || "",
+    message: item.message || null,
+    data: monthSummary,
+  };
+}
+
+async function summarizeMonthData(filePath) {
+  try {
+    const data = JSON.parse(await fs.readFile(filePath, "utf8"));
+    return {
+      records: Array.isArray(data.records) ? data.records.length : 0,
+      projects: Array.isArray(data.projects) ? data.projects.length : 0,
+      media: Array.isArray(data.media) ? data.media.length : 0,
+      generatedAt: data.source?.generatedAt || null,
+    };
+  } catch {
+    return null;
+  }
+}
+
+async function readExistingLog(logPath) {
+  try {
+    return JSON.parse(await fs.readFile(logPath, "utf8"));
+  } catch {
+    return {};
+  }
 }
 
 async function readExistingStatus(statusPath) {
@@ -547,6 +609,18 @@ async function resolveDefaultMonth(indexPath, targetMonths) {
 }
 
 async function runUpdateData({ month, spreadsheetId, defaultMonth, sourceMode, options }) {
+  const dataPath = `data/${month}.json`;
+  const backups = await createBackups([dataPath, options.indexPath]);
+  try {
+    await spawnUpdateData({ month, spreadsheetId, defaultMonth, sourceMode, options });
+    await validateUpdatedMonth(dataPath, backups.get(dataPath));
+  } catch (error) {
+    await restoreBackups(backups);
+    throw error;
+  }
+}
+
+async function spawnUpdateData({ month, spreadsheetId, defaultMonth, sourceMode, options }) {
   await new Promise((resolve, reject) => {
     const child = spawn(
       process.execPath,
@@ -583,6 +657,54 @@ async function runUpdateData({ month, spreadsheetId, defaultMonth, sourceMode, o
       }
     });
   });
+}
+
+async function validateUpdatedMonth(dataPath, backup) {
+  const next = JSON.parse(await fs.readFile(dataPath, "utf8"));
+  const nextRecords = Array.isArray(next.records) ? next.records.length : 0;
+  const previous = backup?.exists ? JSON.parse(backup.raw) : null;
+  const previousRecords = Array.isArray(previous?.records) ? previous.records.length : 0;
+
+  if (previousRecords > 0 && nextRecords === 0) {
+    throw new Error(`${dataPath} update produced zero records; restored previous data`);
+  }
+  if (previousRecords >= 50 && nextRecords < previousRecords * 0.2) {
+    throw new Error(
+      `${dataPath} record count dropped from ${previousRecords} to ${nextRecords}; restored previous data`,
+    );
+  }
+}
+
+async function createBackups(filePaths) {
+  const backups = new Map();
+  for (const filePath of filePaths) {
+    try {
+      backups.set(filePath, {
+        filePath,
+        exists: true,
+        raw: await fs.readFile(filePath, "utf8"),
+      });
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error;
+      backups.set(filePath, { filePath, exists: false, raw: "" });
+    }
+  }
+  return backups;
+}
+
+async function restoreBackups(backups) {
+  for (const backup of backups.values()) {
+    if (backup.exists) {
+      await writeRawFile(backup.filePath, backup.raw);
+    } else {
+      await fs.rm(backup.filePath, { force: true });
+    }
+  }
+}
+
+async function writeRawFile(filePath, raw) {
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  await fs.writeFile(filePath, raw);
 }
 
 async function fetchWithTimeout(url, options = {}) {
