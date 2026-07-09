@@ -935,8 +935,11 @@ function syncFilters() {
   const dates = [...new Set(records.map((record) => record.date))].sort();
   const firstDate = dates[0] || "";
   const lastDate = dates.at(-1) || "";
-  const today = formatTokyoDateInput(new Date());
-  const defaultEndDate = today >= firstDate && today <= lastDate ? today : lastDate;
+  const defaultEndDate = defaultFilterEndDate({
+    firstDate,
+    lastDate,
+    month: state.data?.month,
+  });
   const projects = [...new Set(records.map((record) => record.project).filter(Boolean))].sort(localeSort);
   const media = [...new Set(records.map((record) => record.media).filter(Boolean))].sort(localeSort);
 
@@ -958,6 +961,23 @@ function syncFilters() {
       .filter((item) => item !== "全体")
       .map((item) => `<option value="${escapeHtml(item)}">${escapeHtml(item)}</option>`),
   ].join("");
+}
+
+function defaultFilterEndDate({ firstDate, lastDate, month, date = new Date() }) {
+  if (!firstDate || !lastDate) return "";
+  const today = formatTokyoDateInput(date);
+  const currentMonth = today.slice(0, 7);
+  const selectedMonth = month || firstDate.slice(0, 7);
+  const candidate =
+    selectedMonth === currentMonth
+      ? formatTokyoDateInput(new Date(date.getTime() - 24 * 60 * 60 * 1000))
+      : today >= firstDate && today <= lastDate
+        ? today
+        : lastDate;
+
+  if (candidate < firstDate) return firstDate;
+  if (candidate > lastDate) return lastDate;
+  return candidate;
 }
 
 function setView(view) {
