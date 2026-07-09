@@ -122,6 +122,7 @@ jobs:
         run: node scripts/validate-static-data.mjs
 
       - name: Commit updated data
+        id: commit-data
         if: steps.validate-data.outcome == 'success'
         run: |
           set -euo pipefail
@@ -134,11 +135,13 @@ jobs:
           git add data/*.json
 
           if git diff --cached --quiet; then
+            echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
             echo "No data changes to commit."
             exit 0
           fi
 
           git commit -m "Update Nacht AXAD data"
+          echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
           for attempt in 1 2 3; do
             if git push origin HEAD:main; then
@@ -155,6 +158,17 @@ jobs:
 
           echo "Failed to push updated data after 3 attempts."
           exit 1
+
+      - name: Check Cloudflare Pages deployment
+        if: steps.validate-data.outcome == 'success'
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_PAGES_PROJECT_NAME: ${{ secrets.CLOUDFLARE_PAGES_PROJECT_NAME }}
+          CLOUDFLARE_EXPECTED_SHA: ${{ steps.commit-data.outputs.commit_sha }}
+          CLOUDFLARE_DEPLOY_WAIT_SECONDS: "600"
+          CLOUDFLARE_DEPLOY_INTERVAL_SECONDS: "30"
+        run: node scripts/check-cloudflare-pages-deploy.mjs
 
       - name: Fail when update failed
         if: steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure'

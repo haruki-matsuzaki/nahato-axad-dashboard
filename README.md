@@ -60,6 +60,9 @@ GitHub Actionsで `scripts/update-month-from-sources.mjs` を実行します。
 - `GOOGLE_SERVICE_ACCOUNT_JSON` 任意。シート側でサービスアカウントに閲覧権限を付与できる場合のフォールバックです
 - `CHATWORK_API_TOKEN` 任意。Chatwork補助参照を使う場合だけ設定します
 - `CHATWORK_ANALYSIS_ROOM_ID` 任意。「【分析】運用データ共有」のroom_idです
+- `CLOUDFLARE_ACCOUNT_ID` 任意。Cloudflare Pagesのデプロイ状態チェックに使います
+- `CLOUDFLARE_API_TOKEN` 任意。Cloudflare Pagesのデプロイ状態チェックに使います
+- `CLOUDFLARE_PAGES_PROJECT_NAME` 任意。未設定時は `nahato-axad-dashboard` を使います
 
 通常は `pino.ad.kanri@shibuya-ad.com` のOAuth Refresh TokenでGoogle Sheets APIを読み込みます。
 対象ナハトシートをサービスアカウントに共有できない場合でも、pinoアカウントがブラウザで閲覧できるシートであればAPI取得できます。
@@ -103,6 +106,13 @@ GitHub ActionsのscheduleはUTCで実行されます。また、毎時0分は負
 - Google Sheets / Chatwork からの吸い上げに失敗した場合、同じGitHub Actions内で5分おきに2回まで再実行します
 - 初回を含めて最大3回実行し、途中で成功した場合は成功扱いにします
 - 3回すべて失敗した場合のみ、最終ステータスとして `data/update-status.json` に `error` を反映し、サイト上に `⚠️日次更新エラー` / `⚠️月初更新エラー` を表示します
+
+更新後チェック:
+
+- `◆全体売上表` は `A3:ZZ55` を取得し、取得行数が不足している場合は更新失敗にします
+- 取得したGoogle Sheetsの表示値と `data/overall-sales-YYYY-MM.json` に書き込んだ値をセル単位で照合し、差分があれば更新失敗にします
+- `CLOUDFLARE_ACCOUNT_ID` と `CLOUDFLARE_API_TOKEN` が設定されている場合、更新コミットをpushした後にCloudflare Pagesの該当commitがデプロイ成功するか最大10分確認します
+- CloudflareのSecretが未設定の場合、デプロイ状態チェックは `skipped` として扱い、データ更新自体は止めません
 
 手動実行:
 

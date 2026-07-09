@@ -38,10 +38,23 @@ export async function syncOverallSalesTopRows({
   if (!values.length) {
     throw new Error(`${sheetName}!${range} returned no rows`);
   }
+  const expectedRows = rowCountFromRange(range);
+  if (expectedRows && values.length < expectedRows) {
+    throw new Error(`${sheetName}!${range} returned ${values.length} rows; expected ${expectedRows}`);
+  }
   const startRow = startRowFromRange(range);
   const updatedCells = overlayFormattedValues(sheet, values, startRow);
   if (!updatedCells) {
     throw new Error(`${out} had no cells matching ${sheetName}!${range}`);
+  }
+  const verification = verifySyncedValues(sheet, values, startRow);
+  if (verification.mismatches.length) {
+    throw new Error(
+      `${out} differs from ${sheetName}!${range}: ${verification.mismatches
+        .slice(0, 5)
+        .map((item) => `${item.address} expected ${JSON.stringify(item.expected)} got ${JSON.stringify(item.actual)}`)
+        .join("; ")}`,
+    );
   }
   const syncedAt = new Date().toISOString();
   sheet.source = {
@@ -51,6 +64,10 @@ export async function syncOverallSalesTopRows({
       spreadsheetId,
       sheetName,
       range,
+      expectedRows: expectedRows || null,
+      syncedRows: values.length,
+      verifiedCells: verification.checkedCells,
+      mismatchCells: verification.mismatches.length,
     },
     topRowsSyncedAt: syncedAt,
     topRowsSource: {
@@ -66,6 +83,10 @@ export async function syncOverallSalesTopRows({
     out,
     rows: values.length,
     updatedCells,
+    verification: {
+      checkedCells: verification.checkedCells,
+      mismatches: verification.mismatches.length,
+    },
   };
 }
 
@@ -113,6 +134,37 @@ function overlayFormattedValues(sheet, values, startRow) {
   return updatedCells;
 }
 
+function verifySyncedValues(sheet, values, startRow) {
+  let checkedCells = 0;
+  const mismatches = [];
+  const rowsByIndex = new Map((sheet.rows || []).map((row) => [row.index, row]));
+
+  for (let rowOffset = 0; rowOffset < values.length; rowOffset += 1) {
+    const row = rowsByIndex.get(startRow + rowOffset);
+    const sourceRow = values[rowOffset] || [];
+    if (!row) continue;
+
+    for (const cell of row.cells || []) {
+      if (cell.skip || !cell.address) continue;
+      const columnIndex = columnIndexFromAddress(cell.address);
+      if (!columnIndex) continue;
+
+      const expected = String(sourceRow[columnIndex - 1] ?? "");
+      const actual = String(cell.text ?? "");
+      checkedCells += 1;
+      if (actual !== expected) {
+        mismatches.push({
+          address: cell.address,
+          expected,
+          actual,
+        });
+      }
+    }
+  }
+
+  return { checkedCells, mismatches };
+}
+
 function parseFormattedValue(value) {
   const text = String(value ?? "").trim();
   if (!text) return null;
@@ -125,6 +177,15 @@ function parseFormattedValue(value) {
 function startRowFromRange(range) {
   const match = String(range || "").match(/[A-Z]+(\d+)/i);
   return match ? Number(match[1]) : 1;
+}
+
+function rowCountFromRange(range) {
+  const match = String(range || "").match(/[A-Z]+(\d+):[A-Z]+(\d+)/i);
+  if (!match) return 0;
+  const start = Number(match[1]);
+  const end = Number(match[2]);
+  if (!Number.isFinite(start) || !Number.isFinite(end) || end < start) return 0;
+  return end - start + 1;
 }
 
 function columnIndexFromAddress(address) {

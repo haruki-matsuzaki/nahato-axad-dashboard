@@ -23,6 +23,7 @@ jobs:
         run: |
           node --check assets/app.js
           node --check functions/api/active-users.js
+          node --check scripts/check-cloudflare-pages-deploy.mjs
           node --check scripts/check-data-quality.mjs
           node --check scripts/google-auth.mjs
           node --check scripts/monitor-update-schedule.mjs

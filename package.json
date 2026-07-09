@@ -7,6 +7,7 @@
     "update:data": "node scripts/update-data.mjs",
     "update:auto": "node scripts/update-month-from-sources.mjs",
     "monitor:update": "node scripts/monitor-update-schedule.mjs",
+    "monitor:deploy": "node scripts/check-cloudflare-pages-deploy.mjs",
     "backfill:business": "node scripts/backfill-records-from-business-sales.mjs",
     "quality:data": "node scripts/check-data-quality.mjs --writeStatus data/data-quality-status.json",
     "oauth:token": "node scripts/create-google-oauth-token.mjs",
