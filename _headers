@@ -1,0 +1,14 @@
+/apple-touch-icon.png
+  Cache-Control: no-cache, max-age=0
+
+/apple-touch-icon-180x180.png
+  Cache-Control: no-cache, max-age=0
+
+/apple-touch-icon-precomposed.png
+  Cache-Control: no-cache, max-age=0
+
+/assets/apple-touch-icon.png
+  Cache-Control: no-cache, max-age=0
+
+/site.webmanifest
+  Cache-Control: no-cache, max-age=0

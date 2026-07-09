@@ -8,19 +8,19 @@
   "theme_color": "#101215",
   "icons": [
     {
-      "src": "assets/apple-touch-icon.png",
+      "src": "/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "assets/axad-icon-192.png",
+      "src": "/assets/axad-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "assets/axad-icon-512.png",
+      "src": "/assets/axad-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
