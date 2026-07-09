@@ -111,7 +111,7 @@ GitHub ActionsのscheduleはUTCで実行されます。また、毎時0分は負
 
 - `◆全体売上表` は `A3:ZZ55` を取得し、取得行数が不足している場合は更新失敗にします
 - 取得したGoogle Sheetsの表示値と `data/overall-sales-YYYY-MM.json` に書き込んだ値をセル単位で照合し、差分があれば更新失敗にします
-- `CLOUDFLARE_ACCOUNT_ID` と `CLOUDFLARE_API_TOKEN` が設定されている場合、更新コミットをpushした後にCloudflare Pagesの該当commitがデプロイ成功するか最大10分確認します
+- `CLOUDFLARE_ACCOUNT_ID` と `CLOUDFLARE_API_TOKEN` が設定されている場合、mainへのpush後と更新コミット後にCloudflare Pagesの該当commitがデプロイ成功するか最大10分確認します
 - CloudflareのSecretが未設定の場合、デプロイ状態チェックは `skipped` として扱い、データ更新自体は止めません
 
 手動実行:
