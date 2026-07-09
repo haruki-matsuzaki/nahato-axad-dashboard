@@ -62,6 +62,12 @@ function parseNachtSheet(values, config, totalValues = null) {
     : totalValues
     ? parseBlockSheet(totalValues, config, { skipProjectRows: false, totalsOnly: true })
     : { records: [], warnings: [] };
+  if (!config.totalsOnly) {
+    assertSheetStructure(mediaParsed, config.sheetName);
+  }
+  if (config.totalsOnly || totalValues) {
+    assertSheetStructure(totalParsed, config.totalSheetName);
+  }
   const mediaRecords = mediaParsed.records;
   const synthesizedTotals = totalValues ? synthesizeMissingProjectTotals(totalParsed.records, mediaRecords) : [];
   const records = [...totalParsed.records, ...synthesizedTotals, ...mediaRecords];
@@ -84,6 +90,10 @@ function parseNachtSheet(values, config, totalValues = null) {
       totalSheetName: totalValues || config.totalsOnly ? config.totalSheetName : null,
       range: config.sheetRange,
       generatedAt: new Date().toISOString(),
+      structure: {
+        detail: mediaParsed.stats || null,
+        total: totalParsed.stats || null,
+      },
     },
     projects,
     media,
@@ -139,6 +149,15 @@ function projectDateKey(project, date) {
 function parseBlockSheet(values, config, options) {
   const records = [];
   const warnings = [];
+  const stats = {
+    candidateBlocks: 0,
+    blocksWithDates: 0,
+    parsedBlocks: 0,
+    skippedProjectBlocks: 0,
+    missingDateBlocks: 0,
+    missingRequiredBlocks: 0,
+    records: 0,
+  };
   let currentProject = "";
 
   for (let rowIndex = 0; rowIndex < values.length; rowIndex += 1) {
@@ -149,7 +168,13 @@ function parseBlockSheet(values, config, options) {
     const labelCol = findLabelColumn(row, totalCol);
     const blockName = labelCol >= 0 ? normalize(row[labelCol]) : "";
     const dateColumns = collectDateColumns(row, totalCol + 1, config.month);
-    if (!blockName || !dateColumns.length) continue;
+    if (!blockName) continue;
+    stats.candidateBlocks += 1;
+    if (!dateColumns.length) {
+      stats.missingDateBlocks += 1;
+      continue;
+    }
+    stats.blocksWithDates += 1;
     if (blockName === "-- NO DATA --") continue;
 
     const isProjectBlock = options.totalsOnly || hasProjectIndex(row, labelCol) || !currentProject;
@@ -157,7 +182,11 @@ function parseBlockSheet(values, config, options) {
     if (isProjectBlock) {
       currentProject = blockName;
     }
-    if (isProjectBlock && options.skipProjectRows) continue;
+    if (isProjectBlock && options.skipProjectRows) {
+      stats.skippedProjectBlocks += 1;
+      continue;
+    }
+    stats.parsedBlocks += 1;
 
     const project = isProjectBlock ? blockName : currentProject;
     if (!project) {
@@ -168,6 +197,7 @@ function parseBlockSheet(values, config, options) {
     const metricRows = collectMetricRows(values, rowIndex + 1, labelCol);
     const required = ["売上", "粗利", "消化金額"];
     if (!required.every((key) => metricRows.has(key))) {
+      stats.missingRequiredBlocks += 1;
       warnings.push(`Row ${rowIndex + 1}: missing metrics for ${project}/${media}`);
       continue;
     }
@@ -197,7 +227,37 @@ function parseBlockSheet(values, config, options) {
     }
   }
 
-  return { records, warnings };
+  stats.records = records.length;
+  return { records, warnings, stats };
+}
+
+function assertSheetStructure(parsed, sheetName) {
+  const stats = parsed.stats || {};
+  if (!stats.candidateBlocks) {
+    throw new Error(
+      `Sheet structure changed in ${sheetName}: no blocks with "合計" were found. Check the sheet name/range and the total header label.`,
+    );
+  }
+  if (!stats.blocksWithDates) {
+    throw new Error(
+      `Sheet structure changed in ${sheetName}: no date columns for the target month were found after "合計". Check the date header format.`,
+    );
+  }
+  if (!stats.parsedBlocks) {
+    throw new Error(
+      `Sheet structure changed in ${sheetName}: no parseable project/media blocks were found. Check the project/media label columns.`,
+    );
+  }
+  if (!stats.records) {
+    throw new Error(
+      `Sheet structure changed in ${sheetName}: parsed blocks produced zero records. Check 売上 / 粗利 / 消化金額 rows.`,
+    );
+  }
+  if (stats.missingRequiredBlocks >= Math.max(3, stats.parsedBlocks * 0.8)) {
+    throw new Error(
+      `Sheet structure changed in ${sheetName}: ${stats.missingRequiredBlocks}/${stats.parsedBlocks} block(s) are missing 売上 / 粗利 / 消化金額 rows.`,
+    );
+  }
 }
 
 function collectDateColumns(row, startCol, month) {

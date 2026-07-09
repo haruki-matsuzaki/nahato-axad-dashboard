@@ -160,7 +160,9 @@ jobs:
           exit 1
 
       - name: Check Cloudflare Pages deployment
+        id: cloudflare-deploy
         if: steps.validate-data.outcome == 'success'
+        continue-on-error: true
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -170,6 +172,18 @@ jobs:
           CLOUDFLARE_DEPLOY_INTERVAL_SECONDS: "30"
         run: node scripts/check-cloudflare-pages-deploy.mjs
 
+      - name: Send failure email
+        if: always() && (steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure' || steps.cloudflare-deploy.outcome == 'failure')
+        env:
+          ALERT_EMAIL_TO: matsuzaki@shibuya-ad.com
+          ALERT_REASON: update_failed
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+        run: node scripts/send-alert-email.mjs
+
       - name: Fail when update failed
-        if: steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure'
+        if: steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure' || steps.cloudflare-deploy.outcome == 'failure'
         run: exit 1

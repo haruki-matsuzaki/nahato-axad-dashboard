@@ -38,6 +38,7 @@ jobs:
         run: node scripts/monitor-update-schedule.mjs --apply
 
       - name: Commit monitor trigger
+        id: commit-monitor-trigger
         run: |
           set -euo pipefail
 
@@ -46,6 +47,7 @@ jobs:
           git add data/update-trigger.json
 
           if git diff --cached --quiet; then
+            echo "trigger_written=false" >> "$GITHUB_OUTPUT"
             echo "No monitor trigger changes to commit."
             exit 0
           fi
@@ -54,6 +56,7 @@ jobs:
 
           for attempt in 1 2 3; do
             if git push origin HEAD:main; then
+              echo "trigger_written=true" >> "$GITHUB_OUTPUT"
               exit 0
             fi
 
@@ -67,3 +70,15 @@ jobs:
 
           echo "Failed to push monitor trigger after 3 attempts."
           exit 1
+
+      - name: Send monitor trigger email
+        if: steps.commit-monitor-trigger.outputs.trigger_written == 'true'
+        env:
+          ALERT_EMAIL_TO: matsuzaki@shibuya-ad.com
+          ALERT_REASON: schedule_monitor_triggered
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+        run: node scripts/send-alert-email.mjs

@@ -42,6 +42,7 @@ export async function syncOverallSalesTopRows({
   if (expectedRows && values.length < expectedRows) {
     throw new Error(`${sheetName}!${range} returned ${values.length} rows; expected ${expectedRows}`);
   }
+  const sourceStructure = validateOverallSalesSource(values, sheetName, range);
   const startRow = startRowFromRange(range);
   const updatedCells = overlayFormattedValues(sheet, values, startRow);
   if (!updatedCells) {
@@ -68,6 +69,7 @@ export async function syncOverallSalesTopRows({
       syncedRows: values.length,
       verifiedCells: verification.checkedCells,
       mismatchCells: verification.mismatches.length,
+      structure: sourceStructure,
     },
     topRowsSyncedAt: syncedAt,
     topRowsSource: {
@@ -87,6 +89,7 @@ export async function syncOverallSalesTopRows({
       checkedCells: verification.checkedCells,
       mismatches: verification.mismatches.length,
     },
+    structure: sourceStructure,
   };
 }
 
@@ -163,6 +166,43 @@ function verifySyncedValues(sheet, values, startRow) {
   }
 
   return { checkedCells, mismatches };
+}
+
+function validateOverallSalesSource(values, sheetName, range) {
+  const requiredMetrics = ["売上", "粗利", "消化金額", "ROAS"];
+  const metricCounts = Object.fromEntries(requiredMetrics.map((metric) => [metric, 0]));
+  let dateHeaders = 0;
+  let totalHeaders = 0;
+
+  for (const row of values) {
+    for (const cell of row || []) {
+      const text = String(cell ?? "").trim();
+      if (Object.hasOwn(metricCounts, text)) metricCounts[text] += 1;
+      if (text === "Total" || text === "合計") totalHeaders += 1;
+      if (/^\d{1,2}\/\d{1,2}(?:\(.+\))?$/.test(text) || /^\d{4}-\d{1,2}-\d{1,2}/.test(text)) {
+        dateHeaders += 1;
+      }
+    }
+  }
+
+  const missingMetrics = requiredMetrics.filter((metric) => !metricCounts[metric]);
+  if (missingMetrics.length) {
+    throw new Error(
+      `Sheet structure changed in ${sheetName}!${range}: missing metric label(s): ${missingMetrics.join(", ")}`,
+    );
+  }
+  if (!dateHeaders) {
+    throw new Error(`Sheet structure changed in ${sheetName}!${range}: no date header cells were found`);
+  }
+  if (!totalHeaders) {
+    throw new Error(`Sheet structure changed in ${sheetName}!${range}: no Total/合計 header cells were found`);
+  }
+
+  return {
+    metricCounts,
+    dateHeaders,
+    totalHeaders,
+  };
 }
 
 function parseFormattedValue(value) {

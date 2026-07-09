@@ -3,12 +3,23 @@ import process from "node:process";
 
 const DEFAULT_SCOPE = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
+export class GoogleAuthError extends Error {
+  constructor(message, { code = "google_auth_error", status = null, permanent = false } = {}) {
+    super(message);
+    this.name = "GoogleAuthError";
+    this.code = code;
+    this.status = status;
+    this.permanent = permanent;
+  }
+}
+
 export async function getGoogleAccessToken({ fetchWithTimeout = fetch, scope = DEFAULT_SCOPE } = {}) {
   const oauthCredentials = readOAuthCredentials();
   if (oauthCredentials) {
     try {
       return await refreshOAuthAccessToken(oauthCredentials, fetchWithTimeout, scope);
     } catch (error) {
+      if (isPermanentGoogleAuthError(error)) throw error;
       if (!hasServiceAccountCredentials()) throw error;
       console.warn(
         `Google OAuth refresh failed; falling back to service account auth. ${summarizeAuthError(error)}`,
@@ -55,7 +66,7 @@ async function refreshOAuthAccessToken(credentials, fetchWithTimeout, scope) {
   });
 
   if (!response.ok) {
-    throw new Error(`Google OAuth refresh ${response.status}: ${await response.text()}`);
+    throw buildOAuthRefreshError(response.status, await response.text());
   }
 
   const payload = await response.json();
@@ -121,7 +132,7 @@ async function getServiceAccountAccessToken(credentials, fetchWithTimeout, scope
   });
 
   if (!response.ok) {
-    throw new Error(`Google OAuth ${response.status}: ${await response.text()}`);
+    throw buildServiceAccountOAuthError(response.status, await response.text());
   }
 
   const payload = await response.json();
@@ -133,4 +144,60 @@ async function getServiceAccountAccessToken(credentials, fetchWithTimeout, scope
 
 function base64Url(input) {
   return Buffer.from(input).toString("base64url");
+}
+
+function buildOAuthRefreshError(status, body) {
+  const payload = parseJsonBody(body);
+  const code = payload?.error || `http_${status}`;
+  const description = payload?.error_description || body;
+  if (code === "invalid_grant") {
+    return new GoogleAuthError(
+      "Google OAuth refresh failed: invalid_grant. GOOGLE_OAUTH_REFRESH_TOKEN is expired, revoked, or was issued for a different OAuth client. Recreate the refresh token with pino.ad.kanri@shibuya-ad.com and update the GitHub Secret.",
+      { code: "google_oauth_invalid_grant", status, permanent: true },
+    );
+  }
+  if (code === "invalid_client") {
+    return new GoogleAuthError(
+      "Google OAuth refresh failed: invalid_client. GOOGLE_OAUTH_CLIENT_ID and GOOGLE_OAUTH_CLIENT_SECRET do not match the refresh token. Check the GitHub Secrets.",
+      { code: "google_oauth_invalid_client", status, permanent: true },
+    );
+  }
+  if (code === "unauthorized_client") {
+    return new GoogleAuthError(
+      "Google OAuth refresh failed: unauthorized_client. The OAuth client is not allowed to refresh this token. Check the OAuth client configuration and consent screen.",
+      { code: "google_oauth_unauthorized_client", status, permanent: true },
+    );
+  }
+  return new GoogleAuthError(`Google OAuth refresh failed: ${code}. ${sanitizeAuthDescription(description)}`, {
+    code: `google_oauth_${code}`,
+    status,
+    permanent: false,
+  });
+}
+
+function buildServiceAccountOAuthError(status, body) {
+  const payload = parseJsonBody(body);
+  const code = payload?.error || `http_${status}`;
+  const description = payload?.error_description || body;
+  return new GoogleAuthError(`Google service account OAuth failed: ${code}. ${sanitizeAuthDescription(description)}`, {
+    code: `google_service_account_${code}`,
+    status,
+    permanent: /invalid_grant|invalid_client|unauthorized_client/i.test(code),
+  });
+}
+
+function isPermanentGoogleAuthError(error) {
+  return error instanceof GoogleAuthError && error.permanent;
+}
+
+function parseJsonBody(body) {
+  try {
+    return JSON.parse(body);
+  } catch {
+    return null;
+  }
+}
+
+function sanitizeAuthDescription(value) {
+  return String(value || "").replace(/\s+/g, " ").slice(0, 240);
 }

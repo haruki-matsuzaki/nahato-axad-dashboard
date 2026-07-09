@@ -63,6 +63,11 @@ GitHub Actionsで `scripts/update-month-from-sources.mjs` を実行します。
 - `CLOUDFLARE_ACCOUNT_ID` 任意。Cloudflare Pagesのデプロイ状態チェックに使います
 - `CLOUDFLARE_API_TOKEN` 任意。Cloudflare Pagesのデプロイ状態チェックに使います
 - `CLOUDFLARE_PAGES_PROJECT_NAME` 任意。未設定時は `nahato-axad-dashboard` を使います
+- `SMTP_HOST` 任意。失敗通知メールのSMTPサーバーです
+- `SMTP_PORT` 任意。失敗通知メールのSMTPポートです。未設定時のスクリプト既定値は `465` です
+- `SMTP_USERNAME` 任意。失敗通知メールのSMTPユーザー名です
+- `SMTP_PASSWORD` 任意。失敗通知メールのSMTPパスワードです
+- `SMTP_FROM` 任意。失敗通知メールのFromアドレスです
 
 通常は `pino.ad.kanri@shibuya-ad.com` のOAuth Refresh TokenでGoogle Sheets APIを読み込みます。
 対象ナハトシートをサービスアカウントに共有できない場合でも、pinoアカウントがブラウザで閲覧できるシートであればAPI取得できます。
@@ -113,6 +118,9 @@ GitHub ActionsのscheduleはUTCで実行されます。また、毎時0分は負
 - 取得したGoogle Sheetsの表示値と `data/overall-sales-YYYY-MM.json` に書き込んだ値をセル単位で照合し、差分があれば更新失敗にします
 - `CLOUDFLARE_ACCOUNT_ID` と `CLOUDFLARE_API_TOKEN` が設定されている場合、mainへのpush後と更新コミット後にCloudflare Pagesの該当commitがデプロイ成功するか最大10分確認します
 - CloudflareのSecretが未設定の場合、デプロイ状態チェックは `skipped` として扱い、データ更新自体は止めません
+- `SMTP_*` が設定されている場合、更新失敗・検証失敗・デプロイ確認失敗・定時監視による再実行起動を `matsuzaki@shibuya-ad.com` にメール通知します
+- Google OAuthの `invalid_grant` / `invalid_client` / `unauthorized_client` はサービスアカウントで隠さず失敗扱いにし、再作成が必要なSecretをエラーメッセージに出します
+- `◆案件/媒体別日次_全体` / `◆案件別日次_全体_固定用` / `◆全体売上表` は、合計行・日付ヘッダー・売上/粗利/消化金額/ROASの構造が崩れた場合に更新失敗にします
 
 手動実行:
 

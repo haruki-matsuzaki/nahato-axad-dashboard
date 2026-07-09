@@ -98,13 +98,19 @@ function classifyFailure(run, status) {
   const message = [
     run.conclusion,
     status?.daily?.message,
+    status?.overallSales?.message,
     status?.lastRun?.fatalError?.message,
   ]
     .filter(Boolean)
     .join(" ");
-  if (/invalid_grant/i.test(message)) return "google_oauth_invalid_grant";
+  if (/google_oauth_invalid_grant|invalid_grant/i.test(message)) return "google_oauth_refresh_token_expired_or_revoked";
+  if (/google_oauth_invalid_client|invalid_client/i.test(message)) return "google_oauth_client_mismatch";
+  if (/google_oauth_unauthorized_client|unauthorized_client/i.test(message)) return "google_oauth_client_unauthorized";
   if (/service account|GOOGLE_SERVICE_ACCOUNT_JSON|private_key/i.test(message)) return "google_service_account_error";
   if (/Google Sheets API (403|404)|permission|not found/i.test(message)) return "sheet_permission_or_missing";
+  if (/Sheet structure changed|missing metric label|no date header|no blocks with "合計"/i.test(message)) {
+    return "sheet_structure_changed";
+  }
   if (/data quality|データ|quality/i.test(message)) return "data_quality_error";
   if (/validate|static/i.test(message)) return "static_validation_error";
   return "workflow_run_failed";
