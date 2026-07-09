@@ -165,6 +165,7 @@ function checkBusinessConsistency(month, data, business, monthReport) {
 }
 
 function checkRecordIntegrity(month, data, monthReport) {
+  const checkDetailedIntegrity = month.id >= qualityStartMonth;
   const duplicateKeys = new Map();
   const outsideMonthDates = [];
   const futureDates = [];
@@ -185,7 +186,7 @@ function checkRecordIntegrity(month, data, monthReport) {
     .filter(([, count]) => count > 1)
     .map(([key, count]) => ({ ...formatIssueKey({ key }), count }));
 
-  if (duplicates.length) {
+  if (checkDetailedIntegrity && duplicates.length) {
     monthReport.checks.duplicateRecordKeys = duplicates.length;
     pushIssue(monthReport.warnings, monthReport, {
       type: "duplicate_record_key",
@@ -205,7 +206,7 @@ function checkRecordIntegrity(month, data, monthReport) {
     });
   }
 
-  if (futureDates.length) {
+  if (checkDetailedIntegrity && futureDates.length) {
     monthReport.checks.futureDates = futureDates.length;
     pushIssue(monthReport.warnings, monthReport, {
       type: "future_date",

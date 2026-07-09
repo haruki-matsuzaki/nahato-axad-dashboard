@@ -6,7 +6,14 @@ const DEFAULT_SCOPE = "https://www.googleapis.com/auth/spreadsheets.readonly";
 export async function getGoogleAccessToken({ fetchWithTimeout = fetch, scope = DEFAULT_SCOPE } = {}) {
   const oauthCredentials = readOAuthCredentials();
   if (oauthCredentials) {
-    return refreshOAuthAccessToken(oauthCredentials, fetchWithTimeout, scope);
+    try {
+      return await refreshOAuthAccessToken(oauthCredentials, fetchWithTimeout, scope);
+    } catch (error) {
+      if (!hasServiceAccountCredentials()) throw error;
+      console.warn(
+        `Google OAuth refresh failed; falling back to service account auth. ${summarizeAuthError(error)}`,
+      );
+    }
   }
 
   const serviceAccount = readServiceAccount();
@@ -60,7 +67,11 @@ async function refreshOAuthAccessToken(credentials, fetchWithTimeout, scope) {
 
 function readServiceAccount() {
   if (process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
-    return JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+    try {
+      return JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+    } catch {
+      throw new Error("GOOGLE_SERVICE_ACCOUNT_JSON is not valid JSON");
+    }
   }
 
   if (process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
@@ -73,6 +84,17 @@ function readServiceAccount() {
   throw new Error(
     "GOOGLE_OAUTH_CLIENT_ID/GOOGLE_OAUTH_CLIENT_SECRET/GOOGLE_OAUTH_REFRESH_TOKEN or GOOGLE_SERVICE_ACCOUNT_JSON is required",
   );
+}
+
+function hasServiceAccountCredentials() {
+  return Boolean(
+    process.env.GOOGLE_SERVICE_ACCOUNT_JSON || (process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY),
+  );
+}
+
+function summarizeAuthError(error) {
+  const message = String(error?.message || error || "");
+  return message.replace(/\s+/g, " ").slice(0, 240);
 }
 
 async function getServiceAccountAccessToken(credentials, fetchWithTimeout, scope) {
