@@ -4,12 +4,14 @@ import path from "node:path";
 import process from "node:process";
 import { pathToFileURL } from "node:url";
 import { getGoogleAccessToken } from "./google-auth.mjs";
+import { assertRangeCoverage, DYNAMIC_SHEET_RANGE } from "./sheet-source-guard.mjs";
 
 const DEFAULT_DETAIL_SHEET_NAME = "◆案件/媒体別日次_全体";
 const DEFAULT_TOTAL_SHEET_NAME = "◆案件別日次_全体_固定用";
-const DEFAULT_RANGE = "A1:ZZ3000";
+const DEFAULT_RANGE = DYNAMIC_SHEET_RANGE;
 const DEFAULT_STATUS_PATH = "data/source-audit-status.json";
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 45_000);
+const DEFAULT_SAFE_MAX_ROWS = 3000;
 const MAX_EXAMPLES = 12;
 const METRICS = ["sales", "grossProfit", "cost", "cv"];
 
@@ -30,6 +32,7 @@ export async function auditSourceSheet({
   range = DEFAULT_RANGE,
   generatedPath = `data/${month}.json`,
   statusPath = DEFAULT_STATUS_PATH,
+  safeMaxRows = Number(process.env.MAX_SOURCE_ROWS || DEFAULT_SAFE_MAX_ROWS),
   fetchWithTimeout = defaultFetchWithTimeout,
 } = {}) {
   if (!/^\d{4}-\d{2}$/.test(String(month || ""))) throw new Error("month must be YYYY-MM");
@@ -37,8 +40,8 @@ export async function auditSourceSheet({
 
   const accessToken = await getGoogleAccessToken({ fetchWithTimeout });
   const [detailValues, totalValues, generatedData] = await Promise.all([
-    fetchSheetValues({ spreadsheetId, sheetName: detailSheetName, range, accessToken, fetchWithTimeout }),
-    fetchSheetValues({ spreadsheetId, sheetName: totalSheetName, range, accessToken, fetchWithTimeout }),
+    fetchSheetValues({ spreadsheetId, sheetName: detailSheetName, range, accessToken, safeMaxRows, fetchWithTimeout }),
+    fetchSheetValues({ spreadsheetId, sheetName: totalSheetName, range, accessToken, safeMaxRows, fetchWithTimeout }),
     readJson(generatedPath),
   ]);
   const result = auditSourceValues({
@@ -386,14 +389,16 @@ function localeSort(left, right) {
   return String(left).localeCompare(String(right), "ja");
 }
 
-async function fetchSheetValues({ spreadsheetId, sheetName, range, accessToken, fetchWithTimeout }) {
+async function fetchSheetValues({ spreadsheetId, sheetName, range, accessToken, safeMaxRows, fetchWithTimeout }) {
   const sheetRange = `${quoteSheetName(sheetName)}!${range}`;
   const url = new URL(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${encodeURIComponent(sheetRange)}`);
   url.searchParams.set("valueRenderOption", "FORMATTED_VALUE");
   url.searchParams.set("dateTimeRenderOption", "FORMATTED_STRING");
   const response = await fetchWithTimeout(url, { headers: { Authorization: `Bearer ${accessToken}` } });
   if (!response.ok) throw new Error(`Google Sheets source audit ${spreadsheetId}/${sheetName} failed: ${response.status} ${await response.text()}`);
-  return (await response.json()).values || [];
+  const values = (await response.json()).values || [];
+  assertRangeCoverage(values, range, { spreadsheetId, sheetName, safeMaxRows });
+  return values;
 }
 
 async function writeAuditStatus(filePath, result) {
@@ -465,6 +470,7 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     range: args.range || process.env.SHEET_RANGE || DEFAULT_RANGE,
     generatedPath: args.generated || process.env.GENERATED_DATA_FILE,
     statusPath: args.status || process.env.SOURCE_AUDIT_STATUS_FILE || DEFAULT_STATUS_PATH,
+    safeMaxRows: Number(args.maxRows || process.env.MAX_SOURCE_ROWS || DEFAULT_SAFE_MAX_ROWS),
   });
   console.log(JSON.stringify(result, null, 2));
 }

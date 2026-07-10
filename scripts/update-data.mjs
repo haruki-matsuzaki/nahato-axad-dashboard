@@ -2,13 +2,15 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { getGoogleAccessToken } from "./google-auth.mjs";
+import { assertRangeCoverage, DYNAMIC_SHEET_RANGE } from "./sheet-source-guard.mjs";
 
 const DEFAULT_SPREADSHEET_ID = "1zMzWe0dg3dOrhRWJ6X7a6vIRhrLh9TYTKV9bzcXuefY";
 const DEFAULT_SHEET_NAME = "◆案件/媒体別日次_全体";
 const DEFAULT_TOTAL_SHEET_NAME = "◆案件別日次_全体_固定用";
-const DEFAULT_RANGE = "A1:ZZ3000";
+const DEFAULT_RANGE = DYNAMIC_SHEET_RANGE;
 const DEFAULT_MONTH = "2026-06";
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 45_000);
+const DEFAULT_SAFE_MAX_ROWS = 3000;
 
 const args = parseArgs(process.argv.slice(2));
 
@@ -25,6 +27,7 @@ const config = {
   sourceMode: args.sourceMode || process.env.SOURCE_MODE,
   totalsOnly: Boolean(args.totalsOnly || process.env.TOTALS_ONLY),
   defaultMonth: args.defaultMonth || process.env.DEFAULT_INDEX_MONTH,
+  safeMaxRows: Number(args.maxRows || process.env.MAX_SOURCE_ROWS || DEFAULT_SAFE_MAX_ROWS),
 };
 
 const values = config.fixture ? await readFixture(config.fixture) : await fetchSheetValues(config);
@@ -332,7 +335,13 @@ async function fetchSheetValues(config) {
   }
 
   const payload = await response.json();
-  return payload.values || [];
+  const values = payload.values || [];
+  assertRangeCoverage(values, config.sheetRange, {
+    spreadsheetId: config.spreadsheetId,
+    sheetName: config.sheetName,
+    safeMaxRows: config.safeMaxRows,
+  });
+  return values;
 }
 
 async function fetchWithTimeout(url, options = {}) {

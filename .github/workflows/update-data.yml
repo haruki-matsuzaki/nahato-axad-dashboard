@@ -96,7 +96,9 @@ jobs:
           MASTER_SHEET_ID: "2127655846"
           SHEET_NAME: ◆案件/媒体別日次_全体
           TOTAL_SHEET_NAME: ◆案件別日次_全体_固定用
-          SHEET_RANGE: A1:ZZ3000
+          SHEET_RANGE: A:ZZ
+          MAX_SOURCE_ROWS: "3000"
+          MAX_MASTER_ROWS: "2000"
           UPDATE_MODE: ${{ github.event.inputs.mode || 'scheduled' }}
           TARGET_MONTH: ${{ github.event.inputs.month }}
           SPREADSHEET_ID: ${{ github.event.inputs.spreadsheet_id }}

@@ -4,14 +4,24 @@ import process from "node:process";
 import { spawn } from "node:child_process";
 import { getGoogleAccessToken } from "./google-auth.mjs";
 import { auditSourceSheet } from "./audit-source-sheet.mjs";
+import {
+  assertRangeCoverage,
+  compareSources,
+  DYNAMIC_SHEET_RANGE,
+  selectSourceForMonth,
+  sourcePriority,
+  validateSourceMetadata,
+} from "./sheet-source-guard.mjs";
 import { syncOverallSalesTopRows } from "./sync-overall-sales-top-rows.mjs";
 
 const DEFAULT_MASTER_SPREADSHEET_ID = "1Xk-p_-6Np-e5keqOy5fcgmU-TF28H5dU7UeEYDUX_7k";
 const DEFAULT_MASTER_SHEET_ID = "2127655846";
-const DEFAULT_MASTER_RANGE = "A1:ZZ2000";
+const DEFAULT_MASTER_RANGE = DYNAMIC_SHEET_RANGE;
 const DEFAULT_SHEET_NAME = "◆案件/媒体別日次_全体";
 const DEFAULT_TOTAL_SHEET_NAME = "◆案件別日次_全体_固定用";
-const DEFAULT_SHEET_RANGE = "A1:ZZ3000";
+const DEFAULT_SHEET_RANGE = DYNAMIC_SHEET_RANGE;
+const DEFAULT_MASTER_MAX_ROWS = 2000;
+const DEFAULT_SOURCE_MAX_ROWS = 3000;
 const JST_TIME_ZONE = "Asia/Tokyo";
 const MONTHLY_SCHEDULE_CRONS = new Set(["0 6 * * *", "7 6 * * *", "17 6 * * *", "27 6 * * *"]);
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 45_000);
@@ -30,6 +40,8 @@ const options = {
   sheetName: args.sheetName || process.env.SHEET_NAME || DEFAULT_SHEET_NAME,
   totalSheetName: args.totalSheetName || process.env.TOTAL_SHEET_NAME || DEFAULT_TOTAL_SHEET_NAME,
   sheetRange: args.range || process.env.SHEET_RANGE || DEFAULT_SHEET_RANGE,
+  masterMaxRows: Number(args.masterMaxRows || process.env.MAX_MASTER_ROWS || DEFAULT_MASTER_MAX_ROWS),
+  sourceMaxRows: Number(args.maxRows || process.env.MAX_SOURCE_ROWS || DEFAULT_SOURCE_MAX_ROWS),
   indexPath: args.index || process.env.INDEX_FILE || "data/index.json",
   statusPath: args.status || process.env.UPDATE_STATUS_FILE || "data/update-status.json",
   updateLogPath: args.updateLog || process.env.UPDATE_LOG_FILE || "data/update-log.json",
@@ -89,7 +101,7 @@ async function main(plan) {
   let failed = false;
 
   for (const target of dedupeTargets(plan.targets)) {
-    const source = selectSourceForMonth(sourceCatalog.sources, target.month);
+    const source = selectSourceForMonth(sourceCatalog.candidates || sourceCatalog.sources, target.month);
     if (!source) {
       const message = `No Nacht sheet source found for ${target.month}. Check the master sheet or Chatwork source.`;
       if (target.required) failed = true;
@@ -118,6 +130,7 @@ async function main(plan) {
     }
 
     try {
+      const sourceValidation = await validateSelectedSource({ source, month: target.month, options });
       const sourceAudit = await runUpdateData({
         month: target.month,
         spreadsheetId: source.spreadsheetId,
@@ -140,6 +153,7 @@ async function main(plan) {
         spreadsheetId: source.spreadsheetId,
         title: source.title || "",
         message: overallSalesFailed ? overallSalesSync.message || overallSalesSync.reason || "Overall sales sync failed" : null,
+        sourceValidation,
         sourceAudit,
         overallSalesSync,
         dryRun: false,
@@ -270,6 +284,7 @@ async function enrichLogResult(item) {
     message: item.message || null,
     overallSalesSync: item.overallSalesSync || null,
     sourceAudit: item.sourceAudit || null,
+    sourceValidation: item.sourceValidation || null,
     data: monthSummary,
   };
 }
@@ -395,15 +410,17 @@ function isMonthlySchedule(options) {
 }
 
 function directSourceCatalog(spreadsheetId, targets, options) {
+  const sources = targets.map((target) => ({
+    month: target.month,
+    spreadsheetId,
+    title: "",
+    sourceType: "direct",
+    sourceLabel: "workflow_input",
+    discoveredAt: new Date().toISOString(),
+  }));
   return {
-    sources: targets.map((target) => ({
-      month: target.month,
-      spreadsheetId,
-      title: "",
-      sourceType: "direct",
-      sourceLabel: "workflow_input",
-      discoveredAt: new Date().toISOString(),
-    })),
+    sources,
+    candidates: sources,
     manifest: {
       generatedAt: new Date().toISOString(),
       masterSpreadsheetId: options.masterSpreadsheetId,
@@ -429,6 +446,7 @@ async function discoverSourceCatalog(options) {
 
   return {
     sources: deduped,
+    candidates: sources,
     manifest: {
       generatedAt: new Date().toISOString(),
       masterSpreadsheetId: options.masterSpreadsheetId,
@@ -448,7 +466,9 @@ async function discoverFromMasterSheet(options, warnings) {
     throw new Error(`Master sheet tab not found: gid ${options.masterSheetId}`);
   }
 
-  const values = await fetchSheetValues(options.masterSpreadsheetId, sheetTitle, options.masterRange);
+  const values = await fetchSheetValues(options.masterSpreadsheetId, sheetTitle, options.masterRange, {
+    safeMaxRows: options.masterMaxRows,
+  });
   const candidates = [];
 
   for (let rowIndex = 0; rowIndex < values.length; rowIndex += 1) {
@@ -545,7 +565,7 @@ async function enrichSourceTitles(sources, warnings) {
 async function fetchSpreadsheetMetadata(spreadsheetId, warnings = null) {
   const accessToken = await getGoogleAccessToken({ fetchWithTimeout });
   const url = new URL(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}`);
-  url.searchParams.set("fields", "properties.title,sheets.properties(sheetId,title)");
+  url.searchParams.set("fields", "spreadsheetId,properties.title,sheets.properties(sheetId,title,gridProperties(rowCount,columnCount))");
 
   const response = await fetchWithTimeout(url, {
     headers: {
@@ -565,7 +585,7 @@ async function fetchSpreadsheetMetadata(spreadsheetId, warnings = null) {
   return response.json();
 }
 
-async function fetchSheetValues(spreadsheetId, sheetName, range) {
+async function fetchSheetValues(spreadsheetId, sheetName, range, { safeMaxRows = 0 } = {}) {
   const accessToken = await getGoogleAccessToken({ fetchWithTimeout });
   const sheetRange = `${quoteSheetName(sheetName)}!${range}`;
   const url = new URL(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${encodeURIComponent(sheetRange)}`);
@@ -583,7 +603,9 @@ async function fetchSheetValues(spreadsheetId, sheetName, range) {
   }
 
   const payload = await response.json();
-  return payload.values || [];
+  const values = payload.values || [];
+  assertRangeCoverage(values, range, { spreadsheetId, sheetName, safeMaxRows });
+  return values;
 }
 
 function dedupeSources(sources) {
@@ -607,21 +629,14 @@ function dedupeSources(sources) {
   return [...byMonth.values()].sort((a, b) => a.month.localeCompare(b.month));
 }
 
-function selectSourceForMonth(sources, month) {
-  return sources.find((source) => source.month === month) || null;
-}
-
-function sourcePriority(source) {
-  if (source.sourceType === "master_sheet") return 3;
-  if (source.sourceType === "chatwork") return 2;
-  if (source.sourceType === "direct") return 4;
-  return 1;
-}
-
-function compareSources(a, b) {
-  const priorityDelta = sourcePriority(a) - sourcePriority(b);
-  if (priorityDelta !== 0) return priorityDelta;
-  return Number(a.rowIndex || 0) - Number(b.rowIndex || 0);
+async function validateSelectedSource({ source, month, options }) {
+  const metadata = await fetchSpreadsheetMetadata(source.spreadsheetId);
+  return validateSourceMetadata({
+    metadata,
+    source,
+    expectedMonth: month,
+    requiredSheetNames: [options.sheetName, options.totalSheetName],
+  });
 }
 
 function dedupeTargets(targets) {
@@ -666,6 +681,7 @@ async function runUpdateData({ month, spreadsheetId, defaultMonth, sourceMode, o
       range: options.sheetRange,
       generatedPath: dataPath,
       statusPath: options.sourceAuditStatusPath,
+      safeMaxRows: options.sourceMaxRows,
       fetchWithTimeout,
     });
   } catch (error) {
@@ -690,6 +706,8 @@ async function spawnUpdateData({ month, spreadsheetId, defaultMonth, sourceMode,
         options.totalSheetName,
         "--range",
         options.sheetRange,
+        "--maxRows",
+        String(options.sourceMaxRows),
         "--defaultMonth",
         defaultMonth,
       ],

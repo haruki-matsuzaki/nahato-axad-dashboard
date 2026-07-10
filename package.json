@@ -20,11 +20,12 @@
     "test:parser": "node scripts/update-data.mjs --fixture scripts/fixtures/nacht-sample-values.json --month 2026-06 --out /tmp/nacht-test-2026-06.json --index /tmp/nacht-test-index.json",
     "test:media-only-project": "node scripts/test-media-only-project.mjs",
     "test:source-audit": "node scripts/test-source-audit.mjs",
+    "test:sheet-source-guard": "node scripts/test-sheet-source-guard.mjs",
     "test:external-monitor": "node scripts/test-external-monitor.mjs",
     "test:schedule": "node scripts/update-month-from-sources.mjs --mode monthly --dryRun --force --month 2026-08 --spreadsheetId test-spreadsheet-id",
     "test:data": "node scripts/validate-static-data.mjs",
     "test:data-quality": "node scripts/check-data-quality.mjs --writeStatus /tmp/nacht-data-quality-status.json --failOnError",
-    "test": "npm run test:parser && npm run test:media-only-project && npm run test:source-audit && npm run test:external-monitor && npm run test:schedule && npm run test:data && npm run test:data-quality",
+    "test": "npm run test:parser && npm run test:media-only-project && npm run test:source-audit && npm run test:sheet-source-guard && npm run test:external-monitor && npm run test:schedule && npm run test:data && npm run test:data-quality",
     "start": "python3 -m http.server 4173"
   },
   "engines": {

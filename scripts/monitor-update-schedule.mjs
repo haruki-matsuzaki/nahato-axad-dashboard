@@ -112,6 +112,9 @@ function classifyFailure(run, status) {
     return "sheet_structure_changed";
   }
   if (/source sheet audit|source_sheet_mismatch|SourceAuditError/i.test(message)) return "source_sheet_mismatch";
+  if (/SheetSourceGuardError|safe row limit|final requested (?:row|column)|equally preferred Nacht sheet|Required sheet tab|title month/i.test(message)) {
+    return "sheet_source_guard_error";
+  }
   if (/data quality|データ|quality/i.test(message)) return "data_quality_error";
   if (/validate|static/i.test(message)) return "static_validation_error";
   return "workflow_run_failed";
