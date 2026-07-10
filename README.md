@@ -121,6 +121,8 @@ GitHub ActionsのscheduleはUTCで実行されます。また、毎時0分は負
 - `SMTP_*` が設定されている場合、更新失敗・検証失敗・デプロイ確認失敗・定時監視による再実行起動を `matsuzaki@shibuya-ad.com` にメール通知します
 - Google OAuthの `invalid_grant` / `invalid_client` / `unauthorized_client` はサービスアカウントで隠さず失敗扱いにし、再作成が必要なSecretをエラーメッセージに出します
 - `◆案件/媒体別日次_全体` / `◆案件別日次_全体_固定用` / `◆全体売上表` は、合計行・日付ヘッダー・売上/粗利/消化金額/ROASの構造が崩れた場合に更新失敗にします
+- GitHub Actionsのpushチェックが実行前に `cancelled` になった場合、10分おきの監視で最大3回まで再実行します
+- GitHub Actionsのpushチェックが25分以上 `queued` のままなら、一度cancelして次回監視で再実行対象にします
 
 手動実行:
 

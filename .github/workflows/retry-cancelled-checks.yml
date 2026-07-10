@@ -1,0 +1,32 @@
+name: Retry cancelled GitHub Actions checks
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: nacht-axad-retry-cancelled-checks
+  cancel-in-progress: false
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  retry-cancelled-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Retry cancelled checks
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHECK_RETRY_BRANCH: main
+          CHECK_RETRY_MAX_ATTEMPTS: "3"
+          CHECK_RETRY_STALE_QUEUED_MINUTES: "25"
+        run: node scripts/retry-cancelled-checks.mjs

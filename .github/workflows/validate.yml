@@ -27,6 +27,7 @@ jobs:
           node --check scripts/check-data-quality.mjs
           node --check scripts/google-auth.mjs
           node --check scripts/monitor-update-schedule.mjs
+          node --check scripts/retry-cancelled-checks.mjs
           node --check scripts/send-alert-email.mjs
           node --check scripts/sync-overall-sales-top-rows.mjs
           node --check scripts/update-data.mjs
