@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-10T09:59:04.372Z",
+    "generatedAt": "2026-07-10T11:41:26.297Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -252,11 +252,11 @@
       "date": "2026-07-09",
       "project": "パーフェクトボディプレミアム",
       "media": "全体",
-      "sales": 687924,
-      "grossProfit": 113361,
+      "sales": 754854,
+      "grossProfit": 180291,
       "cost": 574563,
       "cv": 48,
-      "roas": 1.197299512847155,
+      "roas": 1.3137880441309309,
       "cpa": 11970.0625
     },
     {
@@ -4025,11 +4025,11 @@
       "date": "2026-07-09",
       "project": "パーフェクトボディプレミアム",
       "media": "Facebook",
-      "sales": 458422,
-      "grossProfit": 36160,
+      "sales": 525352,
+      "grossProfit": 103090,
       "cost": 422262,
       "cv": 34,
-      "roas": 1.0856340376354017,
+      "roas": 1.2441375259909724,
       "cpa": 12419.470588235294
     },
     {
