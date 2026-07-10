@@ -1,6 +1,87 @@
 {
-  "generatedAt": "2026-07-10T04:21:50.785Z",
+  "generatedAt": "2026-07-10T05:44:21.013Z",
   "entries": [
+    {
+      "checkedAt": "2026-07-10T05:44:21.013Z",
+      "failed": false,
+      "skippedReason": null,
+      "fatalError": null,
+      "targets": [
+        {
+          "month": "2026-07",
+          "reason": "requested_month",
+          "required": true
+        }
+      ],
+      "results": [
+        {
+          "month": "2026-07",
+          "reason": "requested_month",
+          "status": "ok",
+          "required": true,
+          "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+          "title": "AD_総合売上管理表_2026年07月",
+          "message": null,
+          "overallSalesSync": {
+            "status": "ok",
+            "out": "data/overall-sales-2026-07.json",
+            "rows": 53,
+            "updatedCells": 2696,
+            "verification": {
+              "checkedCells": 2696,
+              "mismatches": 0
+            },
+            "structure": {
+              "metricCounts": {
+                "売上": 1,
+                "粗利": 1,
+                "消化金額": 1,
+                "ROAS": 2
+              },
+              "dateHeaders": 32,
+              "totalHeaders": 2
+            }
+          },
+          "sourceAudit": {
+            "generatedAt": "2026-07-10T05:44:20.439Z",
+            "status": "ok",
+            "month": "2026-07",
+            "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+            "sheets": {
+              "detail": "◆案件/媒体別日次_全体",
+              "total": "◆案件別日次_全体_固定用"
+            },
+            "sourceFingerprint": "80ab67874e1d57664c432613f3d0b68a737f41eeeda58668b0e5c292e8f37d61",
+            "generatedFingerprint": "80ab67874e1d57664c432613f3d0b68a737f41eeeda58668b0e5c292e8f37d61",
+            "summary": {
+              "sourceProjects": 17,
+              "generatedProjects": 17,
+              "sourceKeys": 512,
+              "generatedKeys": 512,
+              "verifiedMetrics": 2048,
+              "missingKeys": 0,
+              "extraKeys": 0,
+              "valueMismatches": 0,
+              "structureIssues": 0,
+              "detailBlocks": 305,
+              "totalBlocks": 47
+            },
+            "issues": {
+              "missing": [],
+              "extra": [],
+              "mismatches": [],
+              "structure": []
+            }
+          },
+          "data": {
+            "records": 512,
+            "projects": 17,
+            "media": 8,
+            "generatedAt": "2026-07-10T05:44:19.449Z"
+          }
+        }
+      ]
+    },
     {
       "checkedAt": "2026-07-10T04:21:50.785Z",
       "failed": false,

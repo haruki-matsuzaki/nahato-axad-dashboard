@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-07-10T05:44:20.439Z",
+  "status": "ok",
+  "latestMonth": "2026-07",
+  "entries": [
+    {
+      "generatedAt": "2026-07-10T05:44:20.439Z",
+      "status": "ok",
+      "month": "2026-07",
+      "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+      "sheets": {
+        "detail": "◆案件/媒体別日次_全体",
+        "total": "◆案件別日次_全体_固定用"
+      },
+      "sourceFingerprint": "80ab67874e1d57664c432613f3d0b68a737f41eeeda58668b0e5c292e8f37d61",
+      "generatedFingerprint": "80ab67874e1d57664c432613f3d0b68a737f41eeeda58668b0e5c292e8f37d61",
+      "summary": {
+        "sourceProjects": 17,
+        "generatedProjects": 17,
+        "sourceKeys": 512,
+        "generatedKeys": 512,
+        "verifiedMetrics": 2048,
+        "missingKeys": 0,
+        "extraKeys": 0,
+        "valueMismatches": 0,
+        "structureIssues": 0,
+        "detailBlocks": 305,
+        "totalBlocks": 47
+      },
+      "issues": {
+        "missing": [],
+        "extra": [],
+        "mismatches": [],
+        "structure": []
+      }
+    }
+  ]
+}

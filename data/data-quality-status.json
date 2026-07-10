@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T05:08:56.089Z",
+  "generatedAt": "2026-07-10T05:44:21.404Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -736,8 +736,16 @@
     {
       "type": "total_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 43,
+      "count": 45,
       "examples": [
+        {
+          "project": "MEN'STBC",
+          "date": "2026-07-02",
+          "metric": "grossProfit",
+          "expected": 471240.141,
+          "actual": 441240,
+          "diff": -30000.141000000003
+        },
         {
           "project": "イエウール",
           "date": "2026-07-01",
@@ -825,21 +833,13 @@
           "expected": 130000,
           "actual": 65000,
           "diff": -65000
-        },
-        {
-          "project": "トライのオンライン個別指導塾",
-          "date": "2026-07-06",
-          "metric": "sales",
-          "expected": 26000,
-          "actual": 13000,
-          "diff": -13000
         }
       ]
     },
     {
       "type": "missing_media_date",
       "message": "2026-07: expected business sales key missing from detail data",
-      "count": 10,
+      "count": 11,
       "examples": [
         {
           "project": "イエウール",
@@ -890,13 +890,18 @@
           "project": "DIO医療ダイエットクリニック",
           "media": "TikTok",
           "date": "2026-07-06"
+        },
+        {
+          "project": "パーフェクトボディプレミアム",
+          "media": "YT",
+          "date": "2026-07-01"
         }
       ]
     },
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 68,
+      "count": 70,
       "examples": [
         {
           "project": "イエウール",
@@ -2637,8 +2642,16 @@
         {
           "type": "total_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 43,
+          "count": 45,
           "examples": [
+            {
+              "project": "MEN'STBC",
+              "date": "2026-07-02",
+              "metric": "grossProfit",
+              "expected": 471240.141,
+              "actual": 441240,
+              "diff": -30000.141000000003
+            },
             {
               "project": "イエウール",
               "date": "2026-07-01",
@@ -2726,21 +2739,13 @@
               "expected": 130000,
               "actual": 65000,
               "diff": -65000
-            },
-            {
-              "project": "トライのオンライン個別指導塾",
-              "date": "2026-07-06",
-              "metric": "sales",
-              "expected": 26000,
-              "actual": 13000,
-              "diff": -13000
             }
           ]
         },
         {
           "type": "missing_media_date",
           "message": "2026-07: expected business sales key missing from detail data",
-          "count": 10,
+          "count": 11,
           "examples": [
             {
               "project": "イエウール",
@@ -2791,13 +2796,18 @@
               "project": "DIO医療ダイエットクリニック",
               "media": "TikTok",
               "date": "2026-07-06"
+            },
+            {
+              "project": "パーフェクトボディプレミアム",
+              "media": "YT",
+              "date": "2026-07-01"
             }
           ]
         },
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 68,
+          "count": 70,
           "examples": [
             {
               "project": "イエウール",
@@ -2926,10 +2936,10 @@
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
-        "totalValueMismatches": 43,
-        "missingMediaDates": 10,
-        "mediaValueMismatches": 68,
-        "previousDayRecords": 58,
+        "totalValueMismatches": 45,
+        "missingMediaDates": 11,
+        "mediaValueMismatches": 70,
+        "previousDayRecords": 59,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 1,
@@ -2950,8 +2960,8 @@
     "previousDayProjectCount": 16,
     "comparisonDate": "2026-07-08",
     "comparisonProjectCount": 16,
-    "detailGeneratedAt": "2026-07-10T04:21:50.216Z",
-    "overallSalesGeneratedAt": "2026-07-10T04:21:50.777Z",
-    "checkedAt": "2026-07-10T05:08:57.048Z"
+    "detailGeneratedAt": "2026-07-10T05:44:19.449Z",
+    "overallSalesGeneratedAt": "2026-07-10T05:44:21.005Z",
+    "checkedAt": "2026-07-10T05:44:22.737Z"
   }
 }
