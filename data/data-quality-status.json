@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T12:15:52.767Z",
+  "generatedAt": "2026-07-10T04:21:51.167Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -736,7 +736,7 @@
     {
       "type": "total_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 35,
+      "count": 43,
       "examples": [
         {
           "project": "イエウール",
@@ -767,24 +767,24 @@
           "date": "2026-07-04",
           "metric": "sales",
           "expected": 4350000,
-          "actual": 1460000,
-          "diff": -2890000
+          "actual": 2270000,
+          "diff": -2080000
         },
         {
           "project": "イエウール",
           "date": "2026-07-05",
           "metric": "sales",
           "expected": 4090000,
-          "actual": 1350000,
-          "diff": -2740000
+          "actual": 1970000,
+          "diff": -2120000
         },
         {
           "project": "イエウール",
           "date": "2026-07-06",
           "metric": "sales",
           "expected": 1900000,
-          "actual": 650000,
-          "diff": -1250000
+          "actual": 870000,
+          "diff": -1030000
         },
         {
           "project": "トライのオンライン個別指導塾",
@@ -839,23 +839,8 @@
     {
       "type": "missing_media_date",
       "message": "2026-07: expected business sales key missing from detail data",
-      "count": 7,
+      "count": 10,
       "examples": [
-        {
-          "project": "イエウール",
-          "media": "TikTok",
-          "date": "2026-07-06"
-        },
-        {
-          "project": "イエウール",
-          "media": "TikTok",
-          "date": "2026-07-04"
-        },
-        {
-          "project": "イエウール",
-          "media": "TikTok",
-          "date": "2026-07-05"
-        },
         {
           "project": "イエウール",
           "media": "YDA",
@@ -875,13 +860,43 @@
           "project": "イエウール",
           "media": "YDA",
           "date": "2026-07-06"
+        },
+        {
+          "project": "DIO医療ダイエットクリニック",
+          "media": "TikTok",
+          "date": "2026-07-01"
+        },
+        {
+          "project": "DIO医療ダイエットクリニック",
+          "media": "TikTok",
+          "date": "2026-07-02"
+        },
+        {
+          "project": "DIO医療ダイエットクリニック",
+          "media": "TikTok",
+          "date": "2026-07-03"
+        },
+        {
+          "project": "DIO医療ダイエットクリニック",
+          "media": "TikTok",
+          "date": "2026-07-04"
+        },
+        {
+          "project": "DIO医療ダイエットクリニック",
+          "media": "TikTok",
+          "date": "2026-07-05"
+        },
+        {
+          "project": "DIO医療ダイエットクリニック",
+          "media": "TikTok",
+          "date": "2026-07-06"
         }
       ]
     },
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 46,
+      "count": 68,
       "examples": [
         {
           "project": "イエウール",
@@ -970,8 +985,8 @@
           "date": "2026-07-04",
           "metric": "sales",
           "expected": 2670000,
-          "actual": 620000,
-          "diff": -2050000
+          "actual": 1430000,
+          "diff": -1240000
         },
         {
           "project": "イエウール",
@@ -979,8 +994,8 @@
           "date": "2026-07-05",
           "metric": "sales",
           "expected": 2970000,
-          "actual": 780000,
-          "diff": -2190000
+          "actual": 1400000,
+          "diff": -1570000
         },
         {
           "project": "イエウール",
@@ -988,8 +1003,8 @@
           "date": "2026-07-06",
           "metric": "sales",
           "expected": 1360000,
-          "actual": 380000,
-          "diff": -980000
+          "actual": 600000,
+          "diff": -760000
         }
       ]
     },
@@ -999,7 +1014,7 @@
       "count": 1,
       "examples": [
         {
-          "index": 106,
+          "index": 120,
           "project": "DMM 生成AI CAMP",
           "media": "全体",
           "date": "2026-07-18"
@@ -2622,7 +2637,7 @@
         {
           "type": "total_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 35,
+          "count": 43,
           "examples": [
             {
               "project": "イエウール",
@@ -2653,24 +2668,24 @@
               "date": "2026-07-04",
               "metric": "sales",
               "expected": 4350000,
-              "actual": 1460000,
-              "diff": -2890000
+              "actual": 2270000,
+              "diff": -2080000
             },
             {
               "project": "イエウール",
               "date": "2026-07-05",
               "metric": "sales",
               "expected": 4090000,
-              "actual": 1350000,
-              "diff": -2740000
+              "actual": 1970000,
+              "diff": -2120000
             },
             {
               "project": "イエウール",
               "date": "2026-07-06",
               "metric": "sales",
               "expected": 1900000,
-              "actual": 650000,
-              "diff": -1250000
+              "actual": 870000,
+              "diff": -1030000
             },
             {
               "project": "トライのオンライン個別指導塾",
@@ -2725,23 +2740,8 @@
         {
           "type": "missing_media_date",
           "message": "2026-07: expected business sales key missing from detail data",
-          "count": 7,
+          "count": 10,
           "examples": [
-            {
-              "project": "イエウール",
-              "media": "TikTok",
-              "date": "2026-07-06"
-            },
-            {
-              "project": "イエウール",
-              "media": "TikTok",
-              "date": "2026-07-04"
-            },
-            {
-              "project": "イエウール",
-              "media": "TikTok",
-              "date": "2026-07-05"
-            },
             {
               "project": "イエウール",
               "media": "YDA",
@@ -2761,13 +2761,43 @@
               "project": "イエウール",
               "media": "YDA",
               "date": "2026-07-06"
+            },
+            {
+              "project": "DIO医療ダイエットクリニック",
+              "media": "TikTok",
+              "date": "2026-07-01"
+            },
+            {
+              "project": "DIO医療ダイエットクリニック",
+              "media": "TikTok",
+              "date": "2026-07-02"
+            },
+            {
+              "project": "DIO医療ダイエットクリニック",
+              "media": "TikTok",
+              "date": "2026-07-03"
+            },
+            {
+              "project": "DIO医療ダイエットクリニック",
+              "media": "TikTok",
+              "date": "2026-07-04"
+            },
+            {
+              "project": "DIO医療ダイエットクリニック",
+              "media": "TikTok",
+              "date": "2026-07-05"
+            },
+            {
+              "project": "DIO医療ダイエットクリニック",
+              "media": "TikTok",
+              "date": "2026-07-06"
             }
           ]
         },
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 46,
+          "count": 68,
           "examples": [
             {
               "project": "イエウール",
@@ -2856,8 +2886,8 @@
               "date": "2026-07-04",
               "metric": "sales",
               "expected": 2670000,
-              "actual": 620000,
-              "diff": -2050000
+              "actual": 1430000,
+              "diff": -1240000
             },
             {
               "project": "イエウール",
@@ -2865,8 +2895,8 @@
               "date": "2026-07-05",
               "metric": "sales",
               "expected": 2970000,
-              "actual": 780000,
-              "diff": -2190000
+              "actual": 1400000,
+              "diff": -1570000
             },
             {
               "project": "イエウール",
@@ -2874,8 +2904,8 @@
               "date": "2026-07-06",
               "metric": "sales",
               "expected": 1360000,
-              "actual": 380000,
-              "diff": -980000
+              "actual": 600000,
+              "diff": -760000
             }
           ]
         },
@@ -2885,7 +2915,7 @@
           "count": 1,
           "examples": [
             {
-              "index": 106,
+              "index": 120,
               "project": "DMM 生成AI CAMP",
               "media": "全体",
               "date": "2026-07-18"
@@ -2896,10 +2926,10 @@
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
-        "totalValueMismatches": 35,
-        "missingMediaDates": 7,
-        "mediaValueMismatches": 46,
-        "previousDayRecords": 57,
+        "totalValueMismatches": 43,
+        "missingMediaDates": 10,
+        "mediaValueMismatches": 68,
+        "previousDayRecords": 58,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 1,
