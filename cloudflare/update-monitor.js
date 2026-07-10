@@ -28,7 +28,7 @@ export default {
   },
 };
 
-async function runScheduledMonitor(env) {
+export async function runScheduledMonitor(env) {
   let health;
   try {
     health = await inspectDataHealth(env);

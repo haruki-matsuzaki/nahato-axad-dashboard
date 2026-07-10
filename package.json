@@ -9,6 +9,7 @@
     "monitor:update": "node scripts/monitor-update-schedule.mjs",
     "monitor:deploy": "node scripts/check-cloudflare-pages-deploy.mjs",
     "monitor:checks": "node scripts/retry-cancelled-checks.mjs",
+    "monitor:external": "node scripts/run-external-monitor.mjs",
     "monitor:site": "node scripts/check-production-site.mjs",
     "notify:alert": "node scripts/send-alert-email.mjs",
     "secrets:check": "node scripts/check-automation-secrets.mjs",

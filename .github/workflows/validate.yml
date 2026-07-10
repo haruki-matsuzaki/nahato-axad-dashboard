@@ -31,6 +31,7 @@ jobs:
           node --check scripts/google-auth.mjs
           node --check scripts/monitor-update-schedule.mjs
           node --check scripts/retry-cancelled-checks.mjs
+          node --check scripts/run-external-monitor.mjs
           node --check scripts/send-alert-email.mjs
           node --check scripts/test-external-monitor.mjs
           node --check scripts/sync-overall-sales-top-rows.mjs

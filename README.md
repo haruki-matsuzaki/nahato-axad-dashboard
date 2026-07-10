@@ -110,13 +110,16 @@ node scripts/create-google-oauth-token.mjs
 - `7 9 * * *`: 18:07 JST。同上
 - `17/27 3,6,9 * * *`: 12:17 / 12:27 / 15:17 / 15:27 / 18:17 / 18:27 JST。同上
 - `37/47/57 3,6,9 * * *`: 定時更新が作成されなかった場合の監視・再起動判定
-- `30 4,7,10 * * *`: 13:30 / 16:30 / 19:30 JST。Cloudflare WorkerによるGitHub外からの反映確認
+- Codex automation: 12:40 / 15:40 / 18:40 JST。GitHub外からの再起動判定と実データ確認
+- `30 4,7,10 * * *`: 13:30 / 16:30 / 19:30 JST。Cloudflare Secret設定後に使う予備監視
 
 GitHub ActionsのscheduleはUTCで実行されます。また、毎時0分は負荷集中により遅延または実行されない場合があるため、定刻は維持したまま複数のバックアップ更新と監視を走らせます。
 
 外部監視:
 
-- `cloudflare/update-monitor.js` はGitHub Actionsと独立したCloudflare Cronで動きます
+- Codex automation `ナハトAXAD 日次同期未起動監視` をGitHub Actionsと独立した主監視として使います
+- 未起動時の再トリガー後、`npm run monitor:external` で前日分の実在を確認します
+- `cloudflare/update-monitor.js` はCloudflare Secret設定後に追加できる予備監視です
 - 前日分が案件別データと全体売上表の両方に存在するかを確認します
 - rawデータは更新済みなのに本番の更新ステータスが15分以上古い場合も検知します
 - 異常時はChatworkマイチャットへ通知します。画面や通知に内部の詳細な失敗要因は表示しません

@@ -31,17 +31,23 @@ jobs:
           node-version: "24"
 
       - name: Check deployment secrets
+        id: deployment-secrets
         env:
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
         run: |
-          test -n "$CLOUDFLARE_ACCOUNT_ID"
-          test -n "$CLOUDFLARE_API_TOKEN"
-          test -n "$CHATWORK_API_TOKEN"
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ] || [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CHATWORK_API_TOKEN" ]; then
+            echo "deploy_enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::warning title=external_monitor_deploy_skipped::Cloudflare Worker credentials are incomplete. The Codex external monitor remains the active independent monitor."
+            exit 0
+          fi
+          echo "deploy_enabled=true" >> "$GITHUB_OUTPUT"
 
       - name: Deploy monitor Worker
+        if: steps.deployment-secrets.outputs.deploy_enabled == 'true'
         run: npx --yes wrangler@4 deploy --config wrangler.monitor.jsonc
 
       - name: Set Chatwork alert secret
+        if: steps.deployment-secrets.outputs.deploy_enabled == 'true'
         env:
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
         run: printf '%s' "$CHATWORK_API_TOKEN" | npx --yes wrangler@4 secret put CHATWORK_API_TOKEN --config wrangler.monitor.jsonc
