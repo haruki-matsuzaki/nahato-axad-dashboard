@@ -24,8 +24,11 @@ if (result.status === "error") {
 
 async function monitorDeployment(options) {
   if (!options.accountId || !options.apiToken) {
+    console.log(
+      "::warning title=missing_cloudflare_credentials::CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN are missing; deploy status check cannot query Cloudflare.",
+    );
     return {
-      status: "skipped",
+      status: "warning",
       reason: "missing_cloudflare_credentials",
       message: "CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN are required for deploy status checks.",
       projectName: options.projectName,

@@ -16,19 +16,54 @@ const options = {
   smtpUsername: process.env.SMTP_USERNAME || process.env.MAIL_USERNAME || "",
   smtpPassword: process.env.SMTP_PASSWORD || process.env.MAIL_PASSWORD || "",
   smtpFrom: process.env.SMTP_FROM || process.env.MAIL_FROM || process.env.SMTP_USERNAME || process.env.MAIL_USERNAME || "",
+  chatworkToken: process.env.CHATWORK_API_TOKEN || "",
+  chatworkRoomId: process.env.CHATWORK_ALERT_ROOM_ID || process.env.CHATWORK_ROOM_ID || "398449612",
 };
 
-const result = await sendAlertEmail(options);
+const result = await sendAlert(options);
 console.log(JSON.stringify(result, null, 2));
 if (result.status === "error") {
   process.exitCode = 1;
 }
 
-async function sendAlertEmail(options) {
+async function sendAlert(options) {
+  const context = await buildAlertContext(options);
+  const subject = subjectForContext(context);
+  const body = bodyForContext(context);
+  const results = [];
+
+  results.push(await sendSmtpAlert(options, subject, body));
+  results.push(await sendChatworkAlert(options, subject, body));
+
+  const sent = results.filter((item) => item.status === "ok");
+  const failed = results.filter((item) => item.status === "error");
+  if (sent.length) {
+    return {
+      status: "ok",
+      reason: context.reason,
+      channels: results,
+    };
+  }
+  if (failed.length) {
+    return {
+      status: "error",
+      reason: "all_alert_channels_failed",
+      channels: results,
+    };
+  }
+  return {
+    status: "skipped",
+    reason: "no_alert_channel_configured",
+    channels: results,
+  };
+}
+
+async function sendSmtpAlert(options, subject, body) {
   const missing = requiredSmtpKeys(options);
   if (missing.length) {
     return {
       status: "skipped",
+      channel: "smtp",
       reason: "missing_smtp_credentials",
       missing,
       to: options.to,
@@ -38,17 +73,17 @@ async function sendAlertEmail(options) {
   if (!options.to.length) {
     return {
       status: "skipped",
+      channel: "smtp",
       reason: "missing_recipient",
       message: "No alert recipient was configured.",
     };
   }
 
-  const context = await buildAlertContext(options);
   const message = buildEmailMessage({
     from: options.smtpFrom,
     to: options.to,
-    subject: subjectForContext(context),
-    body: bodyForContext(context),
+    subject,
+    body,
   });
 
   const curlArgs = [
@@ -78,6 +113,7 @@ async function sendAlertEmail(options) {
   if (result.status !== 0) {
     return {
       status: "error",
+      channel: "smtp",
       reason: "smtp_send_failed",
       to: options.to,
       message: sanitizeOutput(result.stderr || result.stdout || `curl exited with ${result.status}`),
@@ -86,9 +122,63 @@ async function sendAlertEmail(options) {
 
   return {
     status: "ok",
-    reason: context.reason,
+    channel: "smtp",
     to: options.to,
-    subject: subjectForContext(context),
+    subject,
+  };
+}
+
+async function sendChatworkAlert(options, subject, body) {
+  if (!options.chatworkToken || !options.chatworkRoomId) {
+    return {
+      status: "skipped",
+      channel: "chatwork",
+      reason: "missing_chatwork_credentials",
+      message: "CHATWORK_API_TOKEN is required for Chatwork alert fallback.",
+    };
+  }
+
+  const url = new URL(`https://api.chatwork.com/v2/rooms/${encodeURIComponent(options.chatworkRoomId)}/messages`);
+  const payload = new URLSearchParams({
+    body: `[info][title]${subject}[/title]${body}[/info]`,
+    self_unread: "1",
+  });
+  let response;
+  try {
+    response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "X-ChatWorkToken": options.chatworkToken,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: payload,
+    });
+  } catch (error) {
+    return {
+      status: "error",
+      channel: "chatwork",
+      reason: "chatwork_request_failed",
+      roomId: options.chatworkRoomId,
+      message: sanitizeOutput(error?.message || String(error)),
+    };
+  }
+
+  if (!response.ok) {
+    return {
+      status: "error",
+      channel: "chatwork",
+      reason: "chatwork_send_failed",
+      roomId: options.chatworkRoomId,
+      message: sanitizeOutput(`${response.status} ${await response.text()}`),
+    };
+  }
+
+  const result = await response.json().catch(() => ({}));
+  return {
+    status: "ok",
+    channel: "chatwork",
+    roomId: options.chatworkRoomId,
+    messageId: result.message_id || null,
   };
 }
 

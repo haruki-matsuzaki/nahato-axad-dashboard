@@ -76,6 +76,8 @@ jobs:
         env:
           ALERT_EMAIL_TO: matsuzaki@shibuya-ad.com
           ALERT_REASON: schedule_monitor_triggered
+          CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
+          CHATWORK_ALERT_ROOM_ID: "398449612"
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}

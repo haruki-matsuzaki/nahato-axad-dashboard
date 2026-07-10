@@ -58,7 +58,7 @@ GitHub Actionsで `scripts/update-month-from-sources.mjs` を実行します。
 - `GOOGLE_OAUTH_CLIENT_SECRET`
 - `GOOGLE_OAUTH_REFRESH_TOKEN`
 - `GOOGLE_SERVICE_ACCOUNT_JSON` 任意。シート側でサービスアカウントに閲覧権限を付与できる場合のフォールバックです
-- `CHATWORK_API_TOKEN` 任意。Chatwork補助参照を使う場合だけ設定します
+- `CHATWORK_API_TOKEN` 任意。Chatwork補助参照と通知fallbackに使います
 - `CHATWORK_ANALYSIS_ROOM_ID` 任意。「【分析】運用データ共有」のroom_idです
 - `CLOUDFLARE_ACCOUNT_ID` 任意。Cloudflare Pagesのデプロイ状態チェックに使います
 - `CLOUDFLARE_API_TOKEN` 任意。Cloudflare Pagesのデプロイ状態チェックに使います
@@ -68,6 +68,8 @@ GitHub Actionsで `scripts/update-month-from-sources.mjs` を実行します。
 - `SMTP_USERNAME` 任意。失敗通知メールのSMTPユーザー名です
 - `SMTP_PASSWORD` 任意。失敗通知メールのSMTPパスワードです
 - `SMTP_FROM` 任意。失敗通知メールのFromアドレスです
+- `PRODUCTION_URL` 任意。本番疎通チェック対象URLです。未設定時は `https://nahato-axad-dashboard.pages.dev/#home` を使います
+- `PRODUCTION_CHECK_REQUIRE_200` 任意。`true` の場合、本番URLがHTTP 200以外なら失敗扱いにします
 
 通常は `pino.ad.kanri@shibuya-ad.com` のOAuth Refresh TokenでGoogle Sheets APIを読み込みます。
 対象ナハトシートをサービスアカウントに共有できない場合でも、pinoアカウントがブラウザで閲覧できるシートであればAPI取得できます。
@@ -117,8 +119,11 @@ GitHub ActionsのscheduleはUTCで実行されます。また、毎時0分は負
 - `◆全体売上表` は `A3:ZZ55` を取得し、取得行数が不足している場合は更新失敗にします
 - 取得したGoogle Sheetsの表示値と `data/overall-sales-YYYY-MM.json` に書き込んだ値をセル単位で照合し、差分があれば更新失敗にします
 - `CLOUDFLARE_ACCOUNT_ID` と `CLOUDFLARE_API_TOKEN` が設定されている場合、mainへのpush後と更新コミット後にCloudflare Pagesの該当commitがデプロイ成功するか最大10分確認します
-- CloudflareのSecretが未設定の場合、デプロイ状態チェックは `skipped` として扱い、データ更新自体は止めません
+- CloudflareのSecretが未設定の場合、デプロイ状態チェックは `warning` として扱い、データ更新自体は止めません
+- 本番URLがHTTP 200で取得できる場合、HTML内の主要assetもHTTP 200で読み込めるか確認します
+- Cloudflare Accessなどで本番URLが `302` / `401` / `403` になる場合は、既定では `warning` として扱います
 - `SMTP_*` が設定されている場合、更新失敗・検証失敗・デプロイ確認失敗・定時監視による再実行起動を `matsuzaki@shibuya-ad.com` にメール通知します
+- `SMTP_*` が未設定または送信失敗した場合、`CHATWORK_API_TOKEN` があればマイチャット `398449612` へ通知します
 - Google OAuthの `invalid_grant` / `invalid_client` / `unauthorized_client` はサービスアカウントで隠さず失敗扱いにし、再作成が必要なSecretをエラーメッセージに出します
 - `◆案件/媒体別日次_全体` / `◆案件別日次_全体_固定用` / `◆全体売上表` は、合計行・日付ヘッダー・売上/粗利/消化金額/ROASの構造が崩れた場合に更新失敗にします
 - GitHub Actionsのpushチェックが実行前に `cancelled` になった場合、10分おきの監視で最大3回まで再実行します
@@ -132,6 +137,17 @@ GitHub ActionsのscheduleはUTCで実行されます。また、毎時0分は負
 - `month=YYYY-MM`: 指定月だけ更新
 - `spreadsheet_id`: 指定したナハトシートIDを直接更新
 - `force_monthly=true`: 月初営業日判定を無視してmonthly/allを実行
+
+手動復旧:
+
+1. GitHub Actionsで `Update Nacht AXAD data` を開く
+2. `Run workflow` から `mode=daily` を選び実行する
+3. 特定月だけ直す場合は `month=YYYY-MM` を指定する
+4. 対象シートを固定したい場合は `spreadsheet_id` にナハトシートIDを入れる
+5. `Validate Nacht AXAD static data` と `Check Cloudflare Pages deploy` が `success` になるまで確認する
+6. `google_oauth_invalid_grant` が出た場合は `pino.ad.kanri@shibuya-ad.com` でRefresh Tokenを再作成し、`GOOGLE_OAUTH_REFRESH_TOKEN` を更新する
+7. `sheet_structure_changed` が出た場合は、対象ナハトシートのタブ名・合計行・日付列・売上/粗利/消化金額/ROAS行を確認する
+8. `production_url_non_200` が出た場合は、Cloudflare Pagesの最新デプロイ、Access設定、`PRODUCTION_URL` を確認する
 
 ## ローカル確認
 

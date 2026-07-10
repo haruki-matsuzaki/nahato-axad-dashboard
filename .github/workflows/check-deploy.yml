@@ -23,7 +23,21 @@ jobs:
         with:
           node-version: "24"
 
+      - name: Check deploy secrets
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
+        run: node scripts/check-automation-secrets.mjs --profile deploy
+
       - name: Check Cloudflare Pages deployment
+        id: cloudflare-deploy
+        continue-on-error: true
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -32,3 +46,29 @@ jobs:
           CLOUDFLARE_DEPLOY_WAIT_SECONDS: "600"
           CLOUDFLARE_DEPLOY_INTERVAL_SECONDS: "30"
         run: node scripts/check-cloudflare-pages-deploy.mjs
+
+      - name: Check production site
+        id: production-site
+        continue-on-error: true
+        env:
+          PRODUCTION_URL: ${{ secrets.PRODUCTION_URL }}
+          PRODUCTION_CHECK_REQUIRE_200: ${{ secrets.PRODUCTION_CHECK_REQUIRE_200 }}
+        run: node scripts/check-production-site.mjs
+
+      - name: Send deploy failure alert
+        if: always() && (steps.cloudflare-deploy.outcome == 'failure' || steps.production-site.outcome == 'failure')
+        env:
+          ALERT_EMAIL_TO: matsuzaki@shibuya-ad.com
+          ALERT_REASON: deploy_failed
+          CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
+          CHATWORK_ALERT_ROOM_ID: "398449612"
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+        run: node scripts/send-alert-email.mjs
+
+      - name: Fail when deploy check failed
+        if: steps.cloudflare-deploy.outcome == 'failure' || steps.production-site.outcome == 'failure'
+        run: exit 1

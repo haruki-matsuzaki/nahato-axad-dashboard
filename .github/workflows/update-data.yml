@@ -59,8 +59,27 @@ jobs:
         with:
           node-version: "24"
 
+      - name: Check automation secrets
+        id: automation-secrets
+        continue-on-error: true
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+          GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
+          CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+        run: node scripts/check-automation-secrets.mjs --profile update --failOnError
+
       - name: Fetch Google Sheets data
         id: fetch-data
+        if: steps.automation-secrets.outcome == 'success'
         continue-on-error: true
         timeout-minutes: 20
         env:
@@ -123,7 +142,7 @@ jobs:
 
       - name: Commit updated data
         id: commit-data
-        if: steps.validate-data.outcome == 'success'
+        if: steps.fetch-data.outcome == 'success' && steps.validate-data.outcome == 'success'
         run: |
           set -euo pipefail
 
@@ -161,7 +180,7 @@ jobs:
 
       - name: Check Cloudflare Pages deployment
         id: cloudflare-deploy
-        if: steps.validate-data.outcome == 'success'
+        if: steps.fetch-data.outcome == 'success' && steps.validate-data.outcome == 'success'
         continue-on-error: true
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -172,11 +191,22 @@ jobs:
           CLOUDFLARE_DEPLOY_INTERVAL_SECONDS: "30"
         run: node scripts/check-cloudflare-pages-deploy.mjs
 
+      - name: Check production site
+        id: production-site
+        if: steps.fetch-data.outcome == 'success' && steps.validate-data.outcome == 'success'
+        continue-on-error: true
+        env:
+          PRODUCTION_URL: ${{ secrets.PRODUCTION_URL }}
+          PRODUCTION_CHECK_REQUIRE_200: ${{ secrets.PRODUCTION_CHECK_REQUIRE_200 }}
+        run: node scripts/check-production-site.mjs
+
       - name: Send failure email
-        if: always() && (steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure' || steps.cloudflare-deploy.outcome == 'failure')
+        if: always() && (steps.automation-secrets.outcome == 'failure' || steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure' || steps.cloudflare-deploy.outcome == 'failure' || steps.production-site.outcome == 'failure')
         env:
           ALERT_EMAIL_TO: matsuzaki@shibuya-ad.com
           ALERT_REASON: update_failed
+          CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
+          CHATWORK_ALERT_ROOM_ID: "398449612"
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
@@ -185,5 +215,5 @@ jobs:
         run: node scripts/send-alert-email.mjs
 
       - name: Fail when update failed
-        if: steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure' || steps.cloudflare-deploy.outcome == 'failure'
+        if: steps.automation-secrets.outcome == 'failure' || steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure' || steps.cloudflare-deploy.outcome == 'failure' || steps.production-site.outcome == 'failure'
         run: exit 1
