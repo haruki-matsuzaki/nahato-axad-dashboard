@@ -25,6 +25,7 @@ jobs:
           node --check cloudflare/update-monitor.js
           node --check functions/api/active-users.js
           node --check scripts/check-automation-secrets.mjs
+          node --check scripts/audit-source-sheet.mjs
           node --check scripts/check-cloudflare-pages-deploy.mjs
           node --check scripts/check-production-site.mjs
           node --check scripts/check-data-quality.mjs
@@ -34,12 +35,16 @@ jobs:
           node --check scripts/run-external-monitor.mjs
           node --check scripts/send-alert-email.mjs
           node --check scripts/test-external-monitor.mjs
+          node --check scripts/test-source-audit.mjs
           node --check scripts/sync-overall-sales-top-rows.mjs
           node --check scripts/update-data.mjs
           node --check scripts/update-month-from-sources.mjs
 
       - name: Validate parser fixture
         run: npm run test:parser
+
+      - name: Validate source sheet audit
+        run: npm run test:source-audit
 
       - name: Validate schedule logic
         run: npm run test:schedule

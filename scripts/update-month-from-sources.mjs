@@ -3,6 +3,7 @@ import path from "node:path";
 import process from "node:process";
 import { spawn } from "node:child_process";
 import { getGoogleAccessToken } from "./google-auth.mjs";
+import { auditSourceSheet } from "./audit-source-sheet.mjs";
 import { syncOverallSalesTopRows } from "./sync-overall-sales-top-rows.mjs";
 
 const DEFAULT_MASTER_SPREADSHEET_ID = "1Xk-p_-6Np-e5keqOy5fcgmU-TF28H5dU7UeEYDUX_7k";
@@ -33,6 +34,8 @@ const options = {
   statusPath: args.status || process.env.UPDATE_STATUS_FILE || "data/update-status.json",
   updateLogPath: args.updateLog || process.env.UPDATE_LOG_FILE || "data/update-log.json",
   sourceManifestPath: args.sourceManifest || process.env.SOURCE_MANIFEST || "data/sheet-sources.json",
+  sourceAuditStatusPath:
+    args.sourceAuditStatus || process.env.SOURCE_AUDIT_STATUS_FILE || "data/source-audit-status.json",
   chatworkRoomId: args.chatworkRoomId || process.env.CHATWORK_ANALYSIS_ROOM_ID || process.env.CHATWORK_ROOM_ID_ANALYSIS || "",
   githubEventSchedule: process.env.GITHUB_EVENT_SCHEDULE || "",
 };
@@ -115,7 +118,7 @@ async function main(plan) {
     }
 
     try {
-      await runUpdateData({
+      const sourceAudit = await runUpdateData({
         month: target.month,
         spreadsheetId: source.spreadsheetId,
         defaultMonth,
@@ -137,6 +140,7 @@ async function main(plan) {
         spreadsheetId: source.spreadsheetId,
         title: source.title || "",
         message: overallSalesFailed ? overallSalesSync.message || overallSalesSync.reason || "Overall sales sync failed" : null,
+        sourceAudit,
         overallSalesSync,
         dryRun: false,
       });
@@ -265,6 +269,7 @@ async function enrichLogResult(item) {
     title: item.title || "",
     message: item.message || null,
     overallSalesSync: item.overallSalesSync || null,
+    sourceAudit: item.sourceAudit || null,
     data: monthSummary,
   };
 }
@@ -653,6 +658,16 @@ async function runUpdateData({ month, spreadsheetId, defaultMonth, sourceMode, o
   try {
     await spawnUpdateData({ month, spreadsheetId, defaultMonth, sourceMode, options });
     await validateUpdatedMonth(dataPath, backups.get(dataPath));
+    return await auditSourceSheet({
+      month,
+      spreadsheetId,
+      detailSheetName: options.sheetName,
+      totalSheetName: options.totalSheetName,
+      range: options.sheetRange,
+      generatedPath: dataPath,
+      statusPath: options.sourceAuditStatusPath,
+      fetchWithTimeout,
+    });
   } catch (error) {
     await restoreBackups(backups);
     throw error;

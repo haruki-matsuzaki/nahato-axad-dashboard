@@ -111,6 +111,7 @@ function classifyFailure(run, status) {
   if (/Sheet structure changed|missing metric label|no date header|no blocks with "合計"/i.test(message)) {
     return "sheet_structure_changed";
   }
+  if (/source sheet audit|source_sheet_mismatch|SourceAuditError/i.test(message)) return "source_sheet_mismatch";
   if (/data quality|データ|quality/i.test(message)) return "data_quality_error";
   if (/validate|static/i.test(message)) return "static_validation_error";
   return "workflow_run_failed";
