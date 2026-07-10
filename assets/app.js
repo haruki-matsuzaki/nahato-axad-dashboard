@@ -97,12 +97,15 @@ const dailyUpdateScheduleJst = [
   { hour: 12, minute: 0 },
   { hour: 12, minute: 7 },
   { hour: 12, minute: 17 },
+  { hour: 12, minute: 27 },
   { hour: 15, minute: 0 },
   { hour: 15, minute: 7 },
   { hour: 15, minute: 17 },
+  { hour: 15, minute: 27 },
   { hour: 18, minute: 0 },
   { hour: 18, minute: 7 },
   { hour: 18, minute: 17 },
+  { hour: 18, minute: 27 },
 ];
 const fallbackUser = {
   name: "ログインユーザー",
@@ -1089,11 +1092,24 @@ function latestExpectedDailyRunAt(date) {
   const cutoff = date.getTime() - updateAlertGraceMs;
   const today = tokyoDateParts(date);
   const yesterday = tokyoDateParts(new Date(date.getTime() - 24 * 60 * 60 * 1000));
-  const finalDailySchedule = dailyUpdateScheduleJst.at(-1);
+  const alertSchedules = latestScheduleByHour(dailyUpdateScheduleJst);
   const candidates = [yesterday, today]
-    .map((parts) => jstDateTimeToUtcMs(parts, finalDailySchedule.hour, finalDailySchedule.minute))
+    .flatMap((parts) =>
+      alertSchedules.map((schedule) => jstDateTimeToUtcMs(parts, schedule.hour, schedule.minute)),
+    )
     .filter((time) => time <= cutoff);
   return candidates.length ? Math.max(...candidates) : null;
+}
+
+function latestScheduleByHour(schedules) {
+  const byHour = new Map();
+  for (const schedule of schedules) {
+    const current = byHour.get(schedule.hour);
+    if (!current || schedule.minute > current.minute) {
+      byHour.set(schedule.hour, schedule);
+    }
+  }
+  return [...byHour.values()].sort((a, b) => a.hour - b.hour || a.minute - b.minute);
 }
 
 function latestTimestamp(...values) {

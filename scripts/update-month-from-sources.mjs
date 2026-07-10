@@ -12,7 +12,7 @@ const DEFAULT_SHEET_NAME = "◆案件/媒体別日次_全体";
 const DEFAULT_TOTAL_SHEET_NAME = "◆案件別日次_全体_固定用";
 const DEFAULT_SHEET_RANGE = "A1:ZZ3000";
 const JST_TIME_ZONE = "Asia/Tokyo";
-const MONTHLY_SCHEDULE_CRONS = new Set(["0 6 * * *", "7 6 * * *"]);
+const MONTHLY_SCHEDULE_CRONS = new Set(["0 6 * * *", "7 6 * * *", "17 6 * * *", "27 6 * * *"]);
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 45_000);
 
 const args = parseArgs(process.argv.slice(2));

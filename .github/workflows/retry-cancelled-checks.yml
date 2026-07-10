@@ -11,13 +11,19 @@ concurrency:
 
 permissions:
   actions: write
-  contents: read
+  contents: write
 
 jobs:
   retry-cancelled-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Sync checkout to latest main
+        run: |
+          git fetch origin main
+          git checkout main
+          git pull --ff-only origin main
 
       - uses: actions/setup-node@v4
         with:
@@ -30,3 +36,56 @@ jobs:
           CHECK_RETRY_MAX_ATTEMPTS: "3"
           CHECK_RETRY_STALE_QUEUED_MINUTES: "25"
         run: node scripts/retry-cancelled-checks.mjs
+
+      - name: Monitor scheduled update
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/monitor-update-schedule.mjs --apply
+
+      - name: Commit monitor trigger
+        id: commit-monitor-trigger
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/update-trigger.json
+
+          if git diff --cached --quiet; then
+            echo "trigger_written=false" >> "$GITHUB_OUTPUT"
+            echo "No monitor trigger changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Trigger missed Nacht AXAD update"
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "trigger_written=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            if [ "$attempt" -lt 3 ]; then
+              echo "Push failed on attempt ${attempt}/3. Rebasing latest main and retrying."
+              git fetch origin main
+              git rebase origin/main
+              sleep 5
+            fi
+          done
+
+          echo "Failed to push monitor trigger after 3 attempts."
+          exit 1
+
+      - name: Send monitor trigger email
+        if: steps.commit-monitor-trigger.outputs.trigger_written == 'true'
+        env:
+          ALERT_EMAIL_TO: matsuzaki@shibuya-ad.com
+          ALERT_REASON: schedule_monitor_triggered
+          CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
+          CHATWORK_ALERT_ROOM_ID: "398449612"
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+        run: node scripts/send-alert-email.mjs
