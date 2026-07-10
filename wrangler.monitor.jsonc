@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nacht-axad-external-monitor",
+  "main": "cloudflare/update-monitor.js",
+  "compatibility_date": "2026-07-10",
+  "workers_dev": true,
+  "observability": {
+    "enabled": true
+  },
+  "triggers": {
+    "crons": [
+      "30 4 * * *",
+      "30 7 * * *",
+      "30 10 * * *"
+    ]
+  },
+  "vars": {
+    "RAW_BASE_URL": "https://raw.githubusercontent.com/haruki-matsuzaki/nahato-axad-dashboard/main",
+    "PRODUCTION_ORIGIN": "https://nahato-axad-dashboard.pages.dev",
+    "CHATWORK_ALERT_ROOM_ID": "398449612"
+  }
+}

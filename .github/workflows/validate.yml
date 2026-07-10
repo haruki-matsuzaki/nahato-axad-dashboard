@@ -22,6 +22,7 @@ jobs:
       - name: Validate JavaScript syntax
         run: |
           node --check assets/app.js
+          node --check cloudflare/update-monitor.js
           node --check functions/api/active-users.js
           node --check scripts/check-automation-secrets.mjs
           node --check scripts/check-cloudflare-pages-deploy.mjs
@@ -31,6 +32,7 @@ jobs:
           node --check scripts/monitor-update-schedule.mjs
           node --check scripts/retry-cancelled-checks.mjs
           node --check scripts/send-alert-email.mjs
+          node --check scripts/test-external-monitor.mjs
           node --check scripts/sync-overall-sales-top-rows.mjs
           node --check scripts/update-data.mjs
           node --check scripts/update-month-from-sources.mjs

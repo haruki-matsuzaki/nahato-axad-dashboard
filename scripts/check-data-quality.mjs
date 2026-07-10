@@ -10,6 +10,10 @@ const allowDrops = toBoolean(args.allowDrops || process.env.DATA_QUALITY_ALLOW_D
 const failOnError = toBoolean(args.failOnError);
 const writeStatusPath = args.writeStatus || "";
 const maxItemsPerMonth = Number(args.maxItemsPerMonth || process.env.DATA_QUALITY_MAX_ITEMS || 12);
+const projectDropRatio = Number(args.projectDropRatio || process.env.DATA_QUALITY_PROJECT_DROP_RATIO || 0.4);
+const crossSourceRatioShift = Number(
+  args.crossSourceRatioShift || process.env.DATA_QUALITY_CROSS_SOURCE_RATIO_SHIFT || 0.35,
+);
 const runDate = parseRunDate(args.runDate || process.env.RUN_DATE);
 const today = getJstDateParts(runDate);
 const todayYmd = formatYmd(today);
@@ -32,11 +36,16 @@ const report = {
   errors: [],
   warnings: [],
   months: [],
+  freshness: null,
 };
 
 for (const month of index.months || []) {
   const monthReport = await checkMonth(month);
   if (!monthReport) continue;
+  if (monthReport.freshness) {
+    report.freshness = monthReport.freshness;
+    delete monthReport.freshness;
+  }
   report.months.push(monthReport);
   report.summary.checkedMonths += 1;
   report.summary.errorCount += monthReport.errors.length;
@@ -78,6 +87,7 @@ if (failOnError && report.status === "error") {
 async function checkMonth(month) {
   const data = await readJson(month.path);
   const business = await readOptionalJson(`data/overall-business-sales-${month.id}.json`);
+  const overallSales = await readOptionalJson(`data/overall-sales-${month.id}.json`);
   const monthReport = {
     month: month.id,
     status: "ok",
@@ -104,6 +114,7 @@ async function checkMonth(month) {
   }
   checkRecordIntegrity(month, data, monthReport);
   checkPreviousDayPresence(month, data, monthReport);
+  checkCurrentDailyCoverage(month, data, overallSales, monthReport);
   checkPreviousSnapshot(month, data, monthReport);
 
   if (monthReport.errors.length) {
@@ -229,6 +240,226 @@ function checkPreviousDayPresence(month, data, monthReport) {
       date: previousDayYmd,
     });
   }
+}
+
+function checkCurrentDailyCoverage(month, data, overallSales, monthReport) {
+  if (month.id !== previousDayMonth) return;
+
+  const meaningfulTotalRows = (data.records || []).filter(
+    (record) => record.media === "全体" && hasRecordValue(record),
+  );
+  const detailByDate = aggregateDetailDays(meaningfulTotalRows);
+  const overallByDate = extractOverallDailyMetrics(overallSales, month.id);
+  const previousDetail = detailByDate.get(previousDayYmd) || emptyDetailDay();
+  const previousOverall = overallByDate.get(previousDayYmd) || emptyOverallDay();
+  const detailHasData = previousDetail.records > 0;
+  const overallHasData = hasOverallDayValue(previousOverall);
+  const latestDataDate = [...detailByDate.keys()]
+    .filter((date) => date <= previousDayYmd)
+    .sort()
+    .at(-1) || null;
+  const previousComparisonDate = [...detailByDate.keys()]
+    .filter((date) => date < previousDayYmd)
+    .sort()
+    .at(-1);
+  const previousComparison = previousComparisonDate ? detailByDate.get(previousComparisonDate) : null;
+
+  monthReport.checks.overallSalesPreviousDayRecords = overallHasData ? 1 : 0;
+
+  if (detailHasData !== overallHasData) {
+    monthReport.checks.crossSourceCoverageMismatch = 1;
+    pushIssue(monthReport.errors, monthReport, {
+      type: detailHasData ? "overall_sales_previous_day_missing" : "detail_previous_day_missing",
+      message: `${month.id}: previous day exists in only one daily source`,
+      date: previousDayYmd,
+      detailHasData,
+      overallHasData,
+    });
+  }
+
+  if (
+    previousComparison &&
+    previousComparison.projects >= 5 &&
+    previousDetail.projects < previousComparison.projects * (1 - projectDropRatio)
+  ) {
+    monthReport.checks.dailyProjectDrop = previousComparison.projects - previousDetail.projects;
+    pushIssue(monthReport.warnings, monthReport, {
+      type: "daily_project_drop",
+      message: `${month.id}: previous day project count dropped sharply from the prior populated date`,
+      date: previousDayYmd,
+      comparisonDate: previousComparisonDate,
+      previous: previousComparison.projects,
+      current: previousDetail.projects,
+      dropRatio: 1 - previousDetail.projects / previousComparison.projects,
+    });
+  }
+
+  const ratioCheck = compareCrossSourceSalesRatio(detailByDate, overallByDate, previousDayYmd);
+  if (ratioCheck && ratioCheck.shift > crossSourceRatioShift) {
+    monthReport.checks.crossSourceRatioShift = 1;
+    pushIssue(monthReport.warnings, monthReport, {
+      type: "cross_source_sales_ratio_shift",
+      message: `${month.id}: detail-to-overall sales ratio shifted from its recent baseline`,
+      date: previousDayYmd,
+      baselineRatio: ratioCheck.baseline,
+      currentRatio: ratioCheck.current,
+      shift: ratioCheck.shift,
+    });
+  }
+
+  monthReport.freshness = {
+    expectedDate: previousDayYmd,
+    latestDataDate,
+    previousDayHasData: detailHasData && overallHasData,
+    detailPreviousDayHasData: detailHasData,
+    overallSalesPreviousDayHasData: overallHasData,
+    previousDayRecordCount: previousDetail.records,
+    previousDayProjectCount: previousDetail.projects,
+    comparisonDate: previousComparisonDate || null,
+    comparisonProjectCount: previousComparison?.projects || 0,
+    detailGeneratedAt: data.source?.generatedAt || null,
+    overallSalesGeneratedAt:
+      overallSales?.source?.overallRowsSyncedAt ||
+      overallSales?.source?.topRowsSyncedAt ||
+      overallSales?.source?.generatedAt ||
+      null,
+    checkedAt: new Date().toISOString(),
+  };
+}
+
+function aggregateDetailDays(records) {
+  const days = new Map();
+  for (const record of records || []) {
+    if (!isYmd(record.date)) continue;
+    const day = days.get(record.date) || emptyDetailDay();
+    day.records += 1;
+    day.projectNames.add(normalize(record.project));
+    day.sales += finiteNumber(record.sales);
+    day.grossProfit += finiteNumber(record.grossProfit);
+    day.cost += finiteNumber(record.cost);
+    day.cv += finiteNumber(record.cv);
+    days.set(record.date, day);
+  }
+  for (const day of days.values()) {
+    day.projects = day.projectNames.size;
+    delete day.projectNames;
+  }
+  return days;
+}
+
+function emptyDetailDay() {
+  return {
+    records: 0,
+    projects: 0,
+    projectNames: new Set(),
+    sales: 0,
+    grossProfit: 0,
+    cost: 0,
+    cv: 0,
+  };
+}
+
+function extractOverallDailyMetrics(overallSales, month) {
+  const rows = overallSales?.rows || [];
+  if (!rows.length) return new Map();
+
+  const header = rows
+    .slice(0, 12)
+    .map((row) => ({
+      row,
+      dates: (row.cells || [])
+        .map((cell) => ({
+          column: columnLettersFromAddress(cell.address),
+          date: parseOverallDate(cell.text ?? cell.value, month),
+        }))
+        .filter((item) => item.column && item.date),
+    }))
+    .sort((a, b) => b.dates.length - a.dates.length)[0];
+  if (!header?.dates.length) return new Map();
+
+  const metricRows = new Map();
+  for (const row of rows.slice(0, 16)) {
+    const label = (row.cells || []).map((cell) => normalize(cell.text ?? cell.value)).find((value) =>
+      ["売上", "粗利", "消化金額", "ROAS"].includes(value),
+    );
+    if (label && !metricRows.has(label)) metricRows.set(label, row);
+  }
+
+  const days = new Map();
+  for (const item of header.dates) {
+    const day = emptyOverallDay();
+    for (const [label, key] of [
+      ["売上", "sales"],
+      ["粗利", "grossProfit"],
+      ["消化金額", "cost"],
+      ["ROAS", "roas"],
+    ]) {
+      const row = metricRows.get(label);
+      if (!row) continue;
+      const cell = (row.cells || []).find((candidate) => columnLettersFromAddress(candidate.address) === item.column);
+      day[key] = parseNumberValue(cell?.value ?? cell?.text);
+    }
+    days.set(item.date, day);
+  }
+  return days;
+}
+
+function emptyOverallDay() {
+  return { sales: 0, grossProfit: 0, cost: 0, roas: 0 };
+}
+
+function hasOverallDayValue(day) {
+  return [day?.sales, day?.grossProfit, day?.cost].some((value) => finiteNumber(value) !== 0);
+}
+
+function compareCrossSourceSalesRatio(detailByDate, overallByDate, targetDate) {
+  const targetDetail = detailByDate.get(targetDate);
+  const targetOverall = overallByDate.get(targetDate);
+  if (!targetDetail?.sales || !targetOverall?.sales) return null;
+
+  const baselineRatios = [...detailByDate.entries()]
+    .filter(([date]) => date < targetDate)
+    .map(([date, detail]) => {
+      const overall = overallByDate.get(date);
+      return detail.sales && overall?.sales ? detail.sales / overall.sales : null;
+    })
+    .filter((value) => Number.isFinite(value) && value > 0)
+    .slice(-7);
+  if (baselineRatios.length < 3) return null;
+
+  const baseline = median(baselineRatios);
+  const current = targetDetail.sales / targetOverall.sales;
+  return {
+    baseline,
+    current,
+    shift: Math.abs(current / baseline - 1),
+  };
+}
+
+function parseOverallDate(value, month) {
+  const match = normalize(value).match(/^(\d{1,2})\/(\d{1,2})(?:\D|$)/);
+  if (!match) return "";
+  const [year] = month.split("-");
+  return `${year}-${String(Number(match[1])).padStart(2, "0")}-${String(Number(match[2])).padStart(2, "0")}`;
+}
+
+function columnLettersFromAddress(address) {
+  return String(address || "").match(/^[A-Z]+/i)?.[0]?.toUpperCase() || "";
+}
+
+function parseNumberValue(value) {
+  if (typeof value === "number") return Number.isFinite(value) ? value : 0;
+  const text = normalize(value).replaceAll(",", "").replaceAll("¥", "");
+  if (!text) return 0;
+  if (/^-?\d+(?:\.\d+)?%$/.test(text)) return Number(text.slice(0, -1)) / 100;
+  const number = Number(text);
+  return Number.isFinite(number) ? number : 0;
+}
+
+function median(values) {
+  const sorted = [...values].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
 }
 
 function checkPreviousSnapshot(month, data, monthReport) {

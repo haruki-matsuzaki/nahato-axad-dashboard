@@ -71,6 +71,9 @@ GitHub Actionsで `scripts/update-month-from-sources.mjs` を実行します。
 - `PRODUCTION_URL` 任意。本番疎通チェック対象URLです。未設定時は `https://nahato-axad-dashboard.pages.dev/#home` を使います
 - `PRODUCTION_CHECK_REQUIRE_200` 任意。`true` の場合、本番URLがHTTP 200以外なら失敗扱いにします
 
+Cloudflare外部監視Workerを利用する場合、`CLOUDFLARE_API_TOKEN` にはWorkers Scriptsの編集権限も必要です。
+WorkerへのChatworkトークン登録は `.github/workflows/deploy-external-monitor.yml` がGitHub Secretから行い、コードには保存しません。
+
 通常は `pino.ad.kanri@shibuya-ad.com` のOAuth Refresh TokenでGoogle Sheets APIを読み込みます。
 対象ナハトシートをサービスアカウントに共有できない場合でも、pinoアカウントがブラウザで閲覧できるシートであればAPI取得できます。
 
@@ -107,8 +110,16 @@ node scripts/create-google-oauth-token.mjs
 - `7 9 * * *`: 18:07 JST。同上
 - `17/27 3,6,9 * * *`: 12:17 / 12:27 / 15:17 / 15:27 / 18:17 / 18:27 JST。同上
 - `37/47/57 3,6,9 * * *`: 定時更新が作成されなかった場合の監視・再起動判定
+- `30 4,7,10 * * *`: 13:30 / 16:30 / 19:30 JST。Cloudflare WorkerによるGitHub外からの反映確認
 
 GitHub ActionsのscheduleはUTCで実行されます。また、毎時0分は負荷集中により遅延または実行されない場合があるため、定刻は維持したまま複数のバックアップ更新と監視を走らせます。
+
+外部監視:
+
+- `cloudflare/update-monitor.js` はGitHub Actionsと独立したCloudflare Cronで動きます
+- 前日分が案件別データと全体売上表の両方に存在するかを確認します
+- rawデータは更新済みなのに本番の更新ステータスが15分以上古い場合も検知します
+- 異常時はChatworkマイチャットへ通知します。画面や通知に内部の詳細な失敗要因は表示しません
 
 リトライ:
 
@@ -130,6 +141,10 @@ GitHub ActionsのscheduleはUTCで実行されます。また、毎時0分は負
 - `◆案件/媒体別日次_全体` / `◆案件別日次_全体_固定用` / `◆全体売上表` は、合計行・日付ヘッダー・売上/粗利/消化金額/ROASの構造が崩れた場合に更新失敗にします
 - GitHub Actionsのpushチェックが実行前に `cancelled` になった場合、10分おきの監視で最大3回まで再実行します
 - GitHub Actionsのpushチェックが25分以上 `queued` のままなら、一度cancelして次回監視で再実行対象にします
+- サイト上には最終同期時刻、最終反映日、前日分の反映状態を常時表示します
+- 前日が案件別データと全体売上表の片方だけに存在する場合はデータ整合性エラーにします
+- 案件数が直前のデータ日から40%以上減った場合は警告にします
+- 案件別売上と全体売上表は集計範囲が異なるため完全一致では比較せず、直近比率から35%以上外れた場合に警告します
 
 手動実行:
 

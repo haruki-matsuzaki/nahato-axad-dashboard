@@ -34,6 +34,7 @@ const els = {
   timeLabel: document.querySelector("#timeLabel"),
   weatherLabel: document.querySelector("#weatherLabel"),
   updateAlerts: document.querySelector("#updateAlerts"),
+  syncHealth: document.querySelector("#syncHealth"),
   sourceLabel: document.querySelector("#sourceLabel"),
   pageTitle: document.querySelector("#pageTitle"),
   notice: document.querySelector("#notice"),
@@ -1005,6 +1006,7 @@ function setView(view) {
   });
   renderSource();
   renderUpdateAlerts();
+  renderSyncHealth();
   queueScrollProxyUpdate();
 }
 
@@ -1015,6 +1017,7 @@ function render() {
 
   renderSource();
   renderUpdateAlerts();
+  renderSyncHealth();
   renderKpis(totals);
   renderChart(baseRecords);
   renderMediaBreakdown(records);
@@ -1046,6 +1049,47 @@ function renderUpdateAlerts() {
   els.updateAlerts.innerHTML = alertList
     .map((alert) => `<span class="update-alert-badge">${escapeHtml(alert)}</span>`)
     .join("");
+}
+
+function renderSyncHealth() {
+  if (!els.syncHealth) return;
+  const freshness = state.dataQualityStatus?.freshness || {};
+  const syncedAt = latestTimestamp(
+    state.updateStatus?.daily?.checkedAt,
+    freshness.detailGeneratedAt,
+    freshness.overallSalesGeneratedAt,
+  );
+  const reflectedDate = freshness.latestDataDate || "";
+  const expectedDate = freshness.expectedDate || formatTokyoDateInput(new Date(Date.now() - 24 * 60 * 60 * 1000));
+  const previousDayState =
+    freshness.previousDayHasData === true ? "ok" : freshness.previousDayHasData === false ? "error" : "pending";
+  const previousDayLabel = previousDayState === "ok" ? "反映済み" : previousDayState === "error" ? "未反映" : "確認中";
+
+  els.syncHealth.innerHTML = [
+    syncHealthItem("最終同期", syncedAt ? formatSyncTimestamp(syncedAt) : "--", "neutral"),
+    syncHealthItem("最終反映", reflectedDate ? formatDateLabel(reflectedDate) : "--", "neutral"),
+    syncHealthItem(`${formatDateLabel(expectedDate)}分`, previousDayLabel, previousDayState),
+  ].join("");
+}
+
+function syncHealthItem(label, value, status) {
+  return `
+    <span class="sync-health-item sync-health-${escapeHtml(status)}">
+      <span class="sync-health-label">${escapeHtml(label)}</span>
+      <strong>${escapeHtml(value)}</strong>
+    </span>
+  `;
+}
+
+function formatSyncTimestamp(timestamp) {
+  return new Intl.DateTimeFormat("ja-JP", {
+    timeZone: "Asia/Tokyo",
+    month: "numeric",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).format(new Date(timestamp));
 }
 
 function isDailyUpdateStale(date = new Date()) {
@@ -2502,6 +2546,7 @@ function iconMoon() {
 }
 
 function renderEmpty() {
+  renderSyncHealth();
   els.kpiGrid.innerHTML = "";
   els.dailyChart.innerHTML = `<div class="empty-state">データなし</div>`;
   els.mediaBreakdown.innerHTML = `<div class="empty-state">データなし</div>`;

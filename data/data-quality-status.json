@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T04:21:51.167Z",
+  "generatedAt": "2026-07-10T05:08:56.089Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -2935,8 +2935,23 @@
         "futureDates": 1,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
-        "previousProjectDrop": 0
+        "previousProjectDrop": 0,
+        "overallSalesPreviousDayRecords": 1
       }
     }
-  ]
+  ],
+  "freshness": {
+    "expectedDate": "2026-07-09",
+    "latestDataDate": "2026-07-09",
+    "previousDayHasData": true,
+    "detailPreviousDayHasData": true,
+    "overallSalesPreviousDayHasData": true,
+    "previousDayRecordCount": 16,
+    "previousDayProjectCount": 16,
+    "comparisonDate": "2026-07-08",
+    "comparisonProjectCount": 16,
+    "detailGeneratedAt": "2026-07-10T04:21:50.216Z",
+    "overallSalesGeneratedAt": "2026-07-10T04:21:50.777Z",
+    "checkedAt": "2026-07-10T05:08:57.048Z"
+  }
 }
