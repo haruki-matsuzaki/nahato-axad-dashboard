@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T07:02:36.779Z",
+  "generatedAt": "2026-07-10T09:42:56.758Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -736,7 +736,7 @@
     {
       "type": "total_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 45,
+      "count": 39,
       "examples": [
         {
           "project": "MEN'STBC",
@@ -901,7 +901,7 @@
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 70,
+      "count": 52,
       "examples": [
         {
           "project": "イエウール",
@@ -2642,7 +2642,7 @@
         {
           "type": "total_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 45,
+          "count": 39,
           "examples": [
             {
               "project": "MEN'STBC",
@@ -2807,7 +2807,7 @@
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 70,
+          "count": 52,
           "examples": [
             {
               "project": "イエウール",
@@ -2936,10 +2936,10 @@
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
-        "totalValueMismatches": 45,
+        "totalValueMismatches": 39,
         "missingMediaDates": 11,
-        "mediaValueMismatches": 70,
-        "previousDayRecords": 59,
+        "mediaValueMismatches": 52,
+        "previousDayRecords": 58,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 1,
@@ -2960,8 +2960,8 @@
     "previousDayProjectCount": 16,
     "comparisonDate": "2026-07-08",
     "comparisonProjectCount": 16,
-    "detailGeneratedAt": "2026-07-10T07:02:34.165Z",
-    "overallSalesGeneratedAt": "2026-07-10T07:02:36.367Z",
-    "checkedAt": "2026-07-10T07:02:38.141Z"
+    "detailGeneratedAt": "2026-07-10T09:42:55.347Z",
+    "overallSalesGeneratedAt": "2026-07-10T09:42:56.357Z",
+    "checkedAt": "2026-07-10T09:42:58.123Z"
   }
 }
