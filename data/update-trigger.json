@@ -1,7 +1,8 @@
 {
-  "triggeredAt": "2026-07-10T04:19:03Z",
-  "expectedRunAtJst": "2026-07-10 13:19",
-  "reason": "manual_daily_resync_for_missing_2026_07_09",
-  "analysis": "Manual data update trigger because the 2026-07-10 scheduled update did not run and 2026-07-09 data was missing.",
-  "source": "codex_manual_countermeasure"
+  "triggeredAt": "2026-07-11T03:43:35.187Z",
+  "expectedRunAtJst": "2026-07-11 12:00",
+  "reason": "schedule_missing",
+  "analysis": "No scheduled, push, or manual update run was created after 2026-07-11 12:00 JST.",
+  "runUrl": null,
+  "source": "codex_schedule_monitor"
 }
