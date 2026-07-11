@@ -1,6 +1,97 @@
 {
-  "generatedAt": "2026-07-11T10:34:33.101Z",
+  "generatedAt": "2026-07-11T10:40:18.381Z",
   "entries": [
+    {
+      "checkedAt": "2026-07-11T10:40:18.381Z",
+      "failed": false,
+      "skippedReason": null,
+      "fatalError": null,
+      "targets": [
+        {
+          "month": "2026-07",
+          "reason": "daily_previous_day",
+          "required": true
+        }
+      ],
+      "results": [
+        {
+          "month": "2026-07",
+          "reason": "daily_previous_day",
+          "status": "ok",
+          "required": true,
+          "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+          "title": "AD_総合売上管理表_2026年07月",
+          "message": null,
+          "overallSalesSync": {
+            "status": "ok",
+            "out": "data/overall-sales-2026-07.json",
+            "rows": 53,
+            "updatedCells": 2696,
+            "verification": {
+              "checkedCells": 2696,
+              "mismatches": 0
+            },
+            "structure": {
+              "metricCounts": {
+                "売上": 1,
+                "粗利": 1,
+                "消化金額": 1,
+                "ROAS": 2
+              },
+              "dateHeaders": 32,
+              "totalHeaders": 2
+            }
+          },
+          "sourceAudit": {
+            "generatedAt": "2026-07-11T10:40:17.893Z",
+            "status": "ok",
+            "month": "2026-07",
+            "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+            "sheets": {
+              "detail": "◆案件/媒体別日次_全体",
+              "total": "◆案件別日次_全体_固定用"
+            },
+            "sourceFingerprint": "ee283d62e280e80c72b82862412cb26de78535da66d247bb60044ec42bb23556",
+            "generatedFingerprint": "ee283d62e280e80c72b82862412cb26de78535da66d247bb60044ec42bb23556",
+            "summary": {
+              "sourceProjects": 17,
+              "generatedProjects": 17,
+              "sourceKeys": 566,
+              "generatedKeys": 566,
+              "verifiedMetrics": 2264,
+              "missingKeys": 0,
+              "extraKeys": 0,
+              "valueMismatches": 0,
+              "structureIssues": 0,
+              "detailBlocks": 305,
+              "totalBlocks": 47
+            },
+            "issues": {
+              "missing": [],
+              "extra": [],
+              "mismatches": [],
+              "structure": []
+            }
+          },
+          "sourceValidation": {
+            "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+            "title": "AD_総合売上管理表_2026年07月",
+            "titleMonth": "2026-07",
+            "requiredSheets": [
+              "◆案件/媒体別日次_全体",
+              "◆案件別日次_全体_固定用"
+            ],
+            "sourceLabel": "ナハト売上表!14:6"
+          },
+          "data": {
+            "records": 566,
+            "projects": 17,
+            "media": 8,
+            "generatedAt": "2026-07-11T10:40:16.938Z"
+          }
+        }
+      ]
+    },
     {
       "checkedAt": "2026-07-11T10:34:33.101Z",
       "failed": false,
