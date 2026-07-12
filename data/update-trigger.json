@@ -1,8 +1,8 @@
 {
-  "triggeredAt": "2026-07-12T03:48:13.391Z",
-  "expectedRunAtJst": "2026-07-12 12:00",
+  "triggeredAt": "2026-07-12T10:10:24.956Z",
+  "expectedRunAtJst": "2026-07-12 18:00",
   "reason": "schedule_missing",
-  "analysis": "No scheduled, push, or manual update run was created after 2026-07-12 12:00 JST.",
+  "analysis": "No scheduled, push, or manual update run was created after 2026-07-12 18:00 JST.",
   "runUrl": null,
   "source": "codex_schedule_monitor"
 }
