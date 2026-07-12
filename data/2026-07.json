@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-12T08:40:06.614Z",
+    "generatedAt": "2026-07-12T10:18:08.657Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -1275,22 +1275,22 @@
       "date": "2026-07-10",
       "project": "AGAスキンクリニック",
       "media": "全体",
-      "sales": 1056900,
-      "grossProfit": 244162,
+      "sales": 1341300,
+      "grossProfit": 528562,
       "cost": 812738,
       "cv": 25,
-      "roas": 1.3004190772426045,
+      "roas": 1.6503473444086532,
       "cpa": 32509.52
     },
     {
       "date": "2026-07-11",
       "project": "AGAスキンクリニック",
       "media": "全体",
-      "sales": 600600,
-      "grossProfit": 122341,
+      "sales": 695400,
+      "grossProfit": 217141,
       "cost": 478259,
       "cv": 13,
-      "roas": 1.2558049090555536,
+      "roas": 1.454023865729657,
       "cpa": 36789.153846153844
     },
     {
@@ -5917,22 +5917,22 @@
       "date": "2026-07-10",
       "project": "AGAスキンクリニック",
       "media": "TikTok",
-      "sales": 0,
-      "grossProfit": -203946,
+      "sales": 284400,
+      "grossProfit": 80454,
       "cost": 203946,
       "cv": 6,
-      "roas": 0,
+      "roas": 1.3944867759112707,
       "cpa": 33991
     },
     {
       "date": "2026-07-11",
       "project": "AGAスキンクリニック",
       "media": "TikTok",
-      "sales": 0,
-      "grossProfit": -37426,
+      "sales": 94800,
+      "grossProfit": 57374,
       "cost": 37426,
       "cv": 2,
-      "roas": 0,
+      "roas": 2.5329984502752096,
       "cpa": 18713
     },
     {
