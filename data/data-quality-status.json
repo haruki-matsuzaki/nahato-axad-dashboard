@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T10:40:18.727Z",
+  "generatedAt": "2026-07-12T05:52:55.993Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -1019,7 +1019,7 @@
       "count": 1,
       "examples": [
         {
-          "index": 133,
+          "index": 146,
           "project": "DMM 生成AI CAMP",
           "media": "全体",
           "date": "2026-07-18"
@@ -2925,7 +2925,7 @@
           "count": 1,
           "examples": [
             {
-              "index": 133,
+              "index": 146,
               "project": "DMM 生成AI CAMP",
               "media": "全体",
               "date": "2026-07-18"
@@ -2939,7 +2939,7 @@
         "totalValueMismatches": 39,
         "missingMediaDates": 11,
         "mediaValueMismatches": 52,
-        "previousDayRecords": 56,
+        "previousDayRecords": 53,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 1,
@@ -2951,17 +2951,17 @@
     }
   ],
   "freshness": {
-    "expectedDate": "2026-07-10",
-    "latestDataDate": "2026-07-10",
+    "expectedDate": "2026-07-11",
+    "latestDataDate": "2026-07-11",
     "previousDayHasData": true,
     "detailPreviousDayHasData": true,
     "overallSalesPreviousDayHasData": true,
     "previousDayRecordCount": 15,
     "previousDayProjectCount": 15,
-    "comparisonDate": "2026-07-09",
-    "comparisonProjectCount": 16,
-    "detailGeneratedAt": "2026-07-11T10:40:16.938Z",
-    "overallSalesGeneratedAt": "2026-07-11T10:40:18.369Z",
-    "checkedAt": "2026-07-11T10:40:19.863Z"
+    "comparisonDate": "2026-07-10",
+    "comparisonProjectCount": 15,
+    "detailGeneratedAt": "2026-07-12T05:52:54.946Z",
+    "overallSalesGeneratedAt": "2026-07-12T05:52:55.752Z",
+    "checkedAt": "2026-07-12T05:52:56.810Z"
   }
 }
