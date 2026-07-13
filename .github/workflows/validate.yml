@@ -34,6 +34,7 @@ jobs:
           node --check scripts/retry-cancelled-checks.mjs
           node --check scripts/run-external-monitor.mjs
           node --check scripts/send-chatwork-alert.mjs
+          node --check scripts/automation-alert-message.mjs
           node --check scripts/sheet-source-guard.mjs
           node --check scripts/test-external-monitor.mjs
           node --check scripts/test-chatwork-alert.mjs
@@ -54,6 +55,9 @@ jobs:
 
       - name: Validate Chatwork-only alerts
         run: npm run test:chatwork-alert
+
+      - name: Validate external monitor alerts
+        run: npm run test:external-monitor
 
       - name: Validate schedule logic
         run: npm run test:schedule

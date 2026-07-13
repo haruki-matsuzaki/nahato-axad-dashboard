@@ -1,3 +1,5 @@
+import { buildExternalMonitorAlertMessage } from "../scripts/automation-alert-message.mjs";
+
 const DEFAULT_RAW_BASE_URL = "https://raw.githubusercontent.com/haruki-matsuzaki/nahato-axad-dashboard/main";
 const DEFAULT_PRODUCTION_ORIGIN = "https://nahato-axad-dashboard.pages.dev";
 const DEFAULT_CHATWORK_ROOM_ID = "398449612";
@@ -166,13 +168,8 @@ async function sendChatworkAlert(env, health) {
   if (!env.CHATWORK_API_TOKEN) throw new Error("CHATWORK_API_TOKEN is not configured for the external monitor");
   const roomId = env.CHATWORK_ALERT_ROOM_ID || DEFAULT_CHATWORK_ROOM_ID;
   const actionsUrl = "https://github.com/haruki-matsuzaki/nahato-axad-dashboard/actions/workflows/update-data.yml";
-  const body = [
-    "[info][title]ナハト版AXAD 外部同期監視[/title]",
-    `${health.expectedDate || "前日"}分のデータ反映を確認できませんでした。`,
-    "GitHub Actionsとは別系統のCloudflare監視から検知しています。",
-    `確認先: ${actionsUrl}`,
-    "[/info]",
-  ].join("\n");
+  const message = buildExternalMonitorAlertMessage(health, { actionsUrl });
+  const body = `[info][title]${message.subject}[/title]${message.body}[/info]`;
   const response = await fetch(`https://api.chatwork.com/v2/rooms/${encodeURIComponent(roomId)}/messages`, {
     method: "POST",
     headers: {

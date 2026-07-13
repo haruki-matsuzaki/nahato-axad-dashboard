@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import process from "node:process";
+import { buildAutomationAlertMessage } from "./automation-alert-message.mjs";
 
 const args = parseArgs(process.argv.slice(2));
 const options = {
@@ -18,8 +19,7 @@ if (result.status === "error") process.exitCode = 1;
 
 async function sendAlert(options) {
   const context = await buildAlertContext(options);
-  const subject = subjectForContext(context);
-  const body = bodyForContext(context);
+  const { subject, body, code } = buildAutomationAlertMessage(context);
   if (options.dryRun) {
     return {
       status: "ok",
@@ -28,6 +28,7 @@ async function sendAlert(options) {
       roomId: options.chatworkRoomId,
       subject,
       body,
+      code,
     };
   }
   return sendChatworkAlert(options, subject, body);
@@ -103,70 +104,18 @@ async function buildAlertContext(options) {
     runId: process.env.GITHUB_RUN_ID || "",
     runAttempt: process.env.GITHUB_RUN_ATTEMPT || "",
     sha: process.env.GITHUB_SHA || "",
+    stepOutcomes: {
+      automationSecrets: process.env.ALERT_STEP_AUTOMATION_SECRETS || "",
+      fetchData: process.env.ALERT_STEP_FETCH_DATA || "",
+      validateData: process.env.ALERT_STEP_VALIDATE_DATA || "",
+      cloudflareDeploy: process.env.ALERT_STEP_CLOUDFLARE_DEPLOY || "",
+      productionSite: process.env.ALERT_STEP_PRODUCTION_SITE || "",
+    },
     runUrl:
       process.env.GITHUB_SERVER_URL && process.env.GITHUB_REPOSITORY && process.env.GITHUB_RUN_ID
         ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
         : "",
   };
-}
-
-function subjectForContext(context) {
-  const label = {
-    update_failed: "日次更新エラー",
-    schedule_monitor_triggered: "定時更新の再実行を起動",
-    deploy_failed: "デプロイ確認エラー",
-  }[context.reason] || "通知";
-  return `[ナハト版AXAD] ${label}`;
-}
-
-function bodyForContext(context) {
-  const lines = [
-    "ナハト版AXADの自動化で確認が必要です。",
-    "",
-    `理由: ${context.reason}`,
-    context.workflow ? `Workflow: ${context.workflow}` : "",
-    context.repository ? `Repository: ${context.repository}` : "",
-    context.sha ? `Commit: ${context.sha}` : "",
-    context.runUrl ? `Actions: ${context.runUrl}` : "",
-    context.runAttempt ? `Attempt: ${context.runAttempt}` : "",
-    "",
-    "Update status:",
-    formatUpdateStatus(context.updateStatus),
-    "",
-    "Data quality:",
-    formatQualityStatus(context.qualityStatus),
-  ];
-
-  if (context.trigger?.reason || context.trigger?.analysis) {
-    lines.push("", "Monitor trigger:", `Reason: ${context.trigger.reason || ""}`, `Analysis: ${context.trigger.analysis || ""}`);
-  }
-
-  return lines.filter((line) => line !== "").join("\n");
-}
-
-function formatUpdateStatus(status) {
-  if (!status) return "- data/update-status.json could not be read";
-  return [
-    `- generatedAt: ${status.generatedAt || ""}`,
-    `- daily: ${status.daily?.status || ""} ${status.daily?.month || ""} ${status.daily?.message || ""}`.trim(),
-    `- monthly: ${status.monthly?.status || ""} ${status.monthly?.month || ""} ${status.monthly?.message || ""}`.trim(),
-    `- overallSales: ${status.overallSales?.status || ""} ${status.overallSales?.month || ""} ${status.overallSales?.message || ""}`.trim(),
-    `- lastRun: failed=${Boolean(status.lastRun?.failed)} ${status.lastRun?.fatalError?.message || ""}`.trim(),
-  ].join("\n");
-}
-
-function formatQualityStatus(status) {
-  if (!status) return "- data/data-quality-status.json could not be read";
-  const errors = (status.errors || []).slice(0, 5).map((item) => `  - ${item.message || item.type || JSON.stringify(item)}`);
-  const warnings = (status.warnings || []).slice(0, 5).map((item) => `  - ${item.message || item.type || JSON.stringify(item)}`);
-  return [
-    `- status: ${status.status || ""}`,
-    `- checkedMonths: ${status.summary?.checkedMonths ?? ""}`,
-    `- errors: ${status.summary?.errorCount ?? 0}`,
-    ...errors,
-    `- warnings: ${status.summary?.warningCount ?? 0}`,
-    ...warnings,
-  ].join("\n");
 }
 
 function sanitizeOutput(value) {

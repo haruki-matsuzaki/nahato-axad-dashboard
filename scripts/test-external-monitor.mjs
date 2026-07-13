@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { evaluateHealth } from "../cloudflare/update-monitor.js";
+import { buildExternalMonitorAlertMessage } from "./automation-alert-message.mjs";
 
 const now = new Date("2026-07-10T04:30:00.000Z");
 const updateStatus = {
@@ -32,6 +33,11 @@ assert.equal(healthy.overallSales.sales, 90000);
 const missingOverall = evaluateHealth({ now, index, updateStatus, qualityStatus, monthData, overallSales: { rows: [] } });
 assert.equal(missingOverall.status, "error");
 assert.ok(missingOverall.issues.includes("overall_sales_previous_day_missing"));
+const missingOverallAlert = buildExternalMonitorAlertMessage(missingOverall);
+assert.match(missingOverallAlert.body, /【何が起きたか】/);
+assert.match(missingOverallAlert.body, /案件別日時には前日分がありますが、全体売上表には前日分がありません/);
+assert.match(missingOverallAlert.body, /元シートの「◆全体売上表」/);
+assert.match(missingOverallAlert.body, /検知コード: overall_sales_previous_day_missing/);
 
 const missingBoth = evaluateHealth({
   now,
@@ -43,5 +49,7 @@ const missingBoth = evaluateHealth({
 });
 assert.equal(missingBoth.status, "error");
 assert.ok(missingBoth.issues.includes("previous_day_missing_from_both_sources"));
+const missingBothAlert = buildExternalMonitorAlertMessage(missingBoth);
+assert.match(missingBothAlert.body, /案件別日時と全体売上表の両方で確認できません/);
 
 console.log("external monitor tests ok");

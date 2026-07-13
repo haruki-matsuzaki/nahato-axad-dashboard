@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "cloudflare/update-monitor.js"
+      - "scripts/automation-alert-message.mjs"
       - "wrangler.monitor.jsonc"
       - ".github/workflows/deploy-external-monitor.yml"
   workflow_dispatch:

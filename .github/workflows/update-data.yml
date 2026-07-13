@@ -204,6 +204,11 @@ jobs:
         if: always() && (steps.automation-secrets.outcome == 'failure' || steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure' || steps.cloudflare-deploy.outcome == 'failure' || steps.production-site.outcome == 'failure')
         env:
           ALERT_REASON: update_failed
+          ALERT_STEP_AUTOMATION_SECRETS: ${{ steps.automation-secrets.outcome }}
+          ALERT_STEP_FETCH_DATA: ${{ steps.fetch-data.outcome }}
+          ALERT_STEP_VALIDATE_DATA: ${{ steps.validate-data.outcome }}
+          ALERT_STEP_CLOUDFLARE_DEPLOY: ${{ steps.cloudflare-deploy.outcome }}
+          ALERT_STEP_PRODUCTION_SITE: ${{ steps.production-site.outcome }}
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
           CHATWORK_ALERT_ROOM_ID: "398449612"
         run: node scripts/send-chatwork-alert.mjs
