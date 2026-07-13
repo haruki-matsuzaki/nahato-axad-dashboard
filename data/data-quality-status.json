@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T05:38:49.224Z",
+  "generatedAt": "2026-07-13T06:11:30.052Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -839,28 +839,8 @@
     {
       "type": "missing_media_date",
       "message": "2026-07: expected business sales key missing from detail data",
-      "count": 11,
+      "count": 7,
       "examples": [
-        {
-          "project": "イエウール",
-          "media": "YDA",
-          "date": "2026-07-03"
-        },
-        {
-          "project": "イエウール",
-          "media": "YDA",
-          "date": "2026-07-04"
-        },
-        {
-          "project": "イエウール",
-          "media": "YDA",
-          "date": "2026-07-05"
-        },
-        {
-          "project": "イエウール",
-          "media": "YDA",
-          "date": "2026-07-06"
-        },
         {
           "project": "DIO医療ダイエットクリニック",
           "media": "TikTok",
@@ -2745,28 +2725,8 @@
         {
           "type": "missing_media_date",
           "message": "2026-07: expected business sales key missing from detail data",
-          "count": 11,
+          "count": 7,
           "examples": [
-            {
-              "project": "イエウール",
-              "media": "YDA",
-              "date": "2026-07-03"
-            },
-            {
-              "project": "イエウール",
-              "media": "YDA",
-              "date": "2026-07-04"
-            },
-            {
-              "project": "イエウール",
-              "media": "YDA",
-              "date": "2026-07-05"
-            },
-            {
-              "project": "イエウール",
-              "media": "YDA",
-              "date": "2026-07-06"
-            },
             {
               "project": "DIO医療ダイエットクリニック",
               "media": "TikTok",
@@ -2937,9 +2897,9 @@
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 40,
-        "missingMediaDates": 11,
+        "missingMediaDates": 7,
         "mediaValueMismatches": 55,
-        "previousDayRecords": 56,
+        "previousDayRecords": 57,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 1,
@@ -2960,8 +2920,8 @@
     "previousDayProjectCount": 15,
     "comparisonDate": "2026-07-11",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-13T05:38:47.621Z",
-    "overallSalesGeneratedAt": "2026-07-13T05:38:48.826Z",
-    "checkedAt": "2026-07-13T05:38:50.561Z"
+    "detailGeneratedAt": "2026-07-13T06:11:28.495Z",
+    "overallSalesGeneratedAt": "2026-07-13T06:11:29.619Z",
+    "checkedAt": "2026-07-13T06:11:31.426Z"
   }
 }

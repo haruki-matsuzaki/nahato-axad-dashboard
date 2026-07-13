@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-13T05:38:47.621Z",
+    "generatedAt": "2026-07-13T06:11:28.495Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -15,7 +15,7 @@
         "skippedProjectBlocks": 16,
         "missingDateBlocks": 1,
         "missingRequiredBlocks": 0,
-        "records": 497
+        "records": 507
       },
       "total": {
         "candidateBlocks": 48,
@@ -1694,110 +1694,110 @@
       "project": "イエウール",
       "media": "全体",
       "sales": 620000,
-      "grossProfit": -75673,
-      "cost": 695673,
+      "grossProfit": -75902,
+      "cost": 695902,
       "cv": 62,
-      "roas": 0.8912233190018873,
-      "cpa": 11220.532258064517
+      "roas": 0.89093004474768,
+      "cpa": 11224.225806451614
     },
     {
       "date": "2026-07-04",
       "project": "イエウール",
       "media": "全体",
       "sales": 2270000,
-      "grossProfit": 584746,
-      "cost": 1685254,
+      "grossProfit": 584449,
+      "cost": 1685551,
       "cv": 227,
-      "roas": 1.34697796296582,
-      "cpa": 7424.026431718062
+      "roas": 1.3467406207228378,
+      "cpa": 7425.334801762115
     },
     {
       "date": "2026-07-05",
       "project": "イエウール",
       "media": "全体",
       "sales": 1970000,
-      "grossProfit": 508318,
-      "cost": 1461682,
+      "grossProfit": 507131,
+      "cost": 1462869,
       "cv": 197,
-      "roas": 1.3477623723901642,
-      "cpa": 7419.705583756345
+      "roas": 1.346668772118351,
+      "cpa": 7425.730964467005
     },
     {
       "date": "2026-07-06",
       "project": "イエウール",
       "media": "全体",
       "sales": 870000,
-      "grossProfit": -46214,
-      "cost": 916214,
+      "grossProfit": -49428,
+      "cost": 919428,
       "cv": 87,
-      "roas": 0.9495598189942525,
-      "cpa": 10531.19540229885
+      "roas": 0.9462404886516399,
+      "cpa": 10568.137931034482
     },
     {
       "date": "2026-07-07",
       "project": "イエウール",
       "media": "全体",
       "sales": 1250000,
-      "grossProfit": 116228,
-      "cost": 1133772,
+      "grossProfit": 86060,
+      "cost": 1163940,
       "cv": 125,
-      "roas": 1.102514438529087,
-      "cpa": 9070.176
+      "roas": 1.0739385191676547,
+      "cpa": 9311.52
     },
     {
       "date": "2026-07-08",
       "project": "イエウール",
       "media": "全体",
       "sales": 1150000,
-      "grossProfit": 172088,
-      "cost": 977912,
+      "grossProfit": 147977,
+      "cost": 1002023,
       "cv": 115,
-      "roas": 1.175974934349921,
-      "cpa": 8503.582608695651
+      "roas": 1.147678246906508,
+      "cpa": 8713.243478260869
     },
     {
       "date": "2026-07-09",
       "project": "イエウール",
       "media": "全体",
       "sales": 1360000,
-      "grossProfit": 120920,
-      "cost": 1239080,
+      "grossProfit": 95537,
+      "cost": 1264463,
       "cv": 136,
-      "roas": 1.0975885334280273,
-      "cpa": 9110.882352941177
+      "roas": 1.0755553938707578,
+      "cpa": 9297.52205882353
     },
     {
       "date": "2026-07-10",
       "project": "イエウール",
       "media": "全体",
       "sales": 1100000,
-      "grossProfit": -116858,
-      "cost": 1216858,
+      "grossProfit": -118548,
+      "cost": 1218548,
       "cv": 110,
-      "roas": 0.9039674308752541,
-      "cpa": 11062.345454545455
+      "roas": 0.9027137215768275,
+      "cpa": 11077.709090909091
     },
     {
       "date": "2026-07-11",
       "project": "イエウール",
       "media": "全体",
       "sales": 1601000,
-      "grossProfit": 78479,
-      "cost": 1522521,
+      "grossProfit": 48342,
+      "cost": 1552658,
       "cv": 159,
-      "roas": 1.051545430243655,
-      "cpa": 9575.603773584906
+      "roas": 1.0311349956010918,
+      "cpa": 9765.14465408805
     },
     {
       "date": "2026-07-12",
       "project": "イエウール",
       "media": "全体",
       "sales": 1562000,
-      "grossProfit": 20748,
-      "cost": 1541252,
+      "grossProfit": -21443,
+      "cost": 1583443,
       "cv": 154,
-      "roas": 1.013461783017962,
-      "cpa": 10008.12987012987
+      "roas": 0.9864579905939147,
+      "cpa": 10282.097402597403
     },
     {
       "date": "2026-07-18",
@@ -5087,6 +5087,116 @@
       "cv": 12,
       "roas": 0.9423442383502694,
       "cpa": 10611.833333333334
+    },
+    {
+      "date": "2026-07-03",
+      "project": "イエウール",
+      "media": "YDA",
+      "sales": 0,
+      "grossProfit": -229,
+      "cost": 229,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2026-07-04",
+      "project": "イエウール",
+      "media": "YDA",
+      "sales": 0,
+      "grossProfit": -297,
+      "cost": 297,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2026-07-05",
+      "project": "イエウール",
+      "media": "YDA",
+      "sales": 0,
+      "grossProfit": -1187,
+      "cost": 1187,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2026-07-06",
+      "project": "イエウール",
+      "media": "YDA",
+      "sales": 0,
+      "grossProfit": -3214,
+      "cost": 3214,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2026-07-07",
+      "project": "イエウール",
+      "media": "YDA",
+      "sales": 0,
+      "grossProfit": -30168,
+      "cost": 30168,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2026-07-08",
+      "project": "イエウール",
+      "media": "YDA",
+      "sales": 0,
+      "grossProfit": -24111,
+      "cost": 24111,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2026-07-09",
+      "project": "イエウール",
+      "media": "YDA",
+      "sales": 0,
+      "grossProfit": -25383,
+      "cost": 25383,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2026-07-10",
+      "project": "イエウール",
+      "media": "YDA",
+      "sales": 0,
+      "grossProfit": -1690,
+      "cost": 1690,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2026-07-11",
+      "project": "イエウール",
+      "media": "YDA",
+      "sales": 0,
+      "grossProfit": -30137,
+      "cost": 30137,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
+      "date": "2026-07-12",
+      "project": "イエウール",
+      "media": "YDA",
+      "sales": 0,
+      "grossProfit": -42191,
+      "cost": 42191,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
     },
     {
       "date": "2026-07-01",
