@@ -38,14 +38,6 @@ function checkSecrets(profile) {
       ok.push("GOOGLE_OAUTH_*");
     }
 
-    if (!process.env.CHATWORK_API_TOKEN) {
-      warnings.push({
-        key: "CHATWORK_API_TOKEN",
-        message: "CHATWORK_API_TOKEN is missing. Chatwork source discovery and Chatwork alert fallback will be skipped.",
-      });
-    } else {
-      ok.push("CHATWORK_API_TOKEN");
-    }
   }
 
   if (["deploy", "update", "all"].includes(profile)) {
@@ -61,16 +53,15 @@ function checkSecrets(profile) {
     }
   }
 
-  if (["notify", "update", "all"].includes(profile)) {
-    const smtpMissing = missingKeys(["SMTP_HOST", "SMTP_USERNAME", "SMTP_PASSWORD", "SMTP_FROM"]);
-    if (smtpMissing.length) {
-      warnings.push({
-        key: "smtp",
-        message: "SMTP alert email is not fully configured. Chatwork fallback will be used if CHATWORK_API_TOKEN exists.",
-        missing: smtpMissing,
+  if (["notify", "deploy", "update", "all"].includes(profile)) {
+    if (!process.env.CHATWORK_API_TOKEN) {
+      errors.push({
+        key: "CHATWORK_API_TOKEN",
+        message: "CHATWORK_API_TOKEN is required because automation alerts use Chatwork only.",
+        missing: ["CHATWORK_API_TOKEN"],
       });
     } else {
-      ok.push("SMTP_*");
+      ok.push("CHATWORK_API_TOKEN");
     }
   }
 

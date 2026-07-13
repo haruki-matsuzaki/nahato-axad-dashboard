@@ -73,11 +73,6 @@ jobs:
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          SMTP_FROM: ${{ secrets.SMTP_FROM }}
         run: node scripts/check-automation-secrets.mjs --profile update --failOnError
 
       - name: Fetch Google Sheets data
@@ -205,19 +200,13 @@ jobs:
           PRODUCTION_CHECK_REQUIRE_200: ${{ secrets.PRODUCTION_CHECK_REQUIRE_200 }}
         run: node scripts/check-production-site.mjs
 
-      - name: Send failure email
+      - name: Send failure Chatwork alert
         if: always() && (steps.automation-secrets.outcome == 'failure' || steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure' || steps.cloudflare-deploy.outcome == 'failure' || steps.production-site.outcome == 'failure')
         env:
-          ALERT_EMAIL_TO: matsuzaki@shibuya-ad.com
           ALERT_REASON: update_failed
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
           CHATWORK_ALERT_ROOM_ID: "398449612"
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          SMTP_FROM: ${{ secrets.SMTP_FROM }}
-        run: node scripts/send-alert-email.mjs
+        run: node scripts/send-chatwork-alert.mjs
 
       - name: Fail when update failed
         if: steps.automation-secrets.outcome == 'failure' || steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure' || steps.cloudflare-deploy.outcome == 'failure' || steps.production-site.outcome == 'failure'

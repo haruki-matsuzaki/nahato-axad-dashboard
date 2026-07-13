@@ -33,9 +33,10 @@ jobs:
           node --check scripts/monitor-update-schedule.mjs
           node --check scripts/retry-cancelled-checks.mjs
           node --check scripts/run-external-monitor.mjs
-          node --check scripts/send-alert-email.mjs
+          node --check scripts/send-chatwork-alert.mjs
           node --check scripts/sheet-source-guard.mjs
           node --check scripts/test-external-monitor.mjs
+          node --check scripts/test-chatwork-alert.mjs
           node --check scripts/test-sheet-source-guard.mjs
           node --check scripts/test-source-audit.mjs
           node --check scripts/sync-overall-sales-top-rows.mjs
@@ -50,6 +51,9 @@ jobs:
 
       - name: Validate source selection and range guards
         run: npm run test:sheet-source-guard
+
+      - name: Validate Chatwork-only alerts
+        run: npm run test:chatwork-alert
 
       - name: Validate schedule logic
         run: npm run test:schedule

@@ -65,11 +65,6 @@ GitHub Actionsで `scripts/update-month-from-sources.mjs` を実行します。
 - `CLOUDFLARE_ACCOUNT_ID` 任意。Cloudflare Pagesのデプロイ状態チェックに使います
 - `CLOUDFLARE_API_TOKEN` 任意。Cloudflare Pagesのデプロイ状態チェックに使います
 - `CLOUDFLARE_PAGES_PROJECT_NAME` 任意。未設定時は `nahato-axad-dashboard` を使います
-- `SMTP_HOST` 任意。失敗通知メールのSMTPサーバーです
-- `SMTP_PORT` 任意。失敗通知メールのSMTPポートです。未設定時のスクリプト既定値は `465` です
-- `SMTP_USERNAME` 任意。失敗通知メールのSMTPユーザー名です
-- `SMTP_PASSWORD` 任意。失敗通知メールのSMTPパスワードです
-- `SMTP_FROM` 任意。失敗通知メールのFromアドレスです
 - `PRODUCTION_URL` 任意。本番疎通チェック対象URLです。未設定時は `https://nahato-axad-dashboard.pages.dev/#home` を使います
 - `PRODUCTION_CHECK_REQUIRE_200` 任意。`true` の場合、本番URLがHTTP 200以外なら失敗扱いにします
 
@@ -143,8 +138,7 @@ GitHub ActionsのscheduleはUTCで実行されます。また、毎時0分は負
 - CloudflareのSecretが未設定の場合、デプロイ状態チェックは `warning` として扱い、データ更新自体は止めません
 - 本番URLがHTTP 200で取得できる場合、HTML内の主要assetもHTTP 200で読み込めるか確認します
 - Cloudflare Accessなどで本番URLが `302` / `401` / `403` になる場合は、既定では `warning` として扱います
-- `SMTP_*` が設定されている場合、更新失敗・検証失敗・デプロイ確認失敗・定時監視による再実行起動を `matsuzaki@shibuya-ad.com` にメール通知します
-- `SMTP_*` が未設定または送信失敗した場合、`CHATWORK_API_TOKEN` があればマイチャット `398449612` へ通知します
+- 更新失敗・検証失敗・デプロイ確認失敗・定時監視による再実行起動は、Chatworkマイチャット `398449612` のみに通知します。メール通知は使用しません
 - Google OAuthの `invalid_grant` / `invalid_client` / `unauthorized_client` はサービスアカウントで隠さず失敗扱いにし、再作成が必要なSecretをエラーメッセージに出します
 - `◆案件/媒体別日次_全体` / `◆案件別日次_全体_固定用` / `◆全体売上表` は、合計行・日付ヘッダー・売上/粗利/消化金額/ROASの構造が崩れた場合に更新失敗にします
 - GitHub Actionsのpushチェックが実行前に `cancelled` になった場合、10分おきの監視で最大3回まで再実行します

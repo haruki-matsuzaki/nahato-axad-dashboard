@@ -12,7 +12,7 @@
     "monitor:checks": "node scripts/retry-cancelled-checks.mjs",
     "monitor:external": "node scripts/run-external-monitor.mjs",
     "monitor:site": "node scripts/check-production-site.mjs",
-    "notify:alert": "node scripts/send-alert-email.mjs",
+    "notify:alert": "node scripts/send-chatwork-alert.mjs",
     "secrets:check": "node scripts/check-automation-secrets.mjs",
     "backfill:business": "node scripts/backfill-records-from-business-sales.mjs",
     "quality:data": "node scripts/check-data-quality.mjs --writeStatus data/data-quality-status.json",
@@ -21,11 +21,12 @@
     "test:media-only-project": "node scripts/test-media-only-project.mjs",
     "test:source-audit": "node scripts/test-source-audit.mjs",
     "test:sheet-source-guard": "node scripts/test-sheet-source-guard.mjs",
+    "test:chatwork-alert": "node scripts/test-chatwork-alert.mjs",
     "test:external-monitor": "node scripts/test-external-monitor.mjs",
     "test:schedule": "node scripts/update-month-from-sources.mjs --mode monthly --dryRun --force --month 2026-08 --spreadsheetId test-spreadsheet-id",
     "test:data": "node scripts/validate-static-data.mjs",
     "test:data-quality": "node scripts/check-data-quality.mjs --writeStatus /tmp/nacht-data-quality-status.json --failOnError",
-    "test": "npm run test:parser && npm run test:media-only-project && npm run test:source-audit && npm run test:sheet-source-guard && npm run test:external-monitor && npm run test:schedule && npm run test:data && npm run test:data-quality",
+    "test": "npm run test:parser && npm run test:media-only-project && npm run test:source-audit && npm run test:sheet-source-guard && npm run test:chatwork-alert && npm run test:external-monitor && npm run test:schedule && npm run test:data && npm run test:data-quality",
     "start": "python3 -m http.server 4173"
   },
   "engines": {
