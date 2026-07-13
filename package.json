@@ -22,11 +22,12 @@
     "test:source-audit": "node scripts/test-source-audit.mjs",
     "test:sheet-source-guard": "node scripts/test-sheet-source-guard.mjs",
     "test:chatwork-alert": "node scripts/test-chatwork-alert.mjs",
+    "test:workflow-dispatch": "node scripts/test-workflow-dispatch.mjs",
     "test:external-monitor": "node scripts/test-external-monitor.mjs",
     "test:schedule": "node scripts/update-month-from-sources.mjs --mode monthly --dryRun --force --month 2026-08 --spreadsheetId test-spreadsheet-id",
     "test:data": "node scripts/validate-static-data.mjs",
     "test:data-quality": "node scripts/check-data-quality.mjs --writeStatus /tmp/nacht-data-quality-status.json --failOnError",
-    "test": "npm run test:parser && npm run test:media-only-project && npm run test:source-audit && npm run test:sheet-source-guard && npm run test:chatwork-alert && npm run test:external-monitor && npm run test:schedule && npm run test:data && npm run test:data-quality",
+    "test": "npm run test:parser && npm run test:media-only-project && npm run test:source-audit && npm run test:sheet-source-guard && npm run test:chatwork-alert && npm run test:workflow-dispatch && npm run test:external-monitor && npm run test:schedule && npm run test:data && npm run test:data-quality",
     "start": "python3 -m http.server 4173"
   },
   "engines": {

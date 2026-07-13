@@ -104,17 +104,21 @@ async function buildAlertContext(options) {
     runId: process.env.GITHUB_RUN_ID || "",
     runAttempt: process.env.GITHUB_RUN_ATTEMPT || "",
     sha: process.env.GITHUB_SHA || "",
+    dispatchCode: process.env.ALERT_DISPATCH_CODE || "",
+    dispatchMessage: process.env.ALERT_DISPATCH_MESSAGE || "",
     stepOutcomes: {
       automationSecrets: process.env.ALERT_STEP_AUTOMATION_SECRETS || "",
       fetchData: process.env.ALERT_STEP_FETCH_DATA || "",
       validateData: process.env.ALERT_STEP_VALIDATE_DATA || "",
       cloudflareDeploy: process.env.ALERT_STEP_CLOUDFLARE_DEPLOY || "",
       productionSite: process.env.ALERT_STEP_PRODUCTION_SITE || "",
+      dispatchUpdate: process.env.ALERT_STEP_DISPATCH_UPDATE || "",
     },
     runUrl:
-      process.env.GITHUB_SERVER_URL && process.env.GITHUB_REPOSITORY && process.env.GITHUB_RUN_ID
+      process.env.ALERT_RUN_URL ||
+      (process.env.GITHUB_SERVER_URL && process.env.GITHUB_REPOSITORY && process.env.GITHUB_RUN_ID
         ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
-        : "",
+        : ""),
   };
 }
 

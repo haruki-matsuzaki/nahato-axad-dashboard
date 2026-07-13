@@ -19,7 +19,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  actions: read
+  actions: write
   contents: write
 
 jobs:
@@ -77,10 +77,34 @@ jobs:
           echo "Failed to push monitor trigger after 3 attempts."
           exit 1
 
-      - name: Send monitor trigger Chatwork alert
+      - name: Dispatch missed update workflow
+        id: dispatch-update
         if: steps.commit-monitor-trigger.outputs.trigger_written == 'true'
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/dispatch-update-workflow.mjs
+
+      - name: Send monitor trigger Chatwork alert
+        if: steps.dispatch-update.outputs.dispatch_status == 'started'
         env:
           ALERT_REASON: schedule_monitor_triggered
+          ALERT_RUN_URL: ${{ steps.dispatch-update.outputs.run_url }}
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
           CHATWORK_ALERT_ROOM_ID: "398449612"
         run: node scripts/send-chatwork-alert.mjs
+
+      - name: Send dispatch failure Chatwork alert
+        if: always() && steps.commit-monitor-trigger.outputs.trigger_written == 'true' && steps.dispatch-update.outcome == 'failure'
+        env:
+          ALERT_REASON: schedule_monitor_failed
+          ALERT_STEP_DISPATCH_UPDATE: failure
+          ALERT_DISPATCH_CODE: ${{ steps.dispatch-update.outputs.dispatch_code }}
+          ALERT_DISPATCH_MESSAGE: ${{ steps.dispatch-update.outputs.dispatch_message }}
+          CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
+          CHATWORK_ALERT_ROOM_ID: "398449612"
+        run: node scripts/send-chatwork-alert.mjs
+
+      - name: Fail when update dispatch failed
+        if: always() && steps.commit-monitor-trigger.outputs.trigger_written == 'true' && steps.dispatch-update.outcome == 'failure'
+        run: exit 1

@@ -65,6 +65,24 @@ assert.equal(monitorTrigger.code, "schedule_missing");
 assert.match(monitorTrigger.body, /監視処理が再実行を起動しました/);
 assert.match(monitorTrigger.body, /予定時刻を過ぎてもGitHub Actionsの定時更新が開始されませんでした/);
 
+const monitorDispatchFailure = buildAutomationAlertMessage({
+  reason: "schedule_monitor_failed",
+  dispatchCode: "dispatch_permission_denied",
+  dispatchMessage: "GitHub Actionsの起動リクエストが拒否されました（HTTP 403）。",
+  stepOutcomes: { dispatchUpdate: "failure" },
+  trigger: {
+    reason: "schedule_missing",
+    expectedRunAtJst: "2026-07-13 12:00",
+    analysis: "No scheduled update run was created.",
+  },
+});
+assert.equal(monitorDispatchFailure.code, "workflow_dispatch_failed");
+assert.match(monitorDispatchFailure.subject, /再実行起動エラー/);
+assert.match(monitorDispatchFailure.body, /再実行を開始できませんでした/);
+assert.match(monitorDispatchFailure.body, /日次更新の再実行起動/);
+assert.match(monitorDispatchFailure.body, /HTTP 403/);
+assert.match(monitorDispatchFailure.body, /起動エラーコード: dispatch_permission_denied/);
+
 const redactedError = buildAutomationAlertMessage({
   reason: "update_failed",
   updateStatus: { lastRun: { fatalError: { message: "refresh_token=do-not-show-this" } } },

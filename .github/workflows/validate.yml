@@ -35,14 +35,17 @@ jobs:
           node --check scripts/run-external-monitor.mjs
           node --check scripts/send-chatwork-alert.mjs
           node --check scripts/automation-alert-message.mjs
+          node --check scripts/dispatch-update-workflow.mjs
           node --check scripts/sheet-source-guard.mjs
           node --check scripts/test-external-monitor.mjs
           node --check scripts/test-chatwork-alert.mjs
+          node --check scripts/test-workflow-dispatch.mjs
           node --check scripts/test-sheet-source-guard.mjs
           node --check scripts/test-source-audit.mjs
           node --check scripts/sync-overall-sales-top-rows.mjs
           node --check scripts/update-data.mjs
           node --check scripts/update-month-from-sources.mjs
+          node --check scripts/workflow-dispatch-client.mjs
 
       - name: Validate parser fixture
         run: npm run test:parser
@@ -55,6 +58,9 @@ jobs:
 
       - name: Validate Chatwork-only alerts
         run: npm run test:chatwork-alert
+
+      - name: Validate missed-update dispatch
+        run: npm run test:workflow-dispatch
 
       - name: Validate external monitor alerts
         run: npm run test:external-monitor

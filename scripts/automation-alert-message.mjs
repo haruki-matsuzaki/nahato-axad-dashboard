@@ -70,6 +70,10 @@ const ERROR_GUIDES = {
     cause: "予定時刻を過ぎてもGitHub Actionsの定時更新が開始されませんでした。",
     action: "監視処理が再実行を起動済みです。確認先のGitHub Actionsで再実行結果を確認してください。",
   },
+  workflow_dispatch_failed: {
+    cause: "監視処理は更新漏れを検知しましたが、GitHub Actionsの再実行を開始できませんでした。GitHub APIの拒否、権限不足、または実行履歴未作成の可能性があります。",
+    action: "確認先の監視ワークフローで技術詳細を確認し、必要に応じてupdate-data.ymlを手動実行してください。",
+  },
   workflow_run_failed: {
     cause: "自動更新処理が失敗しましたが、保存された情報だけでは原因を自動判定できませんでした。",
     action: "確認先のGitHub Actionsを開き、赤く表示された工程と末尾の技術詳細を確認してください。",
@@ -111,22 +115,28 @@ export function buildAutomationAlertMessage(context, now = new Date()) {
   const code = classifyAutomationError(context);
   const guide = ERROR_GUIDES[code] || ERROR_GUIDES.workflow_run_failed;
   const isMonitorTrigger = context.reason === "schedule_monitor_triggered";
+  const isMonitorFailure = context.reason === "schedule_monitor_failed";
   const failedSteps = getFailedStepLabels(context.stepOutcomes);
   const rawDetails = collectRawDetails(context);
   const target = getTargetLabel(context);
   const subjectLabel = {
     update_failed: "日次更新エラー",
     schedule_monitor_triggered: "定時更新を自動で再実行",
+    schedule_monitor_failed: "定時更新の再実行起動エラー",
     deploy_failed: "公開確認エラー",
   }[context.reason] || "自動化通知";
-  const whatHappened = isMonitorTrigger
+  const whatHappened = isMonitorFailure
+    ? `${target || "予定時刻"}の更新漏れを検知しましたが、再実行を開始できませんでした。`
+    : isMonitorTrigger
     ? context.trigger?.reason === "schedule_missing"
       ? `${target || "予定時刻"}の定時更新が開始されなかったため、監視処理が再実行を起動しました。`
       : `${target || "予定時刻"}の定時更新が正常に完了しなかったため、監視処理が再実行を起動しました。`
     : context.reason === "deploy_failed"
       ? "更新内容を公開サイトへ反映できたことを確認できませんでした。"
       : `${target ? `${target}の` : ""}データ更新が正常に完了しませんでした。`;
-  const impact = isMonitorTrigger
+  const impact = isMonitorFailure
+    ? "自動復旧が完了していないため、サイトには直前の正常更新時点の数値が表示されています。"
+    : isMonitorTrigger
     ? "再実行が完了するまで、サイトには直前の正常更新時点の数値が表示されます。"
     : context.reason === "deploy_failed"
       ? "元データの更新が成功していても、公開サイトには古い数値が表示されている可能性があります。"
@@ -156,6 +166,7 @@ export function buildAutomationAlertMessage(context, now = new Date()) {
     failedSteps.length ? `・失敗工程: ${failedSteps.join("、")}` : null,
     target ? `・対象: ${target}` : null,
     `・自動判定コード: ${code}`,
+    context.dispatchCode ? `・起動エラーコード: ${context.dispatchCode}` : null,
     context.repository ? `・リポジトリ: ${context.repository}` : null,
     context.sha ? `・コミット: ${context.sha.slice(0, 12)}` : null,
     context.runAttempt ? `・実行回数: ${context.runAttempt}回目` : null,
@@ -214,6 +225,7 @@ export function buildExternalMonitorAlertMessage(health, options = {}) {
 }
 
 export function classifyAutomationError(context) {
+  if (context.reason === "schedule_monitor_failed") return "workflow_dispatch_failed";
   if (context.reason === "schedule_monitor_triggered" && context.trigger?.reason === "schedule_missing") return "schedule_missing";
 
   const failedSteps = getFailedStepKeys(context.stepOutcomes);
@@ -221,6 +233,8 @@ export function classifyAutomationError(context) {
     context.reason,
     context.trigger?.reason,
     context.trigger?.analysis,
+    context.dispatchCode,
+    context.dispatchMessage,
     context.updateStatus?.daily?.message,
     context.updateStatus?.monthly?.message,
     context.updateStatus?.overallSales?.message,
@@ -264,6 +278,7 @@ function getTargetLabel(context) {
 function collectRawDetails(context) {
   const values = [
     context.trigger?.analysis,
+    context.dispatchMessage,
     context.updateStatus?.daily?.message,
     context.updateStatus?.monthly?.message,
     context.updateStatus?.overallSales?.message,
@@ -288,6 +303,7 @@ function getFailedStepLabels(outcomes = {}) {
     validateData: "生成データ検証",
     cloudflareDeploy: "Cloudflare Pages公開確認",
     productionSite: "公開サイト確認",
+    dispatchUpdate: "日次更新の再実行起動",
   };
   return getFailedStepKeys(outcomes).map((key) => labels[key] || key);
 }
