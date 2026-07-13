@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T06:39:26.971Z",
+  "generatedAt": "2026-07-13T09:35:42.223Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -839,7 +839,7 @@
     {
       "type": "missing_media_date",
       "message": "2026-07: expected business sales key missing from detail data",
-      "count": 7,
+      "count": 6,
       "examples": [
         {
           "project": "DIO医療ダイエットクリニック",
@@ -870,18 +870,13 @@
           "project": "DIO医療ダイエットクリニック",
           "media": "TikTok",
           "date": "2026-07-06"
-        },
-        {
-          "project": "パーフェクトボディプレミアム",
-          "media": "YT",
-          "date": "2026-07-01"
         }
       ]
     },
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 55,
+      "count": 56,
       "examples": [
         {
           "project": "イエウール",
@@ -2725,7 +2720,7 @@
         {
           "type": "missing_media_date",
           "message": "2026-07: expected business sales key missing from detail data",
-          "count": 7,
+          "count": 6,
           "examples": [
             {
               "project": "DIO医療ダイエットクリニック",
@@ -2756,18 +2751,13 @@
               "project": "DIO医療ダイエットクリニック",
               "media": "TikTok",
               "date": "2026-07-06"
-            },
-            {
-              "project": "パーフェクトボディプレミアム",
-              "media": "YT",
-              "date": "2026-07-01"
             }
           ]
         },
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 55,
+          "count": 56,
           "examples": [
             {
               "project": "イエウール",
@@ -2897,8 +2887,8 @@
         "missingProjects": 0,
         "missingProjectDates": 0,
         "totalValueMismatches": 40,
-        "missingMediaDates": 7,
-        "mediaValueMismatches": 55,
+        "missingMediaDates": 6,
+        "mediaValueMismatches": 56,
         "previousDayRecords": 57,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
@@ -2920,8 +2910,8 @@
     "previousDayProjectCount": 15,
     "comparisonDate": "2026-07-11",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-13T06:39:25.378Z",
-    "overallSalesGeneratedAt": "2026-07-13T06:39:26.560Z",
-    "checkedAt": "2026-07-13T06:39:28.307Z"
+    "detailGeneratedAt": "2026-07-13T09:35:40.471Z",
+    "overallSalesGeneratedAt": "2026-07-13T09:35:41.827Z",
+    "checkedAt": "2026-07-13T09:35:43.511Z"
   }
 }

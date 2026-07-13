@@ -5,13 +5,13 @@
     "sheetName": "◆全体売上表",
     "range": "3:55",
     "generatedAt": "2026-07-07T15:44:04.210527",
-    "topRowsSyncedAt": "2026-07-13T06:39:26.560Z",
+    "topRowsSyncedAt": "2026-07-13T09:35:41.827Z",
     "topRowsSource": {
       "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
       "sheetName": "◆全体売上表",
       "range": "A3:ZZ55"
     },
-    "overallRowsSyncedAt": "2026-07-13T06:39:26.560Z",
+    "overallRowsSyncedAt": "2026-07-13T09:35:41.827Z",
     "overallRowsSource": {
       "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
       "sheetName": "◆全体売上表",
@@ -1918,16 +1918,16 @@
           "address": "AQ6",
           "rowspan": 1,
           "colspan": 1,
-          "value": 18873868,
-          "text": "¥18,873,868",
+          "value": 18873869,
+          "text": "¥18,873,869",
           "style": "background-color:#cccccc;font-family:'Lato';font-weight:700;text-align:center;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
           "address": "AR6",
           "rowspan": 1,
           "colspan": 1,
-          "value": 13833940,
-          "text": "¥13,833,940",
+          "value": 13833939,
+          "text": "¥13,833,939",
           "style": "background-color:#cccccc;font-family:'Lato';font-weight:700;text-align:center;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
@@ -2334,8 +2334,8 @@
           "address": "AQ7",
           "rowspan": 1,
           "colspan": 1,
-          "value": 158240632,
-          "text": "¥158,240,632",
+          "value": 158240631,
+          "text": "¥158,240,631",
           "style": "background-color:#f9f9f9;font-family:'Lato';font-size:9.0pt;font-weight:700;text-align:center;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
@@ -7952,16 +7952,16 @@
           "address": "K21",
           "rowspan": 1,
           "colspan": 1,
-          "value": 44755464,
-          "text": "¥44,755,464",
+          "value": 44984966,
+          "text": "¥44,984,966",
           "style": "background-color:#f9f9f9;font-family:'Lato';font-size:9.0pt;color:#000000;text-align:right;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
           "address": "L21",
           "rowspan": 1,
           "colspan": 1,
-          "value": 4264486,
-          "text": "¥4,264,486",
+          "value": 4493988,
+          "text": "¥4,493,988",
           "style": "background-color:#f9f9f9;font-family:'Lato';font-size:9.0pt;color:#000000;text-align:right;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
@@ -8208,8 +8208,8 @@
           "address": "AQ21",
           "rowspan": 1,
           "colspan": 1,
-          "value": 44755464,
-          "text": "¥44,755,464",
+          "value": 44984966,
+          "text": "¥44,984,966",
           "style": "background-color:#f9f9f9;font-family:'Lato';font-size:9.0pt;color:#000000;text-align:right;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
@@ -9456,8 +9456,8 @@
           "address": "AQ24",
           "rowspan": 1,
           "colspan": 1,
-          "value": 18873868,
-          "text": "¥18,873,868",
+          "value": 18873869,
+          "text": "¥18,873,869",
           "style": "background-color:#f9f9f9;font-family:'Lato';font-size:9.0pt;color:#000000;text-align:right;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
@@ -10273,8 +10273,8 @@
           "address": "AQ26",
           "rowspan": 1,
           "colspan": 1,
-          "value": 11230888,
-          "text": "¥11,230,888",
+          "value": 11230889,
+          "text": "¥11,230,889",
           "style": "background-color:#f9f9f9;font-family:'Lato';font-size:9.0pt;color:#000000;text-align:right;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
@@ -10824,8 +10824,8 @@
           "address": "F28",
           "rowspan": 1,
           "colspan": 1,
-          "value": "金融Unit - 147.4%",
-          "text": "金融Unit - 147.4%",
+          "value": "金融Unit - 149%",
+          "text": "金融Unit - 149%",
           "style": "font-family:'Lato';font-size:9.0pt;color:#f1c232;text-align:center;vertical-align:middle;border-left:1px solid #efefef;border-right:1px solid #efefef;border-top:1px solid #efefef;border-bottom:1px solid #efefef"
         },
         {
@@ -12944,16 +12944,16 @@
           "address": "K33",
           "rowspan": 1,
           "colspan": 1,
-          "value": 15246600,
-          "text": "¥15,246,600",
+          "value": 15409330,
+          "text": "¥15,409,330",
           "style": "background-color:#f9f9f9;font-family:'Lato';font-size:9.0pt;color:#000000;text-align:right;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
           "address": "L33",
           "rowspan": 1,
           "colspan": 1,
-          "value": 1931111,
-          "text": "¥1,931,111",
+          "value": 2093841,
+          "text": "¥2,093,841",
           "style": "background-color:#f9f9f9;font-family:'Lato';font-size:9.0pt;color:#000000;text-align:right;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
@@ -13200,8 +13200,8 @@
           "address": "AQ33",
           "rowspan": 1,
           "colspan": 1,
-          "value": 14739600,
-          "text": "¥14,739,600",
+          "value": 14902330,
+          "text": "¥14,902,330",
           "style": "background-color:#f9f9f9;font-family:'Lato';font-size:9.0pt;color:#000000;text-align:right;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
@@ -13621,16 +13621,16 @@
           "address": "AQ34",
           "rowspan": 1,
           "colspan": 1,
-          "value": 18873868,
-          "text": "¥18,873,868",
+          "value": 18873869,
+          "text": "¥18,873,869",
           "style": "background-color:#f9f9f9;font-family:'Lato';font-size:9.0pt;font-weight:700;color:#000000;text-align:right;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
           "address": "AR34",
           "rowspan": 1,
           "colspan": 1,
-          "value": 13833940,
-          "text": "¥13,833,940",
+          "value": 13833939,
+          "text": "¥13,833,939",
           "style": "background-color:#f9f9f9;font-family:'Lato';font-size:9.0pt;color:#990000;text-align:center;border-right:1px solid #d9d9d9;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9"
         },
         {
@@ -17515,8 +17515,8 @@
           "address": "F44",
           "rowspan": 1,
           "colspan": 1,
-          "value": "44755464.25 - 16.9%",
-          "text": "44755464.25 - 16.9%",
+          "value": "44984966.25 - 16.9%",
+          "text": "44984966.25 - 16.9%",
           "style": "font-family:'Lato';font-size:9.0pt;color:#bf9000;text-align:center;vertical-align:middle;border-left:1px solid #efefef;border-right:1px solid #efefef;border-top:1px solid #efefef;border-bottom:1px solid #efefef"
         },
         {
@@ -19224,8 +19224,8 @@
           "address": "F48",
           "rowspan": 1,
           "colspan": 1,
-          "value": "日別合計 - 14.1%",
-          "text": "日別合計 - 14.1%",
+          "value": "日別合計 - 14.2%",
+          "text": "日別合計 - 14.2%",
           "style": "font-family:'Lato';font-size:9.0pt;color:#3e5831;text-align:center;vertical-align:middle;border-left:1px solid #efefef;border-right:1px solid #efefef;border-top:1px solid #efefef;border-bottom:1px solid #efefef"
         },
         {

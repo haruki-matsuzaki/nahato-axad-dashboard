@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-13T06:39:25.378Z",
+    "generatedAt": "2026-07-13T09:35:40.471Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -15,7 +15,7 @@
         "skippedProjectBlocks": 16,
         "missingDateBlocks": 1,
         "missingRequiredBlocks": 0,
-        "records": 507
+        "records": 508
       },
       "total": {
         "candidateBlocks": 48,
@@ -197,12 +197,12 @@
       "date": "2026-07-01",
       "project": "パーフェクトボディプレミアム",
       "media": "全体",
-      "sales": 1090862,
-      "grossProfit": 395134,
-      "cost": 695728,
+      "sales": 1320364,
+      "grossProfit": 557864,
+      "cost": 762500,
       "cv": 74,
-      "roas": 1.5679432191891083,
-      "cpa": 9401.72972972973
+      "roas": 1.731624918032787,
+      "cpa": 10304.054054054053
     },
     {
       "date": "2026-07-02",
@@ -5461,6 +5461,17 @@
       "cv": 49,
       "roas": 1.2067061982048044,
       "cpa": 11911.612244897959
+    },
+    {
+      "date": "2026-07-01",
+      "project": "パーフェクトボディプレミアム",
+      "media": "YT",
+      "sales": 229502,
+      "grossProfit": 162730,
+      "cost": 66772,
+      "cv": 0,
+      "roas": 3.4370993829748997,
+      "cpa": 0
     },
     {
       "date": "2026-07-02",
