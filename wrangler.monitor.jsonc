@@ -3,7 +3,7 @@
   "name": "nacht-axad-external-monitor",
   "main": "cloudflare/update-monitor.js",
   "compatibility_date": "2026-07-10",
-  "workers_dev": true,
+  "workers_dev": false,
   "observability": {
     "enabled": true
   },
