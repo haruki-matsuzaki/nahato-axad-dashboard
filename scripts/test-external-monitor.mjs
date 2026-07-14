@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { evaluateHealth } from "../cloudflare/update-monitor.js";
+import { evaluateHealth, isScheduledMonitorTime, runScheduledMonitor } from "../cloudflare/update-monitor.js";
 import { buildExternalMonitorAlertMessage } from "./automation-alert-message.mjs";
 
 const now = new Date("2026-07-10T04:30:00.000Z");
@@ -51,5 +51,29 @@ assert.equal(missingBoth.status, "error");
 assert.ok(missingBoth.issues.includes("previous_day_missing_from_both_sources"));
 const missingBothAlert = buildExternalMonitorAlertMessage(missingBoth);
 assert.match(missingBothAlert.body, /案件別日時と全体売上表の両方で確認できません/);
+
+assert.equal(isScheduledMonitorTime(new Date("2026-07-13T17:00:00.000Z")), false, "02:00 JST must be skipped");
+assert.equal(isScheduledMonitorTime(new Date("2026-07-13T19:00:00.000Z")), false, "04:00 JST must be skipped");
+assert.equal(isScheduledMonitorTime(new Date("2026-07-14T04:30:00.000Z")), true, "13:30 JST must run");
+assert.equal(isScheduledMonitorTime(new Date("2026-07-14T07:30:00.000Z")), true, "16:30 JST must run");
+assert.equal(isScheduledMonitorTime(new Date("2026-07-14T10:30:00.000Z")), true, "19:30 JST must run");
+
+let fetchCalled = false;
+const originalFetch = globalThis.fetch;
+globalThis.fetch = async () => {
+  fetchCalled = true;
+  throw new Error("fetch must not be called outside the scheduled monitor time");
+};
+try {
+  const skipped = await runScheduledMonitor(
+    {},
+    { enforceSchedule: true, now: new Date("2026-07-13T17:00:00.000Z") },
+  );
+  assert.equal(skipped.status, "skipped");
+  assert.equal(skipped.reason, "outside_scheduled_monitor_time");
+  assert.equal(fetchCalled, false, "02:00 JST must not fetch data or send an alert");
+} finally {
+  globalThis.fetch = originalFetch;
+}
 
 console.log("external monitor tests ok");

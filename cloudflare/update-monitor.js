@@ -25,19 +25,32 @@ export default {
     }
   },
 
-  async scheduled(_controller, env, context) {
-    context.waitUntil(runScheduledMonitor(env));
+  async scheduled(controller, env, context) {
+    const scheduledAt = Number.isFinite(controller?.scheduledTime)
+      ? new Date(controller.scheduledTime)
+      : new Date();
+    context.waitUntil(runScheduledMonitor(env, { enforceSchedule: true, now: scheduledAt }));
   },
 };
 
-export async function runScheduledMonitor(env) {
+export async function runScheduledMonitor(env, { enforceSchedule = false, now = new Date() } = {}) {
+  if (enforceSchedule && !isScheduledMonitorTime(now)) {
+    return {
+      status: "skipped",
+      checkedAt: now.toISOString(),
+      expectedDate: previousJstDate(now),
+      issues: [],
+      reason: "outside_scheduled_monitor_time",
+    };
+  }
+
   let health;
   try {
-    health = await inspectDataHealth(env);
+    health = await inspectDataHealth(env, now);
   } catch (error) {
     health = {
       status: "error",
-      expectedDate: previousJstDate(new Date()),
+      expectedDate: previousJstDate(now),
       issues: ["external_monitor_request_failed"],
       analysis: sanitize(error?.message || String(error)),
     };
@@ -46,6 +59,12 @@ export async function runScheduledMonitor(env) {
   if (health.status === "ok") return health;
   await sendChatworkAlert(env, health);
   return health;
+}
+
+export function isScheduledMonitorTime(now = new Date()) {
+  if (!(now instanceof Date) || Number.isNaN(now.getTime())) return false;
+  const jst = new Date(now.getTime() + JST_OFFSET_MS);
+  return jst.getUTCMinutes() === 30 && [13, 16, 19].includes(jst.getUTCHours());
 }
 
 export async function inspectDataHealth(env, now = new Date()) {
