@@ -100,7 +100,8 @@ for (const workflowPath of [".github/workflows/monitor-update.yml", ".github/wor
   const workflow = fs.readFileSync(workflowPath, "utf8");
   assert.match(workflow, /node scripts\/dispatch-update-workflow\.mjs/);
   assert.match(workflow, /ALERT_REASON: schedule_monitor_failed/);
-  assert.match(workflow, /dispatch_status == 'started'/);
+  assert.doesNotMatch(workflow, /ALERT_REASON: schedule_monitor_triggered/);
+  assert.doesNotMatch(workflow, /dispatch_status == 'started'/);
 }
 assert.match(fs.readFileSync(".github/workflows/monitor-update.yml", "utf8"), /actions: write/);
 assert.match(fs.readFileSync(".github/workflows/retry-cancelled-checks.yml", "utf8"), /actions: write/);

@@ -85,15 +85,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/dispatch-update-workflow.mjs
 
-      - name: Send monitor trigger Chatwork alert
-        if: steps.dispatch-update.outputs.dispatch_status == 'started'
-        env:
-          ALERT_REASON: schedule_monitor_triggered
-          ALERT_RUN_URL: ${{ steps.dispatch-update.outputs.run_url }}
-          CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
-          CHATWORK_ALERT_ROOM_ID: "398449612"
-        run: node scripts/send-chatwork-alert.mjs
-
       - name: Send dispatch failure Chatwork alert
         if: always() && steps.commit-monitor-trigger.outputs.trigger_written == 'true' && steps.dispatch-update.outcome == 'failure'
         env:
