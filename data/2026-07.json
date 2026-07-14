@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-14T03:49:17.461Z",
+    "generatedAt": "2026-07-14T05:25:28.948Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -15,7 +15,7 @@
         "skippedProjectBlocks": 16,
         "missingDateBlocks": 1,
         "missingRequiredBlocks": 0,
-        "records": 554
+        "records": 555
       },
       "total": {
         "candidateBlocks": 48,
@@ -626,12 +626,12 @@
       "date": "2026-07-13",
       "project": "LAVA",
       "media": "全体",
-      "sales": 2144000,
-      "grossProfit": 449511,
+      "sales": 2128000,
+      "grossProfit": 433511,
       "cost": 1694489,
-      "cv": 134,
-      "roas": 1.2652782048157292,
-      "cpa": 12645.440298507463
+      "cv": 133,
+      "roas": 1.255835830152925,
+      "cpa": 12740.518796992481
     },
     {
       "date": "2026-07-01",
@@ -890,34 +890,34 @@
       "date": "2026-07-11",
       "project": "Rintosull 既存店",
       "media": "全体",
-      "sales": 1040000,
-      "grossProfit": 215509,
+      "sales": 1072000,
+      "grossProfit": 247509,
       "cost": 824491,
-      "cv": 65,
-      "roas": 1.2613842964932305,
-      "cpa": 12684.476923076923
+      "cv": 67,
+      "roas": 1.3001961210007145,
+      "cpa": 12305.835820895523
     },
     {
       "date": "2026-07-12",
       "project": "Rintosull 既存店",
       "media": "全体",
-      "sales": 1216000,
-      "grossProfit": 356761,
+      "sales": 1440000,
+      "grossProfit": 580761,
       "cost": 859239,
-      "cv": 76,
-      "roas": 1.4152057809294039,
-      "cpa": 11305.776315789473
+      "cv": 90,
+      "roas": 1.6759015826795571,
+      "cpa": 9547.1
     },
     {
       "date": "2026-07-13",
       "project": "Rintosull 既存店",
       "media": "全体",
-      "sales": 928000,
-      "grossProfit": 210005,
+      "sales": 1008000,
+      "grossProfit": 290005,
       "cost": 717995,
-      "cv": 58,
-      "roas": 1.2924881092486717,
-      "cpa": 12379.224137931034
+      "cv": 63,
+      "roas": 1.4039094979770055,
+      "cpa": 11396.746031746032
     },
     {
       "date": "2026-07-08",
@@ -1078,11 +1078,11 @@
       "project": "東京中央美容外科(クマ取り-L)",
       "media": "全体",
       "sales": 132668,
-      "grossProfit": -53957,
-      "cost": 186624,
+      "grossProfit": -35579,
+      "cost": 168246,
       "cv": 6,
-      "roas": 0.7108839163237312,
-      "cpa": 31104
+      "roas": 0.7885358344329138,
+      "cpa": 28041
     },
     {
       "date": "2026-07-01",
@@ -1935,12 +1935,12 @@
       "date": "2026-07-13",
       "project": "イエウール",
       "media": "全体",
-      "sales": 1231000,
-      "grossProfit": 203543,
-      "cost": 1027457,
-      "cv": 122,
-      "roas": 1.1981036675987413,
-      "cpa": 8421.77868852459
+      "sales": 1251000,
+      "grossProfit": 191905,
+      "cost": 1059095,
+      "cv": 124,
+      "roas": 1.1811971541740827,
+      "cpa": 8541.088709677419
     },
     {
       "date": "2026-07-18",
@@ -4113,12 +4113,12 @@
       "date": "2026-07-13",
       "project": "LAVA",
       "media": "YtoL",
-      "sales": 224000,
-      "grossProfit": 74611,
+      "sales": 208000,
+      "grossProfit": 58611,
       "cost": 149389,
-      "cv": 14,
-      "roas": 1.4994410565704301,
-      "cpa": 10670.642857142857
+      "cv": 13,
+      "roas": 1.3923381239582566,
+      "cpa": 11491.461538461539
     },
     {
       "date": "2026-07-01",
@@ -5595,6 +5595,17 @@
       "cpa": 0
     },
     {
+      "date": "2026-07-13",
+      "project": "イエウール",
+      "media": "YDA",
+      "sales": 20000,
+      "grossProfit": -11638,
+      "cost": 31638,
+      "cv": 2,
+      "roas": 0.6321512105695682,
+      "cpa": 15819
+    },
+    {
       "date": "2026-07-01",
       "project": "イエウール",
       "media": "X",
@@ -6544,34 +6555,34 @@
       "date": "2026-07-11",
       "project": "Rintosull 既存店",
       "media": "YT",
-      "sales": 0,
-      "grossProfit": -16693,
+      "sales": 32000,
+      "grossProfit": 15307,
       "cost": 16693,
-      "cv": 0,
-      "roas": 0,
-      "cpa": 0
+      "cv": 2,
+      "roas": 1.9169711855268676,
+      "cpa": 8346.5
     },
     {
       "date": "2026-07-12",
       "project": "Rintosull 既存店",
       "media": "YT",
-      "sales": 0,
-      "grossProfit": -53733,
+      "sales": 224000,
+      "grossProfit": 170267,
       "cost": 53733,
-      "cv": 0,
-      "roas": 0,
-      "cpa": 0
+      "cv": 14,
+      "roas": 4.168760352111366,
+      "cpa": 3838.0714285714284
     },
     {
       "date": "2026-07-13",
       "project": "Rintosull 既存店",
       "media": "YT",
-      "sales": 0,
-      "grossProfit": -117550,
+      "sales": 80000,
+      "grossProfit": -37550,
       "cost": 117550,
-      "cv": 0,
-      "roas": 0,
-      "cpa": 0
+      "cv": 5,
+      "roas": 0.680561463207146,
+      "cpa": 23510
     },
     {
       "date": "2026-07-01",
@@ -7876,11 +7887,11 @@
       "project": "東京中央美容外科(クマ取り-L)",
       "media": "Facebook",
       "sales": 132668,
-      "grossProfit": -53957,
-      "cost": 186624,
+      "grossProfit": -35579,
+      "cost": 168246,
       "cv": 6,
-      "roas": 0.7108839163237312,
-      "cpa": 31104
+      "roas": 0.7885358344329138,
+      "cpa": 28041
     },
     {
       "date": "2026-07-01",
