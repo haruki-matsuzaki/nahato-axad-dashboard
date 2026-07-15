@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T08:30:17.912Z",
+  "generatedAt": "2026-07-15T08:37:25.955Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -736,8 +736,16 @@
     {
       "type": "total_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 41,
+      "count": 42,
       "examples": [
+        {
+          "project": "エステティックTBC",
+          "date": "2026-07-04",
+          "metric": "sales",
+          "expected": 2670000,
+          "actual": 2790000,
+          "diff": 120000
+        },
         {
           "project": "MEN'STBC",
           "date": "2026-07-02",
@@ -825,14 +833,6 @@
           "expected": 104000,
           "actual": 65000,
           "diff": -39000
-        },
-        {
-          "project": "トライのオンライン個別指導塾",
-          "date": "2026-07-05",
-          "metric": "sales",
-          "expected": 130000,
-          "actual": 65000,
-          "diff": -65000
         }
       ]
     },
@@ -876,8 +876,17 @@
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 59,
+      "count": 60,
       "examples": [
+        {
+          "project": "エステティックTBC",
+          "media": "TikTok",
+          "date": "2026-07-04",
+          "metric": "sales",
+          "expected": 360000,
+          "actual": 480000,
+          "diff": 120000
+        },
         {
           "project": "イエウール",
           "media": "YT",
@@ -976,15 +985,6 @@
           "expected": 2970000,
           "actual": 1400000,
           "diff": -1570000
-        },
-        {
-          "project": "イエウール",
-          "media": "FB",
-          "date": "2026-07-06",
-          "metric": "sales",
-          "expected": 1360000,
-          "actual": 600000,
-          "diff": -760000
         }
       ]
     },
@@ -2617,8 +2617,16 @@
         {
           "type": "total_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 41,
+          "count": 42,
           "examples": [
+            {
+              "project": "エステティックTBC",
+              "date": "2026-07-04",
+              "metric": "sales",
+              "expected": 2670000,
+              "actual": 2790000,
+              "diff": 120000
+            },
             {
               "project": "MEN'STBC",
               "date": "2026-07-02",
@@ -2706,14 +2714,6 @@
               "expected": 104000,
               "actual": 65000,
               "diff": -39000
-            },
-            {
-              "project": "トライのオンライン個別指導塾",
-              "date": "2026-07-05",
-              "metric": "sales",
-              "expected": 130000,
-              "actual": 65000,
-              "diff": -65000
             }
           ]
         },
@@ -2757,8 +2757,17 @@
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 59,
+          "count": 60,
           "examples": [
+            {
+              "project": "エステティックTBC",
+              "media": "TikTok",
+              "date": "2026-07-04",
+              "metric": "sales",
+              "expected": 360000,
+              "actual": 480000,
+              "diff": 120000
+            },
             {
               "project": "イエウール",
               "media": "YT",
@@ -2857,15 +2866,6 @@
               "expected": 2970000,
               "actual": 1400000,
               "diff": -1570000
-            },
-            {
-              "project": "イエウール",
-              "media": "FB",
-              "date": "2026-07-06",
-              "metric": "sales",
-              "expected": 1360000,
-              "actual": 600000,
-              "diff": -760000
             }
           ]
         },
@@ -2886,9 +2886,9 @@
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
-        "totalValueMismatches": 41,
+        "totalValueMismatches": 42,
         "missingMediaDates": 6,
-        "mediaValueMismatches": 59,
+        "mediaValueMismatches": 60,
         "previousDayRecords": 59,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
@@ -2910,8 +2910,8 @@
     "previousDayProjectCount": 15,
     "comparisonDate": "2026-07-13",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-15T08:30:16.788Z",
-    "overallSalesGeneratedAt": "2026-07-15T08:30:17.620Z",
-    "checkedAt": "2026-07-15T08:30:18.825Z"
+    "detailGeneratedAt": "2026-07-15T08:37:24.439Z",
+    "overallSalesGeneratedAt": "2026-07-15T08:37:25.555Z",
+    "checkedAt": "2026-07-15T08:37:27.227Z"
   }
 }
