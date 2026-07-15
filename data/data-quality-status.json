@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T11:03:31.642Z",
+  "generatedAt": "2026-07-15T03:37:42.661Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -876,7 +876,7 @@
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 58,
+      "count": 59,
       "examples": [
         {
           "project": "イエウール",
@@ -994,7 +994,7 @@
       "count": 1,
       "examples": [
         {
-          "index": 172,
+          "index": 186,
           "project": "DMM 生成AI CAMP",
           "media": "全体",
           "date": "2026-07-18"
@@ -2757,7 +2757,7 @@
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 58,
+          "count": 59,
           "examples": [
             {
               "project": "イエウール",
@@ -2875,7 +2875,7 @@
           "count": 1,
           "examples": [
             {
-              "index": 172,
+              "index": 186,
               "project": "DMM 生成AI CAMP",
               "media": "全体",
               "date": "2026-07-18"
@@ -2888,8 +2888,8 @@
         "missingProjectDates": 0,
         "totalValueMismatches": 41,
         "missingMediaDates": 6,
-        "mediaValueMismatches": 58,
-        "previousDayRecords": 57,
+        "mediaValueMismatches": 59,
+        "previousDayRecords": 59,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 1,
@@ -2901,17 +2901,17 @@
     }
   ],
   "freshness": {
-    "expectedDate": "2026-07-13",
-    "latestDataDate": "2026-07-13",
+    "expectedDate": "2026-07-14",
+    "latestDataDate": "2026-07-14",
     "previousDayHasData": true,
     "detailPreviousDayHasData": true,
     "overallSalesPreviousDayHasData": true,
     "previousDayRecordCount": 15,
     "previousDayProjectCount": 15,
-    "comparisonDate": "2026-07-12",
+    "comparisonDate": "2026-07-13",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-14T11:03:30.347Z",
-    "overallSalesGeneratedAt": "2026-07-14T11:03:31.231Z",
-    "checkedAt": "2026-07-14T11:03:32.994Z"
+    "detailGeneratedAt": "2026-07-15T03:37:40.766Z",
+    "overallSalesGeneratedAt": "2026-07-15T03:37:42.279Z",
+    "checkedAt": "2026-07-15T03:37:43.978Z"
   }
 }
