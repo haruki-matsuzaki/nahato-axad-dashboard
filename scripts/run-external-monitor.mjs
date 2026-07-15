@@ -1,7 +1,7 @@
 import process from "node:process";
-import { runScheduledMonitor } from "../cloudflare/update-monitor.js";
+import { runLocalExternalMonitor } from "../cloudflare/update-monitor.js";
 
-const result = await runScheduledMonitor(process.env);
+const result = await runLocalExternalMonitor(process.env);
 console.log(
   JSON.stringify(
     {
@@ -15,4 +15,4 @@ console.log(
   ),
 );
 
-if (result.status !== "ok") process.exitCode = 1;
+if (!new Set(["ok", "skipped"]).has(result.status)) process.exitCode = 1;

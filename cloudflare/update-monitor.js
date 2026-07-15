@@ -61,10 +61,30 @@ export async function runScheduledMonitor(env, { enforceSchedule = false, now = 
   return health;
 }
 
+export async function runLocalExternalMonitor(env, { now = new Date() } = {}) {
+  if (!isLocalExternalMonitorTime(now)) {
+    return {
+      status: "skipped",
+      checkedAt: now.toISOString(),
+      expectedDate: previousJstDate(now),
+      issues: [],
+      reason: "outside_local_monitor_time",
+    };
+  }
+  return runScheduledMonitor(env, { now });
+}
+
 export function isScheduledMonitorTime(now = new Date()) {
   if (!(now instanceof Date) || Number.isNaN(now.getTime())) return false;
   const jst = new Date(now.getTime() + JST_OFFSET_MS);
   return jst.getUTCMinutes() === 30 && [13, 16, 19].includes(jst.getUTCHours());
+}
+
+export function isLocalExternalMonitorTime(now = new Date()) {
+  if (!(now instanceof Date) || Number.isNaN(now.getTime())) return false;
+  const jst = new Date(now.getTime() + JST_OFFSET_MS);
+  const minutes = jst.getUTCHours() * 60 + jst.getUTCMinutes();
+  return minutes >= 12 * 60 + 30 && minutes <= 20 * 60 + 30;
 }
 
 export async function inspectDataHealth(env, now = new Date()) {

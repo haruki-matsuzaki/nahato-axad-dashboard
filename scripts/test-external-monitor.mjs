@@ -1,5 +1,11 @@
 import assert from "node:assert/strict";
-import { evaluateHealth, isScheduledMonitorTime, runScheduledMonitor } from "../cloudflare/update-monitor.js";
+import {
+  evaluateHealth,
+  isLocalExternalMonitorTime,
+  isScheduledMonitorTime,
+  runLocalExternalMonitor,
+  runScheduledMonitor,
+} from "../cloudflare/update-monitor.js";
 import { buildExternalMonitorAlertMessage } from "./automation-alert-message.mjs";
 
 const now = new Date("2026-07-10T04:30:00.000Z");
@@ -57,6 +63,11 @@ assert.equal(isScheduledMonitorTime(new Date("2026-07-13T19:00:00.000Z")), false
 assert.equal(isScheduledMonitorTime(new Date("2026-07-14T04:30:00.000Z")), true, "13:30 JST must run");
 assert.equal(isScheduledMonitorTime(new Date("2026-07-14T07:30:00.000Z")), true, "16:30 JST must run");
 assert.equal(isScheduledMonitorTime(new Date("2026-07-14T10:30:00.000Z")), true, "19:30 JST must run");
+assert.equal(isLocalExternalMonitorTime(new Date("2026-07-14T15:59:00.000Z")), false, "00:59 JST must be skipped");
+assert.equal(isLocalExternalMonitorTime(new Date("2026-07-14T18:43:00.000Z")), false, "03:43 JST must be skipped");
+assert.equal(isLocalExternalMonitorTime(new Date("2026-07-14T03:30:00.000Z")), true, "12:30 JST must run");
+assert.equal(isLocalExternalMonitorTime(new Date("2026-07-14T11:30:00.000Z")), true, "20:30 JST must run");
+assert.equal(isLocalExternalMonitorTime(new Date("2026-07-14T11:31:00.000Z")), false, "20:31 JST must be skipped");
 
 let fetchCalled = false;
 const originalFetch = globalThis.fetch;
@@ -72,6 +83,22 @@ try {
   assert.equal(skipped.status, "skipped");
   assert.equal(skipped.reason, "outside_scheduled_monitor_time");
   assert.equal(fetchCalled, false, "02:00 JST must not fetch data or send an alert");
+} finally {
+  globalThis.fetch = originalFetch;
+}
+
+fetchCalled = false;
+globalThis.fetch = async () => {
+  fetchCalled = true;
+  throw new Error("fetch must not be called by an out-of-hours local monitor");
+};
+try {
+  for (const now of [new Date("2026-07-14T15:59:00.000Z"), new Date("2026-07-14T18:43:00.000Z")]) {
+    const skipped = await runLocalExternalMonitor({}, { now });
+    assert.equal(skipped.status, "skipped");
+    assert.equal(skipped.reason, "outside_local_monitor_time");
+  }
+  assert.equal(fetchCalled, false, "00:59 and 03:43 JST must not fetch data or send an alert");
 } finally {
   globalThis.fetch = originalFetch;
 }
