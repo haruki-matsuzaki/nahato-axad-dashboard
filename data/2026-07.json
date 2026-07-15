@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-15T03:37:40.766Z",
+    "generatedAt": "2026-07-15T05:26:40.932Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -15,7 +15,7 @@
         "skippedProjectBlocks": 16,
         "missingDateBlocks": 1,
         "missingRequiredBlocks": 0,
-        "records": 600
+        "records": 599
       },
       "total": {
         "candidateBlocks": 48,
@@ -24,7 +24,7 @@
         "skippedProjectBlocks": 0,
         "missingDateBlocks": 0,
         "missingRequiredBlocks": 0,
-        "records": 200
+        "records": 199
       }
     }
   },
@@ -824,12 +824,12 @@
       "date": "2026-07-14",
       "project": "カーブス",
       "media": "全体",
-      "sales": 3489000,
-      "grossProfit": 754076,
+      "sales": 3600000,
+      "grossProfit": 865076,
       "cost": 2734924,
-      "cv": 119,
-      "roas": 1.2757210072382268,
-      "cpa": 22982.55462184874
+      "cv": 123,
+      "roas": 1.316307144183897,
+      "cpa": 22235.154471544716
     },
     {
       "date": "2026-07-01",
@@ -2078,23 +2078,12 @@
       "date": "2026-07-14",
       "project": "イエウール",
       "media": "全体",
-      "sales": 1420000,
-      "grossProfit": 200562,
+      "sales": 1430000,
+      "grossProfit": 210562,
       "cost": 1219438,
-      "cv": 142,
-      "roas": 1.1644708464062954,
-      "cpa": 8587.591549295774
-    },
-    {
-      "date": "2026-07-15",
-      "project": "イエウール",
-      "media": "全体",
-      "sales": 50000,
-      "grossProfit": 50000,
-      "cost": 0,
-      "cv": 5,
-      "roas": 0,
-      "cpa": 0
+      "cv": 143,
+      "roas": 1.1726713453246496,
+      "cpa": 8527.538461538461
     },
     {
       "date": "2026-07-18",
@@ -2573,12 +2562,12 @@
       "date": "2026-07-14",
       "project": "カーブス",
       "media": "Facebook",
-      "sales": 1590000,
-      "grossProfit": 326244,
+      "sales": 1620000,
+      "grossProfit": 356244,
       "cost": 1263756,
-      "cv": 55,
-      "roas": 1.2581542639560168,
-      "cpa": 22977.381818181817
+      "cv": 56,
+      "roas": 1.2818930236533002,
+      "cpa": 22567.071428571428
     },
     {
       "date": "2026-07-01",
@@ -3046,12 +3035,12 @@
       "date": "2026-07-14",
       "project": "カーブス",
       "media": "TikTok",
-      "sales": 279000,
-      "grossProfit": 56413,
+      "sales": 360000,
+      "grossProfit": 137413,
       "cost": 222587,
-      "cv": 10,
-      "roas": 1.2534424741786359,
-      "cpa": 22258.7
+      "cv": 13,
+      "roas": 1.6173451279724333,
+      "cpa": 17122.076923076922
     },
     {
       "date": "2026-07-01",
@@ -5631,23 +5620,12 @@
       "date": "2026-07-14",
       "project": "イエウール",
       "media": "Facebook",
-      "sales": 650000,
-      "grossProfit": 23972,
+      "sales": 660000,
+      "grossProfit": 33972,
       "cost": 626028,
-      "cv": 65,
-      "roas": 1.0382922169615416,
-      "cpa": 9631.2
-    },
-    {
-      "date": "2026-07-15",
-      "project": "イエウール",
-      "media": "Facebook",
-      "sales": 50000,
-      "grossProfit": 50000,
-      "cost": 0,
-      "cv": 5,
-      "roas": 0,
-      "cpa": 0
+      "cv": 66,
+      "roas": 1.0542659433763346,
+      "cpa": 9485.272727272728
     },
     {
       "date": "2026-07-01",

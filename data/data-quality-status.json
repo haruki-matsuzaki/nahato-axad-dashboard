@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T03:37:42.661Z",
+  "generatedAt": "2026-07-15T05:26:42.597Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -994,7 +994,7 @@
       "count": 1,
       "examples": [
         {
-          "index": 186,
+          "index": 185,
           "project": "DMM 生成AI CAMP",
           "media": "全体",
           "date": "2026-07-18"
@@ -2875,7 +2875,7 @@
           "count": 1,
           "examples": [
             {
-              "index": 186,
+              "index": 185,
               "project": "DMM 生成AI CAMP",
               "media": "全体",
               "date": "2026-07-18"
@@ -2910,8 +2910,8 @@
     "previousDayProjectCount": 15,
     "comparisonDate": "2026-07-13",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-15T03:37:40.766Z",
-    "overallSalesGeneratedAt": "2026-07-15T03:37:42.279Z",
-    "checkedAt": "2026-07-15T03:37:43.978Z"
+    "detailGeneratedAt": "2026-07-15T05:26:40.932Z",
+    "overallSalesGeneratedAt": "2026-07-15T05:26:42.159Z",
+    "checkedAt": "2026-07-15T05:26:43.957Z"
   }
 }
