@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T04:23:18.354Z",
+  "generatedAt": "2026-07-16T05:35:51.682Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -736,7 +736,7 @@
     {
       "type": "total_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 50,
+      "count": 44,
       "examples": [
         {
           "project": "エステティックTBC",
@@ -876,7 +876,7 @@
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 69,
+      "count": 63,
       "examples": [
         {
           "project": "エステティックTBC",
@@ -2617,7 +2617,7 @@
         {
           "type": "total_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 50,
+          "count": 44,
           "examples": [
             {
               "project": "エステティックTBC",
@@ -2757,7 +2757,7 @@
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 69,
+          "count": 63,
           "examples": [
             {
               "project": "エステティックTBC",
@@ -2886,10 +2886,10 @@
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
-        "totalValueMismatches": 50,
+        "totalValueMismatches": 44,
         "missingMediaDates": 6,
-        "mediaValueMismatches": 69,
-        "previousDayRecords": 60,
+        "mediaValueMismatches": 63,
+        "previousDayRecords": 61,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 1,
@@ -2910,8 +2910,8 @@
     "previousDayProjectCount": 15,
     "comparisonDate": "2026-07-14",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-16T04:23:16.648Z",
-    "overallSalesGeneratedAt": "2026-07-16T04:23:17.944Z",
-    "checkedAt": "2026-07-16T04:23:19.638Z"
+    "detailGeneratedAt": "2026-07-16T05:35:50.249Z",
+    "overallSalesGeneratedAt": "2026-07-16T05:35:51.390Z",
+    "checkedAt": "2026-07-16T05:35:52.608Z"
   }
 }
