@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T11:09:25.964Z",
+  "generatedAt": "2026-07-16T04:23:18.354Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -736,7 +736,7 @@
     {
       "type": "total_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 42,
+      "count": 50,
       "examples": [
         {
           "project": "エステティックTBC",
@@ -876,7 +876,7 @@
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 60,
+      "count": 69,
       "examples": [
         {
           "project": "エステティックTBC",
@@ -994,7 +994,7 @@
       "count": 1,
       "examples": [
         {
-          "index": 185,
+          "index": 198,
           "project": "DMM 生成AI CAMP",
           "media": "全体",
           "date": "2026-07-18"
@@ -2617,7 +2617,7 @@
         {
           "type": "total_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 42,
+          "count": 50,
           "examples": [
             {
               "project": "エステティックTBC",
@@ -2757,7 +2757,7 @@
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 60,
+          "count": 69,
           "examples": [
             {
               "project": "エステティックTBC",
@@ -2875,7 +2875,7 @@
           "count": 1,
           "examples": [
             {
-              "index": 185,
+              "index": 198,
               "project": "DMM 生成AI CAMP",
               "media": "全体",
               "date": "2026-07-18"
@@ -2886,10 +2886,10 @@
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
-        "totalValueMismatches": 42,
+        "totalValueMismatches": 50,
         "missingMediaDates": 6,
-        "mediaValueMismatches": 60,
-        "previousDayRecords": 59,
+        "mediaValueMismatches": 69,
+        "previousDayRecords": 60,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 1,
@@ -2901,17 +2901,17 @@
     }
   ],
   "freshness": {
-    "expectedDate": "2026-07-14",
-    "latestDataDate": "2026-07-14",
+    "expectedDate": "2026-07-15",
+    "latestDataDate": "2026-07-15",
     "previousDayHasData": true,
     "detailPreviousDayHasData": true,
     "overallSalesPreviousDayHasData": true,
     "previousDayRecordCount": 15,
     "previousDayProjectCount": 15,
-    "comparisonDate": "2026-07-13",
+    "comparisonDate": "2026-07-14",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-15T11:09:24.835Z",
-    "overallSalesGeneratedAt": "2026-07-15T11:09:25.542Z",
-    "checkedAt": "2026-07-15T11:09:27.338Z"
+    "detailGeneratedAt": "2026-07-16T04:23:16.648Z",
+    "overallSalesGeneratedAt": "2026-07-16T04:23:17.944Z",
+    "checkedAt": "2026-07-16T04:23:19.638Z"
   }
 }
