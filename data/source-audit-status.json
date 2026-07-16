@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-16T08:29:09.705Z",
+  "generatedAt": "2026-07-16T08:36:40.735Z",
   "status": "ok",
   "latestMonth": "2026-07",
   "entries": [
     {
-      "generatedAt": "2026-07-16T08:29:09.705Z",
+      "generatedAt": "2026-07-16T08:36:40.735Z",
       "status": "ok",
       "month": "2026-07",
       "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
@@ -12,8 +12,8 @@
         "detail": "◆案件/媒体別日次_全体",
         "total": "◆案件別日次_全体_固定用"
       },
-      "sourceFingerprint": "269c2725ee593ea043fd2ab62ae23c0442fccae9d036bd51557c5c802a2dde71",
-      "generatedFingerprint": "269c2725ee593ea043fd2ab62ae23c0442fccae9d036bd51557c5c802a2dde71",
+      "sourceFingerprint": "62eae7e58026faf5b1427bbee43b0c9820357eacd5d1f29641ed46698f8c6d4c",
+      "generatedFingerprint": "62eae7e58026faf5b1427bbee43b0c9820357eacd5d1f29641ed46698f8c6d4c",
       "summary": {
         "sourceProjects": 17,
         "generatedProjects": 17,

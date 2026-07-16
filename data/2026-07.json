@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-16T08:29:08.970Z",
+    "generatedAt": "2026-07-16T08:36:39.891Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -879,12 +879,12 @@
       "date": "2026-07-15",
       "project": "カーブス",
       "media": "全体",
-      "sales": 2430000,
-      "grossProfit": 357358,
-      "cost": 2072642,
-      "cv": 81,
-      "roas": 1.1724166546851795,
-      "cpa": 25588.172839506173
+      "sales": 2948000,
+      "grossProfit": 449358,
+      "cost": 2498642,
+      "cv": 99,
+      "roas": 1.1798408895712151,
+      "cpa": 25238.80808080808
     },
     {
       "date": "2026-07-01",
