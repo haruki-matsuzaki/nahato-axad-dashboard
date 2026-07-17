@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-17T10:29:21.773Z",
+    "generatedAt": "2026-07-17T10:55:50.332Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -1111,11 +1111,11 @@
       "project": "Rintosull 既存店",
       "media": "全体",
       "sales": 1248000,
-      "grossProfit": 147996,
-      "cost": 1100004,
+      "grossProfit": 136177,
+      "cost": 1111823,
       "cv": 78,
-      "roas": 1.134541328940622,
-      "cpa": 14102.615384615385
+      "roas": 1.1224808265344395,
+      "cpa": 14254.141025641025
     },
     {
       "date": "2026-07-04",
