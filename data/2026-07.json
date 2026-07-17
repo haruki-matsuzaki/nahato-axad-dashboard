@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-17T04:19:56.033Z",
+    "generatedAt": "2026-07-17T05:37:34.438Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -758,12 +758,12 @@
       "date": "2026-07-16",
       "project": "LAVA",
       "media": "全体",
-      "sales": 1936000,
-      "grossProfit": 311385,
+      "sales": 1952000,
+      "grossProfit": 327385,
       "cost": 1624615,
-      "cv": 121,
-      "roas": 1.191666948784789,
-      "cpa": 13426.570247933885
+      "cv": 122,
+      "roas": 1.2015154359648286,
+      "cpa": 13316.516393442624
     },
     {
       "date": "2026-07-01",
@@ -5048,12 +5048,12 @@
       "date": "2026-07-16",
       "project": "LAVA",
       "media": "YtoL",
-      "sales": 16000,
-      "grossProfit": -16274,
+      "sales": 32000,
+      "grossProfit": -274,
       "cost": 32274,
-      "cv": 1,
-      "roas": 0.49575509698209086,
-      "cpa": 32274
+      "cv": 2,
+      "roas": 0.9915101939641817,
+      "cpa": 16137
     },
     {
       "date": "2026-07-01",
