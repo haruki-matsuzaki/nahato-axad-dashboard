@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T11:03:34.898Z",
+  "generatedAt": "2026-07-18T03:23:55.171Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -7,7 +7,7 @@
     "monthsWithErrors": 0,
     "monthsWithWarnings": 5,
     "errorCount": 0,
-    "warningCount": 15
+    "warningCount": 14
   },
   "errors": [],
   "warnings": [
@@ -736,7 +736,7 @@
     {
       "type": "total_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 50,
+      "count": 56,
       "examples": [
         {
           "project": "エステティックTBC",
@@ -876,7 +876,7 @@
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 67,
+      "count": 84,
       "examples": [
         {
           "project": "エステティックTBC",
@@ -985,19 +985,6 @@
           "expected": 2970000,
           "actual": 1400000,
           "diff": -1570000
-        }
-      ]
-    },
-    {
-      "type": "future_date",
-      "message": "2026-07: future-dated records found",
-      "count": 1,
-      "examples": [
-        {
-          "index": 213,
-          "project": "DMM 生成AI CAMP",
-          "media": "全体",
-          "date": "2026-07-18"
         }
       ]
     }
@@ -2617,7 +2604,7 @@
         {
           "type": "total_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 50,
+          "count": 56,
           "examples": [
             {
               "project": "エステティックTBC",
@@ -2757,7 +2744,7 @@
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 67,
+          "count": 84,
           "examples": [
             {
               "project": "エステティックTBC",
@@ -2868,31 +2855,18 @@
               "diff": -1570000
             }
           ]
-        },
-        {
-          "type": "future_date",
-          "message": "2026-07: future-dated records found",
-          "count": 1,
-          "examples": [
-            {
-              "index": 213,
-              "project": "DMM 生成AI CAMP",
-              "media": "全体",
-              "date": "2026-07-18"
-            }
-          ]
         }
       ],
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
-        "totalValueMismatches": 50,
+        "totalValueMismatches": 56,
         "missingMediaDates": 6,
-        "mediaValueMismatches": 67,
-        "previousDayRecords": 60,
+        "mediaValueMismatches": 84,
+        "previousDayRecords": 56,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
-        "futureDates": 1,
+        "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0,
@@ -2901,17 +2875,17 @@
     }
   ],
   "freshness": {
-    "expectedDate": "2026-07-16",
-    "latestDataDate": "2026-07-16",
+    "expectedDate": "2026-07-17",
+    "latestDataDate": "2026-07-17",
     "previousDayHasData": true,
     "detailPreviousDayHasData": true,
     "overallSalesPreviousDayHasData": true,
     "previousDayRecordCount": 15,
     "previousDayProjectCount": 15,
-    "comparisonDate": "2026-07-15",
-    "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-17T11:03:33.477Z",
-    "overallSalesGeneratedAt": "2026-07-17T11:03:34.461Z",
-    "checkedAt": "2026-07-17T11:03:36.263Z"
+    "comparisonDate": "2026-07-16",
+    "comparisonProjectCount": 14,
+    "detailGeneratedAt": "2026-07-18T03:23:52.818Z",
+    "overallSalesGeneratedAt": "2026-07-18T03:23:54.750Z",
+    "checkedAt": "2026-07-18T03:23:56.537Z"
   }
 }
