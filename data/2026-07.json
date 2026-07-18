@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-18T05:45:03.865Z",
+    "generatedAt": "2026-07-18T07:18:26.598Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -2529,12 +2529,12 @@
       "date": "2026-07-17",
       "project": "イエウール",
       "media": "全体",
-      "sales": 1050000,
-      "grossProfit": -90794,
+      "sales": 1210000,
+      "grossProfit": 69206,
       "cost": 1140794,
-      "cv": 105,
-      "roas": 0.920411572992144,
-      "cpa": 10864.704761904763
+      "cv": 121,
+      "roas": 1.0606647650671375,
+      "cpa": 9428.049586776859
     },
     {
       "date": "2026-07-18",
@@ -7325,12 +7325,12 @@
       "date": "2026-07-17",
       "project": "イエウール",
       "media": "X",
-      "sales": 0,
-      "grossProfit": -81211,
+      "sales": 160000,
+      "grossProfit": 78789,
       "cost": 81211,
-      "cv": 0,
-      "roas": 0,
-      "cpa": 0
+      "cv": 16,
+      "roas": 1.970176453928655,
+      "cpa": 5075.6875
     },
     {
       "date": "2026-07-01",
