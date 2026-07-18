@@ -1,6 +1,97 @@
 {
-  "generatedAt": "2026-07-18T10:26:52.057Z",
+  "generatedAt": "2026-07-18T10:41:44.083Z",
   "entries": [
+    {
+      "checkedAt": "2026-07-18T10:41:44.083Z",
+      "failed": false,
+      "skippedReason": null,
+      "fatalError": null,
+      "targets": [
+        {
+          "month": "2026-07",
+          "reason": "daily_previous_day",
+          "required": true
+        }
+      ],
+      "results": [
+        {
+          "month": "2026-07",
+          "reason": "daily_previous_day",
+          "status": "ok",
+          "required": true,
+          "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+          "title": "AD_総合売上管理表_2026年07月",
+          "message": null,
+          "overallSalesSync": {
+            "status": "ok",
+            "out": "data/overall-sales-2026-07.json",
+            "rows": 53,
+            "updatedCells": 2696,
+            "verification": {
+              "checkedCells": 2696,
+              "mismatches": 0
+            },
+            "structure": {
+              "metricCounts": {
+                "売上": 1,
+                "粗利": 1,
+                "消化金額": 1,
+                "ROAS": 2
+              },
+              "dateHeaders": 32,
+              "totalHeaders": 2
+            }
+          },
+          "sourceAudit": {
+            "generatedAt": "2026-07-18T10:41:43.133Z",
+            "status": "ok",
+            "month": "2026-07",
+            "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+            "sheets": {
+              "detail": "◆案件/媒体別日次_全体",
+              "total": "◆案件別日次_全体_固定用"
+            },
+            "sourceFingerprint": "46bfee889aaa60f6c972d0af7291fb4e8f9ebe212f3f34235da4c25d89c5ea2d",
+            "generatedFingerprint": "46bfee889aaa60f6c972d0af7291fb4e8f9ebe212f3f34235da4c25d89c5ea2d",
+            "summary": {
+              "sourceProjects": 16,
+              "generatedProjects": 16,
+              "sourceKeys": 962,
+              "generatedKeys": 962,
+              "verifiedMetrics": 3848,
+              "missingKeys": 0,
+              "extraKeys": 0,
+              "valueMismatches": 0,
+              "structureIssues": 0,
+              "detailBlocks": 305,
+              "totalBlocks": 47
+            },
+            "issues": {
+              "missing": [],
+              "extra": [],
+              "mismatches": [],
+              "structure": []
+            }
+          },
+          "sourceValidation": {
+            "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+            "title": "AD_総合売上管理表_2026年07月",
+            "titleMonth": "2026-07",
+            "requiredSheets": [
+              "◆案件/媒体別日次_全体",
+              "◆案件別日次_全体_固定用"
+            ],
+            "sourceLabel": "ナハト売上表!14:6"
+          },
+          "data": {
+            "records": 962,
+            "projects": 16,
+            "media": 8,
+            "generatedAt": "2026-07-18T10:41:42.325Z"
+          }
+        }
+      ]
+    },
     {
       "checkedAt": "2026-07-18T10:26:52.057Z",
       "failed": false,
@@ -7808,97 +7899,6 @@
             "projects": 17,
             "media": 8,
             "generatedAt": "2026-07-13T06:39:25.378Z"
-          }
-        }
-      ]
-    },
-    {
-      "checkedAt": "2026-07-13T06:38:15.376Z",
-      "failed": false,
-      "skippedReason": null,
-      "fatalError": null,
-      "targets": [
-        {
-          "month": "2026-07",
-          "reason": "daily_previous_day",
-          "required": true
-        }
-      ],
-      "results": [
-        {
-          "month": "2026-07",
-          "reason": "daily_previous_day",
-          "status": "ok",
-          "required": true,
-          "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
-          "title": "AD_総合売上管理表_2026年07月",
-          "message": null,
-          "overallSalesSync": {
-            "status": "ok",
-            "out": "data/overall-sales-2026-07.json",
-            "rows": 53,
-            "updatedCells": 2696,
-            "verification": {
-              "checkedCells": 2696,
-              "mismatches": 0
-            },
-            "structure": {
-              "metricCounts": {
-                "売上": 1,
-                "粗利": 1,
-                "消化金額": 1,
-                "ROAS": 2
-              },
-              "dateHeaders": 32,
-              "totalHeaders": 2
-            }
-          },
-          "sourceAudit": {
-            "generatedAt": "2026-07-13T06:38:14.743Z",
-            "status": "ok",
-            "month": "2026-07",
-            "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
-            "sheets": {
-              "detail": "◆案件/媒体別日次_全体",
-              "total": "◆案件別日次_全体_固定用"
-            },
-            "sourceFingerprint": "6f2896703f99e170fa705e1d6e6f5b2c9f7ded0179579b5bb0aefd1994733372",
-            "generatedFingerprint": "6f2896703f99e170fa705e1d6e6f5b2c9f7ded0179579b5bb0aefd1994733372",
-            "summary": {
-              "sourceProjects": 17,
-              "generatedProjects": 17,
-              "sourceKeys": 691,
-              "generatedKeys": 691,
-              "verifiedMetrics": 2764,
-              "missingKeys": 0,
-              "extraKeys": 0,
-              "valueMismatches": 0,
-              "structureIssues": 0,
-              "detailBlocks": 305,
-              "totalBlocks": 47
-            },
-            "issues": {
-              "missing": [],
-              "extra": [],
-              "mismatches": [],
-              "structure": []
-            }
-          },
-          "sourceValidation": {
-            "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
-            "title": "AD_総合売上管理表_2026年07月",
-            "titleMonth": "2026-07",
-            "requiredSheets": [
-              "◆案件/媒体別日次_全体",
-              "◆案件別日次_全体_固定用"
-            ],
-            "sourceLabel": "ナハト売上表!14:6"
-          },
-          "data": {
-            "records": 691,
-            "projects": 17,
-            "media": 8,
-            "generatedAt": "2026-07-13T06:38:13.909Z"
           }
         }
       ]
