@@ -1,6 +1,97 @@
 {
-  "generatedAt": "2026-07-19T04:38:35.960Z",
+  "generatedAt": "2026-07-19T05:47:44.178Z",
   "entries": [
+    {
+      "checkedAt": "2026-07-19T05:47:44.178Z",
+      "failed": false,
+      "skippedReason": null,
+      "fatalError": null,
+      "targets": [
+        {
+          "month": "2026-07",
+          "reason": "daily_previous_day",
+          "required": true
+        }
+      ],
+      "results": [
+        {
+          "month": "2026-07",
+          "reason": "daily_previous_day",
+          "status": "ok",
+          "required": true,
+          "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+          "title": "AD_総合売上管理表_2026年07月",
+          "message": null,
+          "overallSalesSync": {
+            "status": "ok",
+            "out": "data/overall-sales-2026-07.json",
+            "rows": 53,
+            "updatedCells": 2696,
+            "verification": {
+              "checkedCells": 2696,
+              "mismatches": 0
+            },
+            "structure": {
+              "metricCounts": {
+                "売上": 1,
+                "粗利": 1,
+                "消化金額": 1,
+                "ROAS": 2
+              },
+              "dateHeaders": 32,
+              "totalHeaders": 2
+            }
+          },
+          "sourceAudit": {
+            "generatedAt": "2026-07-19T05:47:43.167Z",
+            "status": "ok",
+            "month": "2026-07",
+            "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+            "sheets": {
+              "detail": "◆案件/媒体別日次_全体",
+              "total": "◆案件別日次_全体_固定用"
+            },
+            "sourceFingerprint": "997c7098212b37b0aa49856e26863b591d498a58133dcd070ace4cee6fb7f752",
+            "generatedFingerprint": "997c7098212b37b0aa49856e26863b591d498a58133dcd070ace4cee6fb7f752",
+            "summary": {
+              "sourceProjects": 17,
+              "generatedProjects": 17,
+              "sourceKeys": 1049,
+              "generatedKeys": 1049,
+              "verifiedMetrics": 4196,
+              "missingKeys": 0,
+              "extraKeys": 0,
+              "valueMismatches": 0,
+              "structureIssues": 0,
+              "detailBlocks": 305,
+              "totalBlocks": 47
+            },
+            "issues": {
+              "missing": [],
+              "extra": [],
+              "mismatches": [],
+              "structure": []
+            }
+          },
+          "sourceValidation": {
+            "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+            "title": "AD_総合売上管理表_2026年07月",
+            "titleMonth": "2026-07",
+            "requiredSheets": [
+              "◆案件/媒体別日次_全体",
+              "◆案件別日次_全体_固定用"
+            ],
+            "sourceLabel": "ナハト売上表!14:6"
+          },
+          "data": {
+            "records": 1049,
+            "projects": 17,
+            "media": 8,
+            "generatedAt": "2026-07-19T05:47:42.296Z"
+          }
+        }
+      ]
+    },
     {
       "checkedAt": "2026-07-19T04:38:35.960Z",
       "failed": false,
@@ -7808,39 +7899,6 @@
             "projects": 17,
             "media": 8,
             "generatedAt": "2026-07-13T09:55:02.173Z"
-          }
-        }
-      ]
-    },
-    {
-      "checkedAt": "2026-07-13T09:48:51.224Z",
-      "failed": true,
-      "skippedReason": null,
-      "fatalError": null,
-      "targets": [
-        {
-          "month": "2026-07",
-          "reason": "daily_previous_day",
-          "required": true
-        }
-      ],
-      "results": [
-        {
-          "month": "2026-07",
-          "reason": "daily_previous_day",
-          "status": "error",
-          "required": true,
-          "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
-          "title": "AD_総合売上管理表_2026年07月",
-          "message": "Google Sheets metadata 1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ failed: 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:302868962431'.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"RATE_LIMIT_EXCEEDED\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"quota_metric\": \"sheets.googleapis.com/read_requests\",\n          \"quota_limit\": \"ReadRequestsPerMinutePerUser\",\n          \"quota_location\": \"global\",\n          \"service\": \"sheets.googleapis.com\",\n          \"quota_limit_value\": \"60\",\n          \"quota_unit\": \"1/min/{project}/{user}\",\n          \"consumer\": \"projects/302868962431\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Request a higher quota limit.\",\n            \"url\": \"https://cloud.google.com/docs/quotas/help/request_increase\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
-          "overallSalesSync": null,
-          "sourceAudit": null,
-          "sourceValidation": null,
-          "data": {
-            "records": 692,
-            "projects": 17,
-            "media": 8,
-            "generatedAt": "2026-07-13T09:44:43.461Z"
           }
         }
       ]
