@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T10:51:30.420Z",
+  "generatedAt": "2026-07-19T04:38:36.319Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -736,7 +736,7 @@
     {
       "type": "total_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 44,
+      "count": 51,
       "examples": [
         {
           "project": "エステティックTBC",
@@ -839,7 +839,7 @@
     {
       "type": "missing_media_date",
       "message": "2026-07: expected business sales key missing from detail data",
-      "count": 6,
+      "count": 7,
       "examples": [
         {
           "project": "DIO医療ダイエットクリニック",
@@ -870,13 +870,18 @@
           "project": "DIO医療ダイエットクリニック",
           "media": "TikTok",
           "date": "2026-07-06"
+        },
+        {
+          "project": "AGAスキンクリニック",
+          "media": "YT",
+          "date": "2026-07-03"
         }
       ]
     },
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 62,
+      "count": 68,
       "examples": [
         {
           "project": "エステティックTBC",
@@ -2604,7 +2609,7 @@
         {
           "type": "total_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 44,
+          "count": 51,
           "examples": [
             {
               "project": "エステティックTBC",
@@ -2707,7 +2712,7 @@
         {
           "type": "missing_media_date",
           "message": "2026-07: expected business sales key missing from detail data",
-          "count": 6,
+          "count": 7,
           "examples": [
             {
               "project": "DIO医療ダイエットクリニック",
@@ -2738,13 +2743,18 @@
               "project": "DIO医療ダイエットクリニック",
               "media": "TikTok",
               "date": "2026-07-06"
+            },
+            {
+              "project": "AGAスキンクリニック",
+              "media": "YT",
+              "date": "2026-07-03"
             }
           ]
         },
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 62,
+          "count": 68,
           "examples": [
             {
               "project": "エステティックTBC",
@@ -2860,10 +2870,10 @@
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
-        "totalValueMismatches": 44,
-        "missingMediaDates": 6,
-        "mediaValueMismatches": 62,
-        "previousDayRecords": 58,
+        "totalValueMismatches": 51,
+        "missingMediaDates": 7,
+        "mediaValueMismatches": 68,
+        "previousDayRecords": 59,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 0,
@@ -2875,17 +2885,17 @@
     }
   ],
   "freshness": {
-    "expectedDate": "2026-07-17",
-    "latestDataDate": "2026-07-17",
+    "expectedDate": "2026-07-18",
+    "latestDataDate": "2026-07-18",
     "previousDayHasData": true,
     "detailPreviousDayHasData": true,
     "overallSalesPreviousDayHasData": true,
-    "previousDayRecordCount": 14,
-    "previousDayProjectCount": 14,
-    "comparisonDate": "2026-07-16",
-    "comparisonProjectCount": 14,
-    "detailGeneratedAt": "2026-07-18T10:51:28.503Z",
-    "overallSalesGeneratedAt": "2026-07-18T10:51:29.948Z",
-    "checkedAt": "2026-07-18T10:51:31.883Z"
+    "previousDayRecordCount": 16,
+    "previousDayProjectCount": 16,
+    "comparisonDate": "2026-07-17",
+    "comparisonProjectCount": 15,
+    "detailGeneratedAt": "2026-07-19T04:38:34.887Z",
+    "overallSalesGeneratedAt": "2026-07-19T04:38:35.951Z",
+    "checkedAt": "2026-07-19T04:38:37.546Z"
   }
 }
