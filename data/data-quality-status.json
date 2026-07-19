@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T08:45:22.615Z",
+  "generatedAt": "2026-07-19T10:18:57.395Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -736,7 +736,7 @@
     {
       "type": "total_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 51,
+      "count": 52,
       "examples": [
         {
           "project": "エステティックTBC",
@@ -881,7 +881,7 @@
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 68,
+      "count": 69,
       "examples": [
         {
           "project": "エステティックTBC",
@@ -2609,7 +2609,7 @@
         {
           "type": "total_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 51,
+          "count": 52,
           "examples": [
             {
               "project": "エステティックTBC",
@@ -2754,7 +2754,7 @@
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 68,
+          "count": 69,
           "examples": [
             {
               "project": "エステティックTBC",
@@ -2870,9 +2870,9 @@
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
-        "totalValueMismatches": 51,
+        "totalValueMismatches": 52,
         "missingMediaDates": 7,
-        "mediaValueMismatches": 68,
+        "mediaValueMismatches": 69,
         "previousDayRecords": 57,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
@@ -2894,8 +2894,8 @@
     "previousDayProjectCount": 16,
     "comparisonDate": "2026-07-17",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-19T08:45:21.067Z",
-    "overallSalesGeneratedAt": "2026-07-19T08:45:22.178Z",
-    "checkedAt": "2026-07-19T08:45:23.992Z"
+    "detailGeneratedAt": "2026-07-19T10:18:55.846Z",
+    "overallSalesGeneratedAt": "2026-07-19T10:18:57.053Z",
+    "checkedAt": "2026-07-19T10:18:58.473Z"
   }
 }
