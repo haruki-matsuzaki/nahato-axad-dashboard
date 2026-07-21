@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { getGoogleAccessToken } from "./google-auth.mjs";
+import { createFetchWithRetry } from "./fetch-with-retry.mjs";
 import { assertRangeCoverage, DYNAMIC_SHEET_RANGE } from "./sheet-source-guard.mjs";
 
 const DEFAULT_SPREADSHEET_ID = "1zMzWe0dg3dOrhRWJ6X7a6vIRhrLh9TYTKV9bzcXuefY";
@@ -11,6 +12,7 @@ const DEFAULT_RANGE = DYNAMIC_SHEET_RANGE;
 const DEFAULT_MONTH = "2026-06";
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 45_000);
 const DEFAULT_SAFE_MAX_ROWS = 3000;
+const fetchWithTimeout = createFetchWithRetry({ timeoutMs: FETCH_TIMEOUT_MS });
 
 const args = parseArgs(process.argv.slice(2));
 
@@ -342,24 +344,6 @@ async function fetchSheetValues(config) {
     safeMaxRows: config.safeMaxRows,
   });
   return values;
-}
-
-async function fetchWithTimeout(url, options = {}) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-  try {
-    return await fetch(url, {
-      ...options,
-      signal: controller.signal,
-    });
-  } catch (error) {
-    if (error?.name === "AbortError") {
-      throw new Error(`Fetch timed out after ${FETCH_TIMEOUT_MS}ms: ${String(url)}`);
-    }
-    throw error;
-  } finally {
-    clearTimeout(timeout);
-  }
 }
 
 async function writeIndex(indexPath, parsed, defaultMonth) {

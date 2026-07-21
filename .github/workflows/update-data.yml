@@ -5,20 +5,10 @@ on:
     paths:
       - "data/update-trigger.json"
   schedule:
-    # Primary: 12:00 / 15:00 / 18:00 JST
+    # Primary: 12:00 / 15:00 / 18:00 JST. The monitor workflow handles missed runs.
     - cron: "0 3 * * *"
     - cron: "0 6 * * *"
     - cron: "0 9 * * *"
-    # Backup: GitHub Actions scheduled jobs can be delayed or dropped at :00.
-    - cron: "7 3 * * *"
-    - cron: "7 6 * * *"
-    - cron: "7 9 * * *"
-    - cron: "17 3 * * *"
-    - cron: "17 6 * * *"
-    - cron: "17 9 * * *"
-    - cron: "27 3 * * *"
-    - cron: "27 6 * * *"
-    - cron: "27 9 * * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -43,6 +33,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
+  actions: read
   contents: write
 
 jobs:
@@ -200,8 +191,18 @@ jobs:
           PRODUCTION_CHECK_REQUIRE_200: ${{ secrets.PRODUCTION_CHECK_REQUIRE_200 }}
         run: node scripts/check-production-site.mjs
 
-      - name: Send failure Chatwork alert
+      - name: Check whether failure alert is still needed
+        id: failure-alert-guard
         if: always() && (steps.automation-secrets.outcome == 'failure' || steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure' || steps.cloudflare-deploy.outcome == 'failure' || steps.production-site.outcome == 'failure')
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CURRENT_RUN_ID: ${{ github.run_id }}
+          UPDATE_WORKFLOW_FILE: update-data.yml
+        run: node scripts/check-superseding-update-run.mjs
+
+      - name: Send failure Chatwork alert
+        if: always() && (steps.automation-secrets.outcome == 'failure' || steps.fetch-data.outcome == 'failure' || steps.validate-data.outcome == 'failure' || steps.cloudflare-deploy.outcome == 'failure' || steps.production-site.outcome == 'failure') && steps.failure-alert-guard.outputs.send_alert != 'false'
         env:
           ALERT_REASON: update_failed
           ALERT_STEP_AUTOMATION_SECRETS: ${{ steps.automation-secrets.outcome }}

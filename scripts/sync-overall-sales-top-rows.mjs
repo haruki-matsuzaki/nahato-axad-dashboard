@@ -2,11 +2,13 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { pathToFileURL } from "node:url";
+import { createFetchWithRetry } from "./fetch-with-retry.mjs";
 import { getGoogleAccessToken } from "./google-auth.mjs";
 
 const DEFAULT_SHEET_NAME = "◆全体売上表";
 const DEFAULT_RANGE = "A3:ZZ55";
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 45_000);
+const defaultFetchWithTimeout = createFetchWithRetry({ timeoutMs: FETCH_TIMEOUT_MS });
 
 export async function syncOverallSalesTopRows({
   month,
@@ -250,24 +252,6 @@ async function readOptionalFile(filePath) {
 async function writeJson(filePath, value) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
   await fs.writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`);
-}
-
-async function defaultFetchWithTimeout(url, options = {}) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-  try {
-    return await fetch(url, {
-      ...options,
-      signal: controller.signal,
-    });
-  } catch (error) {
-    if (error?.name === "AbortError") {
-      throw new Error(`Fetch timed out after ${FETCH_TIMEOUT_MS}ms: ${String(url)}`);
-    }
-    throw error;
-  } finally {
-    clearTimeout(timeout);
-  }
 }
 
 function parseArgs(argv) {

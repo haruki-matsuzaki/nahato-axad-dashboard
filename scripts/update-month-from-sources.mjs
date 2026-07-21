@@ -4,6 +4,7 @@ import process from "node:process";
 import { spawn } from "node:child_process";
 import { getGoogleAccessToken } from "./google-auth.mjs";
 import { auditSourceSheet } from "./audit-source-sheet.mjs";
+import { createFetchWithRetry } from "./fetch-with-retry.mjs";
 import {
   assertRangeCoverage,
   compareSources,
@@ -23,8 +24,9 @@ const DEFAULT_SHEET_RANGE = DYNAMIC_SHEET_RANGE;
 const DEFAULT_MASTER_MAX_ROWS = 2000;
 const DEFAULT_SOURCE_MAX_ROWS = 3000;
 const JST_TIME_ZONE = "Asia/Tokyo";
-const MONTHLY_SCHEDULE_CRONS = new Set(["0 6 * * *", "7 6 * * *", "17 6 * * *", "27 6 * * *"]);
+const MONTHLY_SCHEDULE_CRONS = new Set(["0 6 * * *"]);
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 45_000);
+const fetchWithTimeout = createFetchWithRetry({ timeoutMs: FETCH_TIMEOUT_MS });
 
 const args = parseArgs(process.argv.slice(2));
 const options = {
@@ -777,24 +779,6 @@ async function restoreBackups(backups) {
 async function writeRawFile(filePath, raw) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
   await fs.writeFile(filePath, raw);
-}
-
-async function fetchWithTimeout(url, options = {}) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-  try {
-    return await fetch(url, {
-      ...options,
-      signal: controller.signal,
-    });
-  } catch (error) {
-    if (error?.name === "AbortError") {
-      throw new Error(`Fetch timed out after ${FETCH_TIMEOUT_MS}ms: ${String(url)}`);
-    }
-    throw error;
-  } finally {
-    clearTimeout(timeout);
-  }
 }
 
 function inferMonth(parts) {
