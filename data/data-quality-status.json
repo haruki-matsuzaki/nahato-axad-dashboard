@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T01:45:31.473Z",
+  "generatedAt": "2026-07-21T03:41:46.026Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -881,7 +881,7 @@
     {
       "type": "media_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 74,
+      "count": 75,
       "examples": [
         {
           "project": "エステティックTBC",
@@ -2754,7 +2754,7 @@
         {
           "type": "media_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 74,
+          "count": 75,
           "examples": [
             {
               "project": "エステティックTBC",
@@ -2872,8 +2872,8 @@
         "missingProjectDates": 0,
         "totalValueMismatches": 51,
         "missingMediaDates": 7,
-        "mediaValueMismatches": 74,
-        "previousDayRecords": 49,
+        "mediaValueMismatches": 75,
+        "previousDayRecords": 58,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 0,
@@ -2894,8 +2894,8 @@
     "previousDayProjectCount": 15,
     "comparisonDate": "2026-07-19",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-21T01:45:29.790Z",
-    "overallSalesGeneratedAt": "2026-07-21T01:45:31.086Z",
-    "checkedAt": "2026-07-21T01:45:32.785Z"
+    "detailGeneratedAt": "2026-07-21T03:41:44.548Z",
+    "overallSalesGeneratedAt": "2026-07-21T03:41:45.557Z",
+    "checkedAt": "2026-07-21T03:41:47.419Z"
   }
 }
