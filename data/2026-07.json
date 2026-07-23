@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-23T06:24:59.811Z",
+    "generatedAt": "2026-07-23T08:37:20.839Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -15,7 +15,7 @@
         "skippedProjectBlocks": 16,
         "missingDateBlocks": 1,
         "missingRequiredBlocks": 0,
-        "records": 953
+        "records": 954
       },
       "total": {
         "candidateBlocks": 48,
@@ -1264,12 +1264,12 @@
       "date": "2026-07-22",
       "project": "カーブス",
       "media": "全体",
-      "sales": 2850000,
-      "grossProfit": 278902,
-      "cost": 2571098,
-      "cv": 95,
-      "roas": 1.1084758340600007,
-      "cpa": 27064.18947368421
+      "sales": 3360000,
+      "grossProfit": 441287,
+      "cost": 2918713,
+      "cv": 112,
+      "roas": 1.1511923234658563,
+      "cpa": 26059.9375
     },
     {
       "date": "2026-07-01",
@@ -4702,6 +4702,17 @@
       "cv": 13,
       "roas": 0.870872010843473,
       "cpa": 34448.230769230766
+    },
+    {
+      "date": "2026-07-22",
+      "project": "カーブス",
+      "media": "TikTok",
+      "sales": 510000,
+      "grossProfit": 162385,
+      "cost": 347615,
+      "cv": 17,
+      "roas": 1.4671403708125368,
+      "cpa": 20447.941176470587
     },
     {
       "date": "2026-07-01",
