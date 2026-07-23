@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-23T03:47:15.204Z",
+  "generatedAt": "2026-07-23T05:50:52.848Z",
   "status": "ok",
   "latestMonth": "2026-07",
   "entries": [
     {
-      "generatedAt": "2026-07-23T03:47:15.204Z",
+      "generatedAt": "2026-07-23T05:50:52.848Z",
       "status": "ok",
       "month": "2026-07",
       "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
@@ -12,14 +12,14 @@
         "detail": "◆案件/媒体別日次_全体",
         "total": "◆案件別日次_全体_固定用"
       },
-      "sourceFingerprint": "af80129f762716c46e50b1727c67909449fc38449a5ac6b5341432c8ba2e3a0e",
-      "generatedFingerprint": "af80129f762716c46e50b1727c67909449fc38449a5ac6b5341432c8ba2e3a0e",
+      "sourceFingerprint": "924466542152758a0c20ae9b983ed5dae09d7a2986b1c772f6ca28d8a047f821",
+      "generatedFingerprint": "924466542152758a0c20ae9b983ed5dae09d7a2986b1c772f6ca28d8a047f821",
       "summary": {
         "sourceProjects": 17,
         "generatedProjects": 17,
-        "sourceKeys": 1286,
-        "generatedKeys": 1286,
-        "verifiedMetrics": 5144,
+        "sourceKeys": 1287,
+        "generatedKeys": 1287,
+        "verifiedMetrics": 5148,
         "missingKeys": 0,
         "extraKeys": 0,
         "valueMismatches": 0,

@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-23T03:47:14.548Z",
+    "generatedAt": "2026-07-23T05:50:52.188Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -15,7 +15,7 @@
         "skippedProjectBlocks": 16,
         "missingDateBlocks": 1,
         "missingRequiredBlocks": 0,
-        "records": 952
+        "records": 953
       },
       "total": {
         "candidateBlocks": 48,
@@ -792,11 +792,11 @@
       "project": "LAVA",
       "media": "全体",
       "sales": 1312000,
-      "grossProfit": 205654,
-      "cost": 1106346,
+      "grossProfit": 170239,
+      "cost": 1141761,
       "cv": 82,
-      "roas": 1.1858857897981283,
-      "cpa": 13492.024390243903
+      "roas": 1.1491021325829136,
+      "cpa": 13923.914634146342
     },
     {
       "date": "2026-07-02",
@@ -1022,23 +1022,23 @@
       "date": "2026-07-22",
       "project": "LAVA",
       "media": "全体",
-      "sales": 1520000,
-      "grossProfit": 202999,
+      "sales": 1504000,
+      "grossProfit": 186999,
       "cost": 1317001,
-      "cv": 95,
-      "roas": 1.1541373165244369,
-      "cpa": 13863.168421052631
+      "cv": 94,
+      "roas": 1.141988502666285,
+      "cpa": 14010.648936170213
     },
     {
       "date": "2026-07-01",
       "project": "カーブス",
       "media": "全体",
       "sales": 4646000,
-      "grossProfit": 777015,
-      "cost": 3868985,
+      "grossProfit": 733009,
+      "cost": 3912991,
       "cv": 202,
-      "roas": 1.2008317426922048,
-      "cpa": 19153.39108910891
+      "roas": 1.187327034485896,
+      "cpa": 19371.242574257427
     },
     {
       "date": "2026-07-02",
@@ -1276,11 +1276,11 @@
       "project": "Rintosull 既存店",
       "media": "全体",
       "sales": 896000,
-      "grossProfit": 259018,
-      "cost": 636982,
+      "grossProfit": 252136,
+      "cost": 643864,
       "cv": 56,
-      "roas": 1.4066331544690431,
-      "cpa": 11374.67857142857
+      "roas": 1.3915982257122623,
+      "cpa": 11497.57142857143
     },
     {
       "date": "2026-07-02",
@@ -1375,143 +1375,143 @@
       "project": "Rintosull 既存店",
       "media": "全体",
       "sales": 640000,
-      "grossProfit": 69224,
-      "cost": 570776,
+      "grossProfit": 66406,
+      "cost": 573594,
       "cv": 40,
-      "roas": 1.121280502333665,
-      "cpa": 14269.4
+      "roas": 1.1157717828289697,
+      "cpa": 14339.85
     },
     {
       "date": "2026-07-11",
       "project": "Rintosull 既存店",
       "media": "全体",
       "sales": 1072000,
-      "grossProfit": 264202,
-      "cost": 807798,
+      "grossProfit": 247518,
+      "cost": 824482,
       "cv": 67,
-      "roas": 1.3270644393771711,
-      "cpa": 12056.686567164179
+      "roas": 1.3002103138697996,
+      "cpa": 12305.701492537313
     },
     {
       "date": "2026-07-12",
       "project": "Rintosull 既存店",
       "media": "全体",
       "sales": 1440000,
-      "grossProfit": 634494,
-      "cost": 805506,
+      "grossProfit": 580770,
+      "cost": 859230,
       "cv": 90,
-      "roas": 1.7876961810340333,
-      "cpa": 8950.066666666668
+      "roas": 1.6759191369016444,
+      "cpa": 9547
     },
     {
       "date": "2026-07-13",
       "project": "Rintosull 既存店",
       "media": "全体",
       "sales": 1008000,
-      "grossProfit": 407237,
-      "cost": 600763,
+      "grossProfit": 289701,
+      "cost": 718299,
       "cv": 63,
-      "roas": 1.677866313338205,
-      "cpa": 9535.920634920634
+      "roas": 1.4033153324729675,
+      "cpa": 11401.57142857143
     },
     {
       "date": "2026-07-14",
       "project": "Rintosull 既存店",
       "media": "全体",
       "sales": 1040000,
-      "grossProfit": 462283,
-      "cost": 577717,
+      "grossProfit": 331163,
+      "cost": 708837,
       "cv": 65,
-      "roas": 1.8001893660737005,
-      "cpa": 8887.953846153847
+      "roas": 1.467192034275863,
+      "cpa": 10905.184615384615
     },
     {
       "date": "2026-07-15",
       "project": "Rintosull 既存店",
       "media": "全体",
-      "sales": 672000,
-      "grossProfit": 231395,
-      "cost": 440605,
-      "cv": 42,
-      "roas": 1.5251756108078665,
-      "cpa": 10490.595238095239
+      "sales": 704000,
+      "grossProfit": -54250,
+      "cost": 758250,
+      "cv": 44,
+      "roas": 0.9284536762281569,
+      "cpa": 17232.954545454544
     },
     {
       "date": "2026-07-16",
       "project": "Rintosull 既存店",
       "media": "全体",
       "sales": 1248000,
-      "grossProfit": 613844,
-      "cost": 634156,
+      "grossProfit": 136106,
+      "cost": 1111894,
       "cv": 78,
-      "roas": 1.9679700263026763,
-      "cpa": 8130.205128205128
+      "roas": 1.1224091505125489,
+      "cpa": 14255.051282051281
     },
     {
       "date": "2026-07-17",
       "project": "Rintosull 既存店",
       "media": "全体",
-      "sales": 976000,
-      "grossProfit": 464732,
-      "cost": 511268,
-      "cv": 61,
-      "roas": 1.9089792437625668,
-      "cpa": 8381.442622950819
+      "sales": 1056000,
+      "grossProfit": 138000,
+      "cost": 918000,
+      "cv": 66,
+      "roas": 1.1503267973856208,
+      "cpa": 13909.09090909091
     },
     {
       "date": "2026-07-18",
       "project": "Rintosull 既存店",
       "media": "全体",
       "sales": 1600000,
-      "grossProfit": 772712,
-      "cost": 827288,
+      "grossProfit": 136081,
+      "cost": 1463919,
       "cv": 100,
-      "roas": 1.9340302288924776,
-      "cpa": 8272.88
+      "roas": 1.0929566458253497,
+      "cpa": 14639.19
     },
     {
       "date": "2026-07-19",
       "project": "Rintosull 既存店",
       "media": "全体",
-      "sales": 1792000,
-      "grossProfit": 978024,
-      "cost": 813976,
-      "cv": 112,
-      "roas": 2.2015391117182816,
-      "cpa": 7267.642857142857
+      "sales": 1824000,
+      "grossProfit": 267870,
+      "cost": 1556130,
+      "cv": 114,
+      "roas": 1.1721385745406874,
+      "cpa": 13650.263157894737
     },
     {
       "date": "2026-07-20",
       "project": "Rintosull 既存店",
       "media": "全体",
-      "sales": 1376000,
-      "grossProfit": 820197,
-      "cost": 555803,
-      "cv": 86,
-      "roas": 2.475697324411707,
-      "cpa": 6462.825581395349
+      "sales": 1408000,
+      "grossProfit": 158851,
+      "cost": 1249149,
+      "cv": 88,
+      "roas": 1.127167375549274,
+      "cpa": 14194.875
     },
     {
       "date": "2026-07-21",
       "project": "Rintosull 既存店",
       "media": "全体",
       "sales": 976000,
-      "grossProfit": 430636,
-      "cost": 545364,
+      "grossProfit": 71093,
+      "cost": 904907,
       "cv": 61,
-      "roas": 1.7896304119817223,
-      "cpa": 8940.393442622952
+      "roas": 1.078563874519702,
+      "cpa": 14834.540983606557
     },
     {
       "date": "2026-07-22",
       "project": "Rintosull 既存店",
       "media": "全体",
       "sales": 1104000,
-      "grossProfit": 487444,
-      "cost": 616556,
+      "grossProfit": 185159,
+      "cost": 918841,
       "cv": 69,
-      "roas": 1.7905916088725111,
-      "cpa": 8935.59420289855
+      "roas": 1.2015136459953355,
+      "cpa": 13316.536231884058
     },
     {
       "date": "2026-07-04",
@@ -3728,12 +3728,12 @@
       "date": "2026-07-22",
       "project": "ベビーパーク",
       "media": "全体",
-      "sales": 100000,
-      "grossProfit": -3216,
+      "sales": 132000,
+      "grossProfit": 28784,
       "cost": 103216,
-      "cv": 4,
-      "roas": 0.9688420399937994,
-      "cpa": 25804
+      "cv": 8,
+      "roas": 1.2788714927918152,
+      "cpa": 12902
     },
     {
       "date": "2026-07-01",
@@ -3982,11 +3982,11 @@
       "project": "カーブス",
       "media": "YT",
       "sales": 46000,
-      "grossProfit": 13342,
-      "cost": 32658,
+      "grossProfit": -30664,
+      "cost": 76664,
       "cv": 2,
-      "roas": 1.4085369587849839,
-      "cpa": 16329
+      "roas": 0.6000208702911406,
+      "cpa": 38332
     },
     {
       "date": "2026-07-02",
@@ -6402,11 +6402,11 @@
       "project": "LAVA",
       "media": "YT",
       "sales": 16000,
-      "grossProfit": -15072,
-      "cost": 31072,
+      "grossProfit": -50488,
+      "cost": 66488,
       "cv": 1,
-      "roas": 0.5149330587023687,
-      "cpa": 31072
+      "roas": 0.24064492840813378,
+      "cpa": 66488
     },
     {
       "date": "2026-07-02",
@@ -6874,12 +6874,12 @@
       "date": "2026-07-22",
       "project": "LAVA",
       "media": "YtoL",
-      "sales": 176000,
-      "grossProfit": 44557,
+      "sales": 160000,
+      "grossProfit": 28557,
       "cost": 131443,
-      "cv": 11,
-      "roas": 1.3389834376878191,
-      "cpa": 11949.363636363636
+      "cv": 10,
+      "roas": 1.21725767062529,
+      "cpa": 13144.3
     },
     {
       "date": "2026-07-01",
@@ -9922,8 +9922,8 @@
       "project": "Rintosull 既存店",
       "media": "YT",
       "sales": 0,
-      "grossProfit": -7933,
-      "cost": 7933,
+      "grossProfit": -14815,
+      "cost": 14815,
       "cv": 0,
       "roas": 0,
       "cpa": 0
@@ -9995,136 +9995,147 @@
       "cpa": 0
     },
     {
+      "date": "2026-07-10",
+      "project": "Rintosull 既存店",
+      "media": "YT",
+      "sales": 0,
+      "grossProfit": -2818,
+      "cost": 2818,
+      "cv": 0,
+      "roas": 0,
+      "cpa": 0
+    },
+    {
       "date": "2026-07-11",
       "project": "Rintosull 既存店",
       "media": "YT",
       "sales": 32000,
-      "grossProfit": 32000,
-      "cost": 0,
+      "grossProfit": 15316,
+      "cost": 16684,
       "cv": 2,
-      "roas": 0,
-      "cpa": 0
+      "roas": 1.9180052745145049,
+      "cpa": 8342
     },
     {
       "date": "2026-07-12",
       "project": "Rintosull 既存店",
       "media": "YT",
       "sales": 224000,
-      "grossProfit": 224000,
-      "cost": 0,
+      "grossProfit": 170276,
+      "cost": 53724,
       "cv": 14,
-      "roas": 0,
-      "cpa": 0
+      "roas": 4.169458714913261,
+      "cpa": 3837.4285714285716
     },
     {
       "date": "2026-07-13",
       "project": "Rintosull 既存店",
       "media": "YT",
       "sales": 80000,
-      "grossProfit": 80000,
-      "cost": 0,
+      "grossProfit": -37536,
+      "cost": 117536,
       "cv": 5,
-      "roas": 0,
-      "cpa": 0
+      "roas": 0.6806425265450585,
+      "cpa": 23507.2
     },
     {
       "date": "2026-07-14",
       "project": "Rintosull 既存店",
       "media": "YT",
       "sales": 240000,
-      "grossProfit": 240000,
-      "cost": 0,
+      "grossProfit": 108880,
+      "cost": 131120,
       "cv": 15,
-      "roas": 0,
-      "cpa": 0
+      "roas": 1.8303843807199511,
+      "cpa": 8741.333333333334
     },
     {
       "date": "2026-07-15",
       "project": "Rintosull 既存店",
       "media": "YT",
-      "sales": 208000,
-      "grossProfit": 208000,
-      "cost": 0,
-      "cv": 13,
-      "roas": 0,
-      "cpa": 0
+      "sales": 240000,
+      "grossProfit": -77644,
+      "cost": 317644,
+      "cv": 15,
+      "roas": 0.7555628313457833,
+      "cpa": 21176.266666666666
     },
     {
       "date": "2026-07-16",
       "project": "Rintosull 既存店",
       "media": "YT",
       "sales": 512000,
-      "grossProfit": 512000,
-      "cost": 0,
+      "grossProfit": 34262,
+      "cost": 477738,
       "cv": 32,
-      "roas": 0,
-      "cpa": 0
+      "roas": 1.0717171336590348,
+      "cpa": 14929.3125
     },
     {
       "date": "2026-07-17",
       "project": "Rintosull 既存店",
       "media": "YT",
-      "sales": 400000,
-      "grossProfit": 400000,
-      "cost": 0,
-      "cv": 25,
-      "roas": 0,
-      "cpa": 0
+      "sales": 480000,
+      "grossProfit": 73268,
+      "cost": 406732,
+      "cv": 30,
+      "roas": 1.1801382728676377,
+      "cpa": 13557.733333333334
     },
     {
       "date": "2026-07-18",
       "project": "Rintosull 既存店",
       "media": "YT",
       "sales": 720000,
-      "grossProfit": 720000,
-      "cost": 0,
+      "grossProfit": 83369,
+      "cost": 636631,
       "cv": 45,
-      "roas": 0,
-      "cpa": 0
+      "roas": 1.1309534094318372,
+      "cpa": 14147.355555555556
     },
     {
       "date": "2026-07-19",
       "project": "Rintosull 既存店",
       "media": "YT",
-      "sales": 832000,
-      "grossProfit": 832000,
-      "cost": 0,
-      "cv": 52,
-      "roas": 0,
-      "cpa": 0
+      "sales": 864000,
+      "grossProfit": 121846,
+      "cost": 742154,
+      "cv": 54,
+      "roas": 1.1641788631470018,
+      "cpa": 13743.592592592593
     },
     {
       "date": "2026-07-20",
       "project": "Rintosull 既存店",
       "media": "YT",
-      "sales": 592000,
-      "grossProfit": 592000,
-      "cost": 0,
-      "cv": 37,
-      "roas": 0,
-      "cpa": 0
+      "sales": 624000,
+      "grossProfit": -69346,
+      "cost": 693346,
+      "cv": 39,
+      "roas": 0.8999835579926905,
+      "cpa": 17778.102564102563
     },
     {
       "date": "2026-07-21",
       "project": "Rintosull 既存店",
       "media": "YT",
       "sales": 368000,
-      "grossProfit": 368000,
-      "cost": 0,
+      "grossProfit": 8458,
+      "cost": 359542,
       "cv": 23,
-      "roas": 0,
-      "cpa": 0
+      "roas": 1.0235243726741243,
+      "cpa": 15632.260869565218
     },
     {
       "date": "2026-07-22",
       "project": "Rintosull 既存店",
       "media": "YT",
       "sales": 240000,
-      "grossProfit": 240000,
-      "cost": 0,
+      "grossProfit": -62285,
+      "cost": 302285,
       "cv": 15,
-      "roas": 0,
-      "cpa": 0
+      "roas": 0.7939527267313958,
+      "cpa": 20152.333333333332
     },
     {
       "date": "2026-07-08",
@@ -13859,12 +13870,12 @@
       "date": "2026-07-22",
       "project": "ベビーパーク",
       "media": "Facebook",
-      "sales": 100000,
-      "grossProfit": -3216,
+      "sales": 132000,
+      "grossProfit": 28784,
       "cost": 103216,
-      "cv": 4,
-      "roas": 0.9688420399937994,
-      "cpa": 25804
+      "cv": 8,
+      "roas": 1.2788714927918152,
+      "cpa": 12902
     },
     {
       "date": "2026-07-10",
