@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T05:45:51.616Z",
+  "generatedAt": "2026-07-24T08:33:27.307Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -736,55 +736,15 @@
     {
       "type": "total_value_mismatch",
       "message": "2026-07: business sales value differs from detail data",
-      "count": 61,
+      "count": 56,
       "examples": [
-        {
-          "project": "エステティックTBC",
-          "date": "2026-07-01",
-          "metric": "sales",
-          "expected": 2490000,
-          "actual": 2400000,
-          "diff": -90000
-        },
-        {
-          "project": "エステティックTBC",
-          "date": "2026-07-02",
-          "metric": "sales",
-          "expected": 2580000,
-          "actual": 2460000,
-          "diff": -120000
-        },
-        {
-          "project": "エステティックTBC",
-          "date": "2026-07-03",
-          "metric": "grossProfit",
-          "expected": 355598.76300000004,
-          "actual": 466244,
-          "diff": 110645.23699999996
-        },
         {
           "project": "エステティックTBC",
           "date": "2026-07-04",
           "metric": "sales",
           "expected": 2670000,
-          "actual": 2430000,
-          "diff": -240000
-        },
-        {
-          "project": "エステティックTBC",
-          "date": "2026-07-05",
-          "metric": "sales",
-          "expected": 3150000,
-          "actual": 3030000,
-          "diff": -120000
-        },
-        {
-          "project": "エステティックTBC",
-          "date": "2026-07-06",
-          "metric": "sales",
-          "expected": 2040000,
-          "actual": 1950000,
-          "diff": -90000
+          "actual": 2790000,
+          "diff": 120000
         },
         {
           "project": "MEN'STBC",
@@ -833,73 +793,83 @@
           "expected": 4090000,
           "actual": 1970000,
           "diff": -2120000
+        },
+        {
+          "project": "イエウール",
+          "date": "2026-07-06",
+          "metric": "sales",
+          "expected": 1900000,
+          "actual": 870000,
+          "diff": -1030000
+        },
+        {
+          "project": "トライのオンライン個別指導塾",
+          "date": "2026-07-01",
+          "metric": "sales",
+          "expected": 78000,
+          "actual": 26000,
+          "diff": -52000
+        },
+        {
+          "project": "トライのオンライン個別指導塾",
+          "date": "2026-07-02",
+          "metric": "sales",
+          "expected": 130000,
+          "actual": 65000,
+          "diff": -65000
+        },
+        {
+          "project": "トライのオンライン個別指導塾",
+          "date": "2026-07-03",
+          "metric": "sales",
+          "expected": 130000,
+          "actual": 65000,
+          "diff": -65000
+        },
+        {
+          "project": "トライのオンライン個別指導塾",
+          "date": "2026-07-04",
+          "metric": "sales",
+          "expected": 104000,
+          "actual": 65000,
+          "diff": -39000
         }
       ]
     },
     {
       "type": "missing_media_date",
       "message": "2026-07: expected business sales key missing from detail data",
-      "count": 18,
+      "count": 6,
       "examples": [
         {
-          "project": "エステティックTBC",
-          "media": "YtoL",
+          "project": "パーフェクトボディプレミアム",
+          "media": "TikTok",
           "date": "2026-07-01"
         },
         {
-          "project": "エステティックTBC",
-          "media": "YtoL",
+          "project": "パーフェクトボディプレミアム",
+          "media": "TikTok",
           "date": "2026-07-02"
         },
         {
-          "project": "エステティックTBC",
-          "media": "YtoL",
-          "date": "2026-07-04"
-        },
-        {
-          "project": "エステティックTBC",
-          "media": "YtoL",
-          "date": "2026-07-05"
-        },
-        {
-          "project": "エステティックTBC",
-          "media": "YtoL",
-          "date": "2026-07-06"
-        },
-        {
-          "project": "エステティックTBC",
-          "media": "YtoL",
+          "project": "パーフェクトボディプレミアム",
+          "media": "TikTok",
           "date": "2026-07-03"
         },
         {
-          "project": "エステティックTBC",
-          "media": "YDA",
-          "date": "2026-07-01"
-        },
-        {
-          "project": "エステティックTBC",
-          "media": "YDA",
-          "date": "2026-07-02"
-        },
-        {
-          "project": "エステティックTBC",
-          "media": "YDA",
+          "project": "パーフェクトボディプレミアム",
+          "media": "TikTok",
           "date": "2026-07-04"
         },
         {
-          "project": "エステティックTBC",
-          "media": "YDA",
+          "project": "パーフェクトボディプレミアム",
+          "media": "TikTok",
           "date": "2026-07-05"
         },
         {
-          "project": "エステティックTBC",
-          "media": "YDA",
+          "project": "パーフェクトボディプレミアム",
+          "media": "TikTok",
           "date": "2026-07-06"
-        },
-        {
-          "project": "エステティックTBC",
-          "media": "YDA",
-          "date": "2026-07-03"
         }
       ]
     },
@@ -2634,55 +2604,15 @@
         {
           "type": "total_value_mismatch",
           "message": "2026-07: business sales value differs from detail data",
-          "count": 61,
+          "count": 56,
           "examples": [
-            {
-              "project": "エステティックTBC",
-              "date": "2026-07-01",
-              "metric": "sales",
-              "expected": 2490000,
-              "actual": 2400000,
-              "diff": -90000
-            },
-            {
-              "project": "エステティックTBC",
-              "date": "2026-07-02",
-              "metric": "sales",
-              "expected": 2580000,
-              "actual": 2460000,
-              "diff": -120000
-            },
-            {
-              "project": "エステティックTBC",
-              "date": "2026-07-03",
-              "metric": "grossProfit",
-              "expected": 355598.76300000004,
-              "actual": 466244,
-              "diff": 110645.23699999996
-            },
             {
               "project": "エステティックTBC",
               "date": "2026-07-04",
               "metric": "sales",
               "expected": 2670000,
-              "actual": 2430000,
-              "diff": -240000
-            },
-            {
-              "project": "エステティックTBC",
-              "date": "2026-07-05",
-              "metric": "sales",
-              "expected": 3150000,
-              "actual": 3030000,
-              "diff": -120000
-            },
-            {
-              "project": "エステティックTBC",
-              "date": "2026-07-06",
-              "metric": "sales",
-              "expected": 2040000,
-              "actual": 1950000,
-              "diff": -90000
+              "actual": 2790000,
+              "diff": 120000
             },
             {
               "project": "MEN'STBC",
@@ -2731,73 +2661,83 @@
               "expected": 4090000,
               "actual": 1970000,
               "diff": -2120000
+            },
+            {
+              "project": "イエウール",
+              "date": "2026-07-06",
+              "metric": "sales",
+              "expected": 1900000,
+              "actual": 870000,
+              "diff": -1030000
+            },
+            {
+              "project": "トライのオンライン個別指導塾",
+              "date": "2026-07-01",
+              "metric": "sales",
+              "expected": 78000,
+              "actual": 26000,
+              "diff": -52000
+            },
+            {
+              "project": "トライのオンライン個別指導塾",
+              "date": "2026-07-02",
+              "metric": "sales",
+              "expected": 130000,
+              "actual": 65000,
+              "diff": -65000
+            },
+            {
+              "project": "トライのオンライン個別指導塾",
+              "date": "2026-07-03",
+              "metric": "sales",
+              "expected": 130000,
+              "actual": 65000,
+              "diff": -65000
+            },
+            {
+              "project": "トライのオンライン個別指導塾",
+              "date": "2026-07-04",
+              "metric": "sales",
+              "expected": 104000,
+              "actual": 65000,
+              "diff": -39000
             }
           ]
         },
         {
           "type": "missing_media_date",
           "message": "2026-07: expected business sales key missing from detail data",
-          "count": 18,
+          "count": 6,
           "examples": [
             {
-              "project": "エステティックTBC",
-              "media": "YtoL",
+              "project": "パーフェクトボディプレミアム",
+              "media": "TikTok",
               "date": "2026-07-01"
             },
             {
-              "project": "エステティックTBC",
-              "media": "YtoL",
+              "project": "パーフェクトボディプレミアム",
+              "media": "TikTok",
               "date": "2026-07-02"
             },
             {
-              "project": "エステティックTBC",
-              "media": "YtoL",
-              "date": "2026-07-04"
-            },
-            {
-              "project": "エステティックTBC",
-              "media": "YtoL",
-              "date": "2026-07-05"
-            },
-            {
-              "project": "エステティックTBC",
-              "media": "YtoL",
-              "date": "2026-07-06"
-            },
-            {
-              "project": "エステティックTBC",
-              "media": "YtoL",
+              "project": "パーフェクトボディプレミアム",
+              "media": "TikTok",
               "date": "2026-07-03"
             },
             {
-              "project": "エステティックTBC",
-              "media": "YDA",
-              "date": "2026-07-01"
-            },
-            {
-              "project": "エステティックTBC",
-              "media": "YDA",
-              "date": "2026-07-02"
-            },
-            {
-              "project": "エステティックTBC",
-              "media": "YDA",
+              "project": "パーフェクトボディプレミアム",
+              "media": "TikTok",
               "date": "2026-07-04"
             },
             {
-              "project": "エステティックTBC",
-              "media": "YDA",
+              "project": "パーフェクトボディプレミアム",
+              "media": "TikTok",
               "date": "2026-07-05"
             },
             {
-              "project": "エステティックTBC",
-              "media": "YDA",
+              "project": "パーフェクトボディプレミアム",
+              "media": "TikTok",
               "date": "2026-07-06"
-            },
-            {
-              "project": "エステティックTBC",
-              "media": "YDA",
-              "date": "2026-07-03"
             }
           ]
         },
@@ -2920,8 +2860,8 @@
       "checks": {
         "missingProjects": 0,
         "missingProjectDates": 0,
-        "totalValueMismatches": 61,
-        "missingMediaDates": 18,
+        "totalValueMismatches": 56,
+        "missingMediaDates": 6,
         "mediaValueMismatches": 82,
         "previousDayRecords": 61,
         "duplicateRecordKeys": 0,
@@ -2944,8 +2884,8 @@
     "previousDayProjectCount": 15,
     "comparisonDate": "2026-07-22",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-24T05:45:49.702Z",
-    "overallSalesGeneratedAt": "2026-07-24T05:45:51.200Z",
-    "checkedAt": "2026-07-24T05:45:52.997Z"
+    "detailGeneratedAt": "2026-07-24T08:33:25.454Z",
+    "overallSalesGeneratedAt": "2026-07-24T08:33:26.864Z",
+    "checkedAt": "2026-07-24T08:33:28.744Z"
   }
 }
