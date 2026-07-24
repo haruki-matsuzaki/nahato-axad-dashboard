@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-24T03:46:36.140Z",
+    "generatedAt": "2026-07-24T05:45:49.702Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -308,11 +308,11 @@
       "project": "エステティックTBC",
       "media": "全体",
       "sales": 1680000,
-      "grossProfit": 256013,
-      "cost": 1423987,
+      "grossProfit": 134317,
+      "cost": 1545683,
       "cv": 56,
-      "roas": 1.1797860514176042,
-      "cpa": 25428.339285714286
+      "roas": 1.086898154408116,
+      "cpa": 27601.48214285714
     },
     {
       "date": "2026-07-01",
@@ -803,22 +803,22 @@
       "project": "MEN'STBC",
       "media": "全体",
       "sales": 2520000,
-      "grossProfit": 831998,
-      "cost": 1688002,
+      "grossProfit": 791299,
+      "cost": 1728701,
       "cv": 81,
-      "roas": 1.492889226434566,
-      "cpa": 20839.53086419753
+      "roas": 1.4577419692589986,
+      "cpa": 21341.987654320987
     },
     {
       "date": "2026-07-23",
       "project": "MEN'STBC",
       "media": "全体",
-      "sales": 1140000,
-      "grossProfit": 182893,
-      "cost": 957107,
+      "sales": 1200000,
+      "grossProfit": 161201,
+      "cost": 1038799,
       "cv": 38,
-      "roas": 1.191089397528176,
-      "cpa": 25187.026315789473
+      "roas": 1.1551801647864506,
+      "cpa": 27336.815789473683
     },
     {
       "date": "2026-07-01",
@@ -3838,11 +3838,11 @@
       "date": "2026-07-18",
       "project": "ベビーパーク",
       "media": "全体",
-      "sales": 264000,
-      "grossProfit": 102889,
+      "sales": 200000,
+      "grossProfit": 38889,
       "cost": 161111,
       "cv": 16,
-      "roas": 1.638621819739186,
+      "roas": 1.2413801664690802,
       "cpa": 10069.4375
     },
     {
@@ -3860,44 +3860,44 @@
       "date": "2026-07-20",
       "project": "ベビーパーク",
       "media": "全体",
-      "sales": 198000,
-      "grossProfit": 92655,
+      "sales": 150000,
+      "grossProfit": 44655,
       "cost": 105345,
       "cv": 12,
-      "roas": 1.8795386586928664,
+      "roas": 1.4238929232521715,
       "cpa": 8778.75
     },
     {
       "date": "2026-07-21",
       "project": "ベビーパーク",
       "media": "全体",
-      "sales": 66000,
-      "grossProfit": -25260,
+      "sales": 50000,
+      "grossProfit": -41260,
       "cost": 91260,
       "cv": 4,
-      "roas": 0.7232084155161078,
+      "roas": 0.5478851632697787,
       "cpa": 22815
     },
     {
       "date": "2026-07-22",
       "project": "ベビーパーク",
       "media": "全体",
-      "sales": 132000,
-      "grossProfit": 28711,
+      "sales": 100000,
+      "grossProfit": -3289,
       "cost": 103289,
       "cv": 8,
-      "roas": 1.277967644182827,
+      "roas": 0.9681573061991112,
       "cpa": 12911.125
     },
     {
       "date": "2026-07-23",
       "project": "ベビーパーク",
       "media": "全体",
-      "sales": 132000,
-      "grossProfit": 62360,
+      "sales": 100000,
+      "grossProfit": 30360,
       "cost": 69640,
       "cv": 8,
-      "roas": 1.8954623779437105,
+      "roas": 1.4359563469270533,
       "cpa": 8705
     },
     {
@@ -5973,11 +5973,11 @@
       "project": "エステティックTBC",
       "media": "TikTok",
       "sales": 90000,
-      "grossProfit": 90000,
-      "cost": 0,
+      "grossProfit": -31696,
+      "cost": 121696,
       "cv": 3,
-      "roas": 0,
-      "cpa": 0
+      "roas": 0.7395477254798843,
+      "cpa": 40565.333333333336
     },
     {
       "date": "2026-07-23",
@@ -8217,22 +8217,22 @@
       "project": "MEN'STBC",
       "media": "TikTok",
       "sales": 450000,
-      "grossProfit": 167107,
-      "cost": 282893,
+      "grossProfit": 126408,
+      "cost": 323592,
       "cv": 12,
-      "roas": 1.5907074406224262,
-      "cpa": 23574.416666666668
+      "roas": 1.3906400652673738,
+      "cpa": 26966
     },
     {
       "date": "2026-07-23",
       "project": "MEN'STBC",
       "media": "TikTok",
-      "sales": 30000,
-      "grossProfit": -43889,
-      "cost": 73889,
+      "sales": 90000,
+      "grossProfit": -65581,
+      "cost": 155581,
       "cv": 1,
-      "roas": 0.40601442704597435,
-      "cpa": 73889
+      "roas": 0.5784768062938277,
+      "cpa": 155581
     },
     {
       "date": "2026-07-01",
@@ -14189,11 +14189,11 @@
       "date": "2026-07-18",
       "project": "ベビーパーク",
       "media": "Facebook",
-      "sales": 264000,
-      "grossProfit": 102889,
+      "sales": 200000,
+      "grossProfit": 38889,
       "cost": 161111,
       "cv": 16,
-      "roas": 1.638621819739186,
+      "roas": 1.2413801664690802,
       "cpa": 10069.4375
     },
     {
@@ -14211,44 +14211,44 @@
       "date": "2026-07-20",
       "project": "ベビーパーク",
       "media": "Facebook",
-      "sales": 198000,
-      "grossProfit": 92655,
+      "sales": 150000,
+      "grossProfit": 44655,
       "cost": 105345,
       "cv": 12,
-      "roas": 1.8795386586928664,
+      "roas": 1.4238929232521715,
       "cpa": 8778.75
     },
     {
       "date": "2026-07-21",
       "project": "ベビーパーク",
       "media": "Facebook",
-      "sales": 66000,
-      "grossProfit": -25260,
+      "sales": 50000,
+      "grossProfit": -41260,
       "cost": 91260,
       "cv": 4,
-      "roas": 0.7232084155161078,
+      "roas": 0.5478851632697787,
       "cpa": 22815
     },
     {
       "date": "2026-07-22",
       "project": "ベビーパーク",
       "media": "Facebook",
-      "sales": 132000,
-      "grossProfit": 28711,
+      "sales": 100000,
+      "grossProfit": -3289,
       "cost": 103289,
       "cv": 8,
-      "roas": 1.277967644182827,
+      "roas": 0.9681573061991112,
       "cpa": 12911.125
     },
     {
       "date": "2026-07-23",
       "project": "ベビーパーク",
       "media": "Facebook",
-      "sales": 132000,
-      "grossProfit": 62360,
+      "sales": 100000,
+      "grossProfit": 30360,
       "cost": 69640,
       "cv": 8,
-      "roas": 1.8954623779437105,
+      "roas": 1.4359563469270533,
       "cpa": 8705
     },
     {
