@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T03:58:06.586Z",
+  "generatedAt": "2026-07-26T05:56:31.333Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -2863,7 +2863,7 @@
         "totalValueMismatches": 56,
         "missingMediaDates": 6,
         "mediaValueMismatches": 82,
-        "previousDayRecords": 57,
+        "previousDayRecords": 58,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 0,
@@ -2884,8 +2884,8 @@
     "previousDayProjectCount": 15,
     "comparisonDate": "2026-07-24",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-26T03:58:04.936Z",
-    "overallSalesGeneratedAt": "2026-07-26T03:58:06.144Z",
-    "checkedAt": "2026-07-26T03:58:07.981Z"
+    "detailGeneratedAt": "2026-07-26T05:56:29.256Z",
+    "overallSalesGeneratedAt": "2026-07-26T05:56:30.931Z",
+    "checkedAt": "2026-07-26T05:56:32.673Z"
   }
 }
