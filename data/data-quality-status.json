@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T10:20:19.388Z",
+  "generatedAt": "2026-07-26T03:58:06.586Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -2863,7 +2863,7 @@
         "totalValueMismatches": 56,
         "missingMediaDates": 6,
         "mediaValueMismatches": 82,
-        "previousDayRecords": 58,
+        "previousDayRecords": 57,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 0,
@@ -2875,17 +2875,17 @@
     }
   ],
   "freshness": {
-    "expectedDate": "2026-07-24",
-    "latestDataDate": "2026-07-24",
+    "expectedDate": "2026-07-25",
+    "latestDataDate": "2026-07-25",
     "previousDayHasData": true,
     "detailPreviousDayHasData": true,
     "overallSalesPreviousDayHasData": true,
     "previousDayRecordCount": 15,
     "previousDayProjectCount": 15,
-    "comparisonDate": "2026-07-23",
+    "comparisonDate": "2026-07-24",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-25T10:20:17.585Z",
-    "overallSalesGeneratedAt": "2026-07-25T10:20:18.959Z",
-    "checkedAt": "2026-07-25T10:20:20.730Z"
+    "detailGeneratedAt": "2026-07-26T03:58:04.936Z",
+    "overallSalesGeneratedAt": "2026-07-26T03:58:06.144Z",
+    "checkedAt": "2026-07-26T03:58:07.981Z"
   }
 }

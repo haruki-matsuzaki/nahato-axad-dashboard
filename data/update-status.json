@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-25T10:20:18.966Z",
+  "generatedAt": "2026-07-26T03:58:06.153Z",
   "daily": {
     "status": "ok",
-    "checkedAt": "2026-07-25T10:20:18.966Z",
+    "checkedAt": "2026-07-26T03:58:06.153Z",
     "month": "2026-07",
     "reason": "daily_previous_day",
     "message": null
@@ -17,13 +17,13 @@
   },
   "overallSales": {
     "status": "ok",
-    "checkedAt": "2026-07-25T10:20:18.966Z",
+    "checkedAt": "2026-07-26T03:58:06.153Z",
     "month": "2026-07",
     "reason": "daily_previous_day",
     "message": null
   },
   "lastRun": {
-    "checkedAt": "2026-07-25T10:20:18.966Z",
+    "checkedAt": "2026-07-26T03:58:06.153Z",
     "failed": false,
     "skippedReason": null,
     "fatalError": null
