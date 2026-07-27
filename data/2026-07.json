@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-27T06:24:46.538Z",
+    "generatedAt": "2026-07-27T09:58:53.618Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -1748,34 +1748,34 @@
       "date": "2026-07-24",
       "project": "Rintosull 既存店",
       "media": "全体",
-      "sales": 848000,
-      "grossProfit": 116211,
+      "sales": 864000,
+      "grossProfit": 132211,
       "cost": 731789,
-      "cv": 53,
-      "roas": 1.1588039721832386,
-      "cpa": 13807.33962264151
+      "cv": 54,
+      "roas": 1.1806681980734883,
+      "cpa": 13551.648148148148
     },
     {
       "date": "2026-07-25",
       "project": "Rintosull 既存店",
       "media": "全体",
-      "sales": 912000,
-      "grossProfit": -67216,
+      "sales": 896000,
+      "grossProfit": -83216,
       "cost": 979216,
-      "cv": 57,
-      "roas": 0.9313573307625692,
-      "cpa": 17179.22807017544
+      "cv": 56,
+      "roas": 0.9150177284684891,
+      "cpa": 17486
     },
     {
       "date": "2026-07-26",
       "project": "Rintosull 既存店",
       "media": "全体",
-      "sales": 1456000,
-      "grossProfit": 493123,
+      "sales": 1488000,
+      "grossProfit": 525123,
       "cost": 962877,
-      "cv": 91,
-      "roas": 1.5121349871271201,
-      "cpa": 10581.065934065935
+      "cv": 93,
+      "roas": 1.5453687231079358,
+      "cpa": 10353.516129032258
     },
     {
       "date": "2026-07-04",
@@ -12396,34 +12396,34 @@
       "date": "2026-07-24",
       "project": "Rintosull 既存店",
       "media": "TikTok",
-      "sales": 384000,
-      "grossProfit": 133434,
+      "sales": 400000,
+      "grossProfit": 149434,
       "cost": 250566,
-      "cv": 24,
-      "roas": 1.5325303512846915,
-      "cpa": 10440.25
+      "cv": 25,
+      "roas": 1.5963857825882202,
+      "cpa": 10022.64
     },
     {
       "date": "2026-07-25",
       "project": "Rintosull 既存店",
       "media": "TikTok",
-      "sales": 96000,
-      "grossProfit": -27809,
+      "sales": 80000,
+      "grossProfit": -43809,
       "cost": 123809,
-      "cv": 6,
-      "roas": 0.7753878958718672,
-      "cpa": 20634.833333333332
+      "cv": 5,
+      "roas": 0.6461565798932226,
+      "cpa": 24761.8
     },
     {
       "date": "2026-07-26",
       "project": "Rintosull 既存店",
       "media": "TikTok",
-      "sales": 128000,
-      "grossProfit": 25793,
+      "sales": 160000,
+      "grossProfit": 57793,
       "cost": 102207,
-      "cv": 8,
-      "roas": 1.252360405843044,
-      "cpa": 12775.875
+      "cv": 10,
+      "roas": 1.565450507303805,
+      "cpa": 10220.7
     },
     {
       "date": "2026-07-08",
