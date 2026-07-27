@@ -1,9 +1,14 @@
 import process from "node:process";
 import { setTimeout as wait } from "node:timers/promises";
+import { createFetchWithRetry } from "./fetch-with-retry.mjs";
 
 const DEFAULT_PROJECT_NAME = "nahato-axad-dashboard";
 const DEFAULT_BRANCH = "main";
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 45_000);
+const fetchWithRetry = createFetchWithRetry({
+  timeoutMs: FETCH_TIMEOUT_MS,
+  retryDelaysMs: [5_000, 15_000],
+});
 
 const args = parseArgs(process.argv.slice(2));
 const options = {
@@ -113,7 +118,7 @@ async function fetchDeployments(options) {
   );
   url.searchParams.set("per_page", "10");
 
-  const response = await fetchWithTimeout(url, {
+  const response = await fetchWithRetry(url, {
     headers: {
       Authorization: `Bearer ${options.apiToken}`,
       Accept: "application/json",
@@ -153,24 +158,6 @@ function shaMatches(actual, expected) {
 
 function normalizeSha(value) {
   return String(value || "").trim().toLowerCase();
-}
-
-async function fetchWithTimeout(url, options = {}) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-  try {
-    return await fetch(url, {
-      ...options,
-      signal: controller.signal,
-    });
-  } catch (error) {
-    if (error?.name === "AbortError") {
-      throw new Error(`Fetch timed out after ${FETCH_TIMEOUT_MS}ms: ${String(url)}`);
-    }
-    throw error;
-  } finally {
-    clearTimeout(timeout);
-  }
 }
 
 function parseArgs(argv) {

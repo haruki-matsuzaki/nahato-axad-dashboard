@@ -146,12 +146,14 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+            echo "data_changed=false" >> "$GITHUB_OUTPUT"
             echo "No data changes to commit."
             exit 0
           fi
 
           git commit -m "Update Nacht AXAD data"
           echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "data_changed=true" >> "$GITHUB_OUTPUT"
 
           for attempt in 1 2 3; do
             if git push origin HEAD:main; then
@@ -171,7 +173,7 @@ jobs:
 
       - name: Check Cloudflare Pages deployment
         id: cloudflare-deploy
-        if: steps.fetch-data.outcome == 'success' && steps.validate-data.outcome == 'success'
+        if: steps.fetch-data.outcome == 'success' && steps.validate-data.outcome == 'success' && steps.commit-data.outputs.data_changed == 'true'
         continue-on-error: true
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
