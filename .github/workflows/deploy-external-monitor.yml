@@ -35,8 +35,9 @@ jobs:
         id: deployment-secrets
         env:
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
+          EXTERNAL_MONITOR_GITHUB_TOKEN: ${{ secrets.EXTERNAL_MONITOR_GITHUB_TOKEN }}
         run: |
-          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ] || [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CHATWORK_API_TOKEN" ]; then
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ] || [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CHATWORK_API_TOKEN" ] || [ -z "$EXTERNAL_MONITOR_GITHUB_TOKEN" ]; then
             echo "deploy_enabled=false" >> "$GITHUB_OUTPUT"
             echo "::warning title=external_monitor_deploy_skipped::Cloudflare Worker credentials are incomplete. The Codex external monitor remains the active independent monitor."
             exit 0
@@ -52,3 +53,9 @@ jobs:
         env:
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
         run: printf '%s' "$CHATWORK_API_TOKEN" | npx --yes wrangler@4 secret put CHATWORK_API_TOKEN --config wrangler.monitor.jsonc
+
+      - name: Set GitHub Actions trigger secret
+        if: steps.deployment-secrets.outputs.deploy_enabled == 'true'
+        env:
+          EXTERNAL_MONITOR_GITHUB_TOKEN: ${{ secrets.EXTERNAL_MONITOR_GITHUB_TOKEN }}
+        run: printf '%s' "$EXTERNAL_MONITOR_GITHUB_TOKEN" | npx --yes wrangler@4 secret put GITHUB_ACTIONS_TOKEN --config wrangler.monitor.jsonc

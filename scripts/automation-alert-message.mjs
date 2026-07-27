@@ -109,6 +109,10 @@ const EXTERNAL_ISSUES = {
     cause: "外形監視がGitHubまたは公開サイトのデータを取得できませんでした。",
     action: "GitHub、Cloudflare、公開サイトの稼働状況を確認し、時間を置いて再実行してください。",
   },
+  workflow_dispatch_failed: {
+    cause: "外形監視は更新漏れを検知しましたが、GitHub Actionsの更新処理を開始できませんでした。",
+    action: "GitHub Actionsのupdate-data.ymlを手動実行し、Cloudflare WorkerのGitHubトークン設定を確認してください。",
+  },
 };
 
 export function buildAutomationAlertMessage(context, now = new Date()) {

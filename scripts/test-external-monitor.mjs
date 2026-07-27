@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import {
+  buildUpdateWindow,
   evaluateHealth,
   isLocalExternalMonitorTime,
   isScheduledMonitorTime,
+  recoverMissedUpdate,
   runLocalExternalMonitor,
   runScheduledMonitor,
 } from "../cloudflare/update-monitor.js";
@@ -57,6 +59,87 @@ assert.equal(missingBoth.status, "error");
 assert.ok(missingBoth.issues.includes("previous_day_missing_from_both_sources"));
 const missingBothAlert = buildExternalMonitorAlertMessage(missingBoth);
 assert.match(missingBothAlert.body, /案件別日時と全体売上表の両方で確認できません/);
+
+const updateWindow = buildUpdateWindow(now);
+assert.equal(updateWindow.expectedRunAtJst, "2026-07-10 12:00");
+
+const githubEnv = { GITHUB_ACTIONS_TOKEN: "test-token" };
+const githubResponse = (value, status = 200) =>
+  new Response(status === 204 ? null : JSON.stringify(value), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  });
+const scheduledRun = {
+  created_at: "2026-07-10T03:05:00.000Z",
+  status: "completed",
+  conclusion: "success",
+  html_url: "https://github.com/example/run",
+};
+
+let githubRequests = [];
+const dispatched = await recoverMissedUpdate(githubEnv, {
+  now,
+  fetchImpl: async (url, options = {}) => {
+    githubRequests.push({ url: String(url), method: options.method || "GET" });
+    return options.method === "POST"
+      ? githubResponse(null, 204)
+      : githubResponse({ workflow_runs: [] });
+  },
+  waitImpl: async () => {},
+});
+assert.equal(dispatched.status, "dispatched");
+assert.deepEqual(githubRequests.map((request) => request.method), ["GET", "POST"]);
+
+githubRequests = [];
+const active = await recoverMissedUpdate(githubEnv, {
+  now,
+  fetchImpl: async (url, options = {}) => {
+    githubRequests.push({ url: String(url), method: options.method || "GET" });
+    return githubResponse({
+      workflow_runs: [{ ...scheduledRun, status: "in_progress", conclusion: null }],
+    });
+  },
+  waitImpl: async () => {},
+});
+assert.equal(active.status, "active");
+assert.equal(githubRequests.length, 1);
+
+const successful = await recoverMissedUpdate(githubEnv, {
+  now,
+  fetchImpl: async () => githubResponse({ workflow_runs: [scheduledRun] }),
+  waitImpl: async () => {},
+});
+assert.equal(successful.status, "success");
+
+const failed = await recoverMissedUpdate(githubEnv, {
+  now,
+  fetchImpl: async () =>
+    githubResponse({
+      workflow_runs: [{ ...scheduledRun, conclusion: "failure" }],
+    }),
+  waitImpl: async () => {},
+});
+assert.equal(failed.status, "failed");
+
+const missingToken = await recoverMissedUpdate({}, { now });
+assert.equal(missingToken.status, "unavailable");
+assert.equal(missingToken.code, "github_actions_token_missing");
+
+let retryCount = 0;
+const recoveredAfterRetry = await recoverMissedUpdate(githubEnv, {
+  now,
+  fetchImpl: async (url, options = {}) => {
+    if ((options.method || "GET") === "GET") {
+      retryCount += 1;
+      if (retryCount < 3) return githubResponse({ message: "temporary" }, 503);
+      return githubResponse({ workflow_runs: [scheduledRun] });
+    }
+    throw new Error(`unexpected request: ${url}`);
+  },
+  waitImpl: async () => {},
+});
+assert.equal(recoveredAfterRetry.status, "success");
+assert.equal(retryCount, 3);
 
 assert.equal(isScheduledMonitorTime(new Date("2026-07-13T17:00:00.000Z")), false, "02:00 JST must be skipped");
 assert.equal(isScheduledMonitorTime(new Date("2026-07-13T19:00:00.000Z")), false, "04:00 JST must be skipped");
