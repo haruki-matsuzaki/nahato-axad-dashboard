@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-29T04:00:08.202Z",
+    "generatedAt": "2026-07-29T05:47:27.393Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -3486,11 +3486,11 @@
       "date": "2026-07-28",
       "project": "AGAスキンクリニックレディース",
       "media": "全体",
-      "sales": 491400,
-      "grossProfit": 245513,
+      "sales": 546700,
+      "grossProfit": 300813,
       "cost": 245887,
       "cv": 10,
-      "roas": 1.9984789761150448,
+      "roas": 2.223379031831695,
       "cpa": 24588.7
     },
     {
@@ -16136,11 +16136,11 @@
       "date": "2026-07-28",
       "project": "AGAスキンクリニックレディース",
       "media": "TikTok",
-      "sales": 0,
-      "grossProfit": -15572,
+      "sales": 55300,
+      "grossProfit": 39728,
       "cost": 15572,
       "cv": 1,
-      "roas": 0,
+      "roas": 3.5512458258412534,
       "cpa": 15572
     },
     {
