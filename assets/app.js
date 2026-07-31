@@ -1,3 +1,5 @@
+import { shouldShowDailyUpdateError } from "./update-alert-state.js?v=20260731-01";
+
 const state = {
   index: null,
   data: null,
@@ -1032,7 +1034,16 @@ function renderUpdateAlerts() {
   if (!els.updateAlerts) return;
   const alerts = new Set();
   const hasFreshDailyData = hasCurrentDailyDataThroughPreviousDay();
-  if ((state.updateStatus?.daily?.status === "error" || isDailyUpdateStale()) && !hasFreshDailyData) {
+  const dailyTargetMonth = formatTokyoDateInput(new Date(Date.now() - 24 * 60 * 60 * 1000)).slice(0, 7);
+  if (
+    shouldShowDailyUpdateError({
+      selectedMonth: state.data?.month || "",
+      targetMonth: dailyTargetMonth,
+      status: state.updateStatus?.daily?.status,
+      stale: isDailyUpdateStale(),
+      hasFreshData: hasFreshDailyData,
+    })
+  ) {
     alerts.add("⚠️日次更新エラー");
   }
   if (state.updateStatus?.monthly?.status === "error") {
