@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T11:16:36.314Z",
+  "generatedAt": "2026-08-01T04:32:22.838Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
@@ -7,7 +7,7 @@
     "monthsWithErrors": 0,
     "monthsWithWarnings": 5,
     "errorCount": 0,
-    "warningCount": 14
+    "warningCount": 15
   },
   "errors": [],
   "warnings": [
@@ -987,6 +987,15 @@
           "diff": -1570000
         }
       ]
+    },
+    {
+      "type": "daily_project_drop",
+      "message": "2026-07: previous day project count dropped sharply from the prior populated date",
+      "date": "2026-07-31",
+      "comparisonDate": "2026-07-30",
+      "previous": 15,
+      "current": 3,
+      "dropRatio": 0.8
     }
   ],
   "months": [
@@ -2855,6 +2864,15 @@
               "diff": -1570000
             }
           ]
+        },
+        {
+          "type": "daily_project_drop",
+          "message": "2026-07: previous day project count dropped sharply from the prior populated date",
+          "date": "2026-07-31",
+          "comparisonDate": "2026-07-30",
+          "previous": 15,
+          "current": 3,
+          "dropRatio": 0.8
         }
       ],
       "checks": {
@@ -2863,29 +2881,30 @@
         "totalValueMismatches": 57,
         "missingMediaDates": 6,
         "mediaValueMismatches": 82,
-        "previousDayRecords": 57,
+        "previousDayRecords": 4,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
         "previousProjectDrop": 0,
-        "overallSalesPreviousDayRecords": 1
+        "overallSalesPreviousDayRecords": 1,
+        "dailyProjectDrop": 12
       }
     }
   ],
   "freshness": {
-    "expectedDate": "2026-07-30",
-    "latestDataDate": "2026-07-30",
+    "expectedDate": "2026-07-31",
+    "latestDataDate": "2026-07-31",
     "previousDayHasData": true,
     "detailPreviousDayHasData": true,
     "overallSalesPreviousDayHasData": true,
-    "previousDayRecordCount": 15,
-    "previousDayProjectCount": 15,
-    "comparisonDate": "2026-07-29",
+    "previousDayRecordCount": 3,
+    "previousDayProjectCount": 3,
+    "comparisonDate": "2026-07-30",
     "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-07-31T11:16:33.820Z",
-    "overallSalesGeneratedAt": "2026-07-31T11:16:35.873Z",
-    "checkedAt": "2026-07-31T11:16:37.682Z"
+    "detailGeneratedAt": "2026-08-01T04:32:21.322Z",
+    "overallSalesGeneratedAt": "2026-08-01T04:32:22.403Z",
+    "checkedAt": "2026-08-01T04:32:24.147Z"
   }
 }

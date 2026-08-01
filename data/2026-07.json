@@ -6,7 +6,7 @@
     "sheetName": "◆案件/媒体別日次_全体",
     "totalSheetName": "◆案件別日次_全体_固定用",
     "range": "A:ZZ",
-    "generatedAt": "2026-07-31T11:16:33.820Z",
+    "generatedAt": "2026-08-01T04:32:21.322Z",
     "structure": {
       "detail": {
         "candidateBlocks": 336,
@@ -15,7 +15,7 @@
         "skippedProjectBlocks": 16,
         "missingDateBlocks": 1,
         "missingRequiredBlocks": 0,
-        "records": 1314
+        "records": 1315
       },
       "total": {
         "candidateBlocks": 48,
@@ -24,7 +24,7 @@
         "skippedProjectBlocks": 0,
         "missingDateBlocks": 0,
         "missingRequiredBlocks": 0,
-        "records": 425
+        "records": 428
       }
     }
   },
@@ -390,6 +390,17 @@
       "cv": 154,
       "roas": 1.3156096227446692,
       "cpa": 25083.428571428572
+    },
+    {
+      "date": "2026-07-31",
+      "project": "エステティックTBC",
+      "media": "全体",
+      "sales": 891000,
+      "grossProfit": 81000,
+      "cost": 810000,
+      "cv": 27,
+      "roas": 1.1,
+      "cpa": 30000
     },
     {
       "date": "2026-07-01",
@@ -1052,6 +1063,17 @@
       "cpa": 22847.985915492958
     },
     {
+      "date": "2026-07-31",
+      "project": "MEN'STBC",
+      "media": "全体",
+      "sales": 210000,
+      "grossProfit": 12600,
+      "cost": 197400,
+      "cv": 7,
+      "roas": 1.0638297872340425,
+      "cpa": 28200
+    },
+    {
       "date": "2026-07-01",
       "project": "LAVA",
       "media": "全体",
@@ -1710,6 +1732,17 @@
       "cv": 325,
       "roas": 1.1540503475451447,
       "cpa": 30421.28307692308
+    },
+    {
+      "date": "2026-07-31",
+      "project": "カーブス",
+      "media": "全体",
+      "sales": 3570000,
+      "grossProfit": 729277,
+      "cost": 2840723,
+      "cv": 102,
+      "roas": 1.2567223203388715,
+      "cpa": 27850.225490196077
     },
     {
       "date": "2026-07-01",
@@ -5384,6 +5417,17 @@
       "cv": 61,
       "roas": 1.1956751840555735,
       "cpa": 29272.16393442623
+    },
+    {
+      "date": "2026-07-31",
+      "project": "カーブス",
+      "media": "Facebook",
+      "sales": 560000,
+      "grossProfit": 116277,
+      "cost": 443723,
+      "cv": 16,
+      "roas": 1.2620486204231018,
+      "cpa": 27732.6875
     },
     {
       "date": "2026-07-01",
