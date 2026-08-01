@@ -1,6 +1,97 @@
 {
-  "generatedAt": "2026-08-01T06:22:11.397Z",
+  "generatedAt": "2026-08-01T08:26:58.469Z",
   "entries": [
+    {
+      "checkedAt": "2026-08-01T08:26:58.469Z",
+      "failed": false,
+      "skippedReason": null,
+      "fatalError": null,
+      "targets": [
+        {
+          "month": "2026-07",
+          "reason": "daily_previous_day",
+          "required": true
+        }
+      ],
+      "results": [
+        {
+          "month": "2026-07",
+          "reason": "daily_previous_day",
+          "status": "ok",
+          "required": true,
+          "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+          "title": "AD_総合売上管理表_2026年07月",
+          "message": null,
+          "overallSalesSync": {
+            "status": "ok",
+            "out": "data/overall-sales-2026-07.json",
+            "rows": 53,
+            "updatedCells": 2696,
+            "verification": {
+              "checkedCells": 2696,
+              "mismatches": 0
+            },
+            "structure": {
+              "metricCounts": {
+                "売上": 1,
+                "粗利": 1,
+                "消化金額": 1,
+                "ROAS": 2
+              },
+              "dateHeaders": 32,
+              "totalHeaders": 2
+            }
+          },
+          "sourceAudit": {
+            "generatedAt": "2026-08-01T08:26:57.963Z",
+            "status": "ok",
+            "month": "2026-07",
+            "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+            "sheets": {
+              "detail": "◆案件/媒体別日次_全体",
+              "total": "◆案件別日次_全体_固定用"
+            },
+            "sourceFingerprint": "cb42e01bcd42bed11c4aaddd73d5baaa2d3b3be4e040af93cc57b79fdd7ecb6e",
+            "generatedFingerprint": "cb42e01bcd42bed11c4aaddd73d5baaa2d3b3be4e040af93cc57b79fdd7ecb6e",
+            "summary": {
+              "sourceProjects": 18,
+              "generatedProjects": 18,
+              "sourceKeys": 1827,
+              "generatedKeys": 1827,
+              "verifiedMetrics": 7308,
+              "missingKeys": 0,
+              "extraKeys": 0,
+              "valueMismatches": 0,
+              "structureIssues": 0,
+              "detailBlocks": 305,
+              "totalBlocks": 47
+            },
+            "issues": {
+              "missing": [],
+              "extra": [],
+              "mismatches": [],
+              "structure": []
+            }
+          },
+          "sourceValidation": {
+            "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
+            "title": "AD_総合売上管理表_2026年07月",
+            "titleMonth": "2026-07",
+            "requiredSheets": [
+              "◆案件/媒体別日次_全体",
+              "◆案件別日次_全体_固定用"
+            ],
+            "sourceLabel": "ナハト売上表!14:6"
+          },
+          "data": {
+            "records": 1827,
+            "projects": 18,
+            "media": 8,
+            "generatedAt": "2026-08-01T08:26:57.174Z"
+          }
+        }
+      ]
+    },
     {
       "checkedAt": "2026-08-01T06:22:11.397Z",
       "failed": false,
@@ -8658,39 +8749,6 @@
             "projects": 16,
             "media": 8,
             "generatedAt": "2026-07-18T08:19:44.924Z"
-          }
-        }
-      ]
-    },
-    {
-      "checkedAt": "2026-07-18T08:13:33.215Z",
-      "failed": true,
-      "skippedReason": null,
-      "fatalError": null,
-      "targets": [
-        {
-          "month": "2026-07",
-          "reason": "daily_previous_day",
-          "required": true
-        }
-      ],
-      "results": [
-        {
-          "month": "2026-07",
-          "reason": "daily_previous_day",
-          "status": "error",
-          "required": true,
-          "spreadsheetId": "1KhuW7cgK2qVejvehuM-v28huc5acy0eyZhi6efbZFcQ",
-          "title": "AD_総合売上管理表_2026年07月",
-          "message": "update-data.mjs failed for 2026-07 with exit code 1",
-          "overallSalesSync": null,
-          "sourceAudit": null,
-          "sourceValidation": null,
-          "data": {
-            "records": 974,
-            "projects": 17,
-            "media": 8,
-            "generatedAt": "2026-07-18T08:10:04.280Z"
           }
         }
       ]
