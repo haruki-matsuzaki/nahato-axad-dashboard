@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T10:25:32.816Z",
+  "generatedAt": "2026-08-03T01:01:36.795Z",
   "daily": {
     "status": "ok",
     "checkedAt": "2026-08-01T10:25:32.816Z",
@@ -23,9 +23,9 @@
     "message": null
   },
   "lastRun": {
-    "checkedAt": "2026-08-01T10:25:32.816Z",
+    "checkedAt": "2026-08-03T01:01:36.795Z",
     "failed": false,
-    "skippedReason": null,
+    "skippedReason": "month_source_pending_until_2026-08-03 15:30 JST",
     "fatalError": null
   }
 }

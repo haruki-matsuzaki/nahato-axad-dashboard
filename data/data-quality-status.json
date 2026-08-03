@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-01T10:25:33.218Z",
+  "generatedAt": "2026-08-03T01:01:37.395Z",
   "status": "ok",
   "qualityStartMonth": "2026-02",
   "summary": {
     "checkedMonths": 45,
     "monthsWithErrors": 0,
-    "monthsWithWarnings": 5,
+    "monthsWithWarnings": 6,
     "errorCount": 0,
-    "warningCount": 14
+    "warningCount": 15
   },
   "errors": [],
   "warnings": [
@@ -987,6 +987,12 @@
           "diff": -1570000
         }
       ]
+    },
+    {
+      "type": "latest_month_missing",
+      "message": "current month is not present in data/index.json",
+      "expectedAtLeast": "2026-08",
+      "actual": "2026-07"
     }
   ],
   "months": [
@@ -2863,29 +2869,15 @@
         "totalValueMismatches": 57,
         "missingMediaDates": 6,
         "mediaValueMismatches": 82,
-        "previousDayRecords": 59,
+        "previousDayRecords": 0,
         "duplicateRecordKeys": 0,
         "outsideMonthDates": 0,
         "futureDates": 0,
         "previousMissingProjects": 0,
         "previousRecordDrop": 0,
-        "previousProjectDrop": 0,
-        "overallSalesPreviousDayRecords": 1
+        "previousProjectDrop": 0
       }
     }
   ],
-  "freshness": {
-    "expectedDate": "2026-07-31",
-    "latestDataDate": "2026-07-31",
-    "previousDayHasData": true,
-    "detailPreviousDayHasData": true,
-    "overallSalesPreviousDayHasData": true,
-    "previousDayRecordCount": 15,
-    "previousDayProjectCount": 15,
-    "comparisonDate": "2026-07-30",
-    "comparisonProjectCount": 15,
-    "detailGeneratedAt": "2026-08-01T10:25:31.630Z",
-    "overallSalesGeneratedAt": "2026-08-01T10:25:32.809Z",
-    "checkedAt": "2026-08-01T10:25:34.562Z"
-  }
+  "freshness": null
 }
