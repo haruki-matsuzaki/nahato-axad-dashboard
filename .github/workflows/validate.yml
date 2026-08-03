@@ -30,6 +30,7 @@ jobs:
           node --check scripts/check-production-site.mjs
           node --check scripts/check-data-quality.mjs
           node --check scripts/google-auth.mjs
+          node --check scripts/jst-business-calendar.mjs
           node --check scripts/monitor-update-schedule.mjs
           node --check scripts/retry-cancelled-checks.mjs
           node --check scripts/run-external-monitor.mjs
@@ -38,6 +39,7 @@ jobs:
           node --check scripts/dispatch-update-workflow.mjs
           node --check scripts/sheet-source-guard.mjs
           node --check scripts/test-external-monitor.mjs
+          node --check scripts/test-month-bootstrap.mjs
           node --check scripts/test-chatwork-alert.mjs
           node --check scripts/test-workflow-dispatch.mjs
           node --check scripts/test-sheet-source-guard.mjs
@@ -64,6 +66,9 @@ jobs:
 
       - name: Validate external monitor alerts
         run: npm run test:external-monitor
+
+      - name: Validate month bootstrap grace period
+        run: npm run test:month-bootstrap
 
       - name: Validate schedule logic
         run: npm run test:schedule

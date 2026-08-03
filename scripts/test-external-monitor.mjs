@@ -186,4 +186,24 @@ try {
   globalThis.fetch = originalFetch;
 }
 
+fetchCalled = false;
+globalThis.fetch = async () => {
+  fetchCalled = true;
+  throw new Error("fetch must not be called during the month bootstrap grace period");
+};
+try {
+  for (const now of [
+    new Date("2026-08-02T10:30:00.000Z"),
+    new Date("2026-08-03T06:29:00.000Z"),
+  ]) {
+    const pending = await runScheduledMonitor({}, { now });
+    assert.equal(pending.status, "pending");
+    assert.equal(pending.reason, "month_source_pending");
+    assert.equal(pending.readyAtJst, "2026-08-03 15:30 JST");
+  }
+  assert.equal(fetchCalled, false, "the monitor must not fetch, recover, or alert during month bootstrap");
+} finally {
+  globalThis.fetch = originalFetch;
+}
+
 console.log("external monitor tests ok");

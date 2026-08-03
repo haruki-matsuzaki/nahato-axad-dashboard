@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { getMonthBootstrapState } from "./jst-business-calendar.mjs";
 
 const args = parseArgs(process.argv.slice(2));
 const repo = args.repo || process.env.GITHUB_REPOSITORY || "haruki-matsuzaki/nahato-axad-dashboard";
@@ -8,6 +9,24 @@ const workflow = args.workflow || "update-data.yml";
 const triggerPath = args.trigger || "data/update-trigger.json";
 const apply = toBoolean(args.apply);
 const now = parseRunDate(args.runDate || process.env.RUN_DATE);
+const bootstrap = getMonthBootstrapState(now);
+
+if (bootstrap.active) {
+  console.log(
+    JSON.stringify(
+      {
+        status: "pending",
+        reason: "month_source_pending",
+        expectedMonth: bootstrap.targetMonth,
+        readyAtJst: bootstrap.readyAtJst,
+      },
+      null,
+      2,
+    ),
+  );
+  process.exit(0);
+}
+
 const monitor = buildMonitorWindow(now);
 
 if (!monitor) {

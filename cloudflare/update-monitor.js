@@ -1,4 +1,5 @@
 import { buildExternalMonitorAlertMessage } from "../scripts/automation-alert-message.mjs";
+import { getMonthBootstrapState } from "../scripts/jst-business-calendar.mjs";
 
 const DEFAULT_RAW_BASE_URL = "https://raw.githubusercontent.com/haruki-matsuzaki/nahato-axad-dashboard/main";
 const DEFAULT_PRODUCTION_ORIGIN = "https://nahato-axad-dashboard.pages.dev";
@@ -52,6 +53,19 @@ export async function runScheduledMonitor(env, { enforceSchedule = false, now = 
       expectedDate: previousJstDate(now),
       issues: [],
       reason: "outside_scheduled_monitor_time",
+    };
+  }
+
+  const bootstrap = getMonthBootstrapState(now);
+  if (bootstrap.active) {
+    return {
+      status: "pending",
+      checkedAt: now.toISOString(),
+      expectedDate: previousJstDate(now),
+      expectedMonth: bootstrap.targetMonth,
+      issues: [],
+      reason: "month_source_pending",
+      readyAtJst: bootstrap.readyAtJst,
     };
   }
 

@@ -6,6 +6,15 @@ import { getGoogleAccessToken } from "./google-auth.mjs";
 import { auditSourceSheet } from "./audit-source-sheet.mjs";
 import { createFetchWithRetry } from "./fetch-with-retry.mjs";
 import {
+  addDays,
+  formatYmd,
+  getJstDateParts,
+  getJstHour,
+  getMonthBootstrapState,
+  isFirstBusinessDay,
+  monthId,
+} from "./jst-business-calendar.mjs";
+import {
   assertRangeCoverage,
   compareSources,
   DYNAMIC_SHEET_RANGE,
@@ -23,7 +32,6 @@ const DEFAULT_TOTAL_SHEET_NAME = "◆案件別日次_全体_固定用";
 const DEFAULT_SHEET_RANGE = DYNAMIC_SHEET_RANGE;
 const DEFAULT_MASTER_MAX_ROWS = 2000;
 const DEFAULT_SOURCE_MAX_ROWS = 3000;
-const JST_TIME_ZONE = "Asia/Tokyo";
 const MONTHLY_SCHEDULE_CRONS = new Set(["0 6 * * *"]);
 const FETCH_TIMEOUT_MS = Number(process.env.FETCH_TIMEOUT_MS || 45_000);
 const fetchWithTimeout = createFetchWithRetry({ timeoutMs: FETCH_TIMEOUT_MS });
@@ -101,10 +109,23 @@ async function main(plan) {
   const defaultMonth = await resolveDefaultMonth(options.indexPath, plan.targets.map((target) => target.month));
   const results = [];
   let failed = false;
+  const bootstrap = getMonthBootstrapState(options.runDate);
 
   for (const target of dedupeTargets(plan.targets)) {
     const source = selectSourceForMonth(sourceCatalog.candidates || sourceCatalog.sources, target.month);
     if (!source) {
+      if (bootstrap.active && target.month === bootstrap.targetMonth) {
+        results.push({
+          month: target.month,
+          reason: target.reason,
+          status: "ok",
+          statusTypes: statusTypesForTarget(target, options),
+          required: Boolean(target.required),
+          pending: true,
+          message: `Month source is pending until ${bootstrap.readyAtJst}`,
+        });
+        continue;
+      }
       const message = `No Nacht sheet source found for ${target.month}. Check the master sheet or Chatwork source.`;
       if (target.required) failed = true;
       results.push({
@@ -280,6 +301,7 @@ async function enrichLogResult(item) {
     month: item.month || null,
     reason: item.reason || null,
     status: item.status || null,
+    pending: Boolean(item.pending),
     required: Boolean(item.required),
     spreadsheetId: item.spreadsheetId || null,
     title: item.title || "",
@@ -360,6 +382,9 @@ function buildUpdatePlan(options) {
   const yesterday = addDays(today, -1);
   const requestedMonth = normalizeMonth(options.month);
   const targets = [];
+  const bootstrap = getMonthBootstrapState(options.runDate);
+  const dailyPending = bootstrap.active && !options.spreadsheetId;
+  const pendingReason = dailyPending ? `month_source_pending_until_${bootstrap.readyAtJst}` : null;
 
   if (requestedMonth) {
     targets.push({ month: requestedMonth, reason: "requested_month", required: true });
@@ -367,6 +392,7 @@ function buildUpdatePlan(options) {
   }
 
   if (options.mode === "daily") {
+    if (dailyPending) return { targets, reason: pendingReason };
     targets.push({ month: monthId(yesterday), reason: "daily_previous_day", required: true });
     return { targets };
   }
@@ -384,7 +410,9 @@ function buildUpdatePlan(options) {
   }
 
   if (options.mode === "all") {
-    targets.push({ month: monthId(yesterday), reason: "daily_previous_day", required: true });
+    if (!dailyPending) {
+      targets.push({ month: monthId(yesterday), reason: "daily_previous_day", required: true });
+    }
     if (options.forceMonthly || isFirstBusinessDay(today)) {
       targets.push({
         month: monthId(today),
@@ -392,18 +420,20 @@ function buildUpdatePlan(options) {
         required: Boolean(options.forceMonthly),
       });
     }
-    return { targets };
+    return { targets, reason: targets.length ? null : pendingReason };
   }
 
   if (options.mode !== "scheduled") {
     throw new Error(`Unknown UPDATE_MODE: ${options.mode}`);
   }
 
-  targets.push({ month: monthId(yesterday), reason: "daily_previous_day", required: true });
+  if (!dailyPending) {
+    targets.push({ month: monthId(yesterday), reason: "daily_previous_day", required: true });
+  }
   if (isMonthlySchedule(options) && isFirstBusinessDay(today)) {
     targets.push({ month: monthId(today), reason: "monthly_first_business_day", required: false });
   }
-  return { targets };
+  return { targets, reason: targets.length ? null : pendingReason };
 }
 
 function isMonthlySchedule(options) {
@@ -819,140 +849,6 @@ function normalizeMonth(value) {
 function formatMonth(year, month) {
   if (!Number.isInteger(year) || !Number.isInteger(month) || month < 1 || month > 12) return "";
   return `${year}-${String(month).padStart(2, "0")}`;
-}
-
-function monthId(parts) {
-  return formatMonth(parts.year, parts.month);
-}
-
-function isFirstBusinessDay(parts) {
-  if (!isBusinessDay(parts)) return false;
-  for (let day = 1; day < parts.day; day += 1) {
-    if (isBusinessDay({ year: parts.year, month: parts.month, day })) return false;
-  }
-  return true;
-}
-
-function isBusinessDay(parts) {
-  const weekday = weekdayOf(parts);
-  if (weekday === 0 || weekday === 6) return false;
-  return !japaneseHolidaySet(parts.year).has(formatYmd(parts));
-}
-
-function japaneseHolidaySet(year) {
-  const holidays = new Set();
-  addHoliday(holidays, year, 1, 1);
-  addHoliday(holidays, year, 1, nthWeekdayOfMonth(year, 1, 1, 2));
-  addHoliday(holidays, year, 2, 11);
-  addHoliday(holidays, year, 2, 23);
-  addHoliday(holidays, year, 3, vernalEquinoxDay(year));
-  addHoliday(holidays, year, 4, 29);
-  addHoliday(holidays, year, 5, 3);
-  addHoliday(holidays, year, 5, 4);
-  addHoliday(holidays, year, 5, 5);
-  addHoliday(holidays, year, 7, nthWeekdayOfMonth(year, 7, 1, 3));
-  addHoliday(holidays, year, 8, 11);
-  addHoliday(holidays, year, 9, nthWeekdayOfMonth(year, 9, 1, 3));
-  addHoliday(holidays, year, 9, autumnEquinoxDay(year));
-  addHoliday(holidays, year, 10, nthWeekdayOfMonth(year, 10, 1, 2));
-  addHoliday(holidays, year, 11, 3);
-  addHoliday(holidays, year, 11, 23);
-
-  for (const ymd of [...holidays].sort()) {
-    const parts = parseYmd(ymd);
-    if (weekdayOf(parts) !== 0) continue;
-    let observed = addDays(parts, 1);
-    while (holidays.has(formatYmd(observed))) {
-      observed = addDays(observed, 1);
-    }
-    if (observed.year === year) holidays.add(formatYmd(observed));
-  }
-
-  for (let month = 1; month <= 12; month += 1) {
-    const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
-    for (let day = 2; day < daysInMonth; day += 1) {
-      const parts = { year, month, day };
-      const ymd = formatYmd(parts);
-      if (holidays.has(ymd)) continue;
-      if (weekdayOf(parts) === 0 || weekdayOf(parts) === 6) continue;
-      if (holidays.has(formatYmd(addDays(parts, -1))) && holidays.has(formatYmd(addDays(parts, 1)))) {
-        holidays.add(ymd);
-      }
-    }
-  }
-
-  return holidays;
-}
-
-function addHoliday(set, year, month, day) {
-  set.add(formatYmd({ year, month, day }));
-}
-
-function nthWeekdayOfMonth(year, month, weekday, nth) {
-  let count = 0;
-  const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
-  for (let day = 1; day <= daysInMonth; day += 1) {
-    if (weekdayOf({ year, month, day }) === weekday) {
-      count += 1;
-      if (count === nth) return day;
-    }
-  }
-  return 1;
-}
-
-function vernalEquinoxDay(year) {
-  return Math.floor(20.8431 + 0.242194 * (year - 1980) - Math.floor((year - 1980) / 4));
-}
-
-function autumnEquinoxDay(year) {
-  return Math.floor(23.2488 + 0.242194 * (year - 1980) - Math.floor((year - 1980) / 4));
-}
-
-function getJstDateParts(date) {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: JST_TIME_ZONE,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(date);
-  const byType = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  return {
-    year: Number(byType.year),
-    month: Number(byType.month),
-    day: Number(byType.day),
-  };
-}
-
-function getJstHour(date) {
-  const parts = new Intl.DateTimeFormat("en-GB", {
-    timeZone: JST_TIME_ZONE,
-    hour: "2-digit",
-    hour12: false,
-  }).formatToParts(date);
-  const hour = parts.find((part) => part.type === "hour")?.value || "0";
-  return Number(hour);
-}
-
-function addDays(parts, amount) {
-  const date = new Date(Date.UTC(parts.year, parts.month - 1, parts.day + amount));
-  return {
-    year: date.getUTCFullYear(),
-    month: date.getUTCMonth() + 1,
-    day: date.getUTCDate(),
-  };
-}
-
-function weekdayOf(parts) {
-  return new Date(Date.UTC(parts.year, parts.month - 1, parts.day)).getUTCDay();
-}
-
-function parseYmd(value) {
-  const [year, month, day] = value.split("-").map(Number);
-  return { year, month, day };
-}
-
-function formatYmd(parts) {
-  return `${parts.year}-${String(parts.month).padStart(2, "0")}-${String(parts.day).padStart(2, "0")}`;
 }
 
 function parseRunDate(value) {
