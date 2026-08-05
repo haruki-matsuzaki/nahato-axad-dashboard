@@ -35,6 +35,7 @@ jobs:
           node --check scripts/retry-cancelled-checks.mjs
           node --check scripts/run-external-monitor.mjs
           node --check scripts/send-chatwork-alert.mjs
+          node --check scripts/chatwork-alert-policy.mjs
           node --check scripts/automation-alert-message.mjs
           node --check scripts/dispatch-update-workflow.mjs
           node --check scripts/sheet-source-guard.mjs

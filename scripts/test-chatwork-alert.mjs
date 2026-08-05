@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import { buildAutomationAlertMessage } from "./automation-alert-message.mjs";
+import { chatworkAlertPolicy, isChatworkAlertEnabled } from "./chatwork-alert-policy.mjs";
 
 const output = execFileSync(process.execPath, ["scripts/send-chatwork-alert.mjs", "--dryRun", "--reason", "update_failed"], {
   encoding: "utf8",
@@ -18,6 +19,18 @@ assert.match(result.body, /【推定原因】/);
 assert.match(result.body, /【確認・対応】/);
 assert.match(result.body, /【技術詳細】/);
 assert.equal(Object.hasOwn(result, "to"), false);
+
+assert.equal(isChatworkAlertEnabled(), false);
+assert.equal(chatworkAlertPolicy.disabledReason, "temporarily_disabled_by_request");
+const disabledOutput = execFileSync(process.execPath, ["scripts/send-chatwork-alert.mjs", "--reason", "update_failed"], {
+  encoding: "utf8",
+  env: { ...process.env, CHATWORK_API_TOKEN: "" },
+});
+const disabledResult = JSON.parse(disabledOutput);
+assert.equal(disabledResult.status, "ok");
+assert.equal(disabledResult.skipped, true);
+assert.equal(disabledResult.reason, "temporarily_disabled_by_request");
+assert.match(disabledResult.subject, /日次更新エラー/);
 
 const oauthError = buildAutomationAlertMessage(
   {

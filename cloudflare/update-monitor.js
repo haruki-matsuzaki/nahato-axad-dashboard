@@ -1,4 +1,5 @@
 import { buildExternalMonitorAlertMessage } from "../scripts/automation-alert-message.mjs";
+import { isChatworkAlertEnabled } from "../scripts/chatwork-alert-policy.mjs";
 import { getMonthBootstrapState } from "../scripts/jst-business-calendar.mjs";
 
 const DEFAULT_RAW_BASE_URL = "https://raw.githubusercontent.com/haruki-matsuzaki/nahato-axad-dashboard/main";
@@ -384,6 +385,7 @@ function emptyOverallDay() {
 }
 
 async function sendChatworkAlert(env, health) {
+  if (!isChatworkAlertEnabled()) return;
   if (!env.CHATWORK_API_TOKEN) throw new Error("CHATWORK_API_TOKEN is not configured for the external monitor");
   const roomId = env.CHATWORK_ALERT_ROOM_ID || DEFAULT_CHATWORK_ROOM_ID;
   const actionsUrl = "https://github.com/haruki-matsuzaki/nahato-axad-dashboard/actions/workflows/update-data.yml";

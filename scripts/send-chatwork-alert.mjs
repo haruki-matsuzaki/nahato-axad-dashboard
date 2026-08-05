@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import process from "node:process";
 import { buildAutomationAlertMessage } from "./automation-alert-message.mjs";
+import { chatworkAlertPolicy, isChatworkAlertEnabled } from "./chatwork-alert-policy.mjs";
 
 const args = parseArgs(process.argv.slice(2));
 const options = {
@@ -28,6 +29,17 @@ async function sendAlert(options) {
       roomId: options.chatworkRoomId,
       subject,
       body,
+      code,
+    };
+  }
+  if (!isChatworkAlertEnabled()) {
+    return {
+      status: "ok",
+      channel: "chatwork",
+      skipped: true,
+      reason: chatworkAlertPolicy.disabledReason,
+      roomId: options.chatworkRoomId,
+      subject,
       code,
     };
   }
