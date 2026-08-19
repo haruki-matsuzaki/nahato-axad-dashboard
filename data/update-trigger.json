@@ -1,8 +1,8 @@
 {
-  "triggeredAt": "2026-08-19T09:43:13.240Z",
+  "triggeredAt": "2026-08-19T10:01:16.315Z",
   "expectedRunAtJst": "2026-08-19 18:00",
   "reason": "workflow_run_failed",
   "analysis": "Latest update workflow ended with failure. No update-status failure message was available.",
-  "runUrl": "https://github.com/haruki-matsuzaki/nahato-axad-dashboard/actions/runs/32237053547",
+  "runUrl": "https://github.com/haruki-matsuzaki/nahato-axad-dashboard/actions/runs/32239051953",
   "source": "codex_schedule_monitor"
 }
