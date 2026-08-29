@@ -1,4 +1,5 @@
 import { shouldShowDailyUpdateError } from "./update-alert-state.js?v=20260731-01";
+import { retainProjectFilter } from "./filter-state.js?v=20260829-01";
 
 const state = {
   index: null,
@@ -941,6 +942,7 @@ function populateMonthSelect() {
 
 function syncFilters() {
   const records = state.data?.records || [];
+  const selectedProject = els.projectSelect.value || "all";
   const dates = [...new Set(records.map((record) => record.date))].sort();
   const firstDate = dates[0] || "";
   const lastDate = dates.at(-1) || "";
@@ -950,6 +952,7 @@ function syncFilters() {
     month: state.data?.month,
   });
   const projects = [...new Set(records.map((record) => record.project).filter(Boolean))].sort(localeSort);
+  const projectFilter = retainProjectFilter(projects, selectedProject);
   const media = [...new Set(records.map((record) => record.media).filter(Boolean))].sort(localeSort);
 
   els.startDate.min = firstDate;
@@ -961,8 +964,11 @@ function syncFilters() {
 
   els.projectSelect.innerHTML = [
     `<option value="all">全案件</option>`,
-    ...projects.map((project) => `<option value="${escapeHtml(project)}">${escapeHtml(project)}</option>`),
+    ...projectFilter.projects.map(
+      (project) => `<option value="${escapeHtml(project)}">${escapeHtml(project)}</option>`,
+    ),
   ].join("");
+  els.projectSelect.value = projectFilter.selectedProject;
 
   els.mediaSelect.innerHTML = [
     `<option value="all">全媒体</option>`,
