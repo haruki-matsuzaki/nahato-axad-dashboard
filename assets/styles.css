@@ -1375,6 +1375,7 @@ p {
 .data-table,
 .sheet-table {
   --media-indent: 42px;
+  --sheet-name-width: 234px;
   width: 100%;
   min-width: 920px;
   border-collapse: collapse;
@@ -1415,11 +1416,12 @@ p {
   background: #161c23;
 }
 
-.sheet-name-cell,
-.sheet-metric-name {
-  width: 212px;
-  min-width: 212px;
-  max-width: 260px;
+.sheet-table .sheet-name-cell,
+.sheet-table .sheet-metric-name {
+  box-sizing: border-box;
+  width: var(--sheet-name-width);
+  min-width: var(--sheet-name-width);
+  max-width: var(--sheet-name-width);
 }
 
 .sheet-name-cell,
@@ -1441,7 +1443,7 @@ p {
 .project-value-row td:nth-child(2),
 .media-value-row td:nth-child(2) {
   position: sticky;
-  left: 212px;
+  left: var(--sheet-name-width);
   z-index: 4;
 }
 
@@ -2416,6 +2418,7 @@ body.theme-light .overall-layout-table td.business-metric-cell {
   .data-table,
   .sheet-table {
     --media-indent: 30px;
+    --sheet-name-width: 190px;
     min-width: 780px;
     font-size: 12px;
   }
@@ -2432,25 +2435,12 @@ body.theme-light .overall-layout-table td.business-metric-cell {
     min-width: 92px;
   }
 
-  .sheet-name-cell,
-  .sheet-metric-name {
-    width: 168px;
-    min-width: 168px;
-    max-width: 190px;
-  }
-
   .sheet-total-head,
   .sheet-value-row td:nth-child(2),
   .project-value-row td:nth-child(2),
   .media-value-row td:nth-child(2) {
     width: 112px;
     min-width: 112px;
-  }
-
-  .sheet-total-head,
-  .project-value-row td:nth-child(2),
-  .media-value-row td:nth-child(2) {
-    left: 168px;
   }
 
   .media-value-row .sheet-metric-name {
@@ -2463,6 +2453,10 @@ body.theme-light .overall-layout-table td.business-metric-cell {
 }
 
 @media (max-width: 540px) {
+  .sheet-table {
+    --sheet-name-width: 168px;
+  }
+
   .topbar {
     min-height: 42px;
     padding: 7px 10px;
@@ -2575,13 +2569,6 @@ body.theme-light .overall-layout-table td.business-metric-cell {
     grid-column: 2;
   }
 
-  .sheet-name-cell,
-  .sheet-metric-name {
-    width: 152px;
-    min-width: 152px;
-    max-width: 168px;
-  }
-
   .sheet-total-head,
   .sheet-value-row td:nth-child(2),
   .project-value-row td:nth-child(2),
@@ -2590,9 +2577,4 @@ body.theme-light .overall-layout-table td.business-metric-cell {
     min-width: 104px;
   }
 
-  .sheet-total-head,
-  .project-value-row td:nth-child(2),
-  .media-value-row td:nth-child(2) {
-    left: 152px;
-  }
 }
